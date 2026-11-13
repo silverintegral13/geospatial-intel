@@ -1,0 +1,24 @@
+# Runtime for the demo, CI, the static site and the hosted Streamlit app.
+numpy
+pandas
+pyarrow
+scipy
+geopandas
+shapely
+pyproj
+pyogrio
+h3>=4
+scikit-learn
+lightgbm
+lifelines
+pyyaml
+jinja2
+markdown
+matplotlib
+folium
+streamlit
+pydeck
+weasyprint
+jsonschema
+openpyxl
+requests

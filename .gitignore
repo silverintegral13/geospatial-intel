@@ -1,0 +1,36 @@
+# secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials*.json
+# raw + licence-restricted + personal data (never public)
+data/raw/
+data/interim/
+data/cache/
+data/manual/*
+!data/manual/README.md
+!data/manual/*.template.csv
+!data/manual/ibbi_recovery.csv
+*.tif
+*.tiff
+*.nc
+*.zarr
+*.SAFE
+*freddie*
+*Freddie*
+*7-12*
+*7_12*
+*8A*.pdf
+# build artefacts
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+mlruns/
+site/
+*.egg-info/
+.DS_Store
+.streamlit/secrets.toml

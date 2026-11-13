@@ -1,0 +1,19 @@
+# Extra packages for LIVE ingestion and the optional stack. Not needed for the demo.
+-r requirements.txt
+pystac-client
+odc-stac
+planetary-computer
+rioxarray
+rasterio
+earthengine-api
+osmnx
+duckdb
+pytesseract
+pdf2image
+anthropic
+mapie
+shap
+fairlearn
+optbinning
+evidently
+mlflow

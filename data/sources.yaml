@@ -1,0 +1,209 @@
+AlphaEarth Satellite Embeddings (annual):
+  access_date: '2026-11-13'
+  licence: CC BY 4.0
+  mode: synthetic
+  note: 'Live fetch failed: ModuleNotFoundError: No module named ''ee''. SYNTHETIC
+    fallback used.'
+  prototype_only: false
+  rows: 1148
+  url: https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_SATELLITE_EMBEDDING_V1_ANNUAL
+  use: Model features (PCA to 16)
+BAANKNET e-auction listings:
+  access_date: '2026-11-13'
+  licence: Public portal; terms apply
+  mode: synthetic
+  note: Portal unreachable from the build environment. SYNTHETIC listings generated;
+    fill data/manual/baanknet_listings.csv from the template to replace them.
+  prototype_only: false
+  rows: 4499
+  url: https://baanknet.com
+  use: Liquidity, haircut and valuation labels
+CHIRPS daily rainfall:
+  access_date: '2026-11-13'
+  licence: CC0
+  mode: synthetic
+  note: 'Live fetch failed: ModuleNotFoundError: No module named ''ee''. SYNTHETIC
+    fallback used.'
+  prototype_only: false
+  rows: 1148
+  url: https://developers.google.com/earth-engine/datasets/catalog/UCSB-CHG_CHIRPS_DAILY
+  use: Rainfall variability
+Copernicus DEM GLO-30:
+  access_date: '2026-11-13'
+  licence: Copernicus DEM licence (free)
+  mode: synthetic
+  note: 'Live fetch failed: ModuleNotFoundError: No module named ''ee''. SYNTHETIC
+    fallback used.'
+  prototype_only: false
+  rows: 1148
+  url: https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_DEM_GLO30
+  use: Terrain
+DataMeet Indian village boundaries (Gujarat):
+  access_date: '2026-11-13'
+  licence: ODbL 1.0
+  mode: live
+  note: Census 2001 village boundaries; 18,797 Gujarat polygons downloaded, Sanand
+    subset kept.
+  prototype_only: false
+  rows: 67
+  url: https://raw.githubusercontent.com/datameet/indian_village_boundaries/master/gj/gj.geojson
+  use: Sanand taluka village polygons
+ESA WorldCover 10 m:
+  access_date: '2026-11-13'
+  licence: CC BY 4.0
+  mode: template
+  note: 'Live fetch failed: RuntimeError: no live fetcher written yet. SYNTHETIC fallback
+    used.'
+  prototype_only: false
+  rows: 0
+  url: https://developers.google.com/earth-engine/datasets/catalog/ESA_WorldCover_v200
+  use: Land-cover class (not yet used by a feature)
+Fields of The World field boundaries:
+  access_date: '2026-11-13'
+  licence: CC BY 4.0 (per-source terms)
+  mode: template
+  note: 'Live fetch failed: RuntimeError: no live fetcher written yet. SYNTHETIC fallback
+    used.'
+  prototype_only: false
+  rows: 0
+  url: https://source.coop/ftw/global-data
+  use: Farmed boundary for the title boundary check
+Google Open Buildings 2.5D Temporal:
+  access_date: '2026-11-13'
+  licence: CC BY 4.0
+  mode: synthetic
+  note: 'Live fetch failed: ModuleNotFoundError: No module named ''ee''. SYNTHETIC
+    fallback used.'
+  prototype_only: false
+  rows: 42476
+  url: https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_Research_open-buildings-temporal_v1
+  use: Built-up share, growth, height, Property Pulse
+Gujarat RERA projects:
+  access_date: '2026-11-13'
+  licence: Public portal / document
+  mode: template
+  note: Not collected. Empty template in data/templates/; fields that depend on it
+    are left blank.
+  prototype_only: false
+  rows: 0
+  url: https://gujrera.gujarat.gov.in
+  use: Property Pulse ground truth
+'IBBI quarterly newsletter: CIRP recoveries':
+  access_date: '2026-11-13'
+  licence: Public document
+  mode: manual
+  note: REAL figures, transcribed from press reports of the IBBI newsletter; verify
+    against the PDF.
+  prototype_only: false
+  rows: 1
+  url: https://ibbi.gov.in/en/publication
+  use: Corporate / MSME recovery prior
+JRC Global Surface Water:
+  access_date: '2026-11-13'
+  licence: Copernicus / JRC open licence
+  mode: synthetic
+  note: 'Live fetch failed: ModuleNotFoundError: No module named ''ee''. SYNTHETIC
+    fallback used.'
+  prototype_only: false
+  rows: 1148
+  url: https://developers.google.com/earth-engine/datasets/catalog/JRC_GSW1_4_GlobalSurfaceWater
+  use: Flood history
+Jantri rates (Garvi Gujarat):
+  access_date: '2026-11-13'
+  licence: Public portal; terms apply
+  mode: synthetic
+  note: SYNTHETIC rates (30-80 % of the synthetic market value). Fill data/manual/jantri.csv.
+  prototype_only: false
+  rows: 335
+  url: https://garvi.gujarat.gov.in
+  use: Government floor value
+Landsat C2 L2 surface temperature / ERA5-Land:
+  access_date: '2026-11-13'
+  licence: USGS public domain / Copernicus licence
+  mode: synthetic
+  note: 'Live fetch failed: ModuleNotFoundError: No module named ''ee''. SYNTHETIC
+    fallback used.'
+  prototype_only: false
+  rows: 1148
+  url: https://developers.google.com/earth-engine/datasets/catalog/ECMWF_ERA5_LAND_DAILY_AGGR
+  use: Heat exposure
+NABARD Potential Linked Credit Plans:
+  access_date: '2026-11-13'
+  licence: Public portal / document
+  mode: template
+  note: Not collected. Empty template in data/templates/; fields that depend on it
+    are left blank.
+  prototype_only: false
+  rows: 0
+  url: https://www.nabard.org
+  use: District credit potential
+OpenStreetMap roads:
+  access_date: '2026-11-13'
+  licence: ODbL 1.0
+  mode: synthetic
+  note: 'Live fetch failed: ModuleNotFoundError: No module named ''osmnx''. SYNTHETIC
+    fallback used.'
+  prototype_only: false
+  rows: 1148
+  url: https://www.openstreetmap.org
+  use: Road access, drive time, repossession feasibility
+SLBC Gujarat / RBI BSR district credit and NPA tables:
+  access_date: '2026-11-13'
+  licence: Public documents
+  mode: synthetic
+  note: SYNTHETIC district-year NPA ratios. Transcribe SLBC booklets into data/manual/district_credit.csv
+    to replace them.
+  prototype_only: false
+  rows: 231
+  url: https://slbcgujarat.in
+  use: Target for the area collateral score
+Sentinel-1 RTC (Planetary Computer STAC):
+  access_date: '2026-11-13'
+  licence: Copernicus Sentinel data terms (free, open)
+  mode: synthetic
+  note: 'Live fetch failed: ModuleNotFoundError: No module named ''odc''. SYNTHETIC
+    fallback used.'
+  prototype_only: false
+  rows: 41328
+  url: https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-rtc
+  use: Cloud-free sowing check
+Sentinel-2 L2A (Planetary Computer STAC):
+  access_date: '2026-11-13'
+  licence: Copernicus Sentinel data terms (free, open)
+  mode: synthetic
+  note: 'Live fetch failed: ModuleNotFoundError: No module named ''odc''. SYNTHETIC
+    fallback used.'
+  prototype_only: false
+  rows: 42476
+  url: https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a
+  use: NDVI seasonality, cropping intensity, Farm Pulse
+VIIRS night lights (monthly):
+  access_date: '2026-11-13'
+  licence: Public domain (NOAA / EOG)
+  mode: synthetic
+  note: 'Live fetch failed: ModuleNotFoundError: No module named ''ee''. SYNTHETIC
+    fallback used.'
+  prototype_only: false
+  rows: 42476
+  url: https://developers.google.com/earth-engine/datasets/catalog/NOAA_VIIRS_DNB_MONTHLY_V1_VCMSLCFG
+  use: Activity Index
+eCourts case metadata:
+  access_date: '2026-11-13'
+  licence: Public portal / document
+  mode: template
+  note: Not collected. Empty template in data/templates/; fields that depend on it
+    are left blank.
+  prototype_only: false
+  rows: 0
+  url: https://ecourts.gov.in
+  use: Dispute risk
+geoBoundaries India ADM2 (districts):
+  access_date: '2026-11-13'
+  licence: CC BY 4.0 (geoBoundaries gbOpen)
+  mode: live
+  note: Mapped on the 33 pre-2025 district boundaries; Vav-Tharad is shown inside
+    Banas Kantha.
+  prototype_only: false
+  rows: 33
+  url: https://media.githubusercontent.com/media/wmgeolab/geoBoundaries/main/releaseData/gbOpen/IND/ADM2/geoBoundaries-IND-ADM2_simplified.geojson
+  use: Gujarat district map (33 pre-2025 districts)

@@ -1,0 +1,59 @@
+# BhoomiPulse prototype configuration
+seed: 20261113
+as_of: "2026-10-31"          # observation cut-off for auctions, Pulse and loans
+state: Gujarat
+taluka: Sanand
+h3_resolution: 8
+
+# Note: Gujarat has 34 districts since Vav-Tharad was carved out of Banaskantha (2025).
+# Open boundary files still carry the 33 older districts, so the map uses those.
+district_note: "Mapped on the 33 pre-2025 district boundaries; Vav-Tharad is shown inside Banas Kantha."
+
+# Three plots for collateral reports. PLACEHOLDERS: approximate points chosen inside
+# real village polygons, not real parcels. Replace with your own lat/lon or polygons.
+plots:
+  - id: farm
+    label: "Farm plot (placeholder), Kundal village"
+    kind: farm
+    asset_type: agri_land
+    lat: 22.8890
+    lon: 72.2230
+    area_sqm: 12000
+    survey_number: null
+    loan_amount: 900000
+  - id: property
+    label: "Residential property (placeholder), Sanand town"
+    kind: property
+    asset_type: residential
+    lat: 22.9957
+    lon: 72.3759
+    area_sqm: 140
+    survey_number: null
+    loan_amount: 2500000
+  - id: factory
+    label: "Factory unit (placeholder), Sanand GIDC area, Bol village"
+    kind: factory
+    asset_type: industrial
+    lat: 22.9883
+    lon: 72.2626
+    area_sqm: 8000
+    survey_number: null
+    loan_amount: 30000000
+
+# Lender-set parameters for expected loss and the LTV band
+lender:
+  cost_of_funds: 0.11          # r, annual
+  el_threshold: 0.02           # max expected loss as a share of the loan
+  pd_12m_by_asset:             # ASSUMPTION until a partner book supplies real PDs
+    agri_land: 0.07
+    residential: 0.035
+    commercial: 0.05
+    industrial: 0.06
+    plot_na: 0.05
+
+# Live-ingestion settings (used only when the hosts are reachable)
+live:
+  stac_url: "https://planetarycomputer.microsoft.com/api/stac/v1"
+  months_back: 36
+  ftw_parquet_url: null        # set to the Source Cooperative GeoParquet for India/Gujarat
+  portal_min_seconds_between_requests: 5
