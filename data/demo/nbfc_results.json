@@ -1,0 +1,721 @@
+{
+ "synthetic": true,
+ "quality": {
+  "loans": 20000,
+  "geocode_hit_rate": 1.0,
+  "valuer_value_outside_ai_range": 0.19885,
+  "valuer_above_ai_range": 0.1074,
+  "median_valuer_to_ai_value": 1.0097328167259558,
+  "title_flags": null,
+  "title_flags_reason": "Title checks need land-record documents or a ULI connection; not run on the book.",
+  "default_rate_12m": 0.05935
+ },
+ "split": "out-of-time: trained on loans originated before 2024-05-19, tested after",
+ "n_train": 14999,
+ "n_test": 5001,
+ "models": {
+  "champion": {
+   "gini": 0.3474809240248198,
+   "ks": 0.2611968629002464
+  },
+  "refit": {
+   "gini": 0.37686796196150185,
+   "ks": 0.29183332993946304
+  },
+  "challenger": {
+   "gini": 0.45080245638634286,
+   "ks": 0.3846314402324898
+  }
+ },
+ "calibration": [
+  {
+   "predicted": 0.0046,
+   "actual": 0.02
+  },
+  {
+   "predicted": 0.009,
+   "actual": 0.016
+  },
+  {
+   "predicted": 0.0138,
+   "actual": 0.022
+  },
+  {
+   "predicted": 0.0194,
+   "actual": 0.034
+  },
+  {
+   "predicted": 0.0262,
+   "actual": 0.03
+  },
+  {
+   "predicted": 0.0354,
+   "actual": 0.026
+  },
+  {
+   "predicted": 0.0479,
+   "actual": 0.064
+  },
+  {
+   "predicted": 0.0669,
+   "actual": 0.092
+  },
+  {
+   "predicted": 0.1012,
+   "actual": 0.114
+  },
+  {
+   "predicted": 0.2248,
+   "actual": 0.166
+  }
+ ],
+ "approve_share": 0.8,
+ "swap_set": {
+  "approved_by_both": {
+   "loans": 3529,
+   "default_rate": 0.03372060073675262
+  },
+  "swap_in (new approves, old rejects)": {
+   "loans": 471,
+   "default_rate": 0.07006369426751592
+  },
+  "swap_out (old approves, new rejects)": {
+   "loans": 471,
+   "default_rate": 0.12101910828025478
+  },
+  "rejected_by_both": {
+   "loans": 530,
+   "default_rate": 0.15660377358490565
+  }
+ },
+ "champion_default_rate_at_approval": 0.044,
+ "challenger_approval_at_same_default_rate": 0.8744251149770046,
+ "lgd": {
+  "resolved_defaults_test": 129,
+  "actual_mean_lgd": 0.1305962508659689,
+  "mae_flat_lgd": 0.1256946589385552,
+  "mae_collateral_lgd": 0.09196769802874324
+ },
+ "top_drivers": {
+  "bureau score": 0.669338271434352,
+  "loan vs AI collateral value": 0.2600428295029768,
+  "share of months with surface water, 1984-present": 0.17775643760120777,
+  "distance to the nearest drivable road": 0.16704247903245312,
+  "night-light growth per year": 0.1532869139600155,
+  "valuer value above AI value": 0.1315562413524511,
+  "stated loan-to-value": 0.11386488093982558,
+  "expected forced-sale discount": 0.11118512077265857
+ },
+ "psi_challenger_train_vs_test": 0.002884728863832285,
+ "ltv_grid": [
+  {
+   "district": "Ahmadabad",
+   "agri_land": 0.56,
+   "commercial": 0.72,
+   "industrial": 0.6,
+   "plot_na": 0.69,
+   "residential": 0.75
+  },
+  {
+   "district": "Anand",
+   "agri_land": 0.53,
+   "commercial": 0.69,
+   "industrial": 0.58,
+   "plot_na": 0.68,
+   "residential": 0.75
+  },
+  {
+   "district": "Aravali",
+   "agri_land": 0.47,
+   "commercial": 0.67,
+   "industrial": 0.56,
+   "plot_na": 0.62,
+   "residential": 0.75
+  },
+  {
+   "district": "Bharuch",
+   "agri_land": 0.55,
+   "commercial": 0.7,
+   "industrial": 0.59,
+   "plot_na": 0.69,
+   "residential": 0.75
+  },
+  {
+   "district": "Mahesana",
+   "agri_land": 0.58,
+   "commercial": 0.74,
+   "industrial": 0.65,
+   "plot_na": 0.75,
+   "residential": 0.75
+  },
+  {
+   "district": "Rajkot",
+   "agri_land": 0.55,
+   "commercial": 0.71,
+   "industrial": 0.61,
+   "plot_na": 0.67,
+   "residential": 0.75
+  },
+  {
+   "district": "Surat",
+   "agri_land": 0.56,
+   "commercial": 0.7,
+   "industrial": 0.59,
+   "plot_na": 0.68,
+   "residential": 0.75
+  },
+  {
+   "district": "Vadodara",
+   "agri_land": 0.57,
+   "commercial": 0.73,
+   "industrial": 0.63,
+   "plot_na": 0.71,
+   "residential": 0.75
+  }
+ ],
+ "collections": [
+  {
+   "loan_id": "92fb75de2d6c",
+   "product": "agri",
+   "collateral_type": "agri_land",
+   "district": "Gandhinagar",
+   "recoverable_value": 24042312.35,
+   "p_sold_180d": 0.588,
+   "haircut": 0.179,
+   "median_days_to_sale": 163.0
+  },
+  {
+   "loan_id": "abd39bdcd65d",
+   "product": "agri",
+   "collateral_type": "agri_land",
+   "district": "Rajkot",
+   "recoverable_value": 22353000.0,
+   "p_sold_180d": 0.411,
+   "haircut": 0.271,
+   "median_days_to_sale": 191.0
+  },
+  {
+   "loan_id": "be3170203292",
+   "product": "agri",
+   "collateral_type": "agri_land",
+   "district": "Ahmadabad",
+   "recoverable_value": 16231335.396,
+   "p_sold_180d": 0.528,
+   "haircut": 0.268,
+   "median_days_to_sale": 234.0
+  },
+  {
+   "loan_id": "f49f8da034c4",
+   "product": "secured_msme",
+   "collateral_type": "industrial",
+   "district": "Surat",
+   "recoverable_value": 15598000.0,
+   "p_sold_180d": 0.66,
+   "haircut": 0.15,
+   "median_days_to_sale": 163.0
+  },
+  {
+   "loan_id": "0e5ee0f9bc8a",
+   "product": "agri",
+   "collateral_type": "agri_land",
+   "district": "Rajkot",
+   "recoverable_value": 13283000.0,
+   "p_sold_180d": 0.283,
+   "haircut": 0.339,
+   "median_days_to_sale": 245.0
+  },
+  {
+   "loan_id": "48192027f90b",
+   "product": "agri",
+   "collateral_type": "agri_land",
+   "district": "Rajkot",
+   "recoverable_value": 12046000.0,
+   "p_sold_180d": 0.29,
+   "haircut": 0.329,
+   "median_days_to_sale": 231.0
+  },
+  {
+   "loan_id": "3f527555944d",
+   "product": "agri",
+   "collateral_type": "agri_land",
+   "district": "Vadodara",
+   "recoverable_value": 11770769.268,
+   "p_sold_180d": 0.624,
+   "haircut": 0.314,
+   "median_days_to_sale": 213.0
+  },
+  {
+   "loan_id": "cabbdba01237",
+   "product": "secured_msme",
+   "collateral_type": "industrial",
+   "district": "Surat",
+   "recoverable_value": 11385120.272,
+   "p_sold_180d": 0.364,
+   "haircut": 0.304,
+   "median_days_to_sale": 250.0
+  },
+  {
+   "loan_id": "d7a8def8862e",
+   "product": "agri",
+   "collateral_type": "agri_land",
+   "district": "Ahmadabad",
+   "recoverable_value": 9551213.185,
+   "p_sold_180d": 0.376,
+   "haircut": 0.355,
+   "median_days_to_sale": 219.0
+  },
+  {
+   "loan_id": "21f56e9e1d8f",
+   "product": "agri",
+   "collateral_type": "agri_land",
+   "district": "Gandhinagar",
+   "recoverable_value": 7751608.614,
+   "p_sold_180d": 0.169,
+   "haircut": 0.332,
+   "median_days_to_sale": NaN
+  },
+  {
+   "loan_id": "671950eb588e",
+   "product": "agri",
+   "collateral_type": "agri_land",
+   "district": "Rajkot",
+   "recoverable_value": 7287000.0,
+   "p_sold_180d": 0.14,
+   "haircut": 0.406,
+   "median_days_to_sale": NaN
+  },
+  {
+   "loan_id": "69c1a8156cf9",
+   "product": "secured_msme",
+   "collateral_type": "industrial",
+   "district": "Bharuch",
+   "recoverable_value": 6982723.104,
+   "p_sold_180d": 0.397,
+   "haircut": 0.263,
+   "median_days_to_sale": 209.0
+  },
+  {
+   "loan_id": "6ec86a839898",
+   "product": "agri",
+   "collateral_type": "agri_land",
+   "district": "Anand",
+   "recoverable_value": 6787929.955,
+   "p_sold_180d": 0.196,
+   "haircut": 0.34,
+   "median_days_to_sale": NaN
+  },
+  {
+   "loan_id": "20476984d6a2",
+   "product": "agri",
+   "collateral_type": "agri_land",
+   "district": "Ahmadabad",
+   "recoverable_value": 6511399.825,
+   "p_sold_180d": 0.162,
+   "haircut": 0.359,
+   "median_days_to_sale": 271.0
+  },
+  {
+   "loan_id": "ff8364866120",
+   "product": "secured_msme",
+   "collateral_type": "industrial",
+   "district": "Amreli",
+   "recoverable_value": 5917129.429,
+   "p_sold_180d": 0.485,
+   "haircut": 0.27,
+   "median_days_to_sale": 252.0
+  },
+  {
+   "loan_id": "ed13fec84543",
+   "product": "agri",
+   "collateral_type": "agri_land",
+   "district": "Ahmadabad",
+   "recoverable_value": 5514000.0,
+   "p_sold_180d": 0.363,
+   "haircut": 0.325,
+   "median_days_to_sale": 200.0
+  },
+  {
+   "loan_id": "853049f6a530",
+   "product": "agri",
+   "collateral_type": "agri_land",
+   "district": "Batod",
+   "recoverable_value": 4872000.0,
+   "p_sold_180d": 0.407,
+   "haircut": 0.305,
+   "median_days_to_sale": 237.0
+  },
+  {
+   "loan_id": "bd458eb48a10",
+   "product": "secured_msme",
+   "collateral_type": "industrial",
+   "district": "Surat",
+   "recoverable_value": 4534528.399,
+   "p_sold_180d": 0.072,
+   "haircut": 0.411,
+   "median_days_to_sale": NaN
+  },
+  {
+   "loan_id": "10128809dc82",
+   "product": "secured_msme",
+   "collateral_type": "industrial",
+   "district": "Jamnagar",
+   "recoverable_value": 4338000.0,
+   "p_sold_180d": 0.621,
+   "haircut": 0.22,
+   "median_days_to_sale": 195.0
+  },
+  {
+   "loan_id": "731002fa756b",
+   "product": "agri",
+   "collateral_type": "agri_land",
+   "district": "Mahesana",
+   "recoverable_value": 3882000.0,
+   "p_sold_180d": 0.875,
+   "haircut": 0.211,
+   "median_days_to_sale": 232.0
+  },
+  {
+   "loan_id": "9d4f476145b0",
+   "product": "agri",
+   "collateral_type": "agri_land",
+   "district": "Rajkot",
+   "recoverable_value": 3677580.588,
+   "p_sold_180d": 0.228,
+   "haircut": 0.36,
+   "median_days_to_sale": 214.0
+  },
+  {
+   "loan_id": "a659329e52f9",
+   "product": "agri",
+   "collateral_type": "agri_land",
+   "district": "Ahmadabad",
+   "recoverable_value": 3460000.0,
+   "p_sold_180d": 0.305,
+   "haircut": 0.294,
+   "median_days_to_sale": 241.0
+  },
+  {
+   "loan_id": "9b434946b116",
+   "product": "secured_msme",
+   "collateral_type": "industrial",
+   "district": "Ahmadabad",
+   "recoverable_value": 3362700.409,
+   "p_sold_180d": 0.621,
+   "haircut": 0.272,
+   "median_days_to_sale": 221.0
+  },
+  {
+   "loan_id": "3e4e8d4fc67b",
+   "product": "secured_msme",
+   "collateral_type": "commercial",
+   "district": "Rajkot",
+   "recoverable_value": 3258295.944,
+   "p_sold_180d": 0.581,
+   "haircut": 0.29,
+   "median_days_to_sale": 206.0
+  },
+  {
+   "loan_id": "d0c5ffa6c586",
+   "product": "agri",
+   "collateral_type": "agri_land",
+   "district": "Junagadh",
+   "recoverable_value": 3254804.018,
+   "p_sold_180d": 0.413,
+   "haircut": 0.317,
+   "median_days_to_sale": 241.0
+  },
+  {
+   "loan_id": "956112037faf",
+   "product": "agri",
+   "collateral_type": "agri_land",
+   "district": "Bhavnagar",
+   "recoverable_value": 3248000.0,
+   "p_sold_180d": 0.683,
+   "haircut": 0.176,
+   "median_days_to_sale": 168.0
+  },
+  {
+   "loan_id": "326aade876d4",
+   "product": "agri",
+   "collateral_type": "agri_land",
+   "district": "Bhavnagar",
+   "recoverable_value": 3200423.498,
+   "p_sold_180d": 0.411,
+   "haircut": 0.34,
+   "median_days_to_sale": NaN
+  },
+  {
+   "loan_id": "24359b26169b",
+   "product": "secured_msme",
+   "collateral_type": "industrial",
+   "district": "Vadodara",
+   "recoverable_value": 3106000.0,
+   "p_sold_180d": 0.697,
+   "haircut": 0.215,
+   "median_days_to_sale": 194.0
+  },
+  {
+   "loan_id": "f477e1497d7c",
+   "product": "secured_msme",
+   "collateral_type": "industrial",
+   "district": "Ahmadabad",
+   "recoverable_value": 3061000.0,
+   "p_sold_180d": 0.198,
+   "haircut": 0.399,
+   "median_days_to_sale": 288.0
+  },
+  {
+   "loan_id": "2e04b4edabcc",
+   "product": "agri",
+   "collateral_type": "agri_land",
+   "district": "Navsari",
+   "recoverable_value": 3037000.0,
+   "p_sold_180d": 0.318,
+   "haircut": 0.296,
+   "median_days_to_sale": 229.0
+  },
+  {
+   "loan_id": "3fb75eb0d4d7",
+   "product": "secured_msme",
+   "collateral_type": "industrial",
+   "district": "Mahesana",
+   "recoverable_value": 3035060.095,
+   "p_sold_180d": 0.203,
+   "haircut": 0.405,
+   "median_days_to_sale": 225.0
+  },
+  {
+   "loan_id": "ed36c5a63b2c",
+   "product": "secured_msme",
+   "collateral_type": "industrial",
+   "district": "Dohad",
+   "recoverable_value": 3012632.91,
+   "p_sold_180d": 0.041,
+   "haircut": 0.432,
+   "median_days_to_sale": NaN
+  },
+  {
+   "loan_id": "b7ce23ff5027",
+   "product": "agri",
+   "collateral_type": "agri_land",
+   "district": "Surendranagar",
+   "recoverable_value": 2964367.865,
+   "p_sold_180d": 0.25,
+   "haircut": 0.371,
+   "median_days_to_sale": NaN
+  },
+  {
+   "loan_id": "b99c22050464",
+   "product": "agri",
+   "collateral_type": "agri_land",
+   "district": "Gir Somnath",
+   "recoverable_value": 2959620.63,
+   "p_sold_180d": 0.212,
+   "haircut": 0.347,
+   "median_days_to_sale": 263.0
+  },
+  {
+   "loan_id": "ab9f445835b8",
+   "product": "agri",
+   "collateral_type": "agri_land",
+   "district": "Porbandar",
+   "recoverable_value": 2903521.866,
+   "p_sold_180d": 0.397,
+   "haircut": 0.339,
+   "median_days_to_sale": 223.0
+  },
+  {
+   "loan_id": "f570370b7382",
+   "product": "agri",
+   "collateral_type": "agri_land",
+   "district": "Devbhumi Dwarka",
+   "recoverable_value": 2813140.761,
+   "p_sold_180d": 0.075,
+   "haircut": 0.42,
+   "median_days_to_sale": NaN
+  },
+  {
+   "loan_id": "a9ec9da76dbd",
+   "product": "agri",
+   "collateral_type": "agri_land",
+   "district": "Vadodara",
+   "recoverable_value": 2793000.0,
+   "p_sold_180d": 0.505,
+   "haircut": 0.287,
+   "median_days_to_sale": 217.0
+  },
+  {
+   "loan_id": "9b092e003951",
+   "product": "agri",
+   "collateral_type": "agri_land",
+   "district": "Narmada",
+   "recoverable_value": 2768000.0,
+   "p_sold_180d": 0.329,
+   "haircut": 0.31,
+   "median_days_to_sale": 226.0
+  },
+  {
+   "loan_id": "7a2b0bee7e56",
+   "product": "secured_msme",
+   "collateral_type": "plot_na",
+   "district": "Gandhinagar",
+   "recoverable_value": 2754960.632,
+   "p_sold_180d": 0.384,
+   "haircut": 0.241,
+   "median_days_to_sale": 173.0
+  },
+  {
+   "loan_id": "a778e1c8e189",
+   "product": "agri",
+   "collateral_type": "agri_land",
+   "district": "Surat",
+   "recoverable_value": 2753273.718,
+   "p_sold_180d": 0.192,
+   "haircut": 0.404,
+   "median_days_to_sale": NaN
+  },
+  {
+   "loan_id": "fc98bc6ef3dd",
+   "product": "LAP",
+   "collateral_type": "residential",
+   "district": "Rajkot",
+   "recoverable_value": 2695774.337,
+   "p_sold_180d": 0.625,
+   "haircut": 0.198,
+   "median_days_to_sale": 154.0
+  },
+  {
+   "loan_id": "43f3ab801835",
+   "product": "agri",
+   "collateral_type": "agri_land",
+   "district": "Vadodara",
+   "recoverable_value": 2593000.0,
+   "p_sold_180d": 0.657,
+   "haircut": 0.279,
+   "median_days_to_sale": 222.0
+  },
+  {
+   "loan_id": "bf616e4b2d3e",
+   "product": "secured_msme",
+   "collateral_type": "industrial",
+   "district": "Bhavnagar",
+   "recoverable_value": 2539000.0,
+   "p_sold_180d": 0.226,
+   "haircut": 0.34,
+   "median_days_to_sale": 275.0
+  },
+  {
+   "loan_id": "4220bdf8e764",
+   "product": "agri",
+   "collateral_type": "agri_land",
+   "district": "Ahmadabad",
+   "recoverable_value": 2504000.0,
+   "p_sold_180d": 0.298,
+   "haircut": 0.31,
+   "median_days_to_sale": 241.0
+  },
+  {
+   "loan_id": "195f1b7410c9",
+   "product": "secured_msme",
+   "collateral_type": "industrial",
+   "district": "Vadodara",
+   "recoverable_value": 2491733.505,
+   "p_sold_180d": 0.216,
+   "haircut": 0.358,
+   "median_days_to_sale": 213.0
+  },
+  {
+   "loan_id": "059f061a15a1",
+   "product": "agri",
+   "collateral_type": "agri_land",
+   "district": "Ahmadabad",
+   "recoverable_value": 2408322.257,
+   "p_sold_180d": 0.372,
+   "haircut": 0.304,
+   "median_days_to_sale": 245.0
+  },
+  {
+   "loan_id": "02d952a91893",
+   "product": "agri",
+   "collateral_type": "agri_land",
+   "district": "Anand",
+   "recoverable_value": 2358968.023,
+   "p_sold_180d": 0.491,
+   "haircut": 0.269,
+   "median_days_to_sale": 283.0
+  },
+  {
+   "loan_id": "858f68079e81",
+   "product": "LAP",
+   "collateral_type": "residential",
+   "district": "Ahmadabad",
+   "recoverable_value": 2351000.0,
+   "p_sold_180d": 0.618,
+   "haircut": 0.22,
+   "median_days_to_sale": 166.0
+  },
+  {
+   "loan_id": "36aa5213693c",
+   "product": "agri",
+   "collateral_type": "agri_land",
+   "district": "Kheda",
+   "recoverable_value": 2324365.282,
+   "p_sold_180d": 0.201,
+   "haircut": 0.307,
+   "median_days_to_sale": NaN
+  },
+  {
+   "loan_id": "4466c4664efb",
+   "product": "secured_msme",
+   "collateral_type": "industrial",
+   "district": "Mahisagar",
+   "recoverable_value": 2320049.222,
+   "p_sold_180d": 0.304,
+   "haircut": 0.335,
+   "median_days_to_sale": NaN
+  }
+ ],
+ "fairness_by_region": [
+  {
+   "region": "Central",
+   "loans": 1791,
+   "approval_rate": 0.812,
+   "default_rate": 0.055,
+   "median_ltv_band": 0.707,
+   "approval_ratio_vs_best": 1.0
+  },
+  {
+   "region": "Kutch",
+   "loans": 87,
+   "approval_rate": 0.782,
+   "default_rate": 0.069,
+   "median_ltv_band": 0.698,
+   "approval_ratio_vs_best": 0.963
+  },
+  {
+   "region": "North",
+   "loans": 759,
+   "approval_rate": 0.802,
+   "default_rate": 0.067,
+   "median_ltv_band": 0.712,
+   "approval_ratio_vs_best": 0.988
+  },
+  {
+   "region": "Saurashtra",
+   "loans": 1301,
+   "approval_rate": 0.774,
+   "default_rate": 0.06,
+   "median_ltv_band": 0.692,
+   "approval_ratio_vs_best": 0.953
+  },
+  {
+   "region": "South",
+   "loans": 1063,
+   "approval_rate": 0.81,
+   "default_rate": 0.055,
+   "median_ltv_band": 0.706,
+   "approval_ratio_vs_best": 0.998
+  }
+ ],
+ "forbidden_features_used": []
+}

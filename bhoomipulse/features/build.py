@@ -2,7 +2,6 @@
 plus point features for auction listings. Writes small parquet files to data/demo/."""
 from __future__ import annotations
 
-import numpy as np
 import pandas as pd
 
 from .. import geo, synth
@@ -97,8 +96,6 @@ def main() -> None:
     hx = h.set_index("h3")
     import h3 as h3lib
     cells = [h3lib.latlng_to_cell(la, lo, CFG["h3_resolution"]) for la, lo in zip(plots.lat, plots.lon)]
-    for c in synth.SYNTH_COLS:                      # inside the taluka, use the cell's ingested value
-        pf[c] = [hx.at[cell, c] if cell in hx.index else val for cell, val in zip(cells, pf[c])]
     plots["h3"] = cells
     plots["village"] = [hx.at[c, "village"] if c in hx.index else None for c in cells]
     pd.concat([plots, pf], axis=1).to_parquet(DEMO / "features_plot.parquet", index=False)

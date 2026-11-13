@@ -20,7 +20,7 @@ plots:
     lon: 72.2230
     area_sqm: 12000
     survey_number: null
-    loan_amount: 900000
+    loan_amount: 7000000
   - id: property
     label: "Residential property (placeholder), Sanand town"
     kind: property

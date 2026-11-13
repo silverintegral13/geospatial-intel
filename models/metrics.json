@@ -1,0 +1,232 @@
+{
+  "liquidity": {
+    "n_train": 2514,
+    "n_test": 1138,
+    "split": "listed before / after 2025-10-01 (time hold-out)",
+    "sold_180d_base_rate_test": 0.4165202108963093,
+    "auc_sold_180d": 0.633441995831427,
+    "haircut_mae": 0.12691396182794903,
+    "haircut_mae_naive_mean": 0.1276304277159791,
+    "c_index_days_to_sale": 0.6311042809561128,
+    "n_survival_train": 2514,
+    "n_survival_test": 1985,
+    "by_asset_type": {
+      "agri_land": {
+        "n_test": 171,
+        "sold_180d_actual": 0.30409356725146197,
+        "sold_180d_predicted": 0.30280243513559374,
+        "haircut_actual": 0.3151505968077906,
+        "haircut_predicted": 0.3368355040028547
+      },
+      "residential": {
+        "n_test": 438,
+        "sold_180d_actual": 0.5114155251141552,
+        "sold_180d_predicted": 0.43827379084139495,
+        "haircut_actual": 0.2458020389428333,
+        "haircut_predicted": 0.2884798515221656
+      },
+      "commercial": {
+        "n_test": 190,
+        "sold_180d_actual": 0.41578947368421054,
+        "sold_180d_predicted": 0.40705763884340784,
+        "haircut_actual": 0.2775298048406269,
+        "haircut_predicted": 0.2848409484771696
+      },
+      "industrial": {
+        "n_test": 165,
+        "sold_180d_actual": 0.3515151515151515,
+        "sold_180d_predicted": 0.32988942603835353,
+        "haircut_actual": 0.2917660991302076,
+        "haircut_predicted": 0.3184153525579796
+      },
+      "plot_na": {
+        "n_test": 174,
+        "sold_180d_actual": 0.3505747126436782,
+        "sold_180d_predicted": 0.3382998185217235,
+        "haircut_actual": 0.2889476954816535,
+        "haircut_predicted": 0.3098627846818652
+      }
+    },
+    "by_region": {
+      "Central": {
+        "p": 0.417,
+        "h": 0.294
+      },
+      "Kutch": {
+        "p": 0.358,
+        "h": 0.298
+      },
+      "North": {
+        "p": 0.364,
+        "h": 0.307
+      },
+      "Saurashtra": {
+        "p": 0.361,
+        "h": 0.309
+      },
+      "South": {
+        "p": 0.369,
+        "h": 0.307
+      }
+    }
+  },
+  "avm": {
+    "n_train": 2863,
+    "n_calibration": 931,
+    "n_test": 705,
+    "split": "geographic hold-out: 7 whole districts unseen in training",
+    "test_districts": [
+      "Aravali",
+      "Bhavnagar",
+      "Devbhumi Dwarka",
+      "Gandhinagar",
+      "Junagadh",
+      "Kachchh",
+      "Porbandar"
+    ],
+    "mape": 0.1799605522987792,
+    "median_ape": 0.14469714964581049,
+    "interval_80_coverage": 0.8127659574468085,
+    "interval_80_width_factor": 1.349030562123736,
+    "median_value_vs_jantri": 2.1925143749439666,
+    "by_asset_type": {
+      "agri_land": {
+        "mape": 0.202383414963167,
+        "n": 96
+      },
+      "commercial": {
+        "mape": 0.15646017286160296,
+        "n": 114
+      },
+      "industrial": {
+        "mape": 0.16902623817660087,
+        "n": 100
+      },
+      "plot_na": {
+        "mape": 0.2138328625200825,
+        "n": 107
+      },
+      "residential": {
+        "mape": 0.17300063097445717,
+        "n": 288
+      }
+    }
+  },
+  "area_score": {
+    "n_districts": 33,
+    "n_years": 7,
+    "rows": 231,
+    "split": "5-fold with whole districts held out; plus last year held out",
+    "r2_district_holdout": 0.8278062697674352,
+    "spearman_district_holdout": 0.8996124676097316,
+    "mae_district_holdout_pct_points": 0.7788595718392659,
+    "spearman_last_year_holdout": 0.9240678929425392,
+    "coefficients_per_sd": {
+      "rain_cv": 0.972,
+      "flood_occurrence_pct": 1.042,
+      "ntl_trend_pct_yr": -0.899,
+      "road_access_km": 0.35,
+      "built_up_share": -0.164,
+      "cropping_intensity": -0.087,
+      "heat_days": 0.286,
+      "agri_share_credit": -0.141
+    },
+    "village_rule_points_per_sd": {
+      "road_access_km": -8.0,
+      "flood_occurrence_pct": -6.0,
+      "ntl_trend_pct_yr": 6.0,
+      "built_growth_2016_2023": 4.0
+    },
+    "base_district_for_villages": "Ahmadabad",
+    "base_score": 60.2
+  },
+  "pd_demo": {
+    "data": "SYNTHETIC NBFC book (method demo, not India evidence)",
+    "split": "out-of-time at 2024-05-19",
+    "gini_logistic_scorecard": 0.4130017716002874,
+    "table": [
+      {
+        "ltv_band": "<40%",
+        "loans": 2072,
+        "pd_12m": 0.0275,
+        "lgd_resolved": 0.0,
+        "el_rate": 0.0
+      },
+      {
+        "ltv_band": "40-50%",
+        "loans": 4646,
+        "pd_12m": 0.0456,
+        "lgd_resolved": 0.0177,
+        "el_rate": 0.0008
+      },
+      {
+        "ltv_band": "50-60%",
+        "loans": 6504,
+        "pd_12m": 0.0566,
+        "lgd_resolved": 0.0461,
+        "el_rate": 0.0026
+      },
+      {
+        "ltv_band": "60-70%",
+        "loans": 4640,
+        "pd_12m": 0.0735,
+        "lgd_resolved": 0.0793,
+        "el_rate": 0.0058
+      },
+      {
+        "ltv_band": ">70%",
+        "loans": 2138,
+        "pd_12m": 0.0978,
+        "lgd_resolved": 0.146,
+        "el_rate": 0.0143
+      }
+    ]
+  },
+  "nbfc_lab": {
+    "synthetic": true,
+    "split": "out-of-time: trained on loans originated before 2024-05-19, tested after",
+    "n_train": 14999,
+    "n_test": 5001,
+    "models": {
+      "champion": {
+        "gini": 0.3474809240248198,
+        "ks": 0.2611968629002464
+      },
+      "refit": {
+        "gini": 0.37686796196150185,
+        "ks": 0.29183332993946304
+      },
+      "challenger": {
+        "gini": 0.45080245638634286,
+        "ks": 0.3846314402324898
+      }
+    },
+    "swap_set": {
+      "approved_by_both": {
+        "loans": 3529,
+        "default_rate": 0.03372060073675262
+      },
+      "swap_in (new approves, old rejects)": {
+        "loans": 471,
+        "default_rate": 0.07006369426751592
+      },
+      "swap_out (old approves, new rejects)": {
+        "loans": 471,
+        "default_rate": 0.12101910828025478
+      },
+      "rejected_by_both": {
+        "loans": 530,
+        "default_rate": 0.15660377358490565
+      }
+    },
+    "champion_default_rate_at_approval": 0.044,
+    "challenger_approval_at_same_default_rate": 0.8744251149770046,
+    "lgd": {
+      "resolved_defaults_test": 129,
+      "actual_mean_lgd": 0.1305962508659689,
+      "mae_flat_lgd": 0.1256946589385552,
+      "mae_collateral_lgd": 0.09196769802874324
+    },
+    "psi_challenger_train_vs_test": 0.002884728863832285
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "title": "NBFC loan file, one row per loan",
+  "required": ["loan_id", "product", "collateral_type", "lat", "lon", "area_sqm", "origination_date", "sanctioned_amount",
+               "valuer_value", "ltv_orig", "bureau_score", "champion_score", "default_12m"],
+  "optional": ["tenure_months", "interest_rate", "outstanding", "declared_value", "income_band", "district", "dpd_history",
+               "default_date", "ead_at_default", "recovery_amount", "recovery_date", "recovery_route", "pincode"],
+  "enums": {"product": ["LAP", "secured_msme", "agri"],
+            "collateral_type": ["agri_land", "residential", "commercial", "industrial", "plot_na"],
+            "recovery_route": ["settlement", "sarfaesi_auction", "court"]},
+  "notes": {"champion_score": "The lender's existing score; higher = safer.",
+            "default_12m": "1 if the loan reached 90+ days past due within 12 months of origination.",
+            "dpd_history": "One digit per month from origination: 0 current, 1 = 1-29, 2 = 30-59, 3 = 60-89, 4 = 90+.",
+            "privacy": "Do not include names, phone numbers, PAN or Aadhaar. loan_id is pseudonymised on ingest."}
+}

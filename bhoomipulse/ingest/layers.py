@@ -81,5 +81,5 @@ def run() -> None:
         sources.record(name, url=url, licence=lic, rows=rows, mode=mode if rows else "template", use=use, note=note)
         print(f"layers: {name}: {mode} ({rows} rows)")
     static.to_parquet(INTERIM / "h3_static.parquet")
-    monthly["synthetic"] = True if synth_monthly is not None else False
+    monthly["synthetic"] = synth_monthly is not None
     monthly.to_parquet(INTERIM / "h3_monthly.parquet")

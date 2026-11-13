@@ -1,0 +1,38 @@
+{
+ "farm": {
+  "kind": "farm",
+  "activity_index": 54.0,
+  "sown_this_season": true,
+  "season": "Kharif 2026",
+  "peak_ndvi": 0.56,
+  "village_median_peak_ndvi": 0.54,
+  "flags": [],
+  "as_of": "2026-10-31",
+  "synthetic": true,
+  "scenario_note": "No scripted event."
+ },
+ "property": {
+  "kind": "property",
+  "activity_index": 78.0,
+  "construction_stage": "finishing",
+  "built_index": 0.78,
+  "change_6m": 0.14,
+  "change_12m": 0.45,
+  "flags": [],
+  "as_of": "2026-10-31",
+  "synthetic": true,
+  "scenario_note": "Scripted demo event: a building goes up over the last 18 months."
+ },
+ "factory": {
+  "kind": "factory",
+  "activity_index": 63.0,
+  "ntl_last3m_vs_prev12m": 0.79,
+  "flags": [
+   "Night-time activity is 21% below the previous 12-month average."
+  ],
+  "note": "10 m imagery cannot count trucks; signal is night lights plus roof and yard change.",
+  "as_of": "2026-10-31",
+  "synthetic": true,
+  "scenario_note": "Scripted demo event: activity fades by about a third over the last six months."
+ }
+}

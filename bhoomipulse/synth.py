@@ -110,7 +110,7 @@ def demand_index(d: pd.DataFrame, asset_type, overpricing) -> np.ndarray:
     """SYNTHETIC buyer demand for a distressed asset (drives sale odds)."""
     at = np.broadcast_to(np.asarray(asset_type, dtype=object), (len(d),))
     eff = {"agri_land": -0.6, "industrial": -0.4, "residential": 0.3, "commercial": 0.0, "plot_na": 0.1}
-    z = lambda s: (s - s.mean()) / (s.std() + 1e-9)  # noqa: E731
+    z = lambda s: (s - s.mean()) / (s.std() + 1e-9)
     return (0.9 * d["_urban"].to_numpy() + 0.4 * z(d["ntl_trend_pct_yr"]).to_numpy()
             - 0.5 * z(d["flood_occurrence_pct"]).to_numpy() - 0.3 * np.log1p(d["road_access_km"]).to_numpy()
             + np.array([eff[a] for a in at]) - 0.8 * np.asarray(overpricing)
@@ -206,7 +206,7 @@ def generate_district_panel(districts) -> pd.DataFrame:
         f["district"] = row.district
         rows.append(f)
     F = pd.DataFrame(rows)
-    z = lambda s: (s - s.mean()) / (s.std() + 1e-9)  # noqa: E731
+    z = lambda s: (s - s.mean()) / (s.std() + 1e-9)
     F["agri_share_credit"] = np.clip(0.55 - 0.9 * F.built_up_share + r.normal(0, 0.05, len(F)), 0.05, 0.8)
     base = (4.8 + 1.3 * z(F.rain_cv) * (0.5 + F.agri_share_credit) + 0.9 * z(F.flood_occurrence_pct)
             - 0.9 * z(F.ntl_trend_pct_yr) + 0.6 * z(F.road_access_km) + r.normal(0, 0.6, len(F)))
@@ -234,7 +234,7 @@ def monthly_series(lat: float, lon: float, tag: str, scenario: str | None = None
     d = static_fields([lat], [lon]).iloc[0]
     ms = months()
     m, t = ms.month.to_numpy(), np.arange(len(ms)) / 12.0
-    bump = lambda centre, width: np.exp(-0.5 * (((m - centre + 6) % 12 - 6) / width) ** 2)  # noqa: E731
+    bump = lambda centre, width: np.exp(-0.5 * (((m - centre + 6) % 12 - 6) / width) ** 2)
     kharif, rabi = bump(9, 1.3), bump(1, 1.2)
     year_fx = 1 + 0.12 * r.normal(0, 1, len(ms) // 12 + 2)[(np.arange(len(ms)) + 2) // 12]
     k_amp = d.ndvi_amplitude * year_fx
