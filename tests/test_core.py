@@ -98,3 +98,62 @@ def test_public_repo_guard_patterns():
     assert g.check(".env", b"X=1") and g.check("data/raw/a.parquet", b"") and g.check("x/freddie_sample.txt", b"")
     assert g.check("notes.md", b"key sk-ant-" + b"a" * 30)
     assert g.check(".env.example", b"X=") == [] and g.check("README.md", b"hello") == []
+
+
+# ------------------------------------------------------------ portal parsers
+FIX = Path(__file__).parent / "fixtures"
+
+
+def test_notice_parser_reads_fields_and_converts_units():
+    from bhoomipulse.ingest import parsers
+
+    a = parsers.parse_notice((FIX / "notice_flat.txt").read_text())
+    assert (a["bank"], a["asset_type"], a["district"], a["possession"]) == ("Bank of Baroda", "residential", "Ahmadabad", "physical")
+    assert a["reserve_price"] == 3610000 and a["emd"] == 361000 and a["bid_increment"] == 25000
+    assert a["area_sqm"] == pytest.approx(1198 * 0.092903, abs=0.1) and a["auction_date"] == "2026-01-21" and a["missing"] == ""
+    b = parsers.parse_notice((FIX / "notice_shed.txt").read_text())
+    assert (b["asset_type"], b["district"], b["area_sqm"]) == ("industrial", "Panch Mahals", 2400.0)
+    assert b["reserve_price"] == 1.85e7 and b["emd"] == 18.5e5 and b["auction_date"] == "2026-02-05"
+
+
+def test_notice_parser_never_guesses():
+    from bhoomipulse.ingest import parsers
+
+    c = parsers.parse_notice((FIX / "notice_incomplete.txt").read_text())
+    assert c["area_sqm"] is None and c["area_raw"] == "3 Vigha"          # local unit: not converted
+    assert c["auction_date"] is None and set(c["missing"].split(",")) == {"area_sqm", "auction_date"}
+    assert c["asset_type"] == "agri_land" and c["reserve_price"] == 4200000
+
+
+def test_relistings_are_linked_into_rounds():
+    from bhoomipulse.ingest import parsers
+
+    rows = [parsers.parse_notice((FIX / f).read_text(), source=f) for f in ("notice_flat.txt", "notice_flat_relist.html", "notice_shed.txt")]
+    assert rows[1]["reserve_price"] == 3249000                             # HTML stripped; script text ignored
+    L, R = parsers.link_relistings(pd.DataFrame(rows))
+    flat = L[L.listing_id == "BOBA1234567"].iloc[0]
+    assert len(L) == 2 and flat.n_rounds == 2 and flat.reserve_first == 3610000 and flat.reserve_last == 3249000
+    assert flat.sold is None and len(R) == 3                               # outcome is never inferred
+
+
+def test_html_table_parser_maps_headers():
+    from bhoomipulse.ingest import parsers
+
+    j = parsers.parse_html_tables((FIX / "jantri_page.html").read_text(), "jantri")
+    assert list(j.village) == ["Bol", "Bol"] and list(j.rate_rs_per_sqm) == [1250.0, 6400.0]
+    assert list(j.survey_number_or_zone) == ["101", "Zone 3"] and j.effective_date.isna().all()
+    with pytest.raises(ValueError):
+        parsers.parse_html_tables("<table><tr><th>a</th></tr><tr><td>1</td></tr></table>", "jantri")
+
+
+def test_parsed_listings_flow_into_model_columns():
+    from bhoomipulse.ingest import parsers, tables
+
+    rows = [parsers.parse_notice((FIX / f).read_text(), source=f) for f in ("notice_flat.txt", "notice_flat_relist.html", "notice_shed.txt")]
+    gz = pd.DataFrame({"district": ["Ahmadabad", "Panch Mahals"], "lat": [22.7, 22.7], "lon": [72.3, 73.6]})
+    L, _ = parsers.link_relistings(pd.DataFrame(rows), gz)
+    assert not L.listing_id.astype(str).str.contains("nan").any()
+    m = tables.normalise_listings(L)
+    assert len(m) == 2 and not m.sold.any() and not m.synthetic.any()
+    flat = m[m.listing_id == "BOBA1234567"].iloc[0]
+    assert flat.haircut_pct == pytest.approx(1 - 3249000 / 3610000) and flat.final_price == 3249000 and flat.duration_days > 180

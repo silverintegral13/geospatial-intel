@@ -115,8 +115,31 @@ Fairness: no caste, religion, community or other demographic variable is a featu
 Every source, with URL, licence, access date, row count and mode, is in [`data/sources.yaml`](data/sources.yaml) and on the site's
 Data sources page. Modes: `live` (fetched), `manual` (hand-transcribed), `synthetic` (fallback), `template` (not collected).
 
-Portals (AnyROR, Garvi, BAANKNET, eCourts, RERA) have **no scraper**: only a polite fetch helper (robots.txt, 5-second gap, cache) and
-CSV templates. Read each portal's terms before automating anything.
+### Portal parsers
+
+Two parsers turn pages or notices you have saved into the CSVs that `make data` reads. Neither crawls a portal.
+
+| Parser | Input | Output |
+| --- | --- | --- |
+| Auction sale notices (BAANKNET / SARFAESI wording) | A folder of saved `.txt`, `.html` or `.pdf` notices, or a list of listing URLs fetched politely (robots.txt, 5-second gap, cache) | `data/manual/baanknet_listings.csv` with reserve price, EMD, auction date, area in sq m, bank, asset type, district; repeat notices for one property are linked into re-listing rounds |
+| Saved-page tables | A saved HTML page with a table: jantri rates, RERA projects or district credit | `data/manual/jantri.csv` etc., through header aliases in `bhoomipulse/ingest/parsers.py` |
+
+```bash
+python -m bhoomipulse.ingest.parse_saved notices data/manual/saved_notices/
+python -m bhoomipulse.ingest.parse_saved notices --urls data/manual/notice_urls.txt
+python -m bhoomipulse.ingest.parse_saved table jantri data/manual/saved_pages/jantri.html
+```
+
+- **Not verified on live pages.** The portals could not be opened where this was built. The notice parser follows the field wording
+  of public bank-auction listings and is tested on fictional fixtures in `tests/fixtures/`. Check the first real results by eye.
+  The jantri header aliases are guesses until tried on a real saved page.
+- Nothing is guessed: a notice missing area, price, date, type or district goes to `baanknet_needs_review.csv`. Local land units
+  (bigha, vigha) are not converted because they vary by district.
+- A sale notice does not say whether the auction succeeded. Fill `sold` and `final_price` by hand where known; blanks count as
+  "unsold so far".
+- Geocoding is district-centre only (confidence 0.5). Add exact coordinates where you can.
+- Models switch to real listings once at least 300 usable rows exist; fewer are kept for validation only.
+- AnyROR, eCourts and Gujarat RERA still have templates only. Read each portal's terms before fetching anything.
 
 Prototype-only data, if you add them: **SHRUG** (non-commercial licence) and the **Freddie Mac** loan-level data (no redistribution).
 Neither is used or committed here.
@@ -124,7 +147,7 @@ Neither is used or committed here.
 ## Not built or not wired yet
 
 - Live state-wide point features (auction listings and loans use synthetic features even after `make data` goes live for Sanand).
-- BAANKNET, AnyROR, Garvi, eCourts and RERA parsers; Bhoonidhi; Fields of The World download; ESA WorldCover feature.
+- AnyROR and eCourts parsers (both sit behind captchas); a BAANKNET crawler (the notice parser needs saved pages or a URL list); Bhoonidhi; Fields of The World download; ESA WorldCover feature.
 - Freddie Mac / SBA loader for the PD demo.
 - Land-record OCR and extraction is written but untested (no sample document; the Gujarati Tesseract pack was not installed).
 - From the planned stack: MAPIE (split conformal is implemented directly), SHAP (LightGBM's built-in contributions are used),

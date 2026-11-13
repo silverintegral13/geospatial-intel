@@ -1,8 +1,8 @@
 """Polite access to public portals: one record at a time, robots.txt, >= 5 s gap, cache.
 
-The portal-specific parsers are NOT written: the portals could not be inspected
-from the build environment, and their terms must be read first. Until then each
-portal has a CSV template under data/templates/ that can be filled by hand.
+There is no crawler. `polite_get` fetches single pages you list; parsers.py then
+reads auction notices and saved tables. The portals could not be inspected from
+the build environment, so read their terms first and check results by eye.
 """
 from __future__ import annotations
 

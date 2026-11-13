@@ -12,8 +12,9 @@ BAANKNET e-auction listings:
   access_date: '2026-11-13'
   licence: Public portal; terms apply
   mode: synthetic
-  note: Portal unreachable from the build environment. SYNTHETIC listings generated;
-    fill data/manual/baanknet_listings.csv from the template to replace them.
+  note: Portal unreachable from the build environment. SYNTHETIC listings generated.
+    Parse saved notices with bhoomipulse.ingest.parse_saved or fill the template to
+    replace them.
   prototype_only: false
   rows: 4499
   url: https://baanknet.com
@@ -112,7 +113,8 @@ Jantri rates (Garvi Gujarat):
   access_date: '2026-11-13'
   licence: Public portal; terms apply
   mode: synthetic
-  note: SYNTHETIC rates (30-80 % of the synthetic market value). Fill data/manual/jantri.csv.
+  note: 0 of 335 village x land-use rates are real (data/manual/jantri.csv); the rest
+    are SYNTHETIC (30-80 % of the synthetic market value).
   prototype_only: false
   rows: 335
   url: https://garvi.gujarat.gov.in

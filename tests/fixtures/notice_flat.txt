@@ -1,0 +1,13 @@
+FIXTURE written for tests. Fictional notice in the wording of public bank e-auction listings.
+E-AUCTION SALE NOTICE under the SARFAESI Act, 2002
+Bank of Baroda, Regional Office
+Property ID: BOBA1234567
+Property Type: Residential Flat
+Property details: Flat No. B-204, Second Floor, Shreeji Residency, Bopal Road, Sanand, Dist. Ahmedabad
+Property Size: 1,198 Sq.ft.
+Reserve Price ₹3,610,000
+EMD Required ₹361,000
+Bid Increment: ₹25,000
+Possession Status: Physical
+Auction Start: 21-01-2026 11:00 AM   End: 21-01-2026 06:00 PM
+Service Provider: BAANKNET

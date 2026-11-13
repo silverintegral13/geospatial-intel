@@ -1,0 +1,3 @@
+FIXTURE written for tests. Fictional notice with a local land unit and no auction date.
+Canara Bank. Agricultural land admeasuring 3 Vigha at village Rethal, Taluka Sanand.
+Reserve Price Rs. 42,00,000/-
