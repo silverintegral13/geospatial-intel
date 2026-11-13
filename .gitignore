@@ -30,7 +30,7 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 mlruns/
-site/
+/site/
 *.egg-info/
 .DS_Store
 .streamlit/secrets.toml
