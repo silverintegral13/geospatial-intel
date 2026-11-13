@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Collateral report: {{ r.plot.label }}</title>
+<style>
+@page { size: A4; margin: 16mm 15mm 18mm; @bottom-center { content: "{{ r.footer }}  ·  page " counter(page); font: 8pt 'DejaVu Sans', sans-serif; color: #52514e; } }
+body { font: 9.5pt/1.45 'DejaVu Sans', Arial, sans-serif; color: #0b0b0b; max-width: 820px; margin: 0 auto; padding: 0 8px; }
+h1 { font-size: 16pt; margin: 0 0 2px; } h2 { font-size: 11pt; margin: 16px 0 4px; border-bottom: 1px solid #e6e5e0; padding-bottom: 2px; }
+.sub { color: #52514e; font-size: 8.5pt; }
+.badge { display: inline-block; background: #fff4d6; border: 1px solid #c98500; color: #5c3d00; font-weight: bold; padding: 3px 8px; border-radius: 4px; font-size: 8.5pt; }
+.box { border: 1.5px solid #1c5cab; border-radius: 6px; padding: 8px 12px; margin: 10px 0; background: #f4f8fe; }
+.kpis { display: table; width: 100%; border-spacing: 6px 0; margin: 6px -6px; } .kpi { display: table-cell; width: 25%; }
+.kpi b { display: block; font-size: 12pt; } .kpi span { color: #52514e; font-size: 8pt; }
+.flags { border-left: 3px solid #d03b3b; padding: 2px 10px; margin: 8px 0; } .flags li { margin: 2px 0; }
+.ok { border-left: 3px solid #0ca30c; padding: 2px 10px; }
+table { border-collapse: collapse; width: 100%; font-size: 8.5pt; } td, th { text-align: left; padding: 3px 6px; border-bottom: 1px solid #e6e5e0; vertical-align: top; }
+th { color: #52514e; font-weight: normal; } img { width: 100%; max-width: 620px; }
+.foot { margin-top: 14px; color: #52514e; font-size: 8pt; }
+</style></head><body>
+<span class="badge">SYNTHETIC DEMO DATA · placeholder plot · not a valuation</span>
+<h1>Collateral report: {{ r.plot.label }}</h1>
+<div class="sub">{{ r.plot.asset_label }} · {{ "{:,.0f}".format(r.plot.area_sqm) }} sq m · {{ r.plot.village }}, {{ r.plot.taluka }} taluka · {{ r.plot.lat }}, {{ r.plot.lon }} · survey no. {{ r.plot.survey_number or "not supplied" }} · as of {{ r.as_of }}</div>
+
+<div class="box"><b>Summary.</b> {{ r.prose.summary }}
+<div class="kpis">
+<div class="kpi"><b>{{ inr(r.valuation.value_low) }} – {{ inr(r.valuation.value_high) }}</b><span>Value range (80%)</span></div>
+<div class="kpi"><b>{{ inr(r.recovery.realisable_value) }}</b><span>Realisable value after forced sale</span></div>
+<div class="kpi"><b>{{ pct(r.loss.ltv_band_low) }} – {{ pct(r.loss.ltv_band_high) }}</b><span>Suggested LTV band</span></div>
+<div class="kpi"><b>{{ r.pulse.activity_index|int }} / 100</b><span>Activity Index</span></div>
+</div></div>
+
+{% if r.red_flags %}<div class="flags"><b>Red flags ({{ r.red_flags|length }})</b><ul>{% for f in r.red_flags %}<li>{{ f }}</li>{% endfor %}</ul></div>
+{% else %}<div class="ok"><b>No red flags.</b></div>{% endif %}
+
+<h2>Valuation vs jantri</h2><p>{{ r.prose.valuation }}</p>
+<h2>Liquidity and realisable value</h2><p>{{ r.prose.liquidity }}</p>
+<h2>Expected loss and LTV</h2><p>{{ r.prose.loss }}</p>
+
+<h2>Title and boundary health</h2>
+<table>
+<tr><th>Land record (7/12, 8A)</th><td>{{ r.title.record._status }}</td></tr>
+<tr><th>Boundary check</th><td>Record {{ "{:,}".format(r.title.boundary.record_area_sqm) }} sq m vs observed {{ "{:,}".format(r.title.boundary.observed_area_sqm) }} sq m ({{ r.title.boundary.area_gap_pct }}% gap), overlap IoU {{ r.title.boundary.iou }}. {{ "FLAG" if r.title.boundary.flag else "Within tolerance" }} ({{ r.title.boundary.rule }}). <i>{{ r.title.boundary.note }}</i></td></tr>
+<tr><th>Court disputes</th><td>Not checked. {{ r.title.disputes.reason }}</td></tr>
+<tr><th>Registered charges</th><td>Not checked. {{ r.title.charges.reason }}</td></tr>
+</table>
+
+<h2>Hazards</h2><p>{{ r.prose.hazards }}</p>
+<h2>Access and repossession</h2><p>{{ r.prose.access }}</p>
+<p class="sub">Area score: village {{ r.area.village_score }} / 100 ({{ r.area.village_drivers }}); {{ r.area.district }} district {{ r.area.district_score }} / 100.</p>
+
+<h2>Pulse: monthly monitoring</h2><p>{{ r.prose.pulse }} <span class="sub">{{ r.pulse.scenario_note }}</span></p>
+<img src="data:image/png;base64,{{ chart }}" alt="Pulse chart">
+
+<h2>Data sources</h2>
+<table><tr><th>Source</th><th>Status in this report</th><th>Accessed</th></tr>
+{% for s in r.data_sources %}<tr><td>{{ s.name }}</td><td>{{ "SYNTHETIC fallback" if s.mode == "synthetic" else s.mode }}</td><td>{{ s.access_date }}</td></tr>{% endfor %}</table>
+
+<h2>Limitations</h2><ul>{% for l in r.limitations %}<li>{{ l }}</li>{% endfor %}</ul>
+<div class="foot">{{ r.footer }} Prose written by: {{ r.prose_author }}; every number in the text is checked against the report JSON.</div>
+</body></html>

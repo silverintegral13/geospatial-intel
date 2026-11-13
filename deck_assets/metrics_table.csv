@@ -1,0 +1,13 @@
+model,metric,value,hold_out,data
+Liquidity: sold within 180 days,AUC,0.633,time hold-out,SYNTHETIC
+Liquidity: haircut,MAE,0.127,time hold-out,SYNTHETIC
+"Liquidity: haircut, naive mean",MAE,0.128,time hold-out,SYNTHETIC
+Liquidity: days to sale,C-index,0.631,time hold-out,SYNTHETIC
+Valuation,MAPE,0.18,7 unseen districts,SYNTHETIC
+Valuation,80% interval coverage,0.813,7 unseen districts,SYNTHETIC
+Area score,Spearman,0.9,districts held out,SYNTHETIC
+NBFC PD: champion,Gini,0.347,out-of-time,SYNTHETIC
+NBFC PD: refit,Gini,0.377,out-of-time,SYNTHETIC
+NBFC PD: challenger,Gini,0.451,out-of-time,SYNTHETIC
+NBFC LGD: flat assumption,MAE,0.126,resolved test defaults,SYNTHETIC
+NBFC LGD: collateral-based,MAE,0.092,resolved test defaults,SYNTHETIC

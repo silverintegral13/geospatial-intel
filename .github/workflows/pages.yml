@@ -26,6 +26,7 @@ jobs:
         run: python -m bhoomipulse.site.build
         env:
           DEMO_MODE: "1"
+          APP_URL: ${{ vars.APP_URL }}   # set once the Streamlit app is deployed
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

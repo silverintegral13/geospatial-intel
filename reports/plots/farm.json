@@ -1,0 +1,464 @@
+{
+ "plot": {
+  "id": "farm",
+  "label": "Farm plot (placeholder), Kundal village",
+  "kind": "farm",
+  "asset_type": "agri_land",
+  "lat": 22.889,
+  "lon": 72.223,
+  "area_sqm": 12000,
+  "survey_number": null,
+  "loan_amount": 7000000,
+  "asset_label": "Agricultural land",
+  "village": "Kundal",
+  "taluka": "Sanand",
+  "placeholder": true
+ },
+ "as_of": "2026-10-31",
+ "valuation": {
+  "value_low": 8267000.0,
+  "value_mid": 11153000.0,
+  "value_high": 15045000.0,
+  "value_per_sqm": 929.0,
+  "jantri_value": 6720000.0,
+  "value_to_jantri": 1.66,
+  "interval": "80% split-conformal"
+ },
+ "liquidity": {
+  "p_sold_180d": 0.52,
+  "expected_haircut": 0.28,
+  "median_days_to_sale": 217,
+  "years_to_cash_assumed": 1.6
+ },
+ "recovery": {
+  "realisable_value": 6487000.0,
+  "realisable_value_stressed": 4809000.0,
+  "cost_of_funds": 0.11,
+  "recovery_cost": 0.05
+ },
+ "loss": {
+  "loan_amount": 7000000,
+  "ltv_requested": 0.63,
+  "pd_12m_assumed": 0.07,
+  "lgd": 0.07,
+  "lgd_stressed": 0.31,
+  "expected_loss_rate": 0.0051,
+  "expected_loss_amount": 35900.0,
+  "ltv_band_low": 0.6,
+  "ltv_band_high": 0.75,
+  "el_threshold": 0.02
+ },
+ "title": {
+  "record": {
+   "survey_number": {
+    "value": null,
+    "confidence": 0.0
+   },
+   "village": {
+    "value": null,
+    "confidence": 0.0
+   },
+   "area_sqm": {
+    "value": null,
+    "confidence": 0.0
+   },
+   "owner_count": {
+    "value": null,
+    "confidence": 0.0
+   },
+   "encumbrances": {
+    "value": null,
+    "confidence": 0.0
+   },
+   "mutation_entries": {
+    "value": null,
+    "confidence": 0.0
+   },
+   "crop_entries": {
+    "value": null,
+    "confidence": 0.0
+   },
+   "_status": "No land-record document supplied."
+  },
+  "boundary": {
+   "record_area_sqm": 12000,
+   "observed_area_sqm": 12507,
+   "area_gap_pct": 4.2,
+   "iou": 0.76,
+   "flag": false,
+   "rule": "flag if IoU < 0.70 or area gap > 15 %",
+   "synthetic": true,
+   "note": "Record polygon is a placeholder square; observed polygon is synthetic. Live: Bhu-Naksha or a digitised parcel vs Fields of The World."
+  },
+  "disputes": {
+   "cases_found": null,
+   "reason": "eCourts data not collected; see data/templates/ecourts_cases.template.csv"
+  },
+  "charges": {
+   "cersai_checked": false,
+   "reason": "CERSAI is a paid per-search service; not queried."
+  }
+ },
+ "hazards": {
+  "flood_occurrence_pct": 1.2,
+  "flood_band": "low",
+  "heat_days_per_year": 68,
+  "heat_band": "moderate",
+  "rainfall_variability": 0.38,
+  "rain_band": "moderate",
+  "slope_deg": 0.6
+ },
+ "access": {
+  "road_access_km": 0.5,
+  "drive_time_city_min": 60,
+  "dist_sanand_town_km": 19.6,
+  "dist_ahmedabad_km": 38.7,
+  "repossession": "easy"
+ },
+ "area": {
+  "village_score": 49.1,
+  "village_drivers": "night-light growth (-8), built-up growth (-7)",
+  "district": "Ahmadabad",
+  "district_score": 60.2
+ },
+ "pulse": {
+  "kind": "farm",
+  "activity_index": 54.0,
+  "sown_this_season": true,
+  "season": "Kharif 2026",
+  "peak_ndvi": 0.56,
+  "village_median_peak_ndvi": 0.54,
+  "flags": [],
+  "as_of": "2026-10-31",
+  "synthetic": true,
+  "scenario_note": "No scripted event."
+ },
+ "pulse_series": [
+  {
+   "month": "2023-11-01",
+   "ndvi": 0.313,
+   "ntl": 1.71,
+   "built_index": 0.031
+  },
+  {
+   "month": "2023-12-01",
+   "ndvi": 0.241,
+   "ntl": 1.63,
+   "built_index": 0.025
+  },
+  {
+   "month": "2024-01-01",
+   "ndvi": 0.207,
+   "ntl": 1.51,
+   "built_index": 0.033
+  },
+  {
+   "month": "2024-02-01",
+   "ndvi": 0.208,
+   "ntl": 1.6,
+   "built_index": 0.035
+  },
+  {
+   "month": "2024-03-01",
+   "ndvi": 0.199,
+   "ntl": 1.69,
+   "built_index": 0.028
+  },
+  {
+   "month": "2024-04-01",
+   "ndvi": 0.153,
+   "ntl": 1.61,
+   "built_index": 0.034
+  },
+  {
+   "month": "2024-05-01",
+   "ndvi": 0.169,
+   "ntl": 1.49,
+   "built_index": 0.035
+  },
+  {
+   "month": "2024-06-01",
+   "ndvi": 0.204,
+   "ntl": 1.67,
+   "built_index": 0.031
+  },
+  {
+   "month": "2024-07-01",
+   "ndvi": 0.324,
+   "ntl": 1.65,
+   "built_index": 0.032
+  },
+  {
+   "month": "2024-08-01",
+   "ndvi": 0.546,
+   "ntl": 1.67,
+   "built_index": 0.029
+  },
+  {
+   "month": "2024-09-01",
+   "ndvi": 0.543,
+   "ntl": 1.69,
+   "built_index": 0.039
+  },
+  {
+   "month": "2024-10-01",
+   "ndvi": 0.428,
+   "ntl": 1.61,
+   "built_index": 0.029
+  },
+  {
+   "month": "2024-11-01",
+   "ndvi": 0.302,
+   "ntl": 1.82,
+   "built_index": 0.039
+  },
+  {
+   "month": "2024-12-01",
+   "ndvi": 0.23,
+   "ntl": 1.67,
+   "built_index": 0.037
+  },
+  {
+   "month": "2025-01-01",
+   "ndvi": 0.227,
+   "ntl": 1.66,
+   "built_index": 0.039
+  },
+  {
+   "month": "2025-02-01",
+   "ndvi": 0.198,
+   "ntl": 1.7,
+   "built_index": 0.034
+  },
+  {
+   "month": "2025-03-01",
+   "ndvi": 0.164,
+   "ntl": 1.66,
+   "built_index": 0.041
+  },
+  {
+   "month": "2025-04-01",
+   "ndvi": 0.153,
+   "ntl": 1.63,
+   "built_index": 0.036
+  },
+  {
+   "month": "2025-05-01",
+   "ndvi": 0.161,
+   "ntl": 1.84,
+   "built_index": 0.039
+  },
+  {
+   "month": "2025-06-01",
+   "ndvi": 0.196,
+   "ntl": 1.77,
+   "built_index": 0.032
+  },
+  {
+   "month": "2025-07-01",
+   "ndvi": 0.248,
+   "ntl": 1.71,
+   "built_index": 0.045
+  },
+  {
+   "month": "2025-08-01",
+   "ndvi": 0.446,
+   "ntl": 1.67,
+   "built_index": 0.049
+  },
+  {
+   "month": "2025-09-01",
+   "ndvi": 0.55,
+   "ntl": 1.84,
+   "built_index": 0.042
+  },
+  {
+   "month": "2025-10-01",
+   "ndvi": 0.45,
+   "ntl": 1.77,
+   "built_index": 0.041
+  },
+  {
+   "month": "2025-11-01",
+   "ndvi": 0.265,
+   "ntl": 1.74,
+   "built_index": 0.042
+  },
+  {
+   "month": "2025-12-01",
+   "ndvi": 0.241,
+   "ntl": 1.76,
+   "built_index": 0.032
+  },
+  {
+   "month": "2026-01-01",
+   "ndvi": 0.215,
+   "ntl": 1.75,
+   "built_index": 0.043
+  },
+  {
+   "month": "2026-02-01",
+   "ndvi": 0.206,
+   "ntl": 1.85,
+   "built_index": 0.043
+  },
+  {
+   "month": "2026-03-01",
+   "ndvi": 0.196,
+   "ntl": 1.77,
+   "built_index": 0.035
+  },
+  {
+   "month": "2026-04-01",
+   "ndvi": 0.17,
+   "ntl": 1.64,
+   "built_index": 0.05
+  },
+  {
+   "month": "2026-05-01",
+   "ndvi": 0.133,
+   "ntl": 1.87,
+   "built_index": 0.052
+  },
+  {
+   "month": "2026-06-01",
+   "ndvi": 0.197,
+   "ntl": 1.92,
+   "built_index": 0.043
+  },
+  {
+   "month": "2026-07-01",
+   "ndvi": 0.297,
+   "ntl": 1.84,
+   "built_index": 0.043
+  },
+  {
+   "month": "2026-08-01",
+   "ndvi": 0.454,
+   "ntl": 1.88,
+   "built_index": 0.042
+  },
+  {
+   "month": "2026-09-01",
+   "ndvi": 0.562,
+   "ntl": 1.82,
+   "built_index": 0.048
+  },
+  {
+   "month": "2026-10-01",
+   "ndvi": 0.465,
+   "ntl": 1.8,
+   "built_index": 0.051
+  }
+ ],
+ "red_flags": [
+  "Requested loan is 63% of the AI value, above the conservative limit of 60%."
+ ],
+ "data_sources": [
+  {
+   "name": "AlphaEarth Satellite Embeddings (annual)",
+   "mode": "synthetic",
+   "access_date": "2026-11-13"
+  },
+  {
+   "name": "BAANKNET e-auction listings",
+   "mode": "synthetic",
+   "access_date": "2026-11-13"
+  },
+  {
+   "name": "CHIRPS daily rainfall",
+   "mode": "synthetic",
+   "access_date": "2026-11-13"
+  },
+  {
+   "name": "Copernicus DEM GLO-30",
+   "mode": "synthetic",
+   "access_date": "2026-11-13"
+  },
+  {
+   "name": "DataMeet Indian village boundaries (Gujarat)",
+   "mode": "live",
+   "access_date": "2026-11-13"
+  },
+  {
+   "name": "Google Open Buildings 2.5D Temporal",
+   "mode": "synthetic",
+   "access_date": "2026-11-13"
+  },
+  {
+   "name": "IBBI quarterly newsletter: CIRP recoveries",
+   "mode": "manual",
+   "access_date": "2026-11-13"
+  },
+  {
+   "name": "JRC Global Surface Water",
+   "mode": "synthetic",
+   "access_date": "2026-11-13"
+  },
+  {
+   "name": "Jantri rates (Garvi Gujarat)",
+   "mode": "synthetic",
+   "access_date": "2026-11-13"
+  },
+  {
+   "name": "Landsat C2 L2 surface temperature / ERA5-Land",
+   "mode": "synthetic",
+   "access_date": "2026-11-13"
+  },
+  {
+   "name": "OpenStreetMap roads",
+   "mode": "synthetic",
+   "access_date": "2026-11-13"
+  },
+  {
+   "name": "SLBC Gujarat / RBI BSR district credit and NPA tables",
+   "mode": "synthetic",
+   "access_date": "2026-11-13"
+  },
+  {
+   "name": "Sentinel-1 RTC (Planetary Computer STAC)",
+   "mode": "synthetic",
+   "access_date": "2026-11-13"
+  },
+  {
+   "name": "Sentinel-2 L2A (Planetary Computer STAC)",
+   "mode": "synthetic",
+   "access_date": "2026-11-13"
+  },
+  {
+   "name": "VIIRS night lights (monthly)",
+   "mode": "synthetic",
+   "access_date": "2026-11-13"
+  },
+  {
+   "name": "geoBoundaries India ADM2 (districts)",
+   "mode": "live",
+   "access_date": "2026-11-13"
+  }
+ ],
+ "limitations": [
+  "SYNTHETIC DEMO: only the district and village boundaries are real. Satellite layers, auction listings, jantri rates and credit data are generated stand-ins, so every figure here illustrates the report, not the property.",
+  "The plot location is a placeholder point, not a surveyed parcel.",
+  "Default probability is a lender-set assumption until a partner loan book is used.",
+  "Time to cash adds an assumed one year from default to first auction.",
+  "No land-record document, court search or CERSAI search was run."
+ ],
+ "definitions": {
+  "heat_threshold_c": 40,
+  "sale_window_days": 180,
+  "activity_index_max": 100,
+  "value_interval_pct": 80,
+  "pd_horizon_months": 12
+ },
+ "footer": "AI-assisted second opinion; does not replace a registered valuer.",
+ "prose": {
+  "summary": "Agricultural land of 12,000 sq m in Kundal, Sanand taluka. Estimated value Rs 82.7 lakh to Rs 1.50 crore. After a forced sale the lender would net about Rs 64.9 lakh. Suggested loan-to-value 60% to 75%.",
+  "valuation": "Central estimate Rs 1.12 crore (Rs 929 per sq m), with an 80% range of Rs 82.7 lakh to Rs 1.50 crore. The jantri value is Rs 67.2 lakh, so the estimate is 1.66 times jantri.",
+  "liquidity": "Chance of sale within 180 days of a bank auction listing: 52%. Expected cut from the first reserve price: 28%. Time to sale: a median of 217 days from listing. Allowing 1.6 years to cash, a 5% recovery cost and 11% cost of funds, realisable value is Rs 64.9 lakh, or Rs 48.1 lakh at the low end of the value range.",
+  "loss": "Requested loan Rs 70.0 lakh, which is 63% of the central value. With an assumed 12-month default probability of 7.0%, loss given default is 7% (31% stressed) and expected loss is 0.51% of the loan. The LTV band keeps expected loss under 2%.",
+  "hazards": "Flood history is low (surface water in 1.2% of observed months). Extreme heat is moderate (68 days a year above 40 C). Rainfall variability is moderate (0.38).",
+  "access": "Nearest drivable road is 0.5 km away; Sanand town is 19.6 km and Ahmedabad 38.7 km in a straight line. Repossession access looks easy.",
+  "pulse": "Activity Index 54 out of 100. No anomaly this month."
+ },
+ "prose_author": "template"
+}

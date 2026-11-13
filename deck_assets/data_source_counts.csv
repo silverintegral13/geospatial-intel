@@ -1,0 +1,22 @@
+source,mode,rows,licence
+AlphaEarth Satellite Embeddings (annual),synthetic,1148,CC BY 4.0
+BAANKNET e-auction listings,synthetic,4499,Public portal; terms apply
+CHIRPS daily rainfall,synthetic,1148,CC0
+Copernicus DEM GLO-30,synthetic,1148,Copernicus DEM licence (free)
+DataMeet Indian village boundaries (Gujarat),live,67,ODbL 1.0
+ESA WorldCover 10 m,template,0,CC BY 4.0
+Fields of The World field boundaries,template,0,CC BY 4.0 (per-source terms)
+Google Open Buildings 2.5D Temporal,synthetic,42476,CC BY 4.0
+Gujarat RERA projects,template,0,Public portal / document
+IBBI quarterly newsletter: CIRP recoveries,manual,1,Public document
+JRC Global Surface Water,synthetic,1148,Copernicus / JRC open licence
+Jantri rates (Garvi Gujarat),synthetic,335,Public portal; terms apply
+Landsat C2 L2 surface temperature / ERA5-Land,synthetic,1148,USGS public domain / Copernicus licence
+NABARD Potential Linked Credit Plans,template,0,Public portal / document
+OpenStreetMap roads,synthetic,1148,ODbL 1.0
+SLBC Gujarat / RBI BSR district credit and NPA tables,synthetic,231,Public documents
+Sentinel-1 RTC (Planetary Computer STAC),synthetic,41328,"Copernicus Sentinel data terms (free, open)"
+Sentinel-2 L2A (Planetary Computer STAC),synthetic,42476,"Copernicus Sentinel data terms (free, open)"
+VIIRS night lights (monthly),synthetic,42476,Public domain (NOAA / EOG)
+eCourts case metadata,template,0,Public portal / document
+geoBoundaries India ADM2 (districts),live,33,CC BY 4.0 (geoBoundaries gbOpen)

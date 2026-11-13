@@ -1,0 +1,464 @@
+{
+ "plot": {
+  "id": "factory",
+  "label": "Factory unit (placeholder), Sanand GIDC area, Bol village",
+  "kind": "factory",
+  "asset_type": "industrial",
+  "lat": 22.9883,
+  "lon": 72.2626,
+  "area_sqm": 8000,
+  "survey_number": null,
+  "loan_amount": 30000000,
+  "asset_label": "Industrial land and building",
+  "village": "Bol",
+  "taluka": "Sanand",
+  "placeholder": true
+ },
+ "as_of": "2026-10-31",
+ "valuation": {
+  "value_low": 39807000.0,
+  "value_mid": 53701000.0,
+  "value_high": 72444000.0,
+  "value_per_sqm": 6713.0,
+  "jantri_value": 38320000.0,
+  "value_to_jantri": 1.4,
+  "interval": "80% split-conformal"
+ },
+ "liquidity": {
+  "p_sold_180d": 0.42,
+  "expected_haircut": 0.27,
+  "median_days_to_sale": 199,
+  "years_to_cash_assumed": 1.5
+ },
+ "recovery": {
+  "realisable_value": 31894000.0,
+  "realisable_value_stressed": 23642000.0,
+  "cost_of_funds": 0.11,
+  "recovery_cost": 0.05
+ },
+ "loss": {
+  "loan_amount": 30000000,
+  "ltv_requested": 0.56,
+  "pd_12m_assumed": 0.06,
+  "lgd": 0.0,
+  "lgd_stressed": 0.21,
+  "expected_loss_rate": 0.0,
+  "expected_loss_amount": 0.0,
+  "ltv_band_low": 0.66,
+  "ltv_band_high": 0.75,
+  "el_threshold": 0.02
+ },
+ "title": {
+  "record": {
+   "survey_number": {
+    "value": null,
+    "confidence": 0.0
+   },
+   "village": {
+    "value": null,
+    "confidence": 0.0
+   },
+   "area_sqm": {
+    "value": null,
+    "confidence": 0.0
+   },
+   "owner_count": {
+    "value": null,
+    "confidence": 0.0
+   },
+   "encumbrances": {
+    "value": null,
+    "confidence": 0.0
+   },
+   "mutation_entries": {
+    "value": null,
+    "confidence": 0.0
+   },
+   "crop_entries": {
+    "value": null,
+    "confidence": 0.0
+   },
+   "_status": "No land-record document supplied."
+  },
+  "boundary": {
+   "record_area_sqm": 8000,
+   "observed_area_sqm": 8888,
+   "area_gap_pct": 11.1,
+   "iou": 0.89,
+   "flag": false,
+   "rule": "flag if IoU < 0.70 or area gap > 15 %",
+   "synthetic": true,
+   "note": "Record polygon is a placeholder square; observed polygon is synthetic. Live: Bhu-Naksha or a digitised parcel vs Fields of The World."
+  },
+  "disputes": {
+   "cases_found": null,
+   "reason": "eCourts data not collected; see data/templates/ecourts_cases.template.csv"
+  },
+  "charges": {
+   "cersai_checked": false,
+   "reason": "CERSAI is a paid per-search service; not queried."
+  }
+ },
+ "hazards": {
+  "flood_occurrence_pct": 0.9,
+  "flood_band": "low",
+  "heat_days_per_year": 48,
+  "heat_band": "moderate",
+  "rainfall_variability": 0.27,
+  "rain_band": "low",
+  "slope_deg": 1.1
+ },
+ "access": {
+  "road_access_km": 0.2,
+  "drive_time_city_min": 49,
+  "dist_sanand_town_km": 11.7,
+  "dist_ahmedabad_km": 31.9,
+  "repossession": "easy"
+ },
+ "area": {
+  "village_score": 71.3,
+  "village_drivers": "distance to roads (+9), flood history (+3)",
+  "district": "Ahmadabad",
+  "district_score": 60.2
+ },
+ "pulse": {
+  "kind": "factory",
+  "activity_index": 63.0,
+  "ntl_last3m_vs_prev12m": 0.79,
+  "flags": [
+   "Night-time activity is 21% below the previous 12-month average."
+  ],
+  "note": "10 m imagery cannot count trucks; signal is night lights plus roof and yard change.",
+  "as_of": "2026-10-31",
+  "synthetic": true,
+  "scenario_note": "Scripted demo event: activity fades by about a third over the last six months."
+ },
+ "pulse_series": [
+  {
+   "month": "2023-11-01",
+   "ndvi": 0.255,
+   "ntl": 4.12,
+   "built_index": 0.301
+  },
+  {
+   "month": "2023-12-01",
+   "ndvi": 0.168,
+   "ntl": 4.08,
+   "built_index": 0.308
+  },
+  {
+   "month": "2024-01-01",
+   "ndvi": 0.176,
+   "ntl": 4.14,
+   "built_index": 0.299
+  },
+  {
+   "month": "2024-02-01",
+   "ndvi": 0.171,
+   "ntl": 4.35,
+   "built_index": 0.309
+  },
+  {
+   "month": "2024-03-01",
+   "ndvi": 0.18,
+   "ntl": 4.05,
+   "built_index": 0.303
+  },
+  {
+   "month": "2024-04-01",
+   "ndvi": 0.169,
+   "ntl": 4.14,
+   "built_index": 0.311
+  },
+  {
+   "month": "2024-05-01",
+   "ndvi": 0.181,
+   "ntl": 4.15,
+   "built_index": 0.31
+  },
+  {
+   "month": "2024-06-01",
+   "ndvi": 0.16,
+   "ntl": 4.04,
+   "built_index": 0.309
+  },
+  {
+   "month": "2024-07-01",
+   "ndvi": 0.227,
+   "ntl": 4.36,
+   "built_index": 0.31
+  },
+  {
+   "month": "2024-08-01",
+   "ndvi": 0.305,
+   "ntl": 4.04,
+   "built_index": 0.324
+  },
+  {
+   "month": "2024-09-01",
+   "ndvi": 0.433,
+   "ntl": 4.58,
+   "built_index": 0.319
+  },
+  {
+   "month": "2024-10-01",
+   "ndvi": 0.372,
+   "ntl": 4.35,
+   "built_index": 0.319
+  },
+  {
+   "month": "2024-11-01",
+   "ndvi": 0.266,
+   "ntl": 4.41,
+   "built_index": 0.314
+  },
+  {
+   "month": "2024-12-01",
+   "ndvi": 0.201,
+   "ntl": 4.23,
+   "built_index": 0.324
+  },
+  {
+   "month": "2025-01-01",
+   "ndvi": 0.173,
+   "ntl": 4.31,
+   "built_index": 0.318
+  },
+  {
+   "month": "2025-02-01",
+   "ndvi": 0.176,
+   "ntl": 4.4,
+   "built_index": 0.324
+  },
+  {
+   "month": "2025-03-01",
+   "ndvi": 0.186,
+   "ntl": 4.73,
+   "built_index": 0.312
+  },
+  {
+   "month": "2025-04-01",
+   "ndvi": 0.152,
+   "ntl": 4.37,
+   "built_index": 0.321
+  },
+  {
+   "month": "2025-05-01",
+   "ndvi": 0.167,
+   "ntl": 4.38,
+   "built_index": 0.324
+  },
+  {
+   "month": "2025-06-01",
+   "ndvi": 0.153,
+   "ntl": 4.43,
+   "built_index": 0.316
+  },
+  {
+   "month": "2025-07-01",
+   "ndvi": 0.237,
+   "ntl": 4.55,
+   "built_index": 0.321
+  },
+  {
+   "month": "2025-08-01",
+   "ndvi": 0.382,
+   "ntl": 4.61,
+   "built_index": 0.332
+  },
+  {
+   "month": "2025-09-01",
+   "ndvi": 0.344,
+   "ntl": 4.34,
+   "built_index": 0.337
+  },
+  {
+   "month": "2025-10-01",
+   "ndvi": 0.318,
+   "ntl": 4.67,
+   "built_index": 0.336
+  },
+  {
+   "month": "2025-11-01",
+   "ndvi": 0.224,
+   "ntl": 4.3,
+   "built_index": 0.332
+  },
+  {
+   "month": "2025-12-01",
+   "ndvi": 0.209,
+   "ntl": 4.67,
+   "built_index": 0.333
+  },
+  {
+   "month": "2026-01-01",
+   "ndvi": 0.197,
+   "ntl": 4.93,
+   "built_index": 0.325
+  },
+  {
+   "month": "2026-02-01",
+   "ndvi": 0.194,
+   "ntl": 4.32,
+   "built_index": 0.335
+  },
+  {
+   "month": "2026-03-01",
+   "ndvi": 0.163,
+   "ntl": 4.87,
+   "built_index": 0.338
+  },
+  {
+   "month": "2026-04-01",
+   "ndvi": 0.184,
+   "ntl": 4.81,
+   "built_index": 0.337
+  },
+  {
+   "month": "2026-05-01",
+   "ndvi": 0.151,
+   "ntl": 4.27,
+   "built_index": 0.34
+  },
+  {
+   "month": "2026-06-01",
+   "ndvi": 0.18,
+   "ntl": 3.95,
+   "built_index": 0.332
+  },
+  {
+   "month": "2026-07-01",
+   "ndvi": 0.232,
+   "ntl": 3.89,
+   "built_index": 0.328
+  },
+  {
+   "month": "2026-08-01",
+   "ndvi": 0.309,
+   "ntl": 3.79,
+   "built_index": 0.338
+  },
+  {
+   "month": "2026-09-01",
+   "ndvi": 0.387,
+   "ntl": 3.48,
+   "built_index": 0.337
+  },
+  {
+   "month": "2026-10-01",
+   "ndvi": 0.337,
+   "ntl": 3.26,
+   "built_index": 0.34
+  }
+ ],
+ "red_flags": [
+  "Night-time activity is 21% below the previous 12-month average."
+ ],
+ "data_sources": [
+  {
+   "name": "AlphaEarth Satellite Embeddings (annual)",
+   "mode": "synthetic",
+   "access_date": "2026-11-13"
+  },
+  {
+   "name": "BAANKNET e-auction listings",
+   "mode": "synthetic",
+   "access_date": "2026-11-13"
+  },
+  {
+   "name": "CHIRPS daily rainfall",
+   "mode": "synthetic",
+   "access_date": "2026-11-13"
+  },
+  {
+   "name": "Copernicus DEM GLO-30",
+   "mode": "synthetic",
+   "access_date": "2026-11-13"
+  },
+  {
+   "name": "DataMeet Indian village boundaries (Gujarat)",
+   "mode": "live",
+   "access_date": "2026-11-13"
+  },
+  {
+   "name": "Google Open Buildings 2.5D Temporal",
+   "mode": "synthetic",
+   "access_date": "2026-11-13"
+  },
+  {
+   "name": "IBBI quarterly newsletter: CIRP recoveries",
+   "mode": "manual",
+   "access_date": "2026-11-13"
+  },
+  {
+   "name": "JRC Global Surface Water",
+   "mode": "synthetic",
+   "access_date": "2026-11-13"
+  },
+  {
+   "name": "Jantri rates (Garvi Gujarat)",
+   "mode": "synthetic",
+   "access_date": "2026-11-13"
+  },
+  {
+   "name": "Landsat C2 L2 surface temperature / ERA5-Land",
+   "mode": "synthetic",
+   "access_date": "2026-11-13"
+  },
+  {
+   "name": "OpenStreetMap roads",
+   "mode": "synthetic",
+   "access_date": "2026-11-13"
+  },
+  {
+   "name": "SLBC Gujarat / RBI BSR district credit and NPA tables",
+   "mode": "synthetic",
+   "access_date": "2026-11-13"
+  },
+  {
+   "name": "Sentinel-1 RTC (Planetary Computer STAC)",
+   "mode": "synthetic",
+   "access_date": "2026-11-13"
+  },
+  {
+   "name": "Sentinel-2 L2A (Planetary Computer STAC)",
+   "mode": "synthetic",
+   "access_date": "2026-11-13"
+  },
+  {
+   "name": "VIIRS night lights (monthly)",
+   "mode": "synthetic",
+   "access_date": "2026-11-13"
+  },
+  {
+   "name": "geoBoundaries India ADM2 (districts)",
+   "mode": "live",
+   "access_date": "2026-11-13"
+  }
+ ],
+ "limitations": [
+  "SYNTHETIC DEMO: only the district and village boundaries are real. Satellite layers, auction listings, jantri rates and credit data are generated stand-ins, so every figure here illustrates the report, not the property.",
+  "The plot location is a placeholder point, not a surveyed parcel.",
+  "Default probability is a lender-set assumption until a partner loan book is used.",
+  "Time to cash adds an assumed one year from default to first auction.",
+  "No land-record document, court search or CERSAI search was run."
+ ],
+ "definitions": {
+  "heat_threshold_c": 40,
+  "sale_window_days": 180,
+  "activity_index_max": 100,
+  "value_interval_pct": 80,
+  "pd_horizon_months": 12
+ },
+ "footer": "AI-assisted second opinion; does not replace a registered valuer.",
+ "prose": {
+  "summary": "Industrial land and building of 8,000 sq m in Bol, Sanand taluka. Estimated value Rs 3.98 crore to Rs 7.24 crore. After a forced sale the lender would net about Rs 3.19 crore. Suggested loan-to-value 66% to 75%.",
+  "valuation": "Central estimate Rs 5.37 crore (Rs 6,713 per sq m), with an 80% range of Rs 3.98 crore to Rs 7.24 crore. The jantri value is Rs 3.83 crore, so the estimate is 1.4 times jantri.",
+  "liquidity": "Chance of sale within 180 days of a bank auction listing: 42%. Expected cut from the first reserve price: 27%. Time to sale: a median of 199 days from listing. Allowing 1.5 years to cash, a 5% recovery cost and 11% cost of funds, realisable value is Rs 3.19 crore, or Rs 2.36 crore at the low end of the value range.",
+  "loss": "Requested loan Rs 3.00 crore, which is 56% of the central value. With an assumed 12-month default probability of 6.0%, loss given default is 0% (21% stressed) and expected loss is 0.00% of the loan. The LTV band keeps expected loss under 2%.",
+  "hazards": "Flood history is low (surface water in 0.9% of observed months). Extreme heat is moderate (48 days a year above 40 C). Rainfall variability is low (0.27).",
+  "access": "Nearest drivable road is 0.2 km away; Sanand town is 11.7 km and Ahmedabad 31.9 km in a straight line. Repossession access looks easy.",
+  "pulse": "Activity Index 63 out of 100. Night-time activity is 21% below the previous 12-month average."
+ },
+ "prose_author": "template"
+}
