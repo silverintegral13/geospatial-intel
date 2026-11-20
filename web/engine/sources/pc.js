@@ -16,7 +16,7 @@ const flat = (v) => (Array.isArray(v) ? v.flatMap(flat) : [v]);
 
 async function point(ctx, collection, item, assets, lon = ctx.lon, lat = ctx.lat) {
   const qs = `collection=${collection}&item=${encodeURIComponent(item)}&` + assets.map((a) => `assets=${a}`).join('&');
-  const j = await getJSON(ctx.fetch, `${PC_DATA}/item/point/${lon},${lat}?${qs}`, { timeout: 15000, retries: 1 });
+  const j = await getJSON(ctx.fetch, `${PC_DATA}/item/point/${lon},${lat}?${qs}`, { timeout: 15000, retries: 2 });
   return flat(j.values).map((x) => (x == null ? null : +x));
 }
 

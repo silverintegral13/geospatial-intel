@@ -2,7 +2,15 @@
 import { getJSON, haversine, distToLine, round } from '../util.js';
 
 export const NOMINATIM = 'https://nominatim.openstreetmap.org';
-export const OVERPASS = ['https://overpass-api.de/api/interpreter', 'https://overpass.kumi.systems/api/interpreter', 'https://overpass.private.coffee/api/interpreter'];
+// Public Overpass instances. The main one (overpass-api.de) is heavily shared and often answers
+// 502/504 when overloaded, so we keep several mirrors and remember whichever answered last.
+export const OVERPASS = [
+  'https://overpass-api.de/api/interpreter',
+  'https://overpass.private.coffee/api/interpreter',
+  'https://maps.mail.ru/osm/tools/overpass/api/interpreter',
+  'https://overpass.kumi.systems/api/interpreter',
+];
+let preferredMirror = 0;
 
 export async function reverseGeocode(ctx) {
   const { lat, lon } = ctx;
@@ -109,18 +117,34 @@ export function parseOverpass(j, lat, lon) {
 }
 
 export async function overpassContext(ctx) {
+  // Hedged failover: start with the mirror that worked last; if it errors (e.g. 502) move on at once,
+  // and if it is merely slow, start the next mirror after 6 s and take whichever answers first.
+  const list = ctx.opts?.overpass || OVERPASS;
+  const start = Math.min(preferredMirror, list.length - 1);
+  const order = [...list.slice(start), ...list.slice(0, start)];
   const q = overpassQuery(ctx.lat, ctx.lon);
-  let lastErr;
-  for (const ep of ctx.opts?.overpass || OVERPASS) {
-    try {
-      const j = await getJSON(ctx.fetch, ep, {
-        timeout: 28000, retries: 0,
-        init: { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: 'data=' + encodeURIComponent(q) },
-      });
-      const r = parseOverpass(j, ctx.lat, ctx.lon);
-      r._endpoint = ep;
-      return r;
-    } catch (e) { lastErr = e; }
-  }
-  throw lastErr;
+  const init = { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: 'data=' + encodeURIComponent(q) };
+  return new Promise((resolve, reject) => {
+    let next = 0, running = 0, done = false; const errs = []; let lastStatus;
+    const launch = () => {
+      if (done || next >= order.length) return;
+      const ep = order[next++]; running++;
+      const hedge = setTimeout(launch, ctx.opts?.overpassHedgeMs ?? 6000);
+      getJSON(ctx.fetch, ep, { timeout: 25000, retries: 0, init })
+        .then((j) => {
+          clearTimeout(hedge); running--;
+          if (done) return;
+          done = true; preferredMirror = Math.max(0, list.indexOf(ep));
+          try { const r = parseOverpass(j, ctx.lat, ctx.lon); r._endpoint = ep; r._failed_mirrors = errs.slice(); resolve(r); } catch (e) { reject(e); }
+        })
+        .catch((e) => {
+          clearTimeout(hedge); running--; lastStatus = e.status ?? lastStatus;
+          errs.push(`${new URL(ep).host}: ${e.status ? 'HTTP ' + e.status : e.name === 'AbortError' ? 'timeout' : e.message}`);
+          if (done) return;
+          if (next < order.length) launch();
+          else if (running === 0) { const err = new Error(`all ${order.length} Overpass mirrors failed (${errs.join('; ')})`); err.status = lastStatus; reject(err); }
+        });
+    };
+    launch();
+  });
 }

@@ -1,5 +1,6 @@
 // Data fabric: live health of every upstream, enterprise connectors, benchmarks, and the flow diagram.
 import { SOURCES, ENTERPRISE_CONNECTORS, BENCHMARK_SOURCES } from '../../engine/index.js';
+import { OVERPASS } from '../../engine/sources/osm.js';
 import { S, bus } from './state.js';
 
 const $ = (s) => document.querySelector(s);
@@ -7,7 +8,7 @@ const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<
 const today = new Date(Date.now() - 3 * 864e5).toISOString().slice(0, 10);
 const PROBES = {
   geocode: { url: 'https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=23.0225&lon=72.5714&zoom=10' },
-  osm: { url: 'https://overpass-api.de/api/interpreter', init: { method: 'POST', body: 'data=' + encodeURIComponent('[out:json][timeout:5];node(1);out ids;'), headers: { 'Content-Type': 'application/x-www-form-urlencoded' } } },
+  osm: { url: OVERPASS[0], mirrors: OVERPASS, init: { method: 'POST', body: 'data=' + encodeURIComponent('[out:json][timeout:5];node(1);out ids;'), headers: { 'Content-Type': 'application/x-www-form-urlencoded' } } },
   terrain: { url: 'https://api.open-meteo.com/v1/elevation?latitude=23.02&longitude=72.57' },
   flood: { url: 'https://flood-api.open-meteo.com/v1/flood?latitude=23.02&longitude=72.57&daily=river_discharge&forecast_days=1' },
   climate: { url: `https://archive-api.open-meteo.com/v1/archive?latitude=23.02&longitude=72.57&start_date=${today}&end_date=${today}&daily=precipitation_sum` },
@@ -23,10 +24,19 @@ export const health = {};
 export async function probeAll() {
   if (S.offline) { Object.keys(PROBES).forEach((k) => (health[k] = { status: 'sim', ms: 0 })); bus.emit('health', health); return health; }
   await Promise.all(Object.entries(PROBES).map(async ([k, p]) => {
-    const t0 = performance.now(); const ctl = new AbortController(); const timer = setTimeout(() => ctl.abort(), 9000);
-    try { const r = await fetch(p.url, { ...(p.init || {}), signal: ctl.signal }); health[k] = { status: r.ok ? 'ok' : 'error', code: r.status, ms: Math.round(performance.now() - t0) }; }
-    catch (e) { health[k] = { status: 'error', ms: Math.round(performance.now() - t0), error: e.name === 'AbortError' ? 'timeout' : 'blocked / CORS' }; }
-    finally { clearTimeout(timer); }
+    // Sources with mirrors (Overpass) count as live if any mirror answers; the primary's failure is kept as a note.
+    const urls = p.mirrors || [p.url]; let primaryFail = null;
+    for (const url of urls) {
+      const t0 = performance.now(); const ctl = new AbortController(); const timer = setTimeout(() => ctl.abort(), 9000);
+      try {
+        const r = await fetch(url, { ...(p.init || {}), signal: ctl.signal });
+        health[k] = { status: r.ok ? 'ok' : 'error', code: r.status, ms: Math.round(performance.now() - t0) };
+      } catch (e) { health[k] = { status: 'error', ms: Math.round(performance.now() - t0), error: e.name === 'AbortError' ? 'timeout' : 'blocked / CORS' }; }
+      finally { clearTimeout(timer); }
+      if (health[k].status === 'ok') { if (url !== urls[0]) { health[k].via = new URL(url).host; health[k].primary = primaryFail; } break; }
+      if (!primaryFail) primaryFail = health[k].code ? 'HTTP ' + health[k].code : health[k].error;
+    }
+    if (health[k].status === 'error' && health[k].code >= 500) health[k].error = `${health[k].code}: upstream server busy or down`;
     bus.emit('health', health);
   }));
   return health;
@@ -40,7 +50,7 @@ export function renderFabric() {
   el.innerHTML = `
   <div class="ph"><div><div class="kicker">DATA FABRIC</div><h2>${live.length + extras.length} public pipes, one feature vector</h2><p>Every assessment fuses satellites, terrain, hydrology, climate, maps and postal data, and records where each number came from.</p></div><button class="btn" id="reprobe">↻ Probe</button></div>
   <div class="sec fabric" id="fab"></div>
-  <div class="sec"><h3>Live public sources <small>${S.offline ? 'simulated' : okN + ' reachable now'}</small></h3>${[...live, ...extras].map((s) => `<div class="conn"><b>${esc(s.name)}</b><span class="s ${s.h?.status === 'ok' ? 'st-ok' : s.h?.status === 'error' ? 'st-error' : 'st-skipped'}">${s.h ? (s.h.status === 'ok' ? `● ${s.h.ms} ms` : s.h.status === 'sim' ? '◌ simulated' : `✕ ${esc(s.h.error || s.h.code)}`) : '…'}</span><small>${esc(s.provider)}${s.licence ? ' · ' + esc(s.licence) : ''} → ${esc(s.feeds)}</small></div>`).join('')}</div>
+  <div class="sec"><h3>Live public sources <small>${S.offline ? 'simulated' : okN + ' reachable now'}</small></h3>${[...live, ...extras].map((s) => `<div class="conn"><b>${esc(s.name)}</b><span class="s ${s.h?.status === 'ok' ? 'st-ok' : s.h?.status === 'error' ? 'st-error' : 'st-skipped'}">${s.h ? (s.h.status === 'ok' ? `● ${s.h.ms} ms${s.h.via ? ` · mirror (main: ${esc(s.h.primary)})` : ''}` : s.h.status === 'sim' ? '◌ simulated' : `✕ ${esc(s.h.error || s.h.code)}`) : '…'}</span><small>${esc(s.provider)}${s.licence ? ' · ' + esc(s.licence) : ''} → ${esc(s.feeds)}</small></div>`).join('')}</div>
   <div class="sec"><h3>Enterprise & government connectors <small>switched on per lender</small></h3>${ENTERPRISE_CONNECTORS.map((c) => `<div class="conn"><b>${esc(c.name)}</b><span class="s lock">⚿ credentials</span><small>${esc(c.provider)} · adds ${esc(c.adds)} · ${esc(c.access)}</small></div>`).join('')}</div>
   <div class="sec"><h3>Benchmarks & policy</h3>${BENCHMARK_SOURCES.map((b) => `<div class="conn"><b>${esc(b.name)}</b><span class="s" style="color:#ffd98a">embedded</span><small>${esc(b.provider)} · ${esc(b.use)}</small></div>`).join('')}</div>
   <div class="sec"><h3>The compounding moat</h3><p class="hint" style="margin-top:0">Public data gets every competitor to the same starting line. The edge compounds from what lenders send back: realised auction prices, days to sale, Pulse alerts that preceded defaults. Each tenant's outcomes calibrate its own models; anonymised, consented aggregates build the recovery dataset nobody else has.</p></div>`;

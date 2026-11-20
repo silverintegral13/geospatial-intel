@@ -93,7 +93,9 @@ export async function getJSON(fetchFn, url, { timeout = 15000, as = 'json', init
     } catch (e) {
       last = e;
       if (e.status && e.status < 500 && e.status !== 429) break;
-      if (attempt < retries) await new Promise((res) => setTimeout(res, 400 * (attempt + 1)));
+      // 502/503/504 are usually a busy upstream gateway: back off a little longer, with jitter.
+      const busy = e.status === 502 || e.status === 503 || e.status === 504 || e.status === 429;
+      if (attempt < retries) await new Promise((res) => setTimeout(res, (busy ? 900 : 400) * (attempt + 1) + Math.random() * 300));
     } finally {
       clearTimeout(timer);
       if (signal) signal.removeEventListener('abort', onAbort);
