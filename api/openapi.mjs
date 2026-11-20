@@ -1,0 +1,93 @@
+// OpenAPI 3.1 description of the BhoomiPulse API (served at /openapi.json, rendered at /docs).
+const assetInput = {
+  type: 'object',
+  description: 'Give lat/lon, or a polygon ring of [lon, lat] pairs (centroid and area are computed).',
+  properties: {
+    reference_id: { type: 'string', description: 'Your loan or application id; echoed back.' },
+    lat: { type: 'number', example: 22.9957 }, lon: { type: 'number', example: 72.3759 },
+    polygon: { type: 'array', items: { type: 'array', items: { type: 'number' }, minItems: 2, maxItems: 2 } },
+    asset_type: { type: 'string', enum: ['residential', 'commercial', 'industrial', 'agri_land', 'plot'] },
+    area_sqm: { type: 'number', description: 'Land area. Used for land, plots and industrial units.' },
+    built_up_sqft: { type: 'number', description: 'Built-up area for residential and commercial property.' },
+    loan_amount: { type: 'number', description: 'Requested or outstanding loan in ₹; enables LTV and expected loss.' },
+    declared_value: { type: 'number', description: 'Value declared by the borrower or valuer; checked against the model range.' },
+    mode: { type: 'string', enum: ['full', 'fast'], default: 'full', description: 'fast = terrain, flood, climate and night lights only (portfolio screening).' },
+  },
+  required: ['asset_type'],
+};
+const err = { description: 'Error', content: { 'application/json': { schema: { $ref: '#/components/schemas/Error' } } } };
+
+export const OPENAPI = {
+  openapi: '3.1.0',
+  info: {
+    title: 'BhoomiPulse Collateral Intelligence API',
+    version: '2.0.0',
+    description: 'Value, risk-grade and monitor any land, property or factory in India from 10 live public data sources (OpenStreetMap, Copernicus DEM, GloFAS, ERA5, VIIRS night lights, Sentinel-2, ESA WorldCover, Impact Observatory land use, JRC surface water, India Post). Every response carries data lineage, model version and a decision route. Authentication: `Authorization: Bearer <api key>`.',
+  },
+  servers: [{ url: '/', description: 'This deployment' }],
+  security: [{ bearer: [] }],
+  components: {
+    securitySchemes: { bearer: { type: 'http', scheme: 'bearer' } },
+    schemas: {
+      AssetInput: assetInput,
+      Error: { type: 'object', properties: { error: { type: 'object', properties: { code: { type: 'string' }, message: { type: 'string' } } } } },
+      Assessment: {
+        type: 'object',
+        properties: {
+          id: { type: 'string' }, object: { const: 'collateral_assessment' }, created_at: { type: 'string', format: 'date-time' },
+          model_version: { type: 'string' }, reference_id: { type: 'string' },
+          location: { type: 'object' },
+          score: { type: 'object', properties: { cqs: { type: 'number', description: 'Collateral quality score 0-100' }, grade: { enum: ['A', 'B', 'C', 'D', 'E'] }, sub: { type: 'object' } } },
+          valuation: { type: 'object', properties: { p10: { type: 'number' }, p50: { type: 'number' }, p90: { type: 'number' }, rate: { type: 'number' }, rate_unit: { type: 'string' }, basis: { type: 'string' } } },
+          liquidity: { type: 'object', properties: { days_to_sell: { type: 'integer' }, forced_sale_haircut: { type: 'number' }, realisable_value: { type: 'number' } } },
+          hazards: { type: 'object', properties: { flood: { type: 'number' }, heat: { type: 'number' }, drought: { type: 'number' } } },
+          lending: { type: 'object', properties: { recommended_ltv: { type: 'number' }, max_loan: { type: 'number' }, pd_12m: { type: 'number' }, actual_ltv: { type: 'number' }, expected_loss: { type: 'number' } } },
+          flags: { type: 'array', items: { type: 'object', properties: { severity: { enum: ['high', 'medium', 'low'] }, code: { type: 'string' }, text: { type: 'string' } } } },
+          decision: { type: 'object', properties: { route: { enum: ['fast_track', 'verify', 'refer'] }, label: { type: 'string' }, field_visit: { type: 'boolean' } } },
+          summary: { type: 'string' },
+          signals: { type: 'object', description: 'Every raw feature the score used.' },
+          sources: { type: 'array', items: { type: 'object', properties: { id: { type: 'string' }, provider: { type: 'string' }, status: { type: 'string' }, ms: { type: 'integer' } } } },
+          provenance: { type: 'object' },
+        },
+      },
+    },
+  },
+  paths: {
+    '/v1/health': { get: { security: [], summary: 'Liveness', responses: { 200: { description: 'OK' } } } },
+    '/v1/sources': { get: { security: [], summary: 'Live sources, enterprise connectors and default policy', responses: { 200: { description: 'Registry' } } } },
+    '/v1/tenant': { get: { summary: 'Your tenant and effective credit policy', responses: { 200: { description: 'Tenant' }, 401: err } } },
+    '/v1/assess': {
+      post: {
+        summary: 'Assess one asset',
+        description: 'Runs every live source in parallel (typically 3-12 s), then scores value, liquidity, hazards, LTV band and red flags. Supports `Idempotency-Key`.',
+        parameters: [{ name: 'Idempotency-Key', in: 'header', schema: { type: 'string' } }],
+        requestBody: { required: true, content: { 'application/json': { schema: { $ref: '#/components/schemas/AssetInput' }, example: { reference_id: 'LAP-2026-00418', lat: 22.9957, lon: 72.3759, asset_type: 'residential', built_up_sqft: 1150, loan_amount: 3500000, declared_value: 6200000 } } } },
+        responses: { 200: { description: 'Assessment', content: { 'application/json': { schema: { $ref: '#/components/schemas/Assessment' } } } }, 400: err, 401: err, 429: err },
+      },
+    },
+    '/v1/assessments/{id}': { get: { summary: 'Fetch a stored assessment (30 days)', parameters: [{ name: 'id', in: 'path', required: true, schema: { type: 'string' } }], responses: { 200: { description: 'Assessment' }, 404: err } } },
+    '/v1/assessments/{id}/report': { get: { summary: 'Printable HTML collateral report', parameters: [{ name: 'id', in: 'path', required: true, schema: { type: 'string' } }], responses: { 200: { description: 'HTML', content: { 'text/html': {} } } } } },
+    '/v1/batch': {
+      post: {
+        summary: 'Assess many assets', description: 'Up to 25 assets without a webhook return synchronously; larger books return 202 with a job id and optionally call `webhook_url` with event `batch.completed`.',
+        requestBody: { content: { 'application/json': { schema: { type: 'object', properties: { assets: { type: 'array', items: { $ref: '#/components/schemas/AssetInput' } }, mode: { enum: ['fast', 'full'] }, webhook_url: { type: 'string', format: 'uri' } } } } } },
+        responses: { 200: { description: 'Completed job' }, 202: { description: 'Queued job' } },
+      },
+    },
+    '/v1/jobs/{id}': { get: { summary: 'Batch job status and results', parameters: [{ name: 'id', in: 'path', required: true, schema: { type: 'string' } }], responses: { 200: { description: 'Job' } } } },
+    '/v1/portfolio/audit': {
+      post: {
+        summary: 'Book-level collateral audit (lenders, co-lending partners, pool buyers, investors)',
+        requestBody: { content: { 'application/json': { schema: { type: 'object', properties: { loans: { type: 'array', items: { $ref: '#/components/schemas/AssetInput' } } } } } } },
+        responses: { 200: { description: 'Book grade, exposure-weighted score, LTV breaches, flood exposure, concentration, expected loss' } },
+      },
+    },
+    '/v1/pulse/subscriptions': {
+      post: { summary: 'Monitor a financed asset', requestBody: { content: { 'application/json': { schema: { type: 'object', properties: { asset: { $ref: '#/components/schemas/AssetInput' }, webhook_url: { type: 'string' }, cadence: { enum: ['monthly', 'weekly'] } } } } } }, responses: { 201: { description: 'Subscription with first snapshot' } } },
+      get: { summary: 'List monitored assets', responses: { 200: { description: 'Subscriptions' } } },
+    },
+    '/v1/pulse/subscriptions/{id}': { delete: { summary: 'Stop monitoring', parameters: [{ name: 'id', in: 'path', required: true, schema: { type: 'string' } }], responses: { 200: { description: 'Deleted' } } } },
+    '/v1/pulse/run': { post: { summary: 'Re-check all monitored assets now and send `pulse.alert` webhooks', description: 'Webhooks carry `X-BhoomiPulse-Signature: t=<unix>,v1=<hex HMAC-SHA256 of "t.body" with your webhook secret>`.', responses: { 200: { description: 'Run report' } } } },
+    '/v1/audit-log': { get: { summary: 'Decision audit trail (model version, sources, grade, route) for model-risk and FREE-AI reviews', responses: { 200: { description: 'Entries' } } } },
+  },
+};

@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BhoomiPulse · Business plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: a product unveiling at night — confident, exact, every number sourced.
+   IDEA: India seen from an aircraft window; the lights are the collateral, the deck flies over them.
+   PICTURE: a live canvas of 2,400 twinkling settlements inside India's outline, re-framed per slide.
+   COLOUR and TYPE: space black, sodium amber for value, cyan for instruments; Space Grotesk / Inter / JetBrains Mono.
+   LAYOUT: 1600×900 stage scaled to any screen; left story, right evidence; keyboard-driven. */
+:root{color-scheme:dark;--bg:#02040a;--ink:#eef2fb;--ink2:#aab6d1;--muted:#6f7d9c;--line:rgba(130,170,255,.16);--amber:#ffb547;--gold:#ffd98a;--cyan:#5ce1ff;--red:#ff5470;--green:#3ee08f;--orange:#ff9a3d;--card:rgba(10,16,32,.72)}
+:root[data-theme=light],:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font:20px/1.45 Inter,system-ui,sans-serif;overflow:hidden}
+#sky{position:fixed;inset:0;width:100%;height:100%;display:block}
+.vignette{position:fixed;inset:0;pointer-events:none;background:radial-gradient(1200px 800px at 70% 50%,transparent 40%,rgba(2,4,10,.75) 100%)}
+.viewport{position:fixed;inset:0;display:grid;place-items:center}
+.stage{position:relative;width:1600px;height:900px;transform-origin:center center;flex:none}
+.slide{position:absolute;inset:0;padding:70px 90px 80px;opacity:0;visibility:hidden;transition:opacity .7s ease,visibility .7s}
+.slide.on{opacity:1;visibility:visible}
+.slide .rise{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+.slide.on .rise{opacity:1;transform:none}
+.slide.on .rise:nth-child(2){transition-delay:.08s}.slide.on .rise:nth-child(3){transition-delay:.16s}.slide.on .rise:nth-child(4){transition-delay:.24s}.slide.on .rise:nth-child(5){transition-delay:.32s}.slide.on .rise:nth-child(6){transition-delay:.4s}
+.d1{transition-delay:.15s!important}.d2{transition-delay:.3s!important}.d3{transition-delay:.45s!important}.d4{transition-delay:.6s!important}.d5{transition-delay:.75s!important}.d6{transition-delay:.9s!important}
+.chap{font:500 15px 'JetBrains Mono',monospace;color:var(--cyan);display:flex;align-items:center;gap:12px;margin-bottom:16px;letter-spacing:.02em}
+.chap::before{content:'';width:34px;height:1px;background:var(--cyan)}
+h1{font:700 92px/0.98 'Space Grotesk',sans-serif;letter-spacing:-.035em;margin:0;text-wrap:balance}
+h2{font:600 52px/1.04 'Space Grotesk',sans-serif;letter-spacing:-.025em;margin:0 0 18px;max-width:1180px;text-wrap:balance}
+h3{font:600 24px/1.2 'Space Grotesk',sans-serif;margin:0 0 8px}
+p{margin:0 0 12px;color:var(--ink2)}
+.lede{font-size:24px;line-height:1.45;color:var(--ink2);max-width:880px}
+.amber{color:var(--gold)}.cyan{color:var(--cyan)}.red{color:#ff8fa1}.green{color:#8ff5bf}
+.src{position:absolute;left:90px;right:420px;bottom:34px;font:12.5px/1.4 Inter,sans-serif;color:var(--muted)}
+.grid{display:grid;gap:22px}
+.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px 26px;backdrop-filter:blur(10px)}
+.card p{font-size:17.5px;margin:0}
+.big{font:700 64px/1 'Space Grotesk',sans-serif;letter-spacing:-.03em;color:var(--gold);white-space:nowrap}
+.mid{font:700 40px/1.05 'Space Grotesk',sans-serif;letter-spacing:-.02em;white-space:nowrap}
+.lab{font:500 14px 'JetBrains Mono',monospace;color:var(--muted);margin-top:6px}
+.pill{display:inline-block;font:500 13px 'JetBrains Mono',monospace;border:1px solid var(--line);border-radius:999px;padding:4px 12px;color:var(--ink2);margin:0 6px 6px 0}
+.pill.hot{border-color:#ffb54788;color:var(--gold);background:#ffb54712}
+ul.tight{margin:0;padding-left:20px;color:var(--ink2);font-size:18px}ul.tight li{margin:5px 0}
+table.tb{width:100%;border-collapse:collapse;font-size:17px}
+table.tb th{font:500 13.5px 'JetBrains Mono',monospace;color:var(--muted);text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+table.tb td{padding:10px;border-bottom:1px solid rgba(255,255,255,.06);color:var(--ink2);vertical-align:top}
+table.tb td.n,table.tb th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+table.tb tr.hl td{color:var(--ink);background:#ffb5470d}
+.dot{display:inline-block;width:15px;height:15px;border-radius:50%;border:2px solid #5b6987;vertical-align:-2px;margin-right:6px}.dot.f{background:var(--green);border-color:var(--green);box-shadow:0 0 10px #3ee08f88}.dot.h{border-color:var(--orange);background:linear-gradient(90deg,var(--orange) 50%,transparent 50%)}.matrix td.c{white-space:nowrap;font-size:15px;color:var(--ink2)}
+/* chrome */
+.hud{position:fixed;left:0;right:0;bottom:0;height:4px;background:rgba(255,255,255,.06);z-index:5}
+.hud i{display:block;height:100%;background:linear-gradient(90deg,var(--amber),var(--cyan));width:0;transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.meta{position:fixed;right:22px;bottom:16px;z-index:6;display:flex;gap:10px;align-items:center;font:500 13px 'JetBrains Mono',monospace;color:var(--muted)}
+.meta button{background:rgba(10,16,32,.8);border:1px solid var(--line);color:var(--ink2);border-radius:10px;width:44px;height:44px;font-size:18px;cursor:pointer}
+.meta button:hover{color:var(--gold);border-color:#ffb54788}
+.meta button:focus-visible{outline:2px solid var(--amber)}
+.brandmark{position:fixed;left:22px;top:18px;z-index:6;display:flex;gap:10px;align-items:center;font:600 15px 'Space Grotesk',sans-serif;color:var(--ink2);opacity:.85}
+.orb{width:18px;height:18px;border-radius:50%;background:radial-gradient(circle,#fff6d8 0 14%,#ffb547 34%,#ff7a1a44 62%,transparent 72%);box-shadow:0 0 16px #ffb54799}
+.notes{position:fixed;left:50%;bottom:60px;transform:translateX(-50%);width:min(980px,92vw);z-index:7;background:rgba(6,10,22,.95);border:1px solid var(--line);border-radius:14px;padding:16px 20px;font-size:16px;color:var(--ink2);display:none;max-height:40vh;overflow:auto}
+.notes.on{display:block}.notes b{color:var(--cyan);font:500 12px 'JetBrains Mono',monospace;display:block;margin-bottom:6px}
+.slide aside{display:none}
+.help{position:fixed;left:22px;bottom:16px;z-index:6;font:12px 'JetBrains Mono',monospace;color:#4d5a78}
+body.overview .stage{transform:none!important}
+.ov{position:fixed;inset:0;z-index:20;background:rgba(2,4,10,.94);display:none;overflow:auto;padding:40px}
+.ov.on{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;align-content:start}
+.ov button{background:var(--card);border:1px solid var(--line);border-radius:12px;color:var(--ink);text-align:left;padding:14px;cursor:pointer;font:15px Inter;min-height:96px}
+.ov button small{display:block;color:var(--cyan);font:12px 'JetBrains Mono',ui-monospace,monospace;margin-bottom:6px}
+.ov button.cur{border-color:var(--amber)}
+/* slide specifics */
+.cover-tag{font:500 18px 'JetBrains Mono',monospace;color:var(--cyan);margin-bottom:26px}
+.cover-sub{font-size:30px;line-height:1.35;color:var(--ink2);max-width:760px;margin-top:28px}
+.cover-sub b{color:var(--ink);font-weight:600}
+.cover-foot{position:absolute;left:90px;bottom:70px;display:flex;gap:34px}
+.cover-foot div{font:500 15px 'JetBrains Mono',monospace;color:var(--muted)}.cover-foot b{display:block;font:600 30px 'Space Grotesk',Inter,system-ui,sans-serif;color:var(--ink);margin-bottom:2px}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;align-items:stretch;margin-top:20px}
+.flow .st{position:relative;padding:22px 24px;border:1px solid var(--line);background:var(--card)}
+.flow .st:first-child{border-radius:18px 0 0 18px}.flow .st:last-child{border-radius:0 18px 18px 0}
+.flow .st h3{font-size:21px}.flow .st p{font-size:16px;margin:0}
+.flow .tag{font:500 12px 'JetBrains Mono',ui-monospace,monospace;display:inline-block;padding:3px 9px;border-radius:999px;margin-bottom:10px}
+.tag.ai{background:#5ce1ff1c;color:var(--cyan)}.tag.hu{background:#ffb5471c;color:var(--gold)}
+.layer{display:grid;grid-template-columns:180px 1fr;gap:20px;align-items:center;padding:18px 22px;border:1px solid var(--line);border-radius:18px;background:var(--card);margin-bottom:12px}
+.layer .k{font:700 26px 'Space Grotesk',Inter,system-ui,sans-serif;color:var(--gold)}.layer .k small{display:block;font:500 13px 'JetBrains Mono',ui-monospace,monospace;color:var(--muted);margin-top:4px}
+.layer p{font-size:17.5px;margin:0}
+.report{background:linear-gradient(170deg,rgba(14,22,44,.92),rgba(6,10,22,.92));border:1px solid var(--line);border-radius:22px;padding:26px 28px;box-shadow:0 30px 80px #000a}
+.rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.rk{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:12px 14px}
+.rk span{display:block;font:500 12.5px 'JetBrains Mono',ui-monospace,monospace;color:var(--muted)}.rk b{font:600 26px 'Space Grotesk',Inter,system-ui,sans-serif;white-space:nowrap}
+.flag{border-left:3px solid var(--red);background:#ff547010;border-radius:8px;padding:9px 12px;font-size:15.5px;margin-top:8px;color:var(--ink2)}
+.flag.m{border-color:var(--orange);background:#ff9a3d10}
+.band{position:relative;height:56px;margin-top:10px}
+.band .t{position:absolute;left:0;right:0;top:24px;height:6px;border-radius:3px;background:rgba(255,255,255,.08)}
+.band .r{position:absolute;top:21px;height:12px;border-radius:6px;background:linear-gradient(90deg,#ffb54733,#ffb547,#ffb54733)}
+.band .m{position:absolute;top:13px;width:3px;height:28px;background:var(--gold);box-shadow:0 0 12px var(--amber)}
+.band .x{position:absolute;top:44px;transform:translateX(-50%);font:500 13px 'JetBrains Mono',ui-monospace,monospace;color:var(--ink2);white-space:nowrap}
+.dial{width:150px;height:150px;position:relative}.dial svg{width:150px;height:150px;transform:rotate(-90deg)}
+.dial .c{position:absolute;inset:0;display:grid;place-items:center;text-align:center}.dial .c b{font:700 56px/1 'Space Grotesk',Inter,system-ui,sans-serif;color:#a6e36b}.dial .c small{display:block;font:500 13px 'JetBrains Mono',ui-monospace,monospace;color:var(--ink2)}
+.stack{display:flex;flex-direction:column;gap:10px}
+.tier{border-radius:18px;padding:18px 22px;border:1px solid var(--line);background:var(--card);display:grid;grid-template-columns:200px 1fr 160px;gap:18px;align-items:center}
+.tier .when{font:500 13px 'JetBrains Mono',ui-monospace,monospace;color:var(--cyan)}
+.tier h3{font-size:22px;margin:0}.tier p{font-size:16px;margin:4px 0 0}
+.tier .ct{font:700 34px 'Space Grotesk',Inter,system-ui,sans-serif;color:var(--gold);text-align:right}.tier .ct small{display:block;font:500 12px 'JetBrains Mono',ui-monospace,monospace;color:var(--muted)}
+.tam{position:relative;height:560px}
+.tam .ring{position:absolute;border-radius:50%;display:grid;place-items:center;text-align:center;border:1px solid}
+.tam .ring b{font:700 36px 'Space Grotesk',Inter,system-ui,sans-serif;display:block}.tam .ring span{font:500 13px 'JetBrains Mono',ui-monospace,monospace;color:var(--ink2)}
+.price{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:6px}
+.price .card{padding:22px}.price .card .mid{color:var(--gold)}.price .card h3{font-size:20px;color:var(--ink)}
+.ruler{position:relative;height:120px;margin-top:22px}
+.ruler .ax{position:absolute;left:0;right:0;top:56px;height:2px;background:linear-gradient(90deg,#5ce1ff55,#ffb54755,#ff547055)}
+.ruler .pt{position:absolute;top:30px;transform:translateX(-50%);text-align:center;font:500 13px 'JetBrains Mono',ui-monospace,monospace;color:var(--ink2);white-space:nowrap}
+.ruler .pt i{display:block;width:12px;height:12px;border-radius:50%;margin:16px auto 8px;background:var(--cyan)}
+.ruler .pt.us i{background:var(--amber);box-shadow:0 0 16px var(--amber);width:18px;height:18px;margin-top:13px}
+.ruler .pt.us{color:var(--gold);font-weight:600}
+.matrix td.c{text-align:center}
+.road{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.road .card{position:relative;overflow:hidden}
+.road .card::after{content:'';position:absolute;left:0;top:0;height:3px;width:100%;background:linear-gradient(90deg,var(--cyan),var(--amber))}
+.road .card h3{font-size:22px}.road .card .when{font:500 13px 'JetBrains Mono',ui-monospace,monospace;color:var(--cyan);margin-bottom:6px}
+.slider{display:grid;grid-template-columns:220px 1fr 90px;gap:14px;align-items:center;font-size:16px;color:var(--ink2);margin:8px 0}
+.slider b{font:600 18px 'Space Grotesk',Inter,system-ui,sans-serif;color:var(--gold);text-align:right}
+input[type=range]{accent-color:var(--amber);width:100%;height:28px}
+.chart{position:relative;height:330px}.chart svg{position:absolute;inset:0;width:100%;height:100%}
+.risk{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.risk .card{padding:18px 22px}.risk .card h3{font-size:19px;margin-bottom:6px}.risk .card p{font-size:15.5px}
+.lvl{font:500 12px 'JetBrains Mono',ui-monospace,monospace;padding:2px 8px;border-radius:999px;margin-left:8px;vertical-align:2px}
+.lvl.h{background:#ff547022;color:#ff9aab}.lvl.m{background:#ff9a3d22;color:#ffc58f}
+.fb td:first-child{color:#cfd8ee;font-style:italic;width:38%}
+.cta{display:flex;gap:14px;margin-top:22px;flex-wrap:wrap}
+.cta a{font:600 17px 'Space Grotesk',Inter,system-ui,sans-serif;color:#1a1000;background:linear-gradient(90deg,#ffb547,#ffd98a);padding:13px 22px;border-radius:12px;text-decoration:none;box-shadow:0 0 30px #ffb54755}
+.cta a.ghost{background:none;color:var(--gold);border:1px solid #ffb54777;box-shadow:none}
+@media (prefers-reduced-motion:reduce){.slide,.slide .rise{transition:none!important}}
+</style>
+</head>
+<body>
+<canvas id="sky" aria-hidden="true"></canvas>
+<div class="vignette"></div>
+<div class="brandmark"><span class="orb"></span>BhoomiPulse</div>
+<div class="viewport"><div class="stage" id="stage">
+
+<!-- 1 COVER -->
+<section class="slide" data-chap="Unveiling" data-cam="cover">
+  <div class="cover-tag rise">COLLATERAL INTELLIGENCE OS · INDIA</div>
+  <h1 class="rise">Bhoomi<span class="amber">Pulse</span></h1>
+  <p class="cover-sub rise d2">Every asset behind every loan, <b>valued, graded and watched from orbit</b>, then piped straight into the lender's credit decision.</p>
+  <div class="cover-foot rise d4">
+    <div><b>10</b>live public data pipes per asset</div>
+    <div><b>~8 s</b>from map pin to credit file</div>
+    <div><b>1 API</b>for lenders and their capital providers</div>
+  </div>
+  <aside>Open on the image: India at night. Those lights are not decoration, they are the data: VIIRS night-time lights tell us where economic activity is, and BhoomiPulse turns that, plus nine other public data sources, into collateral intelligence. Business plan for an AI product that sells to lenders, not to retail.</aside>
+</section>
+
+<!-- 2 PROBLEM -->
+<section class="slide" data-chap="The problem" data-cam="dim">
+  <div class="chap rise">The problem</div>
+  <h2 class="rise">India lends lakhs of crores against land it checks once, by hand, and then never looks at again</h2>
+  <div class="grid g4 rise d2" style="margin-top:34px">
+    <div class="card"><div class="big"><span class="count" data-to="48.4" data-dec="1">0</span><small style="font-size:30px"> L cr</small></div><div class="lab">NBFC credit outstanding, Mar 2025</div><p style="margin-top:10px">About 15% is loans against property and secured MSME, growing 26–27% a year.</p></div>
+    <div class="card"><div class="big">₹1,300<small style="font-size:30px">+</small></div><div class="lab">per-case field valuation fee</div><p style="margin-top:10px">One bank's schedule runs ₹1,300–7,800 per case; visits take days and vary valuer to valuer.</p></div>
+    <div class="card"><div class="big red"><span class="count" data-to="40774">0</span></div><div class="lab">₹ crore advances-related fraud, FY26</div><p style="margin-top:10px">Loan frauds include overvalued collateral; the largest share of fraud by value.</p></div>
+    <div class="card"><div class="big"><span class="count" data-to="31.5" data-dec="1">0</span><small style="font-size:30px">%</small></div><div class="lab">recovered via SARFAESI, FY25</div><p style="margin-top:10px">Of ₹1.03 lakh crore involved. Collateral realises far below its paper value.</p></div>
+  </div>
+  <div class="grid g3 rise d4" style="margin-top:26px">
+    <div><h3 class="amber">Mispriced at origination</h3><p style="font-size:18px">Value is one valuer's opinion on one visit. No range, no liquidity, no recovery view.</p></div>
+    <div><h3 class="amber">Blind after disbursal</h3><p style="font-size:18px">Nobody re-checks the factory, farm or house until EMIs bounce, when recovery is already late.</p></div>
+    <div><h3 class="amber">Opaque to capital providers</h3><p style="font-size:18px">Co-lending banks, pool buyers and investors inherit the originator's valuations on trust.</p></div>
+  </div>
+  <div class="src">Sources: RBI data on NBFC credit (Mar 2025); Crisil Ratings NBFC outlook (Nov 2025); Federal Bank agri-loan service charges; RBI Annual Report 2025-26 (frauds); RBI Report on Trend and Progress of Banking 2024-25 (SARFAESI).</div>
+  <aside>Three failures: price, monitoring, transparency. The numbers: NBFC credit ₹48.4 lakh crore; LAP and secured MSME ~15% of NBFC AUM and the fastest-growing secured segment. Valuation is expensive, slow and inconsistent. Advances-related fraud was ₹40,774 crore in FY26. SARFAESI recovers 31.5% of the amount involved.</aside>
+</section>
+
+<!-- 3 WHY NOW -->
+<section class="slide" data-chap="Why now" data-cam="dim">
+  <div class="chap rise">Why now</div>
+  <h2 class="rise">Four shifts landed in the last 18 months</h2>
+  <div class="grid g2 rise d2" style="margin-top:26px">
+    <div class="card"><h3><span class="cyan">01</span>&nbsp; Prediction became nearly free</h3><p>Sentinel-2 revisits every ~5 days, VIIRS maps lights nightly, GloFAS models every river since 1984; all open. The cost of predicting value, hazard and activity per asset has collapsed to paise.</p></div>
+    <div class="card"><h3><span class="cyan">02</span>&nbsp; Land data became infrastructure</h3><p>ULPIN on <b class="amber">36 crore</b> parcels; banks in <b class="amber">406 districts</b> verify mortgages online; land records are being wired into the Unified Lending Interface; PM GatiShakti opened <b class="amber">230 datasets</b> to the private sector.</p></div>
+    <div class="card"><h3><span class="cyan">03</span>&nbsp; Capital now flows between lenders</h3><p>Co-lending directions cover all regulated entities from 1 Jan 2026; securitisation hit a record <b class="amber">₹2.55 lakh crore</b> in FY26, NBFC-led. Every handover of a loan needs an independent view of its collateral.</p></div>
+    <div class="card"><h3><span class="cyan">04</span>&nbsp; Regulators want auditable AI</h3><p>RBI's FREE-AI framework (Aug 2025: 7 sutras, 26 recommendations) and the DPDP Rules (full compliance by May 2027) reward models that log sources, explain scores and keep humans in charge.</p></div>
+  </div>
+  <div class="src">Sources: Govt of India / DoLR (ULPIN, online mortgage verification, Nov 2025–Apr 2026; ULI integration, Jul 2026); DPIIT/BISAG-N (PM GatiShakti Public, Oct 2025); RBI Co-Lending Arrangements Directions (6 Aug 2025); Crisil Ratings (securitisation FY26); RBI FREE-AI Committee Report (13 Aug 2025); MeitY DPDP Rules (13 Nov 2025).</div>
+  <aside>Why this is a now business and not a 2015 business: free data, digital public infrastructure for land, capital moving across lenders, and a regulator that has written down what responsible AI in credit looks like.</aside>
+</section>
+
+<!-- 4 ECONOMICS -->
+<section class="slide" data-chap="The economics" data-cam="dim">
+  <div class="chap rise">The economics</div>
+  <h2 class="rise">AI makes the prediction cheap. The lender keeps the judgment, and redesigns the workflow around it</h2>
+  <div class="flow rise d2">
+    <div class="st"><span class="tag ai">PREDICTION · AI</span><h3>What is it worth?</h3><p>P10–P50–P90 value, rate per sq ft or acre, declared-value check.</p></div>
+    <div class="st"><span class="tag ai">PREDICTION · AI</span><h3>What will it fetch?</h3><p>Days to sell, forced-sale haircut, realisable value after carrying costs.</p></div>
+    <div class="st"><span class="tag ai">PREDICTION · AI</span><h3>What could go wrong?</h3><p>Flood, heat, drought, access, land-use mismatch, activity drop.</p></div>
+    <div class="st"><span class="tag hu">JUDGMENT · LENDER</span><h3>How much to lend?</h3><p>LTV policy, risk appetite, exceptions, social objectives, final sanction.</p></div>
+  </div>
+  <div class="grid g3 rise d4" style="margin-top:30px">
+    <div class="card"><div class="mid amber">Fast-track</div><p style="margin-top:8px">Clean, liquid, low-hazard assets get a desktop valuation the same day.</p></div>
+    <div class="card"><div class="mid" style="color:#ffc58f">Verify</div><p style="margin-top:8px">One flag: a targeted site visit on exactly that issue, not a generic one.</p></div>
+    <div class="card"><div class="mid red">Refer</div><p style="margin-top:8px">Multiple flags or weak collateral: full field valuation and legal review.</p></div>
+  </div>
+  <p class="rise d5" style="margin-top:24px;font-size:19px">The gain is not a better number in the old process. It is a new process: valuers stop visiting the easy 40–50% of files and spend their time on the hard ones, where human judgment earns its fee.</p>
+  <aside>This is the decision-decomposition view: cheap prediction makes judgment more valuable. Enterprise ROI from AI depends on workflow redesign, so we sell a routing decision (fast-track, verify, refer), not just a score.</aside>
+</section>
+
+<!-- 5 PRODUCT -->
+<section class="slide" data-chap="The product" data-cam="right">
+  <div class="chap rise">The product</div>
+  <h2 class="rise" style="max-width:860px">One engine, three products, one API</h2>
+  <div style="max-width:900px;margin-top:20px">
+    <div class="layer rise d1"><div class="k">Collateral Report<small>at origination</small></div><p>Drop a pin or trace the parcel. In about 8 seconds: grade A–E, value range, realisable value, days to sell, hazards, land-use check, LTV band under the lender's own policy, red flags and a routing decision, with every source logged.</p></div>
+    <div class="layer rise d2"><div class="k">Pulse<small>after disbursal</small></div><p>Monthly re-check of each financed asset from orbit: factory night lights, crop vigour from Sentinel-2, river flood forecasts. Signed webhooks push alerts to collections before EMIs bounce.</p></div>
+    <div class="layer rise d3"><div class="k">Investor Lens<small>between lenders</small></div><p>Upload a data tape; get a book-level collateral certificate: realisable cover, under-covered exposure, district concentration, flood exposure, stress tests for price shocks and monsoon floods.</p></div>
+    <div class="layer rise d4"><div class="k">API + widget<small>everywhere</small></div><p>REST API on the edge or on-prem Docker, per-lender credit policy, Python and JS SDKs, an embeddable card for loan-origination screens, and an audit log for model-risk teams.</p></div>
+  </div>
+  <aside>Show the live Command Center if the Wi-Fi allows: search a location, drop a pin, run the assessment. Otherwise the next slide shows a real output.</aside>
+</section>
+
+<!-- 6 OUTPUT -->
+<section class="slide" data-chap="What the lender sees" data-cam="west">
+  <div class="chap rise">What the lender sees</div>
+  <div class="grid" style="grid-template-columns:1fr 760px;gap:44px;align-items:start">
+    <div>
+      <h2 class="rise">Eight seconds from a map pin to the credit file</h2>
+      <p class="lede rise d1">A 1,050 sq ft flat near Hinjewadi, Pune, with a ₹65 lakh loan request and a ₹1.15 crore declared value.</p>
+      <ul class="tight rise d2" style="margin-top:18px">
+        <li>10 public sources fetched in parallel, each with latency and licence in the lineage table</li>
+        <li>Value anchored on the city's published price level, scaled by a location index from lights, buildings, amenities and roads</li>
+        <li>LTV band solved so that 12-month expected loss stays under the lender's ceiling</li>
+        <li>Plain-language summary written for the credit file</li>
+      </ul>
+      <p class="rise d3" style="font-size:15px;margin-top:20px">Illustrative output from the prototype engine. Values are uncalibrated priors until fitted on a design partner's outcomes.</p>
+    </div>
+    <div class="report rise d2">
+      <div style="display:flex;gap:22px;align-items:center">
+        <div class="dial"><svg viewBox="0 0 150 150"><circle cx="75" cy="75" r="64" stroke="rgba(255,255,255,.08)" stroke-width="11" fill="none"/><circle class="arc" cx="75" cy="75" r="64" stroke="#a6e36b" stroke-width="11" fill="none" stroke-dasharray="402" stroke-dashoffset="402" data-off="96" style="transition:stroke-dashoffset 1.6s cubic-bezier(.2,.8,.2,1) .4s;filter:drop-shadow(0 0 8px #a6e36b)"/></svg><div class="c"><div><b>B</b><small>76/100</small></div></div></div>
+        <div style="flex:1"><div style="font:500 13px 'JetBrains Mono',ui-monospace,monospace;color:var(--cyan)">COLLATERAL REPORT</div><div style="font:600 26px 'Space Grotesk',Inter,system-ui,sans-serif">Residential property</div><div style="color:var(--ink2);font-size:16px">Hinjewadi, Pune, Maharashtra</div>
+        <div style="margin-top:10px;padding:9px 12px;border-radius:10px;background:#ff9a3d14;border:1px solid #ff9a3d55;color:#ffc58f;font-weight:600;font-size:16px">Verify: targeted site visit on the flagged item</div></div>
+      </div>
+      <div class="band"><div class="t"></div><div class="r" style="left:14%;width:56%"></div><div class="m" style="left:40%"></div><span class="x" style="left:14%">₹62.1 L</span><span class="x" style="left:40%;color:var(--gold)">₹75.6 L</span><span class="x" style="left:70%">₹92.0 L</span><span class="x" style="left:90%;color:#ff8fa1;top:0">declared ₹1.15 Cr ◆</span></div>
+      <div class="rgrid">
+        <div class="rk"><span>Realisable</span><b class="amber">₹57.7 L</b></div><div class="rk"><span>Days to sell</span><b>104</b></div><div class="rk"><span>Haircut</span><b>19%</b></div>
+        <div class="rk"><span>Recommended LTV</span><b class="cyan">75%</b></div><div class="rk"><span>Max loan</span><b>₹56.7 L</b></div><div class="rk"><span>Flood · heat</span><b>22 · 31</b></div>
+      </div>
+      <div class="flag">VALUE ABOVE RANGE · declared ₹1.15 Cr is 1.52× the estimate, above the 90th percentile</div>
+      <div class="flag">LTV BREACH · requested 86% exceeds the recommended 75%</div>
+    </div>
+  </div>
+  <aside>Walk the card: grade, routing decision, value range against the declared value, realisable value and days to sell, LTV band, then the two red flags. This is the shape of every API response; the numbers here are illustrative.</aside>
+</section>
+
+<!-- 7 DATA -->
+<section class="slide" data-chap="The data moat" data-cam="dim">
+  <div class="chap rise">The data moat</div>
+  <h2 class="rise">Start 15 steps ahead on public data. Win on proprietary outcomes</h2>
+  <div class="stack rise d2" style="margin-top:20px">
+    <div class="tier"><div class="when">LIVE TODAY · FREE</div><div><h3>Public Earth-observation and map data, fused per asset</h3><p>OpenStreetMap roads, buildings, amenities · Copernicus DEM · GloFAS river discharge since 2003 · ERA5 rain and heat · VIIRS night lights · Sentinel-2 NDVI · ESA WorldCover · annual land use 2017–23 · JRC surface water · India Post</p></div><div class="ct">10<small>live sources</small></div></div>
+    <div class="tier"><div class="when">MONTHS 3–18 · CONSENT / LICENCE</div><div><h3>Government DPI and registries, switched on per lender</h3><p>ULI land records and mutation history · CERSAI prior charges · eCourts litigation · state RERA · jantri / circle rates · PM GatiShakti planned infrastructure · Bhuvan thematic layers · Account Aggregator and GST cash flows</p></div><div class="ct">10<small>connectors built in</small></div></div>
+    <div class="tier" style="border-color:#ffb54766;background:linear-gradient(90deg,rgba(255,181,71,.1),rgba(10,16,32,.72))"><div class="when" style="color:var(--gold)">THE COMPOUNDING ASSET</div><div><h3>Recovery outcomes nobody else has</h3><p>Parsed auction notices (1.22 lakh+ properties listed on the PSB e-auction portal), realised sale prices and days-to-sale from partner lenders, Pulse alerts that preceded defaults, valuer disagreements. Each tenant calibrates its own model; consented, anonymised aggregates build an India collateral recovery index.</p></div><div class="ct">∞<small>flywheel</small></div></div>
+  </div>
+  <div class="src">Sources: PIB / DFS on the BAANKNET e-auction portal (3 Jan 2025); connector list from the BhoomiPulse API registry.</div>
+  <aside>Answer to "everyone is doing this": public data only gets everyone to the starting line, and most competitors stop at one asset type or one source. Our edge is breadth of fusion on day one and recovery labels over time, which only a product embedded in lender workflows can collect.</aside>
+</section>
+
+<!-- 8 PRECISION -->
+<section class="slide" data-chap="Algorithmic precision" data-cam="dim">
+  <div class="chap rise">Algorithmic precision</div>
+  <h2 class="rise">Precision is a protocol, not a claim</h2>
+  <div class="grid g2 rise d2" style="margin-top:18px;gap:34px">
+    <div>
+      <table class="tb">
+        <tr><th>Model</th><th>Method</th><th class="n">Pilot target</th></tr>
+        <tr><td>Valuation range</td><td>Hedonic gradient boosting + split-conformal intervals per district</td><td class="n">MdAPE ≤ 12% metro homes, ≤ 20% farm land; 80% interval covers 78–82%</td></tr>
+        <tr><td>Liquidity</td><td>Survival model on time to sale; haircut on realised vs reserve price</td><td class="n">C-index ≥ 0.70</td></tr>
+        <tr><td>Default uplift</td><td>Collateral features added to the lender's own scorecard</td><td class="n">+5 Gini points out-of-time</td></tr>
+        <tr><td>Pulse alerts</td><td>Change detection on lights, NDVI, river forecast</td><td class="n">≥ 60% of alerts confirmed in the field</td></tr>
+      </table>
+    </div>
+    <div class="stack">
+      <div class="card"><h3>Guard against biased training data</h3><p>Approved loans and auctioned assets are not a random sample. We track a sample of rejected files, weight auction data to the lender's full collateral population, and hold out whole districts and later months.</p></div>
+      <div class="card"><h3>Honest about today</h3><p>The prototype runs live on public data with transparent priors. Calibration on a design partner's files and recoveries is the first milestone, and every response carries its model version.</p></div>
+    </div>
+  </div>
+  <aside>The professor's challenge: how is your algorithm better? Our answer is a measurable protocol with targets, out-of-time and out-of-geography tests, conformal intervals so the range means what it says, and explicit fixes for selection bias in lending data.</aside>
+</section>
+
+<!-- 9 CUSTOMERS -->
+<section class="slide" data-chap="Who pays" data-cam="dim">
+  <div class="chap rise">Who pays</div>
+  <h2 class="rise">We sell to businesses that carry collateral risk on their balance sheet, and to those who fund them</h2>
+  <div class="grid g3 rise d2" style="margin-top:22px">
+    <div class="card"><div class="pill hot">BEACHHEAD</div><h3>Mid-layer NBFCs and HFCs</h3><p>656 middle-layer NBFCs plus HFCs doing small-ticket LAP and secured MSME. Small-ticket LAP is ~₹1 lakh crore at ₹8–9 lakh average ticket, and non-HFC NBFCs cannot use SARFAESI on it, so liquidity of the collateral decides the loss.</p></div>
+    <div class="card"><div class="pill hot">THE PIPE</div><h3>Banks and pool buyers funding them</h3><p>Co-lending banks, PTC and direct-assignment investors, rating analysts. They take on loans someone else originated and need an independent view of the collateral, at book scale.</p></div>
+    <div class="card"><div class="pill">EXPANSION</div><h3>Investors, insurers, agri lenders</h3><p>Equity investors diligencing a lender's book, crop and property insurers, cooperative and rural banks with land-mortgaged farm loans.</p></div>
+  </div>
+  <div class="card rise d4" style="margin-top:22px;display:grid;grid-template-columns:1fr 70px 1fr 70px 1fr;align-items:center;text-align:center;padding:20px">
+    <div><h3 class="amber">Originating NBFC</h3><p>uses Report + Pulse</p></div><div class="cyan" style="font-size:34px">⇄</div>
+    <div><h3 class="cyan">BhoomiPulse</h3><p>same evidence, both sides</p></div><div class="cyan" style="font-size:34px">⇄</div>
+    <div><h3 class="amber">Co-lender / pool buyer</h3><p>uses Investor Lens</p></div>
+  </div>
+  <p class="rise d5" style="margin-top:14px;font-size:17px">Not for: retail borrowers, brokers or tiny lenders. They cannot pay for or act on portfolio-grade risk data.</p>
+  <div class="src">Sources: RBI (656 NBFC-ML, Mar 2025); ICRA, Business loan and small-ticket LAP focus report (Aug 2024).</div>
+  <aside>The pipe between two businesses: once a co-lending bank reads our certificate, it asks its originating partners to use the same evidence. That is our distribution loop.</aside>
+</section>
+
+<!-- 10 MARKET -->
+<section class="slide" data-chap="Market size" data-cam="dim">
+  <div class="chap rise">Market size</div>
+  <div class="grid" style="grid-template-columns:1fr 640px;gap:40px">
+    <div>
+      <h2 class="rise">A ₹900 crore a year market inside a ₹2,500 crore valuation spend</h2>
+      <table class="tb rise d2" style="margin-top:16px">
+        <tr><th>Bottom-up, India core</th><th class="n">Volume</th><th class="n">Price</th><th class="n">₹ cr / yr</th></tr>
+        <tr><td>Collateral files originated</td><td class="n">~10 M</td><td class="n">₹350</td><td class="n">350</td></tr>
+        <tr><td>Secured loans monitored (Pulse)</td><td class="n">~35 M</td><td class="n">₹120 / yr</td><td class="n">420</td></tr>
+        <tr><td>Co-lending and securitisation diligence</td><td class="n">₹2.55 L cr pools</td><td class="n">~2 bps</td><td class="n">50</td></tr>
+        <tr><td>Platform and on-prem licences</td><td class="n">~400 lenders</td><td class="n">₹20 L</td><td class="n">80</td></tr>
+        <tr class="hl"><td><b>TAM</b></td><td></td><td></td><td class="n"><b>≈ 900</b></td></tr>
+      </table>
+      <p class="rise d3" style="font-size:15.5px;margin-top:12px">File and loan counts are our estimates across housing, LAP, secured MSME and land-mortgaged farm loans at banks and NBFCs. The value pool assumes ~₹2,500 per file spent on valuation and technical checks today.</p>
+    </div>
+    <div class="tam rise d2">
+      <div class="ring" style="width:560px;height:560px;left:40px;top:0;border-color:#5ce1ff44;background:radial-gradient(circle,rgba(92,225,255,.04),transparent 70%)"><div style="position:absolute;top:44px;width:100%"><b class="cyan">₹900 cr</b><span>TAM · India core</span></div></div>
+      <div class="ring" style="width:360px;height:360px;left:140px;top:170px;border-color:#ffb54766;background:radial-gradient(circle,rgba(255,181,71,.06),transparent 70%)"><div style="position:absolute;top:44px;width:100%"><b class="amber">₹320 cr</b><span>SAM · NBFCs, HFCs, co-lenders</span></div></div>
+      <div class="ring" style="width:170px;height:170px;left:235px;top:330px;border-color:#ffd98a;background:rgba(255,181,71,.16);box-shadow:0 0 40px #ffb54744"><div><b style="color:#fff">₹35 cr</b><span>SOM · year 3</span></div></div>
+    </div>
+  </div>
+  <div class="src">Sources: Crisil Ratings (securitisation ₹2.55 lakh crore, FY26); RBI (NBFC credit); BhoomiPulse estimates for volumes and prices (see financial model).</div>
+  <aside>SAM is small-ticket secured lending by NBFCs and HFCs plus their co-lending banks: roughly 3.5 million files and 12 million monitored loans. Year-3 revenue of ₹35 crore is about 11% of SAM.</aside>
+</section>
+
+<!-- 11 PRICING -->
+<section class="slide" data-chap="Pricing" data-cam="dim">
+  <div class="chap rise">Pricing</div>
+  <h2 class="rise">Priced like a data call, valued like a field visit</h2>
+  <div class="price rise d2">
+    <div class="card"><h3>Collateral Report</h3><div class="mid">₹380</div><div class="lab">per asset · ₹340 above 50k/yr · ₹310 above 200k/yr</div></div>
+    <div class="card"><h3>Pulse</h3><div class="mid">₹11</div><div class="lab">per asset per month · ₹9 above 1M assets</div></div>
+    <div class="card"><h3>Investor Lens</h3><div class="mid">₹8–15 L</div><div class="lab">per client-year · or ₹2 L per one-off book audit</div></div>
+    <div class="card"><h3>Platform</h3><div class="mid">₹4–8 L</div><div class="lab">per lender-year · on-prem +₹15 L</div></div>
+  </div>
+  <div class="ruler rise d3">
+    <div class="ax"></div>
+    <div class="pt" style="left:6%">₹200<i></i>CERSAI search</div>
+    <div class="pt" style="left:14%">₹250<i></i>bureau report</div>
+    <div class="pt us" style="left:30%">₹310–380<i></i>BhoomiPulse report</div>
+    <div class="pt" style="left:58%">₹1,300–2,500<i></i>small-ticket valuation</div>
+    <div class="pt" style="left:86%">₹3,000+<i></i>larger valuations</div>
+  </div>
+  <div class="grid g3 rise d4" style="margin-top:20px">
+    <div><h3>Value-based, not cost-plus</h3><p style="font-size:17px">We capture roughly a sixth of the field-visit cost each fast-tracked file avoids.</p></div>
+    <div><h3>One public rate card</h3><p style="font-size:17px">Volume tiers only. No lender-specific personalised prices, which keeps trust and avoids becoming a pricing hub.</p></div>
+    <div><h3>Free 90-day design partnership</h3><p style="font-size:17px">In exchange for outcome data to calibrate, under a data-processing agreement.</p></div>
+  </div>
+  <div class="src">Sources: urban cooperative bank schedule of charges (CIBIL ₹250, CERSAI ₹200 per file); Federal Bank agri-loan service charges; Can Fin Homes schedule (1/8%, max ₹2,500); SBI valuer fee annexure (0.02%, min ₹3,000).</div>
+  <aside>Anchor: we sit between a bureau pull and a field valuation. Rate card is transparent with volume tiers only; we deliberately avoid personalised pricing.</aside>
+</section>
+
+<!-- 12 UNIT ECONOMICS -->
+<section class="slide" data-chap="Unit economics" data-cam="dim">
+  <div class="chap rise">Unit economics</div>
+  <h2 class="rise">Each report costs about ₹40 to make. Each customer saves about four rupees for every one it pays</h2>
+  <div class="grid g2 rise d2" style="margin-top:16px;gap:34px">
+    <div>
+      <h3 class="cyan">Per Collateral Report</h3>
+      <table class="tb"><tr><th>Item</th><th class="n">₹</th></tr>
+        <tr><td>Compute, caching, public-API infrastructure</td><td class="n">6</td></tr>
+        <tr><td>Premium imagery on ~10% of files</td><td class="n">15</td></tr>
+        <tr><td>Human QA on a 2% sample</td><td class="n">10</td></tr>
+        <tr><td>LLM summary, storage, support</td><td class="n">9</td></tr>
+        <tr class="hl"><td><b>COGS per report</b> · price ₹310–380</td><td class="n"><b>≈ 40</b></td></tr></table>
+      <div class="grid g3" style="margin-top:16px;gap:12px">
+        <div class="card" style="padding:14px"><div class="mid amber">~88%</div><div class="lab">contribution / report</div></div>
+        <div class="card" style="padding:14px"><div class="mid">~9 mo</div><div class="lab">CAC payback</div></div>
+        <div class="card" style="padding:14px"><div class="mid">&gt;10×</div><div class="lab">LTV : CAC</div></div>
+      </div>
+    </div>
+    <div>
+      <h3 class="cyan">Customer ROI · mid-layer NBFC, 20,000 LAP files a year</h3>
+      <table class="tb">
+        <tr><td>Field visits avoided: 45% of files × ₹2,500</td><td class="n green">+₹2.25 cr</td></tr>
+        <tr><td>Overvaluation caught: 0.3% of files, ₹12 L tickets, 25% loss avoided</td><td class="n green">+₹1.8 cr</td></tr>
+        <tr><td>Earlier collections: 5% lower credit cost on a ₹3,000 cr monitored book at 1%</td><td class="n green">+₹1.5 cr</td></tr>
+        <tr><td>BhoomiPulse: reports + 60k assets on Pulse + platform</td><td class="n red">−₹1.4 cr</td></tr>
+        <tr class="hl"><td><b>Net benefit</b> · same-day decisions on fast-tracked files not counted</td><td class="n"><b>≈ 4×</b></td></tr></table>
+      <p style="font-size:15px;margin-top:10px">Illustrative assumptions; the design-partner pilot measures each line.</p>
+    </div>
+  </div>
+  <aside>COGS is dominated by optional premium imagery and human QA, both of which fall with scale. CAC around ₹33 lakh per logo with a 6–9 month enterprise cycle; first-year ACV about ₹58 lakh, expanding to about ₹1.25 crore by year 3.</aside>
+</section>
+
+<!-- 13 COMPETITION -->
+<section class="slide" data-chap="Competition" data-cam="dim">
+  <div class="chap rise">Competition</div>
+  <h2 class="rise">"Everyone is doing this already." Everyone is doing a piece of it</h2>
+  <table class="tb matrix rise d2" style="margin-top:12px">
+    <tr><th>Who</th><th>Example</th><th class="c">Land + home + factory</th><th class="c">Realisable value & liquidity</th><th class="c">Post-disbursal monitoring</th><th class="c">Serves capital providers</th><th class="c">Lender-policy API</th></tr>
+    <tr><td>Panel valuers</td><td>Empanelled engineers</td><td class="c"><i class="dot h"></i></td><td class="c"><i class="dot h"></i></td><td class="c"><i class="dot"></i></td><td class="c"><i class="dot"></i></td><td class="c"><i class="dot"></i></td></tr>
+    <tr><td>Agri Earth-observation</td><td>SatSure (bank-backed)</td><td class="c"><i class="dot h"></i>farms</td><td class="c"><i class="dot"></i></td><td class="c"><i class="dot f"></i></td><td class="c"><i class="dot h"></i></td><td class="c"><i class="dot f"></i></td></tr>
+    <tr><td>Bureaus and alt-data</td><td>Bureaus, data aggregators</td><td class="c"><i class="dot"></i></td><td class="c"><i class="dot"></i></td><td class="c"><i class="dot h"></i></td><td class="c"><i class="dot f"></i></td><td class="c"><i class="dot f"></i></td></tr>
+    <tr><td>Property portals' data arms</td><td>Listing-price analytics</td><td class="c"><i class="dot h"></i>urban homes</td><td class="c"><i class="dot"></i></td><td class="c"><i class="dot"></i></td><td class="c"><i class="dot h"></i></td><td class="c"><i class="dot h"></i></td></tr>
+    <tr><td>Global property AI</td><td>Moody's + CAPE Analytics</td><td class="c"><i class="dot h"></i>not India</td><td class="c"><i class="dot h"></i></td><td class="c"><i class="dot f"></i></td><td class="c"><i class="dot f"></i></td><td class="c"><i class="dot f"></i></td></tr>
+    <tr class="hl"><td><b>BhoomiPulse</b></td><td>Collateral recovery intelligence</td><td class="c"><i class="dot f"></i></td><td class="c"><i class="dot f"></i></td><td class="c"><i class="dot f"></i></td><td class="c"><i class="dot f"></i></td><td class="c"><i class="dot f"></i></td></tr>
+  </table>
+  <p class="rise d3" style="font-size:14px;margin:8px 0 0"><i class="dot f"></i>yes &nbsp; <i class="dot h"></i>partly &nbsp; <i class="dot"></i>no</p>
+  <div class="grid g3 rise d4" style="margin-top:14px">
+    <div><h3 class="amber">The category is real</h3><p style="font-size:17px">India's three largest private banks invested in an agri EO firm; Moody's bought a geospatial property-AI firm in Jan 2025.</p></div>
+    <div><h3 class="amber">Our wedge</h3><p style="font-size:17px">Nobody prices recovery: what the asset fetches, how fast, after a default, across land, homes and factories.</p></div>
+    <div><h3 class="amber">Partner, not fight</h3><p style="font-size:17px">Agri EO and bureau players are channels: our recovery layer complements their origination data.</p></div>
+  </div>
+  <div class="src">Sources: SatSure press and company profile (ICICI Bank, HDFC, Kotak as investors; Perfios partnership, Aug 2025); Moody's press release (13 Jan 2025). Ratings are our assessment of public product descriptions.</div>
+  <aside>Directly address the "everyone is doing this" objection: map the field, show the gap (realisable value + monitoring + capital-provider view in one API), and turn adjacent players into channels.</aside>
+</section>
+
+<!-- 14 GTM -->
+<section class="slide" data-chap="Go to market" data-cam="beach">
+  <div class="chap rise">Go to market</div>
+  <h2 class="rise" style="max-width:800px">Land in Gujarat and Maharashtra. Expand through the pipe</h2>
+  <div style="max-width:820px;margin-top:22px" class="stack">
+    <div class="tier rise d1" style="grid-template-columns:150px 1fr"><div class="when">Q1–Q2 2027</div><div><h3>Three design partners, one product line each</h3><p>Mid-layer NBFCs and HFCs in LAP and secured MSME around Ahmedabad, Surat, Pune and Nashik: digitised land records, dense industrial estates, our network.</p></div></div>
+    <div class="tier rise d2" style="grid-template-columns:150px 1fr"><div class="when">Land</div><div><h3>Pulse on the existing book first</h3><p>A data-tape upload, no system integration: it surfaces risk the lender already carries and wins the CRO in weeks. Origination API follows.</p></div></div>
+    <div class="tier rise d3" style="grid-template-columns:150px 1fr"><div class="when">Expand</div><div><h3>Through capital providers</h3><p>Every co-lending bank or pool buyer on Investor Lens asks its originators for the same evidence. Two-sided pull.</p></div></div>
+    <div class="tier rise d4" style="grid-template-columns:150px 1fr"><div class="when">Channels</div><div><h3>LOS vendors, co-lending platforms, data aggregators</h3><p>Embed the widget and API where credit officers already work; revenue share of 10–15%.</p></div></div>
+  </div>
+  <aside>The map frames the beachhead: Gujarat and Maharashtra. Sales motion: founder-led for the first 10 logos, then two enterprise account executives and a solutions engineer.</aside>
+</section>
+
+<!-- 15 PILOT -->
+<section class="slide" data-chap="Proof" data-cam="dim">
+  <div class="chap rise">Proof</div>
+  <h2 class="rise">A 90-day pilot designed to prove cause, not correlation</h2>
+  <div class="grid g3 rise d2" style="margin-top:20px">
+    <div class="card"><div class="lab" style="margin:0 0 6px">WEEKS 0–4 · BACK-TEST</div><h3>Out-of-time, out-of-district</h3><p>24 months of closed files: our value vs the valuer's and vs later sale or auction price; default uplift on loans originated after the training window; a reject sample to correct selection bias.</p></div>
+    <div class="card"><div class="lab" style="margin:0 0 6px">WEEKS 5–12 · RANDOMISED</div><h3>Branches randomised to AI triage</h3><p>Treatment branches route files fast-track / verify / refer; control branches keep today's process. A random 10% of fast-tracked files still get a full valuation to measure error safely.</p></div>
+    <div class="card"><div class="lab" style="margin:0 0 6px">ALSO · THRESHOLD DESIGN</div><h3>Compare just above and below the cut-off</h3><p>Files just either side of the fast-track score cut-off are near-identical, so differences in outcomes isolate the effect of the routing itself.</p></div>
+  </div>
+  <table class="tb rise d4" style="margin-top:22px">
+    <tr><th>Go / no-go metric</th><th class="n">Target</th><th>Go / no-go metric</th><th class="n">Target</th></tr>
+    <tr><td>Median valuation error vs valuer</td><td class="n">≤ 15%</td><td>Turnaround on fast-tracked files</td><td class="n">−60%</td></tr>
+    <tr><td>Files fast-tracked</td><td class="n">≥ 40%</td><td>Cost per file</td><td class="n">−35%</td></tr>
+    <tr><td>6-month 30+ DPD, treatment vs control</td><td class="n">non-inferior (±0.5 pp)</td><td>Pulse alerts confirmed in the field</td><td class="n">≥ 60%</td></tr>
+  </table>
+  <aside>A before-and-after comparison would confuse our effect with seasonality and policy changes. Cluster randomisation by branch plus a threshold design around the score cut-off gives a causal estimate the lender's risk committee can trust.</aside>
+</section>
+
+<!-- 16 RESPONSIBLE -->
+<section class="slide" data-chap="Responsible by design" data-cam="dim">
+  <div class="chap rise">Responsible by design</div>
+  <h2 class="rise">Built to pass the model-risk committee</h2>
+  <div class="grid g3 rise d2" style="margin-top:22px">
+    <div class="card"><h3 class="cyan">Scores describe land, not people</h3><p>No caste, religion, gender or community variable, enforced by test. Activity and hazard measure the place. Outcomes are monitored by region and asset type.</p></div>
+    <div class="card"><h3 class="cyan">Humans decide</h3><p>AI predicts and routes; credit officers sanction. Every response carries sources, latency, model version and a plain-language rationale; the audit log answers "why this LTV?".</p></div>
+    <div class="card"><h3 class="cyan">FREE-AI ready</h3><p>Model cards, versioning, drift monitoring and an audit trail map to RBI's FREE-AI recommendations; outsourcing clauses and incident reporting come standard.</p></div>
+    <div class="card"><h3 class="cyan">DPDP by architecture</h3><p>Public-data scoring needs no personal data. Land records and cash flows come only through consent (ULI, Account Aggregator). On-prem deployment keeps data in the lender's network.</p></div>
+    <div class="card"><h3 class="cyan">No common pricing hub</h3><p>One vendor scoring many lenders could align their behaviour. Each tenant gets its own policy and calibration; we never recommend interest rates or share one lender's signals with another.</p></div>
+    <div class="card"><h3 class="cyan">Augment the valuer</h3><p>Valuers become exception handlers on flagged files. Junior officers and new branches gain most from a consistent second opinion.</p></div>
+  </div>
+  <div class="src">Sources: RBI FREE-AI Committee Report (Aug 2025); MeitY DPDP Rules 2025; RBI Co-Lending Arrangements Directions 2025.</div>
+  <aside>Covers fairness, accountability, regulation, competition policy and labour. The common-hub point matters: if every lender runs the same model, their decisions correlate. Tenant-specific calibration and no rate recommendations keep competition intact.</aside>
+</section>
+
+<!-- 17 FINANCIALS -->
+<section class="slide" data-chap="Financial plan" data-cam="dim">
+  <div class="chap rise">Financial plan</div>
+  <div class="grid" style="grid-template-columns:1fr 600px;gap:40px">
+    <div>
+      <h2 class="rise" style="font-size:46px">₹<span id="fRev3">35</span> crore revenue and <span id="fMargin3">26</span>% EBITDA margin in year 3</h2>
+      <div class="chart rise d1" id="finChart"></div>
+      <div class="rise d2" style="font-size:14px;color:var(--muted);margin-top:4px">Bars: revenue by product (report, Pulse, Investor Lens, platform). Line: EBITDA. ₹ crore, calendar years.</div>
+    </div>
+    <div class="rise d2">
+      <table class="tb" id="finTable"></table>
+      <div style="margin-top:16px">
+        <div class="slider"><span>Paying lenders, end of yr 3</span><input type="range" id="fL" min="15" max="60" step="1" value="36"><b id="fLv">36</b></div>
+        <div class="slider"><span>Report price, yr 1</span><input type="range" id="fP" min="250" max="500" step="10" value="380"><b id="fPv">₹380</b></div>
+        <div class="slider"><span>Pulse price / asset-month</span><input type="range" id="fQ" min="6" max="15" step="0.5" value="11"><b id="fQv">₹11</b></div>
+      </div>
+      <p style="font-size:14.5px;margin-top:8px">Base case: 5 → 16 → 36 paying lenders; 10k → 22k reports and 12k → 45k monitored assets per lender; headcount 14 → 34 → 60 at ₹24–28 L loaded cost.</p>
+    </div>
+  </div>
+  <aside>Drag the sliders live: the model recomputes revenue, gross margin and EBITDA. Base case breaks even during year 3; cumulative burn to break-even is under ₹4 crore before working capital, which the seed round covers with room to spare.</aside>
+</section>
+
+<!-- 18 EXECUTION -->
+<section class="slide" data-chap="Execution" data-cam="dim">
+  <div class="chap rise">Execution</div>
+  <h2 class="rise">Raising a ₹12 crore seed to reach ₹11 crore revenue and an A-round from strength</h2>
+  <div class="road rise d2" style="margin-top:20px">
+    <div class="card"><div class="when">0–6 MONTHS</div><h3>Prove</h3><ul class="tight"><li>3 design partners signed; DPAs in place</li><li>Back-test and randomised pilot live</li><li>Auction-notice archive and jantri parsers for Gujarat and Maharashtra</li><li>ISO 27001 readiness</li></ul></div>
+    <div class="card"><div class="when">6–18 MONTHS</div><h3>Convert</h3><ul class="tight"><li>Pilot results published to partners; 5 paying lenders, then 16</li><li>ULI, CERSAI and eCourts connectors under licence</li><li>Investor Lens with 2 co-lending banks</li><li>On-prem release for banks</li></ul></div>
+    <div class="card"><div class="when">18–36 MONTHS</div><h3>Scale</h3><ul class="tight"><li>36 lenders, 1M+ assets on Pulse</li><li>India collateral recovery index as a data product</li><li>Insurers and rural banks</li><li>Series A (₹60–80 cr) to accelerate, not to survive</li></ul></div>
+  </div>
+  <div class="grid g2 rise d4" style="margin-top:22px;gap:30px">
+    <div><h3>Use of the ₹12 crore seed</h3>
+      <div style="display:flex;height:34px;border-radius:10px;overflow:hidden;margin-top:10px;font:600 13px 'JetBrains Mono',ui-monospace,monospace;color:#06101f">
+        <div style="width:45%;background:#ffb547;display:grid;place-items:center">Product + data science 45%</div><div style="width:25%;background:#5ce1ff;display:grid;place-items:center">GTM 25%</div><div style="width:15%;background:#a6e36b;display:grid;place-items:center">Data 15%</div><div style="width:15%;background:#a98bff;display:grid;place-items:center">Security 15%</div></div>
+      <p style="font-size:16px;margin-top:10px">Runway past break-even in the base case; buffer for 75-day receivables from lenders.</p></div>
+    <div><h3>Team we are building</h3><p style="font-size:17px">Founders from IIM Ahmedabad on business, credit and product; first hires: an Earth-observation ML lead, a credit-risk modeller from an NBFC, a platform engineer, an enterprise seller with NBFC relationships. Advisors: a registered valuer and a former bank CRO.</p></div>
+  </div>
+  <aside>The ask: design partners in the room, and introductions to NBFC CROs. Milestones are tied to evidence, not vanity metrics.</aside>
+</section>
+
+<!-- 19 RISKS -->
+<section class="slide" data-chap="Risks" data-cam="dim">
+  <div class="chap rise">Risks</div>
+  <h2 class="rise">What could kill this, and what we do about it</h2>
+  <div class="risk rise d2" style="margin-top:18px">
+    <div class="card"><h3>Valuations not accurate enough<span class="lvl h">high</span></h3><p>Calibrate per district on partner outcomes; ship ranges, not points; route uncertain files to humans. Kill criterion: MdAPE above 20% after calibration.</p></div>
+    <div class="card"><h3>Long enterprise sales cycles<span class="lvl h">high</span></h3><p>Land with a data-tape Pulse audit that needs no integration; free 90-day pilot; sell through LOS and co-lending platforms.</p></div>
+    <div class="card"><h3>Regulators or valuers push back<span class="lvl m">medium</span></h3><p>Position as triage and a second opinion; statutory valuations stay with registered valuers; full audit trail.</p></div>
+    <div class="card"><h3>Public data access changes<span class="lvl m">medium</span></h3><p>Every connector is swappable and cached; self-hosted map stacks; paid imagery as fallback; multiple sources per signal.</p></div>
+    <div class="card"><h3>Incumbents copy the features<span class="lvl m">medium</span></h3><p>Features copy, outcome data does not. Recovery labels and workflow embedding compound with every tenant.</p></div>
+    <div class="card"><h3>Data protection breach<span class="lvl m">medium</span></h3><p>No personal data needed for scoring; consent-only connectors; on-prem option; ISO 27001 and SOC 2 roadmap.</p></div>
+  </div>
+  <aside>Be explicit about the kill criterion for the core model. That builds credibility with a lender's risk committee and with investors.</aside>
+</section>
+
+<!-- 20 CLOSE -->
+<section class="slide" data-chap="Built on your feedback" data-cam="cover2">
+  <div class="chap rise">Built on your feedback</div>
+  <h2 class="rise" style="max-width:900px">What we changed after our first pitch</h2>
+  <table class="tb fb rise d2" style="max-width:930px;margin-top:10px">
+    <tr><td>"Can't sell to retailers or tiny businesses"</td><td>B2B only: NBFCs, HFCs, banks, pool buyers, investors</td></tr>
+    <tr><td>"More precise information on collateral values"</td><td>P10–P90 range, realisable value, days to sell, LTV band</td></tr>
+    <tr><td>"How do you have better algo / data source?"</td><td>10 live sources fused per asset; precision protocol with targets</td></tr>
+    <tr><td>"Banks who care · investors · assess quality"</td><td>Investor Lens: book certificate with stress tests</td></tr>
+    <tr><td>"Pipe between 2 businesses"</td><td>Same evidence for originator and capital provider</td></tr>
+    <tr><td>"Everyone is doing this already"</td><td>They do pieces; nobody prices recovery across asset types</td></tr>
+    <tr><td>"15 steps ahead on public data, then proprietary"</td><td>Public fabric live today; recovery outcomes as the moat</td></tr>
+  </table>
+  <div class="cta rise d4"><a href="https://silverintegral13.github.io/geospatial-intel/" target="_blank" rel="noopener">Open the live Command Center</a><a class="ghost" href="https://github.com/silverintegral13/geospatial-intel" target="_blank" rel="noopener">API and code on GitHub</a></div>
+  <aside>Close by showing that each piece of feedback became a product decision. Then the live demo: search Sanand, pin the GIDC unit, run the report, open Investor Lens on the sample book.</aside>
+</section>
+
+</div></div>
+
+<div class="hud"><i id="prog"></i></div>
+<div class="help">← → navigate · O overview · N notes · F fullscreen</div>
+<div class="meta"><span id="chapLbl"></span><span id="ctr">1 / 20</span><button id="prevB" aria-label="Previous slide">←</button><button id="nextB" aria-label="Next slide">→</button></div>
+<div class="notes" id="notes"><b>SPEAKER NOTES</b><div id="notesT"></div></div>
+<div class="ov" id="ov"></div>
+
+<script>
+{
+const GEO = {"outline":"M405,903L414,887L418,874L421,855L419,847L418,839L414,829L416,810L413,805L411,793L414,783L421,769L431,765L437,771L448,761L450,753L459,748L466,749L486,740L487,730L485,725L499,712L513,705L527,689L543,680L553,670L566,651L573,643L584,634L596,628L618,621L623,613L632,607L632,600L641,593L634,580L638,571L644,565L655,562L666,558L677,550L679,556L695,548L707,550L707,541L700,510L704,506L697,501L697,496L691,491L691,482L697,478L696,469L676,459L673,453L677,447L687,441L687,435L702,436L698,424L690,424L685,417L677,414L675,409L678,401L689,393L707,398L716,406L721,407L729,401L733,409L733,425L731,429L741,434L766,436L779,435L790,436L806,436L817,441L820,446L813,451L810,460L801,465L797,470L780,478L776,486L781,504L785,504L790,514L797,509L795,502L803,495L801,488L812,487L816,504L816,515L820,522L822,537L833,549L837,541L843,539L839,519L840,511L847,512L850,488L847,476L851,478L861,477L874,483L877,471L884,457L890,451L893,437L888,435L891,426L895,425L903,416L906,403L904,391L909,383L916,382L926,375L935,365L945,361L961,359L969,367L972,366L964,355L964,350L975,339L980,339L979,328L970,323L960,323L948,316L954,310L951,302L939,299L942,292L937,284L927,288L915,300L897,294L890,288L876,298L874,302L864,311L847,314L843,325L829,330L828,336L822,342L813,344L810,341L799,346L792,341L789,351L792,354L804,355L804,368L807,375L800,374L794,378L782,379L774,378L760,379L751,375L744,379L733,382L717,376L709,378L697,366L702,360L698,355L701,340L697,333L691,333L679,342L674,354L673,364L672,367L678,379L676,387L650,394L640,388L631,391L617,385L608,383L602,387L594,376L585,380L580,376L562,370L561,359L550,357L545,353L536,359L529,355L513,355L500,354L499,346L490,347L478,339L472,341L455,331L450,323L440,319L428,312L422,314L412,306L415,297L420,290L418,285L423,279L423,273L444,256L417,244L418,239L405,231L397,232L388,225L380,214L373,220L368,212L372,208L368,203L370,195L360,185L357,176L369,171L371,179L381,181L388,174L392,176L398,168L390,160L392,150L380,149L375,144L374,137L380,135L374,125L382,121L390,123L396,116L396,106L402,101L412,98L416,82L421,72L410,59L406,61L391,57L382,59L366,58L353,63L341,72L323,71L326,66L315,60L309,61L302,55L305,51L281,36L270,32L260,19L254,16L243,21L236,15L227,18L210,27L203,29L187,28L180,37L167,44L165,56L170,59L185,59L185,63L193,68L201,68L206,72L206,80L217,85L212,94L204,97L201,103L195,104L194,110L200,128L201,139L199,146L201,155L225,168L233,168L236,177L247,178L257,183L254,191L233,198L231,206L234,213L231,217L231,229L209,252L212,258L207,263L193,267L190,280L178,300L161,308L154,322L145,332L144,337L137,340L122,342L112,346L107,346L104,339L94,336L86,343L83,351L69,365L66,380L78,386L88,387L88,398L85,409L91,417L104,418L104,428L111,437L113,444L118,453L114,456L114,464L109,470L101,469L101,463L86,467L83,471L73,471L69,467L52,468L45,470L41,478L28,478L23,482L20,491L27,495L38,507L56,518L72,519L86,513L92,505L106,506L97,518L94,516L88,527L77,532L61,537L50,533L48,539L58,552L72,564L90,585L108,594L120,592L130,588L151,576L158,561L153,555L160,537L166,542L164,550L168,552L167,573L175,591L176,602L174,606L172,614L169,621L174,658L177,673L181,681L179,685L184,698L188,712L192,739L190,741L197,762L203,770L208,780L212,794L216,799L222,807L233,836L236,854L242,875L252,901L263,912L273,933L276,945L283,961L287,977L290,993L297,1011L315,1033L322,1039L330,1040L337,1038L349,1025L350,1012L358,1004L379,997L374,992L376,983L385,971L386,964L390,961L406,962L405,943L405,938L405,931L402,917L404,907L405,903ZM865,1082L867,1078L863,1070L858,1072L861,1083L865,1082ZM828,901L824,899L821,912L828,916L828,901ZM831,888L835,883L833,871L827,872L826,890L831,888ZM833,847L830,855L833,864L837,864L833,847Z","inner":"M404,907L405,903M405,943L401,940L405,938M419,664L408,638L377,635L358,625L330,679M330,679L268,722L243,727L217,773M217,773L203,770M172,614L179,611M187,615L211,593L209,554L218,550M179,611L182,615L187,615M218,550L258,569L308,562L328,570L384,559L431,572M431,572L426,642L419,664M891,426L851,430M851,430L874,391L908,370M908,370L909,383M330,251L391,305L412,306M536,359L552,383L543,403L562,414L520,435L525,459M525,459L519,474M519,474L502,479M502,479L489,453L453,436L437,444L416,428L382,438L377,463L353,461L358,437L381,394L351,377M351,377L335,376L321,343M321,343L323,318M318,306L315,282L331,252M323,318L318,306M331,252L330,251M315,1033L317,960L293,913M293,913L333,903L331,878L352,875M352,875L391,854L419,847M431,572L446,533L467,524L482,502L468,484L502,479M519,474L539,493L541,529M541,529L515,578L487,589L476,617L484,657L460,680L456,696M456,696L446,697M446,697L419,664M174,606L176,602M187,615L179,611M118,453L150,452L183,470L201,496L224,511M224,511L218,550M323,318L306,316L318,306M697,366L673,364M810,460L813,469M813,469L812,487M733,382L729,401M655,562L630,540M630,540L632,528L601,503L654,478L669,457L663,433M663,433L676,387M541,529L606,530L630,540M566,651L551,662L528,651L507,677L456,696M663,433L641,456L596,455L577,464L525,459M357,176L335,160L304,150M304,150L259,114L254,96L217,85M351,377L296,413L314,455L309,469L283,471L267,453L237,461L244,490L224,511M212,258L230,267M230,267L233,288L257,291L264,314L308,347L321,343M446,697L429,720L384,752L348,766L328,763M328,763L325,742L330,679M352,875L362,856L324,819L304,810L314,763L328,763M813,469L836,463M836,463L847,476M908,370L933,361L922,337L875,354L858,372L807,375M733,425L753,406L781,413L797,402L818,417L817,441M851,430L836,463M293,913L242,875M216,799L217,773M330,251L341,225L373,220M306,238L306,241M306,241L304,242L302,238L306,238M331,252L304,233M304,233L286,219L273,176M273,176L304,150M273,176L257,183M304,233L306,238M306,241L280,274L230,267","pts":[176,652,71,319,313,70,331,867,67,684,528,67,419,863,66,167,512,66,359,711,66,208,671,65,175,577,65,421,390,65,272,374,64,181,653,64,440,377,64,380,578,63,273,523,63,578,421,62,325,504,62,274,233,62,334,1017,62,345,365,62,187,538,61,311,314,61,268,285,61,206,619,61,207,668,61,185,646,61,179,647,61,335,301,61,493,646,61,322,321,61,326,312,61,183,647,61,108,538,61,509,431,61,242,208,60,470,426,60,515,701,60,327,972,60,408,507,60,683,528,60,257,623,60,208,671,60,276,701,60,240,121,60,305,239,60,310,937,60,181,397,60,348,975,60,795,400,60,350,399,59,431,742,59,300,891,59,314,310,59,584,501,59,250,783,59,315,306,59,265,218,59,310,1026,59,349,914,59,367,944,59,273,436,59,601,609,59,347,340,59,391,323,59,370,306,59,182,644,58,463,575,58,520,380,58,457,576,58,613,520,58,176,646,58,287,975,58,336,586,58,232,730,58,603,602,58,191,335,58,396,690,57,153,556,57,322,649,57,569,540,57,425,750,57,345,254,57,175,644,57,649,494,57,234,391,57,185,647,57,221,736,57,686,382,57,179,592,57,318,313,57,639,489,57,84,531,57,329,266,57,306,713,57,685,517,57,242,168,57,345,766,57,271,506,57,392,661,57,684,519,56,679,530,56,271,928,56,231,599,56,276,814,56,264,583,56,311,594,56,230,766,56,574,449,56,204,457,56,498,536,56,605,485,56,241,869,56,363,426,56,349,1016,56,409,815,56,323,933,56,298,1012,56,684,524,56,237,651,56,239,587,56,638,433,56,292,540,55,335,284,55,297,676,55,358,708,55,415,863,55,309,791,55,587,402,55,684,524,55,334,354,55,292,253,55,387,621,55,234,430,55,286,954,55,567,643,55,407,340,55,265,833,55,319,313,55,298,304,55,315,854,55,357,366,55,348,666,55,634,487,55,468,725,55,667,504,55,688,523,55,683,525,55,270,295,55,378,307,55,329,318,55,322,315,55,483,726,55,310,287,55,304,645,55,603,401,55,299,351,55,480,545,55,228,736,54,269,731,54,827,487,54,275,624,54,363,713,54,280,514,54,684,525,54,515,700,54,437,457,54,378,379,54,452,577,54,686,516,54,391,844,54,312,301,54,413,862,54,420,861,54,368,483,54,527,409,54,591,435,54,337,310,54,244,258,54,396,357,54,331,807,54,687,540,54,247,501,54,393,663,54,209,268,54,328,364,54,381,674,54,404,904,54,683,521,54,323,753,54,359,707,54,311,276,54,563,422,53,867,449,53,698,542,53,494,437,53,650,536,53,621,484,53,382,945,53,186,647,53,326,1037,53,191,415,53,321,261,53,452,459,53,362,707,53,328,693,53,780,483,53,622,429,53,286,573,53,176,524,53,565,414,53,344,959,53,307,241,53,250,350,53,340,322,53,655,414,53,291,786,53,312,320,53,363,315,53,170,505,53,423,483,53,314,312,53,447,754,53,658,423,53,283,308,53,685,552,53,450,398,53,350,267,53,498,470,53,97,565,53,228,347,53,446,735,53,272,582,53,290,554,53,462,351,53,247,282,53,684,518,53,680,474,53,136,522,53,522,685,53,362,804,52,381,869,52,685,516,52,289,990,52,360,304,52,414,869,52,267,185,52,370,387,52,317,226,52,411,778,52,266,781,52,178,586,52,601,626,52,676,546,52,415,716,52,676,420,52,677,442,52,498,415,52,436,409,52,86,510,52,360,779,52,238,855,52,321,309,52,432,351,52,333,427,52,269,836,52,320,773,52,94,587,52,540,567,52,267,780,52,426,387,52,381,335,52,289,289,52,687,524,52,642,488,52,717,377,52,402,910,52,392,407,52,276,211,52,415,867,52,224,280,52,400,872,52,417,866,52,322,455,52,309,311,52,180,559,52,650,533,52,480,379,52,575,419,52,829,448,52,421,425,52,344,389,52,272,401,52,444,580,52,354,707,52,174,638,52,362,709,52,686,504,52,684,521,52,335,925,52,305,252,52,688,498,52,626,411,52,253,201,52,460,741,52,698,434,52,292,272,51,435,338,51,586,478,51,338,494,51,394,293,51,694,518,51,390,938,51,69,561,51,292,823,51,306,266,51,380,894,51,179,529,51,686,514,51,344,734,51,860,410,51,353,868,51,375,546,51,308,883,51,642,505,51,581,418,51,474,367,51,71,504,51,328,837,51,799,422,51,300,945,51,200,521,51,241,386,51,644,491,51,403,314,51,224,403,51,220,260,51,251,236,51,547,445,51,534,389,51,282,866,51,685,523,51,349,605,51,686,515,51,184,655,51,684,522,51,371,814,51,557,378,51,346,350,51,358,453,51,349,861,51,248,475,51,416,567,51,330,992,51,681,370,51,302,241,51,162,471,51,686,526,51,414,357,51,618,501,51,899,354,51,322,331,51,386,723,51,683,519,51,199,524,51,271,855,51,521,552,51,323,790,51,302,390,51,319,318,51,553,399,51,392,483,51,362,630,51,538,679,51,363,711,51,102,557,51,109,519,51,152,483,51,286,240,51,137,542,51,683,523,51,514,404,51,331,863,51,442,745,51,683,520,51,499,379,51,637,566,51,335,816,51,275,246,51,364,593,51,259,331,51,213,701,51,370,320,51,571,384,50,612,490,50,371,959,50,299,329,50,828,914,50,397,720,50,699,511,50,396,445,50,693,518,50,328,574,50,684,498,50,269,681,50,478,398,50,368,874,50,335,522,50,290,406,50,361,847,50,685,514,50,460,731,50,696,388,50,234,446,50,296,780,50,340,327,50,276,945,50,264,252,50,189,649,50,236,121,50,341,270,50,544,368,50,339,876,50,245,325,50,260,497,50,376,293,50,527,421,50,611,427,50,340,382,50,207,782,50,233,232,50,108,549,50,395,545,50,321,259,50,395,729,50,315,676,50,623,431,50,221,570,50,336,526,50,207,782,50,271,222,50,180,649,50,122,562,50,364,367,50,365,343,50,314,506,50,267,809,50,374,661,50,623,582,50,267,426,50,301,922,50,512,432,50,322,285,50,372,599,50,393,904,50,248,582,50,269,754,50,262,911,50,411,752,50,204,364,50,592,446,50,573,434,50,246,603,50,540,422,50,553,451,50,660,433,50,257,701,50,313,381,50,266,554,50,296,659,50,671,403,50,378,363,50,297,594,50,405,945,50,415,757,50,373,868,50,237,370,50,228,494,50,320,297,50,321,876,50,688,513,50,345,799,50,258,216,50,153,468,50,388,624,50,872,418,50,341,552,50,369,970,50,576,459,50,524,594,50,359,418,50,310,961,50,340,1002,50,365,878,50,398,578,50,184,674,50,230,248,50,610,436,50,128,416,50,328,308,50,913,354,50,454,502,50,283,933,50,406,432,50,664,556,49,274,257,49,312,949,49,334,276,49,314,1029,49,497,387,49,296,438,49,461,594,49,341,924,49,421,767,49,620,487,49,313,580,49,298,248,49,212,786,49,229,320,49,399,933,49,384,576,49,627,608,49,364,989,49,280,683,49,347,990,49,606,425,49,349,287,49,508,700,49,356,279,49,222,519,49,591,490,49,410,799,49,244,336,49,675,461,49,256,527,49,277,297,49,350,827,49,97,558,49,369,829,49,168,537,49,356,651,49,327,768,49,494,659,49,240,245,49,250,162,49,318,287,49,416,555,49,259,266,49,251,133,49,404,940,49,541,553,49,538,555,49,430,705,49,449,374,49,399,863,49,720,395,49,329,856,49,494,428,49,676,490,49,614,445,49,272,813,49,391,659,49,323,1005,49,543,476,49,238,241,49,481,356,49,224,116,49,671,453,49,342,297,49,347,939,49,125,571,49,227,610,49,407,369,49,229,258,49,359,285,49,265,916,49,476,651,49,591,462,49,678,531,49,683,523,49,190,725,49,316,629,49,323,972,49,208,670,49,130,513,49,433,704,49,405,826,49,180,561,49,372,451,49,332,990,49,338,992,49,333,311,49,291,664,49,475,409,49,341,666,49,250,743,49,312,389,49,125,572,49,408,349,49,353,296,49,240,754,49,334,320,49,343,987,49,290,375,49,178,597,49,515,509,49,173,630,49,329,946,49,346,852,49,395,329,49,330,622,49,609,394,49,371,676,49,177,606,49,355,678,49,662,489,49,691,507,49,214,251,49,272,931,48,330,316,48,394,390,48,425,764,48,253,898,48,258,900,48,399,893,48,242,571,48,342,483,48,876,380,48,303,768,48,528,572,48,316,615,48,166,488,48,432,704,48,90,573,48,249,891,48,403,326,48,465,734,48,462,736,48,155,413,48,269,527,48,314,969,48,309,904,48,388,957,48,112,374,48,656,401,48,315,536,48,220,634,48,250,490,48,285,600,48,309,926,48,83,509,48,393,652,48,318,879,48,233,333,48,351,883,48,354,261,48,706,382,48,600,529,48,393,655,48,329,957,48,282,334,48,349,897,48,261,282,48,554,662,48,310,694,48,409,877,48,256,575,48,207,778,48,322,1009,48,316,733,48,690,428,48,372,995,48,261,237,48,722,390,48,229,623,48,756,390,48,285,588,48,328,602,48,336,291,48,335,457,48,657,481,48,284,252,48,372,686,48,514,622,48,192,662,48,217,802,48,295,1001,48,372,814,48,650,510,48,386,770,48,317,643,48,393,309,48,281,950,48,318,462,48,555,390,48,744,424,48,209,440,48,330,716,48,289,970,48,210,289,48,392,949,48,229,114,48,386,878,48,258,906,48,737,406,48,325,1002,48,302,419,48,509,470,48,593,596,48,237,267,48,890,372,48,281,936,48,396,421,48,255,742,48,241,809,48,388,919,48,401,758,48,294,857,48,369,333,48,284,783,48,291,242,48,355,411,48,321,982,48,665,517,48,179,492,48,226,348,48,226,746,48,177,534,48,368,660,48,351,283,48,334,351,48,259,803,48,626,403,48,617,471,48,623,411,48,307,806,48,872,363,48,276,275,48,320,273,48,296,987,48,428,745,48,466,745,48,347,703,48,409,725,48,241,873,48,86,579,48,425,333,48,190,496,48,830,384,48,398,945,48,364,916,48,400,923,48,244,214,48,320,952,48,194,663,48,229,564,48,255,341,48,312,1022,48,235,455,48,158,502,48,308,840,48,335,851,48,184,579,48,639,532,48,599,412,48,326,921,48,354,310,48,348,322,48,363,289,48,616,485,48,467,742,48,376,617,48,679,383,48,298,994,48,428,758,48,850,412,48,590,386,48,393,366,48,401,337,48,282,762,48,586,544,48,338,909,48,241,366,48,395,910,48,116,590,48,428,758,48,315,896,48,302,591,48,91,557,48,377,336,48,681,527,48,195,542,48,332,384,47,508,463,47,302,296,47,597,613,47,350,929,47,338,752,47,142,565,47,196,351,47,439,346,47,283,279,47,678,397,47,219,715,47,388,402,47,815,447,47,604,428,47,351,471,47,347,747,47,481,723,47,322,578,47,162,522,47,276,940,47,673,479,47,663,525,47,160,484,47,249,559,47,339,991,47,160,480,47,274,252,47,471,463,47,877,403,47,684,505,47,232,684,47,407,788,47,272,261,47,361,712,47,415,746,47,299,833,47,300,820,47,665,471,47,575,430,47,438,732,47,288,498,47,253,875,47,246,884,47,482,378,47,518,404,47,227,690,47,427,369,47,247,825,47,563,497,47,208,621,47,310,720,47,520,669,47,287,606,47,382,407,47,828,517,47,484,721,47,476,740,47,493,712,47,146,558,47,330,670,47,586,545,47,442,354,47,326,343,47,296,231,47,233,786,47,522,662,47,388,870,47,284,456,47,174,531,47,388,589,47,474,557,47,683,420,47,237,396,47,339,916,47,359,391,47,575,422,47,197,706,47,296,992,47,381,287,47,267,608,47,391,743,47,352,364,47,294,937,47,291,945,47,758,400,47,325,882,47,628,468,47,633,409,47,288,315,47,546,422,47,479,580,47,352,306,47,173,460,47,301,898,47,515,671,47,373,707,47,382,326,47,622,424,47,361,290,47,332,295,47,232,357,47,168,430,47,259,313,47,597,425,47,698,522,47,304,742,47,613,521,47,290,962,47,340,853,47,171,620,47,350,921,47,363,853,47,473,730,47,414,865,47,771,395,47,670,537,47,528,441,47,263,181,47,291,216,47,357,289,47,247,342,47,407,861,47,213,333,47,569,372,47,308,773,47,687,536,47,61,519,47,286,649,47,353,567,47,113,526,47,858,466,47,648,468,47,202,664,47,288,891,47,417,280,47,382,699,47,354,335,47,383,515,47,357,861,47,255,748,47,320,984,47,243,547,47,83,552,47,309,1007,47,540,375,47,601,485,47,241,767,47,302,498,47,231,733,47,570,470,47,257,595,47,353,706,47,416,452,47,160,367,47,229,617,47,601,437,47,337,315,47,364,293,47,331,701,47,681,375,47,340,273,47,303,655,47,238,294,47,375,345,47,459,341,47,429,432,47,605,425,47,343,650,47,232,572,47,231,715,47,480,722,47,446,361,47,667,455,47,290,984,47,406,834,47,196,530,47,300,239,47,439,701,47,254,256,47,265,904,47,290,984,47,334,474,47,232,673,47,544,662,47,677,531,47,302,512,47,353,765,47,511,379,47,636,482,47,621,489,47,204,483,47,422,527,47,648,396,47,278,803,47,856,368,47,559,511,47,211,615,47,523,693,47,375,301,47,183,512,47,869,455,46,352,399,46,675,507,46,399,910,46,577,589,46,353,688,46,401,403,46,324,340,46,509,433,46,287,855,46,465,728,46,300,315,46,276,583,46,357,801,46,122,547,46,620,601,46,697,517,46,420,704,46,214,384,46,464,716,46,451,750,46,646,448,46,285,346,46,362,562,46,552,365,46,322,355,46,320,289,46,341,713,46,302,1017,46,416,866,46,662,479,46,401,570,46,368,869,46,607,432,46,688,369,46,476,731,46,437,760,46,293,638,46,156,442,46,350,867,46,360,978,46,347,977,46,288,946,46,549,435,46,202,409,46,594,612,46,371,291,46,121,528,46,301,633,46,321,305,46,304,595,46,720,402,46,392,287,46,362,631,46,357,347,46,369,859,46,618,589,46,694,537,46,435,353,46,250,610,46,248,735,46,309,480,46,363,574,46,352,584,46,319,303,46,598,434,46,141,528,46,203,400,46,542,544,46,313,761,46,584,424,46,174,546,46,371,974,46,335,615,46,377,611,46,316,698,46,370,515,46,267,327,46,496,547,46,643,428,46,338,864,46,554,441,46,413,496,46,413,729,46,499,661,46,705,386,46,297,613,46,583,431,46,384,380,46,337,501,46,363,882,46,537,565,46,174,507,46,535,472,46,594,524,46,352,382,46,376,911,46,415,401,46,455,740,46,467,724,46,315,233,46,324,593,46,309,665,46,401,367,46,329,968,46,207,775,46,703,527,46,678,541,46,250,769,46,237,621,46,622,527,46,717,380,46,438,716,46,415,318,46,837,436,46,387,998,46,506,365,46,397,860,46,329,510,46,386,305,46,372,294,46,351,722,46,334,921,46,175,604,46,340,782,46,294,589,46,681,471,46,267,913,46,369,541,46,207,444,46,307,259,46,235,258,46,285,706,46,289,977,46,324,978,46,526,403,46,538,675,46,298,266,46,358,295,46,297,705,46,328,734,46,301,1015,46,637,446,46,557,526,46,428,738,46,228,272,46,619,450,46,354,355,46,175,446,46,318,688,46,429,321,46,581,585,46,179,525,46,275,926,46,588,441,46,460,574,46,304,998,46,419,733,46,263,912,46,193,580,46,313,888,46,70,541,46,410,842,46,273,463,46,280,954,46,420,768,46,649,396,46,410,704,46,435,468,46,353,329,46,510,453,46,251,408,46,273,841,46,414,418,46,356,383,46,257,797,46,239,476,46,745,398,46,291,870,46,235,285,46,293,645,46,252,297,46,247,870,46,299,970,46,331,118,46,583,380,46,417,375,46,259,637,46,560,393,46,343,703,46,302,1018,46,241,220,46,348,308,46,562,414,46,250,588,46,358,951,46,482,734,46,234,640,46,265,444,46,831,407,46,493,391,46,438,747,46,216,285,46,276,288,46,334,877,46,298,781,46,549,602,46,305,1019,46,395,878,46,183,540,46,504,437,46,281,542,46,321,375,46,348,1023,46,579,383,46,346,356,46,429,405,46,48,540,46,294,493,46,322,586,46,277,455,46,134,564,46,383,340,46,377,966,46,312,292,46,409,813,46,281,689,46,345,571,46,360,434,46,435,577,46,227,727,46,199,630,45,135,483,45,327,290,45,200,508,45,349,780,45,197,553,45,769,389,45,567,458,45,334,633,45,595,441,45,355,593,45,450,548,45,573,453,45,261,791,45,364,764,45,321,719,45,276,394,45,652,485,45,399,346,45,160,513,45,328,964,45,232,745,45,377,316,45,233,724,45,105,591,45,394,304,45,312,648,45,620,487,45,689,538,45,129,582,45,345,326,45,198,393,45,565,380,45,420,859,45,191,657,45,229,751,45,591,426,45,279,488,45,303,685,45,220,598,45,625,598,45,291,966,45,868,389,45,239,854,45,430,743,45,242,249,45,311,282,45,285,964,45,295,681,45,415,408,45,232,521,45,398,317,45,213,624,45,183,663,45,277,719,45,257,903,45,886,395,45,319,919,45,450,365,45,272,759,45,355,971,45,307,329,45,663,495,45,286,728,45,495,701,45,564,650,45,365,322,45,896,397,45,255,583,45,352,816,45,389,668,45,270,887,45,527,406,45,320,348,45,325,280,45,320,798,45,355,492,45,399,768,45,304,984,45,259,770,45,453,377,45,181,609,45,314,327,45,187,294,45,648,393,45,258,821,45,277,357,45,312,866,45,179,567,45,533,420,45,628,489,45,284,458,45,401,929,45,277,385,45,415,865,45,223,325,45,210,691,45,612,610,45,113,566,45,279,847,45,809,464,45,375,400,45,269,578,45,388,352,45,494,548,45,657,552,45,639,416,45,184,523,45,396,832,45,622,530,45,249,747,45,272,345,45,292,567,45,522,356,45,177,529,45,349,452,45,437,692,45,172,519,45,328,845,45,399,279,45,261,225,45,177,529,45,419,860,45,339,658,45,405,959,45,389,930,45,310,236,45,299,695,45,309,237,45,375,325,45,364,932,45,321,827,45,326,1018,45,526,427,45,219,716,45,229,627,45,234,109,45,747,392,45,321,937,45,283,748,45,579,411,45,536,412,45,581,437,45,381,621,45,342,995,45,630,579,45,255,498,45,475,506,45,231,832,45,355,476,45,303,948,45,338,856,45,617,485,45,397,884,45,289,387,45,306,736,45,388,764,45,666,397,45,612,482,45,500,396,45,583,510,45,330,937,45,246,231,45,616,397,45,252,709,45,313,937,45,310,929,45,383,863,45,282,225,45,733,423,45,382,824,45,325,398,45,822,453,45,555,425,45,428,380,45,225,660,45,226,291,45,348,371,45,286,633,45,395,851,45,412,872,45,257,586,45,482,518,45,528,391,45,301,286,45,397,473,45,288,970,45,278,740,45,373,929,45,692,360,45,342,866,45,337,974,45,140,481,45,246,864,45,350,375,45,295,644,45,311,723,45,289,437,45,527,366,45,673,517,45,370,1000,45,868,460,45,270,645,45,416,349,45,418,868,45,164,513,45,635,565,45,265,355,45,261,346,45,389,869,45,447,751,45,273,931,45,69,537,45,359,939,45,339,338,45,314,721,45,305,620,45,147,535,45,333,368,45,710,382,45,432,743,45,289,941,45,348,551,45,315,488,45,149,571,45,261,910,45,383,362,45,348,1026,45,214,677,45,272,633,45,252,362,45,222,244,45,629,574,45,296,755,45,278,770,45,406,884,45,437,494,45,374,736,45,261,541,45,371,314,45,298,973,45,303,1002,45,374,570,45,195,282,45,399,335,45,281,916,45,237,653,45,289,988,45,169,498,45,886,408,45,699,387,45,355,743,45,182,476,45,247,312,45,533,668,45,116,572,45,330,332,45,315,812,45,574,416,45,243,420,45,298,973,45,352,303,45,286,960,45,323,608,45,310,940,45,368,324,45,380,932,45,296,1008,45,86,566,45,367,369,45,140,451,45,297,793,45,506,696,45,325,1009,45,376,476,45,554,430,45,379,300,45,277,361,45,389,627,45,307,922,45,607,415,45,264,913,45,324,863,45,369,340,45,324,665,45,391,862,45,134,549,45,258,397,45,328,1013,45,409,767,45,383,314,45,236,844,45,284,418,45,680,462,45,489,360,45,513,609,45,384,903,45,653,502,45,327,532,45,268,763,45,276,928,45,297,999,45,254,262,45,287,874,45,353,302,45,295,977,45,309,205,45,236,668,45,682,510,45,216,132,45,266,323,44,375,782,44,313,881,44,318,843,44,382,485,44,205,711,44,227,816,44,243,357,44,587,448,44,329,312,44,389,960,44,289,744,44,570,419,44,566,534,44,362,808,44,349,446,44,329,1025,44,530,674,44,379,516,44,296,582,44,223,146,44,374,375,44,366,287,44,262,807,44,379,490,44,347,254,44,465,546,44,249,540,44,464,633,44,360,251,44,482,631,44,321,245,44,680,529,44,360,984,44,625,438,44,681,480,44,357,485,44,179,601,44,343,290,44,180,609,44,245,271,44,684,526,44,212,653,44,537,565,44,319,868,44,370,312,44,301,908,44,411,365,44,394,378,44,294,968,44,326,490,44,609,526,44,361,274,44,640,391,44,299,363,44,657,412,44,859,368,44,250,175,44,515,697,44,358,939,44,646,411,44,183,437,44,189,679,44,384,307,44,370,560,44,262,214,44,375,371,44,540,399,44,280,618,44,194,687,44,383,354,44,280,575,44,410,503,44,250,804,44,294,969,44,265,276,44,370,260,44,498,405,44,96,528,44,357,904,44,235,410,44,333,637,44,225,752,44,225,537,44,247,743,44,791,391,44,338,395,44,436,339,44,374,331,44,220,564,44,381,884,44,95,541,44,326,272,44,562,448,44,349,426,44,121,512,44,541,459,44,316,936,44,238,541,44,504,706,44,303,477,44,569,408,44,253,796,44,266,242,44,74,559,44,209,647,44,459,609,44,351,632,44,396,855,44,196,527,44,527,679,44,394,843,44,667,467,44,224,812,44,215,667,44,89,512,44,288,340,44,440,760,44,351,854,44,779,424,44,347,249,44,260,781,44,284,326,44,461,397,44,413,334,44,306,454,44,408,447,44,195,435,44,266,224,44,178,659,44,912,334,44,471,454,44,307,777,44,327,1019,44,466,367,44,512,372,44,567,421,44,223,740,44,307,890,44,303,967,44,264,268,44,250,893,44,246,859,44,304,1019,44,308,211,44,352,784,44,299,282,44,276,795,44,353,323,44,326,279,44,842,416,44,199,577,44,391,352,44,342,305,44,489,418,44,481,560,44,335,858,44,383,420,44,265,358,44,347,1023,44,290,983,44,509,441,44,468,709,44,472,677,44,394,781,44,299,997,44,517,433,44,185,521,44,408,361,44,308,143,44,317,963,44,826,469,44,236,738,44,171,456,44,583,388,44,459,417,44,378,499,44,272,868,44,460,558,44,313,308,44,310,932,44,365,298,44,402,428,44,804,391,44,168,485,44,421,381,44,410,428,44,170,522,44,416,854,44,275,197,44,332,1030,44,135,463,44,736,404,44,288,838,44,549,668,44,381,850,44,418,856,44,271,920,44,347,696,44,249,131,44,337,832,44,390,335,44,332,396,44,357,339,44,274,578,44,214,537,44,686,542,44,348,708,44,365,296,44,332,973,44,403,343,44,924,361,44,633,479,44,320,930,44,266,917,44,402,880,44,172,493,44,299,852,44,295,878,44,248,547,44,325,464,44,542,675,44,400,303,44,235,608,44,285,769,44,543,405,44,521,405,44,289,976,44,373,758,44,603,471,44,330,957,44,246,630,44,290,969,44,229,335,44,345,295,44,252,648,44,647,433,44,313,940,44,251,460,44,93,502,44,338,839,44,286,802,44,399,616,44,301,887,44,370,891,44,381,295,44,295,430,44,351,523,44,639,410,44,553,412,44,387,319,44,411,557,44,343,913,44,114,594,44,660,430,44,466,409,44,290,969,44,206,674,44,148,459,44,467,737,44,879,383,44,313,265,44,315,356,44,279,237,44,295,237,44,912,358,44,677,529,44,318,363,44,401,387,44,236,854,44,278,845,44,232,426,44,387,310,44,277,432,44,398,591,44,640,399,44,201,365,44,309,527,44,388,569,44,207,764,44,675,544,44,249,241,44,418,869,44,261,190,44,266,598,44,786,494,44,552,440,44,647,555,44,387,364,44,394,947,44,182,449,44,257,776,44,262,350,44,209,663,44,264,486,44,305,329,44,260,686,44,383,628,44,320,1037,44,321,268,44,267,471,44,612,539,44,337,608,44,263,626,44,261,909,44,396,918,44,291,799,44,373,673,44,516,423,44,478,423,44,290,980,44,614,509,44,252,375,44,252,675,44,292,981,44,629,494,44,636,441,44,565,637,44,322,979,44,280,501,44,274,936,44,266,196,44,127,558,44,241,282,44,322,630,44,351,363,44,340,676,44,835,531,44,381,775,44,712,395,44,336,967,44,309,370,44,248,327,44,262,406,44,546,517,44,270,771,44,305,231,44,272,229,44,364,541,44,254,376,44,404,399,44,365,313,44,305,374,44,353,979,44,298,366,44,217,786,44,489,352,44,369,416,44,343,969,44,357,329,44,558,403,44,413,533,43,483,727,43,893,350,43,449,593,43,535,651,43,495,421,43,435,390,43,372,343,43,437,361,43,865,456,43,629,495,43,391,360,43,248,849,43,231,741,43,411,862,43,803,466,43,455,477,43,353,921,43,201,629,43,161,419,43,353,556,43,473,346,43,354,370,43,324,360,43,352,964,43,268,258,43,656,522,43,669,448,43,307,338,43,588,439,43,275,788,43,212,372,43,332,250,43,296,619,43,349,591,43,199,337,43,309,603,43,429,457,43,920,351,43,339,967,43,384,962,43,238,784,43,601,418,43,195,271,43,374,412,43,323,284,43,248,435,43,393,958,43,507,547,43,274,860,43,391,893,43,103,492,43,283,175,43,265,542,43,266,544,43,548,411,43,280,951,43,239,702,43,211,399,43,481,538,43,232,736,43,210,666,43,348,283,43,375,870,43,489,547,43,83,530,43,370,401,43,309,305,43,258,415,43,444,500,43,819,382,43,328,346,43,386,641,43,186,600,43,306,583,43,565,564,43,563,633,43,573,642,43,280,377,43,678,528,43,51,532,43,337,366,43,506,602,43,258,201,43,145,374,43,293,760,43,177,588,43,693,501,43,359,327,43,380,318,43,371,942,43,545,456,43,405,936,43,246,443,43,819,390,43,233,752,43,75,551,43,815,398,43,345,256,43,355,614,43,328,649,43,326,996,43,557,486,43,450,741,43,168,481,43,176,667,43,316,308,43,267,201,43,922,357,43,398,921,43,560,621,43,318,1032,43,257,196,43,568,630,43,271,148,43,329,1040,43,336,365,43,525,397,43,611,386,43,601,588,43,547,407,43,285,233,43,325,708,43,331,917,43,213,401,43,727,395,43,360,900,43,612,486,43,340,1031,43,276,830,43,352,289,43,255,420,43,391,843,43,234,836,43,340,947,43,304,924,43,831,502,43,331,828,43,370,257,43,322,1035,43,527,577,43,310,343,43,208,516,43,546,398,43,304,724,43,401,499,43,473,417,43,712,388,43,493,530,43,373,915,43,446,336,43,338,373,43,283,504,43,290,718,43,316,248,43,347,463,43,243,128,43,312,926,43,790,475,43,246,371,43,327,354,43,337,352,43,177,650,43,315,929,43,361,631,43,331,281,43,533,366,43,275,578,43,391,278,43,355,875,43,280,455,43,288,445,43,315,196,43,393,314,43,297,1002,43,408,895,43,270,325,43,667,440,43,319,282,43,210,523,43,238,200,43,328,1018,43,297,463,43,902,370,43,281,428,43,347,891,43,221,607,43,513,594,43,337,297,43,353,715,43,289,187,43,357,375,43,393,455,43,339,289,43,593,507,43,394,311,43,90,553,43,691,506,43,436,741,43,77,533,43,171,529,43,680,520,43,250,550,43,587,391,43,590,487,43,374,575,43,288,302,43,280,256,43,379,328,43,286,575,43,337,883,43,236,797,43,425,348,43,412,377,43,310,328,43,752,397,43,366,397,43,265,255,43,296,206,43,241,738,43,346,274,43,445,515,43,190,435,43,367,709,43,279,223,43,317,293,43,593,461,43,238,753,43,314,936,43,289,228,43,344,590,43,489,426,43,569,444,43,282,661,43,451,667,43,301,884,43,650,518,43,281,758,43,325,999,43,345,1028,43,322,617,43,313,370,43,125,554,43,342,301,43,208,684,43,398,431,43,640,389,43,144,488,43,344,933,43,259,882,43,552,589,43,263,786,43,214,781,43,330,288,43,363,345,43,400,567,43,196,758,43,346,330,43,210,659,43,408,393,43,379,433,43,345,920,43,254,512,43,336,575,43,538,589,43,904,381,43,176,548,43,825,377,43,306,244,43,325,275,43,228,342,43,354,290,43,673,515,43,190,574,43,144,552,43,285,236,43,808,388,43,292,241,43,387,619,43,416,860,43,339,294,43,268,673,43,307,542,43,260,461,43,201,276,43,912,364,43,895,330,43,294,255,43,508,572,43,228,821,43,107,571,43,383,481,43,678,530,43,187,520,43,436,376,43,418,864,43,659,519,43,373,407,43,317,371,43,320,524,43,512,548,43,304,324,43,324,730,43,332,259,43,607,617,43,460,505,43,589,491,43,353,341,43,309,953,43,465,509,43,606,500,43,244,199,43,389,842,43,267,210,43,435,757,43,782,491,43,515,612,43,672,542,43,310,855,43,560,656,43,680,526,43,368,319,43,290,977,43,229,828,43,264,760,43,167,413,43,403,820,43,349,961,43,482,429,43,246,404,43,471,544,43,506,406,43,575,392,43,403,497,43,411,788,43,132,559,42,264,154,42,388,432,42,292,307,42,294,697,42,348,414,42,385,923,42,222,434,42,254,787,42,406,513,42,460,366,42,288,213,42,532,360,42,214,405,42,219,729,42,297,274,42,257,248,42,360,295,42,794,400,42,474,577,42,210,423,42,579,627,42,193,645,42,331,927,42,207,369,42,205,776,42,459,429,42,211,431,42,272,775,42,238,743,42,682,382,42,399,374,42,309,271,42,369,880,42,770,392,42,302,246,42,418,750,42,236,464,42,177,585,42,173,502,42,180,431,42,254,276,42,440,580,42,288,696,42,220,704,42,239,863,42,408,867,42,577,613,42,537,402,42,230,773,42,272,336,42,332,434,42,96,572,42,208,779,42,359,239,42,244,524,42,862,460,42,626,396,42,270,459,42,175,575,42,120,569,42,411,872,42,680,527,42,253,379,42,269,215,42,325,681,42,480,376,42,512,380,42,379,442,42,247,797,42,189,640,42,341,419,42,219,460,42,455,423,42,264,518,42,237,781,42,413,298,42,241,456,42,81,561,42,442,466,42,506,624,42,440,756,42,386,940,42,610,622,42,178,519,42,337,933,42,303,873,42,267,823,42,672,527,42,188,576,42,303,545,42,785,504,42,298,311,42,550,430,42,192,343,42,584,497,42,259,815,42,360,596,42,392,385,42,358,327,42,594,600,42,433,374,42,472,427,42,413,852,42,265,787,42,464,443,42,862,406,42,590,542,42,215,473,42,591,605,42,385,441,42,685,526,42,635,514,42,283,222,42,378,982,42,274,415,42,298,476,42,459,422,42,382,867,42,332,561,42,416,868,42,244,235,42,313,464,42,470,716,42,510,584,42,537,365,42,252,222,42,628,459,42,210,782,42,283,293,42,239,116,42,331,931,42,645,490,42,266,748,42,247,136,42,180,590,42,379,805,42,916,354,42,398,362,42,364,389,42,342,523,42,231,389,42,428,545,42,297,369,42,309,952,42,322,924,42,213,789,42,282,890,42,387,316,42,191,653,42,226,240,42,577,614,42,788,398,42,272,895,42,263,263,42,313,269,42,676,392,42,807,380,42,172,525,42,407,389,42,347,957,42,303,524,42,220,756,42,525,377,42,554,421,42,277,464,42,264,501,42,327,286,42,285,284,42,376,397,42,592,586,42,281,875,42,760,395,42,91,523,42,290,813,42,591,387,42,341,897,42,233,728,42,204,751,42,442,569,42,409,303,42],"w":1000,"h":1114,"keys":{"Mumbai":[176,652],"Delhi":[319,313],"Bengaluru":[331,867],"Kolkata":[684,528],"Chennai":[419,863],"Ahmedabad":[167,512],"Hyderabad":[359,711],"Pune":[208,671],"Jaipur":[272,374],"Lucknow":[440,377],"Patna":[578,421],"Nashik":[206,619]}};
+// Shared financial model (pasted into the deck). Amounts in ₹ crore.
+function finModel(a) {
+  const yrs = [0, 1, 2];
+  const endL = [a.lenders * 5 / 36, a.lenders * 16 / 36, a.lenders];             // paying lenders at year end
+  const avgL = endL.map((e, i) => (e + (i ? endL[i - 1] : 0)) / 2);
+  const reportsPer = [10000, 16000, 22000], pulsePer = [12000, 30000, 45000];
+  const priceR = [a.price, a.price * 0.895, a.price * 0.816];                      // volume discounts 380 → 340 → 310
+  const priceP = [a.pulse, a.pulse * 0.91, a.pulse * 0.82];                        // 11 → 10 → 9 per asset-month
+  const invClients = [2, 7, 16], invFee = [8, 12, 15];                              // ₹ lakh per client-year
+  const platform = [4, 6, 8];                                                       // ₹ lakh per avg lender
+  const r = yrs.map((i) => {
+    const reports = avgL[i] * reportsPer[i], assets = avgL[i] * pulsePer[i];
+    const revR = reports * priceR[i] / 1e7, revP = assets * priceP[i] * 12 / 1e7;
+    const revI = invClients[i] * invFee[i] / 100, revPl = avgL[i] * platform[i] / 100;
+    const rev = revR + revP + revI + revPl;
+    const cogs = reports * [40, 40, 38][i] / 1e7 + assets * 12 * [1.2, 1.1, 1.0][i] / 1e7 + [0.5, 1.4, 2.8][i];
+    const hc = [10, 24, 47][i], team = hc * [24, 26, 28][i] / 100;
+    const sm = [0.6, 1.8, 4.2][i], ga = [0.5, 1.1, 2.2][i];
+    const opex = team + sm + ga, ebitda = rev - cogs - opex;
+    return { year: 2027 + i, lendersEnd: Math.round(endL[i]), reports: Math.round(reports), assets: Math.round(assets), revR, revP, revI, revPl, rev, cogs, gm: (rev - cogs) / rev, team, sm, ga, opex, ebitda, hcEnd: [14, 34, 60][i] };
+  });
+  return r;
+}
+
+
+const stage = document.getElementById('stage');
+const slides = [...document.querySelectorAll('.slide')];
+let cur = 0;
+
+// ---------- scale stage ----------
+function fit() { const s = Math.min(innerWidth / 1600, innerHeight / 900); stage.style.transform = `scale(${s})`; }
+addEventListener('resize', fit); fit();
+
+// ---------- sky: India at night ----------
+const cv = document.getElementById('sky'), cx = cv.getContext('2d');
+const outline = new Path2D(GEO.outline), inner = new Path2D(GEO.inner);
+const pts = []; for (let i = 0; i < GEO.pts.length; i += 3) pts.push({ x: GEO.pts[i], y: GEO.pts[i + 1], p: GEO.pts[i + 2] / 10 });
+const stars = [];
+let seed = 7; const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+for (const c of pts) {
+  const n = Math.max(1, Math.round(Math.pow(10, c.p) ** 0.5 / 70));
+  const sig = 1.2 + (c.p - 3) * 2.4;
+  for (let k = 0; k < Math.min(n, 60); k++) { const a = rnd() * 6.283, r = Math.abs((rnd() + rnd() + rnd() - 1.5)) * sig; stars.push({ x: c.x + Math.cos(a) * r, y: c.y + Math.sin(a) * r, b: Math.min(1, (c.p - 2.6) / 4 + rnd() * 0.3) * (k ? 0.75 : 1), w: 0.6 + rnd() * 2.2, ph: rnd() * 6.28 }); }
+}
+const P = (lon, lat) => [((lon - 67.5) * Math.cos(22 * Math.PI / 180)) * (1000 / ((98 - 67.5) * Math.cos(22 * Math.PI / 180))), (37.5 - lat) * (1000 / ((98 - 67.5) * Math.cos(22 * Math.PI / 180)))];
+const beach = [P(72.6, 22.5), P(74, 19.2)];
+const CAMS = {
+  cover: { cx: 0.72, cy: 0.52, h: 0.98, a: 1 }, cover2: { cx: 0.8, cy: 0.5, h: 1.0, a: 0.55 },
+  right: { cx: 0.8, cy: 0.52, h: 1.0, a: 0.5 }, dim: { cx: 0.74, cy: 0.5, h: 1.08, a: 0.16 },
+  west: { cx: 0.2, cy: 0.55, h: 2.4, a: 0.35, fx: 0.3, fy: 0.55 }, beach: { cx: 0.74, cy: 0.5, h: 3.0, a: 0.95, fx: 0.18, fy: 0.5, hi: true },
+};
+let cam = { ...CAMS.cover, a: 0 }, target = CAMS.cover;
+function frame(t) {
+  requestAnimationFrame(frame);
+  const W = cv.width = innerWidth * devicePixelRatio, H = cv.height = innerHeight * devicePixelRatio;
+  for (const k of ['cx', 'cy', 'h', 'a']) cam[k] += ((target[k] ?? cam[k]) - cam[k]) * 0.045;
+  const fx = target.fx ?? 0.5, fy = target.fy ?? 0.5;
+  cam.fx = (cam.fx ?? 0.5) + (fx - (cam.fx ?? 0.5)) * 0.045; cam.fy = (cam.fy ?? 0.5) + (fy - (cam.fy ?? 0.5)) * 0.045;
+  const sc = (H * 0.92 / GEO.h) * cam.h;
+  cx.setTransform(1, 0, 0, 1, 0, 0); cx.clearRect(0, 0, W, H);
+  cx.setTransform(sc, 0, 0, sc, W * cam.cx - GEO.w * cam.fx * sc, H * cam.cy - GEO.h * cam.fy * sc);
+  cx.globalAlpha = cam.a;
+  cx.fillStyle = 'rgba(14,22,44,0.55)'; cx.fill(outline);
+  cx.lineWidth = 1.4 / sc * devicePixelRatio; cx.strokeStyle = 'rgba(92,225,255,0.35)'; cx.stroke(outline);
+  cx.lineWidth = 0.7 / sc * devicePixelRatio; cx.strokeStyle = 'rgba(92,225,255,0.12)'; cx.stroke(inner);
+  const s = t / 1000; cx.globalCompositeOperation = 'lighter';
+  for (const st of stars) {
+    const tw = 0.45 + 0.55 * (0.5 + 0.5 * Math.sin(s * st.w + st.ph));
+    const a = st.b * tw; if (a < 0.04) continue;
+    const r = (0.9 + st.b * 1.9) / Math.sqrt(sc) * devicePixelRatio * 0.9;
+    cx.fillStyle = st.b > 0.75 ? `rgba(255,244,214,${a})` : `rgba(255,${150 + st.b * 80 | 0},${60 + st.b * 60 | 0},${a})`;
+    cx.beginPath(); cx.arc(st.x, st.y, r, 0, 6.283); cx.fill();
+  }
+  if (target.hi) {
+    for (const [x, y] of beach) { const g = cx.createRadialGradient(x, y, 0, x, y, 60); g.addColorStop(0, `rgba(92,225,255,${0.28 * cam.a})`); g.addColorStop(1, 'rgba(92,225,255,0)'); cx.fillStyle = g; cx.beginPath(); cx.arc(x, y, 60, 0, 6.283); cx.fill(); }
+  }
+  cx.globalCompositeOperation = 'source-over'; cx.globalAlpha = 1;
+}
+requestAnimationFrame(frame);
+
+// ---------- counters ----------
+function countUp(el) {
+  const to = +el.dataset.to, dec = +(el.dataset.dec || 0), t0 = performance.now(), D = 1400;
+  const step = (t) => { const k = Math.min(1, (t - t0) / D), e = 1 - Math.pow(1 - k, 3); el.textContent = (to * e).toLocaleString('en-IN', { minimumFractionDigits: dec, maximumFractionDigits: dec }); if (k < 1) requestAnimationFrame(step); };
+  requestAnimationFrame(step);
+}
+
+// ---------- financial chart ----------
+const fmt = (x) => (Math.abs(x) >= 10 ? x.toFixed(1) : x.toFixed(2));
+function drawFin() {
+  const a = { lenders: +document.getElementById('fL').value, price: +document.getElementById('fP').value, pulse: +document.getElementById('fQ').value };
+  document.getElementById('fLv').textContent = a.lenders; document.getElementById('fPv').textContent = '₹' + a.price; document.getElementById('fQv').textContent = '₹' + a.pulse;
+  const r = finModel(a);
+  document.getElementById('fRev3').textContent = Math.round(r[2].rev);
+  document.getElementById('fMargin3').textContent = Math.round((r[2].ebitda / r[2].rev) * 100);
+  const rows = [['', ...r.map((y) => y.year)], ['Paying lenders (end)', ...r.map((y) => y.lendersEnd)], ['Reports', ...r.map((y) => (y.reports / 1000).toFixed(0) + 'k')], ['Assets on Pulse', ...r.map((y) => y.assets >= 1e6 ? (y.assets / 1e6).toFixed(2) + 'M' : (y.assets / 1000).toFixed(0) + 'k')],
+    ['Revenue', ...r.map((y) => fmt(y.rev))], ['Gross margin', ...r.map((y) => Math.round(y.gm * 100) + '%')], ['Opex', ...r.map((y) => fmt(y.opex))], ['EBITDA', ...r.map((y) => fmt(y.ebitda))], ['Headcount (end)', ...r.map((y) => y.hcEnd)]];
+  document.getElementById('finTable').innerHTML = rows.map((row, i) => `<tr${i === 4 || i === 7 ? ' class="hl"' : ''}>${row.map((c, j) => i === 0 ? `<th${j ? ' class="n"' : ''}>${c}</th>` : `<td${j ? ' class="n"' : ''}${i === 7 && j && parseFloat(c) < 0 ? ' style="color:#ff8fa1"' : ''}>${c}</td>`).join('')}</tr>`).join('');
+  const box = document.getElementById('finChart'); const W = box.clientWidth || 800, H = box.clientHeight || 330;
+  const max = Math.max(...r.map((y) => y.rev)) * 1.12, min = Math.min(0, ...r.map((y) => y.ebitda)) * 1.2;
+  const Y = (v) => 20 + (H - 50) * (1 - (v - min) / (max - min)), bw = W / 3 * 0.42;
+  let s = `<line x1="0" x2="${W}" y1="${Y(0)}" y2="${Y(0)}" stroke="rgba(255,255,255,.18)"/>`;
+  const cols = [['revR', '#ffb547'], ['revP', '#5ce1ff'], ['revI', '#a6e36b'], ['revPl', '#a98bff']];
+  r.forEach((y, i) => { const x = W / 3 * i + W / 6 - bw / 2; let acc = 0; for (const [k, c] of cols) { const y0 = Y(acc), y1 = Y(acc + y[k]); s += `<rect x="${x}" y="${y1}" width="${bw}" height="${Math.max(0, y0 - y1)}" fill="${c}" opacity=".9" rx="3"/>`; acc += y[k]; }
+    s += `<text x="${x + bw / 2}" y="${Y(y.rev) - 10}" fill="#eef2fb" font-size="20" font-family="Space Grotesk, Inter, sans-serif" font-weight="700" text-anchor="middle">₹${fmt(y.rev)} cr</text><text x="${x + bw / 2}" y="${H - 6}" fill="#6f7d9c" font-size="15" font-family="JetBrains Mono, monospace" text-anchor="middle">${y.year}</text>`; });
+  const pts2 = r.map((y, i) => [W / 3 * i + W / 6, Y(y.ebitda)]);
+  s += `<path d="M${pts2.map((p) => p.join(',')).join('L')}" stroke="#ff5470" stroke-width="3" fill="none"/>` + pts2.map((p, i) => `<circle cx="${p[0]}" cy="${p[1]}" r="6" fill="#02040a" stroke="#ff5470" stroke-width="3"/><text x="${p[0] - 14}" text-anchor="end" y="${p[1] + (r[i].ebitda < 0 ? 26 : -12)}" fill="#ff9aab" font-size="15" font-family="JetBrains Mono, monospace">${r[i].ebitda < 0 ? '−' : '+'}₹${fmt(Math.abs(r[i].ebitda))} cr</text>`).join('');
+  box.innerHTML = `<svg viewBox="0 0 ${W} ${H}">${s}</svg>`;
+}
+['fL', 'fP', 'fQ'].forEach((id) => document.getElementById(id).addEventListener('input', drawFin));
+new ResizeObserver(drawFin).observe(document.getElementById('finChart'));
+
+// ---------- navigation ----------
+const ctr = document.getElementById('ctr'), prog = document.getElementById('prog'), chapLbl = document.getElementById('chapLbl'), notesT = document.getElementById('notesT');
+function go(i, push = true) {
+  cur = Math.max(0, Math.min(slides.length - 1, i));
+  slides.forEach((s, k) => s.classList.toggle('on', k === cur));
+  const sl = slides[cur];
+  ctr.textContent = `${cur + 1} / ${slides.length}`; prog.style.width = ((cur + 1) / slides.length) * 100 + '%';
+  chapLbl.textContent = sl.dataset.chap || '';
+  notesT.textContent = sl.querySelector('aside')?.textContent || '';
+  target = CAMS[sl.dataset.cam] || CAMS.dim;
+  sl.querySelectorAll('.count').forEach(countUp);
+  sl.querySelectorAll('.arc').forEach((a) => { a.style.strokeDashoffset = 402; requestAnimationFrame(() => requestAnimationFrame(() => (a.style.strokeDashoffset = a.dataset.off))); });
+  if (sl.querySelector('#finChart')) setTimeout(drawFin, 50);
+  if (push) { try { history.replaceState(null, '', '#s' + (cur + 1)); } catch (e) { /* sandboxed */ } }
+  if (cur > 0) document.querySelector('.help').classList.add('gone');
+}
+const next = () => go(cur + 1), prev = () => go(cur - 1);
+document.getElementById('nextB').onclick = next; document.getElementById('prevB').onclick = prev;
+addEventListener('keydown', (e) => {
+  if (e.target.tagName === 'INPUT') { if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return; if (e.target.type === 'range') return; }
+  if (['ArrowRight', 'PageDown', ' ', 'Enter'].includes(e.key)) { e.preventDefault(); next(); }
+  else if (['ArrowLeft', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); prev(); }
+  else if (e.key === 'Home') go(0); else if (e.key === 'End') go(slides.length - 1);
+  else if (e.key.toLowerCase() === 'n') document.getElementById('notes').classList.toggle('on');
+  else if (e.key.toLowerCase() === 'o') toggleOv();
+  else if (e.key.toLowerCase() === 'f') { try { document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen().catch(() => {}); } catch (err) { /* blocked */ } }
+  else if (e.key === 'Escape') document.getElementById('ov').classList.remove('on');
+});
+let tx = null; addEventListener('touchstart', (e) => (tx = e.touches[0].clientX), { passive: true });
+addEventListener('touchend', (e) => { if (tx == null) return; const d = e.changedTouches[0].clientX - tx; if (Math.abs(d) > 50) (d < 0 ? next : prev)(); tx = null; });
+const ov = document.getElementById('ov');
+function toggleOv() {
+  ov.classList.toggle('on');
+  ov.innerHTML = slides.map((s, i) => `<button class="${i === cur ? 'cur' : ''}" data-i="${i}"><small>${i + 1} · ${s.dataset.chap}</small>${(s.querySelector('h1,h2')?.textContent || '').trim()}</button>`).join('');
+}
+ov.onclick = (e) => { const b = e.target.closest('button'); if (b) { go(+b.dataset.i); ov.classList.remove('on'); } };
+const h = location.hash.match(/^#s(\d+)$/); go(h ? +h[1] - 1 : 0, false);
+addEventListener('hashchange', () => { const m = location.hash.match(/^#s(\d+)$/); if (m && +m[1] - 1 !== cur) go(+m[1] - 1, false); });
+}
+</script>
+</body>
+</html>

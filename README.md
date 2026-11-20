@@ -1,3 +1,45 @@
+# BhoomiPulse v2: Collateral Intelligence OS
+
+BhoomiPulse values, risk-grades and monitors any land, property or factory in India from **10 live public data sources**, and
+pipes the result into a lender's credit decision through an API. v2 adds a live Command Center, a plug-and-play API and the
+business-plan presentation.
+
+| What | Where | Run it |
+| --- | --- | --- |
+| **Command Center** (live web app) | `web/index.html` | GitHub Pages (`.github/workflows/pages.yml`), or `cd web && python3 -m http.server` |
+| **Presentation** (20 slides, ← → keys) | `web/deck/index.html` | served at `/deck/` on the same site |
+| **API** (Cloudflare Worker / Docker / Node) | `api/` | see [`api/README.md`](api/README.md) |
+| **Shared engine** (browser + API) | `web/engine/` | `node api/test/engine.test.mjs` |
+| Embeddable LOS widget | `web/embed/bhoomipulse-widget.js` | `<bhoomipulse-card …>` |
+| v1 Python pipeline (legacy) | `bhoomipulse/`, `app/` | served at `/legacy/` |
+
+Feature list and what each one is for: [`FEATURES.md`](FEATURES.md).
+
+## Live data sources (called per assessment, in parallel)
+
+OpenStreetMap Nominatim (address, district, PIN) · OpenStreetMap Overpass (roads, amenities, buildings, rail, land use, water) ·
+Copernicus DEM via Open-Meteo (17-point terrain stencil) · GloFAS v4 via Open-Meteo (river discharge since 2003 + 30-day forecast) ·
+ERA5 via Open-Meteo (daily rain and heat since 2016) · NASA GIBS VIIRS Black Marble (night lights 2012 → 2016) · Sentinel-2 L2A via
+Microsoft Planetary Computer (NDVI history + latest scene) · ESA WorldCover + Impact Observatory land use 2017-2023 · JRC Global
+Surface Water · India Post PIN directory. Map layers: OpenFreeMap vector tiles, Esri World Imagery, NASA GIBS (Black Marble, nightly
+VIIRS DNB, MODIS NDVI, MODIS flood). Search: Photon (komoot) with Nominatim fallback.
+
+Enterprise connectors (switched on per lender with credentials or consent): ULI land records, CERSAI, eCourts, state RERA,
+BAANKNET / SARFAESI auction archive, jantri / circle rates, PM GatiShakti Public, Bhuvan, Account Aggregator / GSTN, lender book.
+
+## Honesty notes
+
+- Every number in a live assessment comes from the sources above at request time; each response lists source status and latency.
+- Valuation ranges are **transparent, uncalibrated priors** (city price levels from PropTiger CY2025, a low-confidence tier and agri
+  prior elsewhere) until calibrated on a lender's outcomes. The report says so.
+- **Offline demo mode** (rail button, `?offline=1`, or automatic when no network) swaps every upstream for deterministic simulated
+  responses and labels the whole UI SIMULATED. Useful when classroom Wi-Fi fails.
+- Public APIs have fair-use limits (Nominatim 1 req/s). Production should self-host Nominatim/Overpass; connectors are swappable.
+
+---
+
+# v1 (legacy) documentation
+
 # BhoomiPulse: collateral recovery intelligence (prototype)
 
 BhoomiPulse tells a lender what pledged land, property or a factory will actually fetch after a default, how fast, and how that changes

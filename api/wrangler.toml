@@ -1,0 +1,18 @@
+name = "bhoomipulse-api"
+main = "worker.js"
+compatibility_date = "2025-09-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Monthly Pulse re-check of every monitored asset (1st of the month, 02:30 IST).
+[triggers]
+crons = ["0 21 1 * *"]
+
+[[kv_namespaces]]
+binding = "BP_KV"
+id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"   # npx wrangler kv namespace create BP_KV
+
+[vars]
+CORS_ORIGIN = "*"
+CONTACT_EMAIL = "ops@bhoomipulse.example"
+DISTRICTS_URL = "https://silverintegral13.github.io/geospatial-intel/data/india_districts.geojson"
+# Secrets (set with `npx wrangler secret put NAME`): ADMIN_TOKEN, DEMO_KEY
