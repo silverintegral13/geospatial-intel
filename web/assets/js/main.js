@@ -7,6 +7,7 @@ import { renderPortfolio, renderInvestor } from './portfolio.js';
 import { initPulse, render as renderPulse } from './pulse.js';
 import { renderApi } from './apiconsole.js';
 import { renderFabric, probeAll, health } from './fabric.js';
+import { renderBranch } from './branch.js';
 import { log } from './engine-env.js';
 
 const $ = (s) => document.querySelector(s);
@@ -76,7 +77,7 @@ async function tour() {
 function setMode(m) {
   S.mode = m;
   document.querySelectorAll('#modes button').forEach((b) => b.classList.toggle('on', b.dataset.mode === m));
-  ({ assess: renderAssess, portfolio: renderPortfolio, investor: renderInvestor, pulse: renderPulse, api: renderApi, sources: renderFabric })[m]?.();
+  ({ assess: renderAssess, portfolio: renderPortfolio, investor: renderInvestor, pulse: renderPulse, api: renderApi, sources: renderFabric, branch: renderBranch })[m]?.();
 }
 bus.on('mode', setMode);
 document.getElementById('modes').onclick = (e) => { const b = e.target.closest('button'); if (b) setMode(b.dataset.mode); };

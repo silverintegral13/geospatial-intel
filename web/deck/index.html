@@ -124,6 +124,26 @@ canvas.g3d:active{cursor:grabbing}
 .guess .g{font:700 40px var(--f-h);color:var(--ink)}
 .guess button{align-self:flex-start;font:600 13.5px var(--f-h);border-radius:10px;padding:8px 13px;border:1px solid #5ce1ff77;background:#5ce1ff14;color:var(--cyan);cursor:pointer}
 .reveal{display:none}.revealed .reveal{display:block}.revealed .guess{display:none}
+/* head-to-head comparison */
+table.vs{width:100%;border-collapse:separate;border-spacing:0;font-size:16px}
+table.vs th{background:rgba(4,7,16,.6);font:600 17px var(--f-h);color:var(--ink);text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:bottom}
+table.vs th small{display:block;font:500 11px var(--f-m);color:var(--muted);margin-top:3px;font-weight:500}
+table.vs td{padding:9px 12px;border-bottom:1px solid rgba(255,255,255,.06);color:var(--ink2);vertical-align:top;line-height:1.35;background:rgba(4,7,16,.6)}
+table.vs td:first-child{font:500 12px var(--f-m);color:var(--muted);letter-spacing:.02em;text-transform:uppercase;padding-top:10px}
+table.vs .us{background:linear-gradient(rgba(255,181,71,.1),rgba(255,181,71,.1)),rgba(4,7,16,.75);color:var(--ink);border-left:1px solid #ffb54755;border-right:1px solid #ffb54755}
+table.vs th.us{color:var(--gold);border-top:1px solid #ffb54755;border-radius:12px 12px 0 0}
+table.vs tr:last-child .us{border-bottom:1px solid #ffb54755;border-radius:0 0 12px 12px}
+table.vs .no{color:var(--muted)}
+.win3 .card h3{font-size:19px}
+/* team */
+.team{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.member{display:grid;grid-template-columns:120px minmax(0,1fr);gap:18px;align-items:center;padding:20px}
+.photo{width:120px;height:120px;border-radius:50%;border:1.5px dashed #5ce1ff77;background:radial-gradient(circle at 50% 38%,#16223f 0 22%,transparent 23%),radial-gradient(ellipse 34px 26px at 50% 92%,#16223f 0 98%,transparent 100%),#0a1226;display:grid;place-items:end center;font:500 10.5px var(--f-m);color:var(--muted);padding-bottom:8px;box-sizing:border-box;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover}
+.member .nm{font:700 22px var(--f-h);color:var(--ink)}
+.member .rl{font:500 12.5px var(--f-m);color:var(--cyan);margin:4px 0 8px}
+.member p{font-size:14.5px}
+.ph{color:var(--muted);font-style:italic}
 /* market research tag */
 .mr{display:inline-block;font:600 10.5px/1.5 var(--f-m);color:#c9b6ff;border:1px solid #a98bff77;background:#a98bff14;border-radius:5px;padding:0 5px;margin-left:5px;vertical-align:2px;letter-spacing:.02em;white-space:nowrap}
 .dot.np{border:none;width:auto;height:auto;font:600 13px var(--f-m);color:var(--muted)}.dot.np::before{content:'n/p'}
@@ -497,25 +517,24 @@ table.fb td:first-child{color:#d6deef;font-style:italic;width:44%}
 <!-- 13 COMPETITION -->
 <section class="slide" data-chap="Competition" data-cam="dim"><div class="body">
   <div class="chap rise">Competition</div>
-  <h2 class="rise">"Everyone is doing this already." Everyone is doing a piece of it</h2>
-  <table class="tb mx rise d1" style="margin-top:4px">
-    <tr><th>Who</th><th>Example</th><th class="c" style="text-align:center">Land, home, factory</th><th style="text-align:center">Realisable value</th><th style="text-align:center">Monitoring</th><th style="text-align:center">Capital providers</th><th style="text-align:center">Policy API</th></tr>
-    <tr><td>Panel valuers</td><td>Empanelled engineers</td><td class="c"><i class="dot h"></i></td><td class="c"><i class="dot h"></i></td><td class="c"><i class="dot"></i></td><td class="c"><i class="dot"></i></td><td class="c"><i class="dot"></i></td></tr>
-    <tr><td>Agri Earth-observation</td><td>SatSure, CropIn</td><td class="c"><i class="dot h"></i><small>farms</small></td><td class="c"><i class="dot"></i></td><td class="c"><i class="dot f"></i></td><td class="c"><i class="dot h"></i></td><td class="c"><i class="dot f"></i></td></tr>
-    <tr><td>Bureaus and alt-data</td><td>Bureaus, Data Sutram</td><td class="c"><i class="dot"></i></td><td class="c"><i class="dot"></i></td><td class="c"><i class="dot h"></i></td><td class="c"><i class="dot f"></i></td><td class="c"><i class="dot f"></i></td></tr>
-    <tr><td>Property portals' data arms</td><td>Listing-price analytics</td><td class="c"><i class="dot h"></i><small>urban homes</small></td><td class="c"><i class="dot"></i></td><td class="c"><i class="dot"></i></td><td class="c"><i class="dot h"></i></td><td class="c"><i class="dot h"></i></td></tr>
-    <tr><td>Global property AI</td><td>Moody's + CAPE Analytics</td><td class="c"><i class="dot h"></i><small>not India</small></td><td class="c"><i class="dot h"></i></td><td class="c"><i class="dot f"></i></td><td class="c"><i class="dot f"></i></td><td class="c"><i class="dot f"></i></td></tr>
-    <tr><td>Rural land intelligence</td><td>Terrastack (Google ALU/AMED)</td><td class="c"><i class="dot h"></i><small>farmland</small></td><td class="c"><i class="dot np"></i></td><td class="c"><i class="dot h"></i><small>crop activity</small></td><td class="c"><i class="dot np"></i></td><td class="c"><i class="dot np"></i></td></tr>
-    <tr class="hl"><td><b>BhoomiPulse</b></td><td>Collateral recovery intelligence</td><td class="c"><i class="dot f"></i></td><td class="c"><i class="dot f"></i></td><td class="c"><i class="dot f"></i></td><td class="c"><i class="dot f"></i></td><td class="c"><i class="dot f"></i></td></tr>
+  <h2 class="rise">Three serious players. None of them prices what the collateral will fetch</h2>
+  <table class="vs rise d1" style="margin-top:6px">
+    <tr><th style="width:15%"></th><th class="us" style="width:23%">BhoomiPulse<small>collateral recovery intelligence</small></th><th style="width:21%">Terrastack<small>rural land intelligence</small></th><th style="width:21%">Mappls Geo-FI<small>MapmyIndia + ClarityX, Aug 2026</small></th><th style="width:20%">GeoIQ<small>location alt-data</small></th></tr>
+    <tr><td>Question answered</td><td class="us">What will this asset fetch if the loan fails, and is it still earning?</td><td>What is on this farm, and does it match the land record?</td><td>Is this address real, and where should we grow or collect?</td><td>How affluent is the place this borrower lives?</td></tr>
+    <tr><td>Unit scored</td><td class="us">The pledged asset: home, factory, shop or farm</td><td>Farm plot and village</td><td>Address and micro-market</td><td>100 m × 100 m grid cell</td></tr>
+    <tr><td>Collateral value</td><td class="us">P10–P90 range plus realisable value, days to sell, haircut, LTV band</td><td class="no">Not described</td><td class="no">Not described</td><td class="no">Not described</td></tr>
+    <tr><td>After disbursal</td><td class="us">Monthly Pulse on lights, crop vigour and river forecast</td><td>Crop activity via Google AMED</td><td>Collections field ops (Geo-Collect)</td><td class="no">Not described</td></tr>
+    <tr><td>Capital providers</td><td class="us">Investor Lens certifies a whole book for co-lenders and pool buyers</td><td class="no">Not described</td><td class="no">Not described</td><td class="no">Not described</td></tr>
+    <tr><td>Data foundation</td><td class="us">10 open public sources fused per asset, then lenders' recovery outcomes</td><td>Google DeepMind ALU/AMED, land records; 140M+ ha mapped</td><td>MapmyIndia maps, POIs, addresses, affluence</td><td>3,000+ location variables</td></tr>
   </table>
-  <p class="rise d2" style="font-size:13px;margin:8px 0 0"><i class="dot f"></i> yes &nbsp; <i class="dot h"></i> partly &nbsp; <i class="dot"></i> no &nbsp; <i class="dot np"></i> not public</p>
-  <div class="grid g3 rise d3" style="margin-top:12px">
-    <div class="card"><h3 class="amber">The category is real</h3><p>India's three largest private banks invested in an agri EO firm; Moody's bought a geospatial property-AI firm in Jan 2025.</p></div>
-    <div class="card"><h3 class="amber">Closest peer: Terrastack</h3><p>IIT Bombay start-up (2024) built on Google DeepMind's ALU/AMED APIs; maps 140M+ ha of farmland for land-record reconciliation and farm-revenue estimates, to widen farmers' access to credit.</p></div>
-    <div class="card"><h3 class="amber">Our wedge</h3><p>Peers score rural land at origination. Nobody prices recovery, watches the asset after disbursal, or serves the capital provider, across homes, factories and farms.</p></div>
+  <div class="grid g3 win3 rise d3" style="margin-top:16px">
+    <div class="card hot"><h3 class="amber">We price the exit</h3><p>Others score the borrower or the place. Loss depends on what the asset fetches and how fast; that is the number we own.</p></div>
+    <div class="card hot"><h3 class="amber">We serve both ends of the pipe</h3><p>The originator and the bank funding it read the same evidence. None of the three describes selling to co-lenders or pool buyers.</p></div>
+    <div class="card hot"><h3 class="amber">Our data compounds</h3><p>Open data keeps a report at about ₹40 to make. Every recovery calibrates the model: a dataset map makers and alt-data vendors never see.</p></div>
   </div>
-  <div class="src">Sources: SatSure press (ICICI, HDFC, Kotak investors); Moody's (13 Jan 2025); Terrastack: Google India blog (26 Aug 2026), Geospatial World profile. Ratings: our view of public descriptions; peer set informed by market research.</div>
-  <aside>Terrastack is the closest Indian peer and is rated only on what it has said publicly; "n/p" means not public. Address "everyone is doing this" head-on: map the field, show the gap (realisable value + monitoring + capital-provider view in one API), turn adjacent players into channels.</aside>
+  <p class="rise d4" style="font-size:13px;margin-top:10px">Also in the field: panel valuers, agri Earth-observation (SatSure, CropIn), alt-data (Data Sutram), global property AI (Moody's–CAPE). "Not described" = not in public material.</p>
+  <div class="src">Sources: Mappls Geo-FI product page and C.E. Info Systems disclosure (31 Aug 2026); GeoIQ site and case studies (Piramal Finance, DMI Finance); Google India blog on ALU/AMED (26 Aug 2026). Comparison is our reading of public material.</div>
+  <aside>Name the three, give each its due in one line, then the right to win: we price the exit, we serve both ends of the pipe, and our data compounds with every recovery.</aside>
 </div></section>
 
 <!-- 14 GTM -->
@@ -550,19 +569,30 @@ table.fb td:first-child{color:#d6deef;font-style:italic;width:44%}
 </div></section>
 
 <!-- 16 RESPONSIBLE -->
-<section class="slide" data-chap="Responsible by design" data-cam="dim"><div class="body">
-  <div class="chap rise">Responsible by design</div>
-  <h2 class="rise">Built to pass the model-risk committee</h2>
-  <div class="grid g3 rise d1" style="margin-top:14px">
-    <div class="card"><h3 class="cyan">Scores describe land, not people</h3><p>No caste, religion, gender or community variable, enforced by test. Activity and hazard measure the place. Outcomes monitored by region and asset type.</p></div>
-    <div class="card"><h3 class="cyan">Humans decide</h3><p>AI predicts and routes; credit officers sanction. Every response carries sources, model version and a plain-language rationale; the audit log answers "why this LTV?".</p></div>
-    <div class="card"><h3 class="cyan">FREE-AI ready</h3><p>Model cards, versioning, drift monitoring and an audit trail map to RBI's FREE-AI recommendations; outsourcing clauses and incident reporting come standard.</p></div>
-    <div class="card"><h3 class="cyan">DPDP by architecture</h3><p>Public-data scoring needs no personal data. Land records and cash flows come only through consent (ULI, Account Aggregator). On-prem keeps data in the lender's network.</p></div>
-    <div class="card"><h3 class="cyan">No common pricing hub</h3><p>One vendor scoring many lenders could align their behaviour. Each tenant gets its own policy and calibration; we never recommend rates or share one lender's signals with another.</p></div>
-    <div class="card"><h3 class="cyan">Augment the valuer</h3><p>Valuers become exception handlers on flagged files. Junior officers and new branches gain most from a consistent second opinion.</p></div>
+<section class="slide" data-chap="Risks and safeguards" data-cam="dim"><div class="body">
+  <div class="chap rise">Risks and safeguards</div>
+  <h2 class="rise">Built to pass the model-risk committee, with a kill switch we will honour</h2>
+  <div class="grid rise d1" style="grid-template-columns:minmax(0,0.92fr) minmax(0,1.08fr);gap:24px;margin-top:10px">
+    <div class="grid" style="grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-content:start">
+      <div class="card"><h3 class="cyan">Land, not people</h3><p>No caste, religion, gender or community variable, enforced by test.</p></div>
+      <div class="card"><h3 class="cyan">Humans decide</h3><p>AI predicts and routes; officers sanction. Every answer logs sources and model version.</p></div>
+      <div class="card"><h3 class="cyan">FREE-AI ready</h3><p>Model cards, drift monitoring and an audit trail map to RBI's FREE-AI recommendations.</p></div>
+      <div class="card"><h3 class="cyan">DPDP by design</h3><p>Scoring needs no personal data; land records and cash flows only with consent.</p></div>
+      <div class="card"><h3 class="cyan">No pricing hub</h3><p>Per-lender policy and calibration; we never recommend rates or share one lender's signals.</p></div>
+      <div class="card"><h3 class="cyan">Augment the valuer</h3><p>Valuers handle flagged files; juniors gain a consistent second opinion.</p></div>
+    </div>
+    <table class="tb">
+      <tr><th style="width:34%">Risk</th><th>Mitigation</th></tr>
+      <tr><td><b style="color:var(--ink)">Valuations not accurate enough</b><span class="lvl h">high</span></td><td>Calibrate per district; ship ranges; route uncertain files to humans. Kill criterion: median error above 20% after calibration.</td></tr>
+      <tr><td><b style="color:var(--ink)">Long enterprise sales</b><span class="lvl h">high</span></td><td>Land with a no-integration Pulse audit of the existing book; free 90-day pilot; sell through LOS platforms.</td></tr>
+      <tr><td><b style="color:var(--ink)">Regulator or valuer pushback</b><span class="lvl m">med</span></td><td>Position as triage and second opinion; statutory valuations stay with registered valuers.</td></tr>
+      <tr><td><b style="color:var(--ink)">Public data access changes</b><span class="lvl m">med</span></td><td>Swappable, cached connectors; several sources per signal; paid imagery as fallback.</td></tr>
+      <tr><td><b style="color:var(--ink)">Funded peers copy features</b><span class="lvl m">med</span></td><td>Features copy, recovery outcomes do not; workflow embedding compounds per tenant.</td></tr>
+      <tr><td><b style="color:var(--ink)">Data breach</b><span class="lvl m">med</span></td><td>No personal data for scoring; on-prem option; ISO 27001 and SOC 2 roadmap.</td></tr>
+    </table>
   </div>
   <div class="src">Sources: RBI FREE-AI Committee Report (Aug 2025); MeitY DPDP Rules 2025; RBI Co-Lending Arrangements Directions 2025.</div>
-  <aside>Fairness, accountability, regulation, competition policy and labour. If every lender runs the same model, decisions correlate; tenant calibration and no rate recommendations keep competition intact.</aside>
+  <aside>Fairness, accountability, regulation, competition policy and labour on the left; what could kill us and what we do about it on the right. Say the kill criterion out loud.</aside>
 </div></section>
 
 <!-- 17 FINANCIALS -->
@@ -594,7 +624,7 @@ table.fb td:first-child{color:#d6deef;font-style:italic;width:44%}
   <div class="grid g3 road rise d1" style="margin-top:12px">
     <div class="card"><div class="when">0–6 MONTHS</div><h3>Prove</h3><ul class="tight"><li>3 design partners; data agreements signed</li><li>Back-test and randomised pilot live</li><li>Auction-notice and jantri parsers for Gujarat and Maharashtra</li><li>ISO 27001 readiness</li></ul></div>
     <div class="card"><div class="when">6–18 MONTHS</div><h3>Convert</h3><ul class="tight"><li>Pilot results shared; 5, then 16 paying lenders</li><li>ULI, CERSAI and eCourts connectors under licence</li><li>Investor Lens with 2 co-lending banks</li><li>On-prem release for banks</li></ul></div>
-    <div class="card"><div class="when">18–36 MONTHS</div><h3>Scale</h3><ul class="tight"><li>36 lenders, 1M+ assets on Pulse</li><li>India collateral recovery index as a data product</li><li>Insurers and rural banks</li><li>Series A (₹60–80 cr) to accelerate, not survive</li></ul></div>
+    <div class="card"><div class="when">18–36 MONTHS</div><h3>Scale</h3><ul class="tight"><li>36 lenders, 1M+ assets on Pulse</li><li>India collateral recovery index as a data product</li><li>Branch Intelligence: where a lender should open its next branch (in build)</li><li>Insurers and rural banks</li><li>Series A (₹60–80 cr) to accelerate, not survive</li></ul></div>
   </div>
   <div class="grid g2 rise d3" style="margin-top:20px;gap:28px">
     <div><h3>Use of the ₹12 crore seed</h3>
@@ -607,18 +637,19 @@ table.fb td:first-child{color:#d6deef;font-style:italic;width:44%}
 </div></section>
 
 <!-- 19 RISKS -->
-<section class="slide" data-chap="Risks" data-cam="dim"><div class="body">
-  <div class="chap rise">Risks</div>
-  <h2 class="rise">What could kill this, and what we do about it</h2>
-  <div class="grid g2 rise d1" style="margin-top:12px;gap:14px">
-    <div class="card"><h3>Valuations not accurate enough<span class="lvl h">high</span></h3><p>Calibrate per district on partner outcomes; ship ranges, not points; route uncertain files to humans. Kill criterion: median error above 20% after calibration.</p></div>
-    <div class="card"><h3>Long enterprise sales cycles<span class="lvl h">high</span></h3><p>Land with a data-tape Pulse audit that needs no integration; free 90-day pilot; sell through LOS and co-lending platforms.</p></div>
-    <div class="card"><h3>Regulators or valuers push back<span class="lvl m">medium</span></h3><p>Position as triage and a second opinion; statutory valuations stay with registered valuers; full audit trail.</p></div>
-    <div class="card"><h3>Public data access changes<span class="lvl m">medium</span></h3><p>Every connector is swappable and cached; self-hosted map stacks; paid imagery as fallback; several sources per signal.</p></div>
-    <div class="card"><h3>Incumbents and funded peers copy features<span class="lvl m">medium</span></h3><p>Peers already run on big-tech geo APIs. Features copy, outcome data does not. Recovery labels and workflow embedding compound with every tenant.</p></div>
-    <div class="card"><h3>Data protection breach<span class="lvl m">medium</span></h3><p>No personal data needed for scoring; consent-only connectors; on-prem option; ISO 27001 and SOC 2 roadmap.</p></div>
+<section class="slide" data-chap="Team" data-cam="dim"><div class="body">
+  <div class="chap rise">Team</div>
+  <h2 class="rise">The team building BhoomiPulse</h2>
+  <div class="team rise d1" style="margin-top:22px">
+      <div class="card member"><div class="photo" data-slot="photo">PHOTO</div><div><div class="nm ph">Name Surname</div><div class="rl">Role · e.g. Product &amp; GTM</div><p class="ph">One line on background: prior role, domain, what you own in BhoomiPulse.</p></div></div>
+      <div class="card member"><div class="photo" data-slot="photo">PHOTO</div><div><div class="nm ph">Name Surname</div><div class="rl">Role · e.g. Product &amp; GTM</div><p class="ph">One line on background: prior role, domain, what you own in BhoomiPulse.</p></div></div>
+      <div class="card member"><div class="photo" data-slot="photo">PHOTO</div><div><div class="nm ph">Name Surname</div><div class="rl">Role · e.g. Product &amp; GTM</div><p class="ph">One line on background: prior role, domain, what you own in BhoomiPulse.</p></div></div>
+      <div class="card member"><div class="photo" data-slot="photo">PHOTO</div><div><div class="nm ph">Name Surname</div><div class="rl">Role · e.g. Product &amp; GTM</div><p class="ph">One line on background: prior role, domain, what you own in BhoomiPulse.</p></div></div>
+      <div class="card member"><div class="photo" data-slot="photo">PHOTO</div><div><div class="nm ph">Name Surname</div><div class="rl">Role · e.g. Product &amp; GTM</div><p class="ph">One line on background: prior role, domain, what you own in BhoomiPulse.</p></div></div>
+      <div class="card member"><div class="photo" data-slot="photo">PHOTO</div><div><div class="nm ph">Name Surname</div><div class="rl">Role · e.g. Product &amp; GTM</div><p class="ph">One line on background: prior role, domain, what you own in BhoomiPulse.</p></div></div>
   </div>
-  <aside>Be explicit about the kill criterion for the core model; it builds credibility with a risk committee and with investors.</aside>
+  <p class="rise d3 hint3" style="margin-top:18px">Placeholders: replace each photo, name, role and line. Photos: square images, at least 400 × 400 px.</p>
+  <aside>Thirty seconds: each of us in one line, and why this team can sell to risk committees and build the models.</aside>
 </div></section>
 
 <!-- 20 CLOSE -->
