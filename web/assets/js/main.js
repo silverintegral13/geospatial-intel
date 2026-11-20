@@ -13,6 +13,8 @@ const $ = (s) => document.querySelector(s);
 const params = new URLSearchParams(location.search);
 S.offline = params.get('offline') === '1' || store.get('offline', false);
 S.tenant = store.get('tenant', 'default');
+const EMBED = params.get('embed') === '1', TOUR = params.get('tour') === '1';
+if (EMBED) document.body.classList.add('embed');
 
 // ---------- boot ----------
 const bootLines = $('#bootLines'), bootBar = $('#bootBar');
@@ -28,7 +30,7 @@ async function boot() {
     if (!S.offline && bad >= Object.keys(h).length - 1) { setOffline(true, true); }
   });
   step('probing 12 public data pipes in parallel', 78);
-  await Promise.race([probing, new Promise((r) => setTimeout(r, 2200))]);
+  await Promise.race([probing, new Promise((r) => setTimeout(r, EMBED ? 900 : 2200))]);
   step('NASA VIIRS night lights · Sentinel-2 · GloFAS · ERA5 · OSM · India Post', 100);
   await new Promise((r) => setTimeout(r, 450));
   $('#boot').classList.add('done');
@@ -38,6 +40,36 @@ async function boot() {
   if (last && !params.get('fresh')) { S.lastResult = last; }
   setMode(params.get('mode') || 'assess');
   if (params.get('demo') != null) { const d = DEMOS[+params.get('demo') || 0]; if (d) setTimeout(() => loadDemo(d, true), 2500); }
+  if (EMBED) { $('#drawer').classList.add('closed'); $('[data-drawer=layers]').classList.remove('on'); }
+  if (TOUR) setTimeout(tour, 2600);
+}
+
+// ---------- guided tour (used by the presentation's live-demo slide: ?embed=1&tour=1) ----------
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+async function typeInto(el, text) { el.focus(); el.value = ''; for (const ch of text) { el.value += ch; el.dispatchEvent(new Event('input')); await sleep(85); } }
+async function tour() {
+  const cap = (t) => tip(t);
+  cap('1 · Search any address, village, PIN code or coordinates');
+  await typeInto($('#searchInput'), 'Hinjewadi, Pune');
+  await sleep(1600); $('#searchInput').blur(); $('#searchResults').classList.remove('open');
+  cap('2 · Fly in and pin the exact asset');
+  setMode('assess');
+  const done = new Promise((r) => bus.on('assessed', r));
+  loadDemo(DEMOS[2], true);
+  await sleep(3500);
+  cap('3 · Ten live public sources fused in parallel');
+  await Promise.race([done, sleep(30000)]);
+  cap('4 · Grade, value range, realisable value, LTV band and red flags');
+  const panel = $('#panelInner');
+  for (let y = 0; y <= 1500; y += 30) { panel.scrollTop = y; await sleep(55); }
+  await sleep(1200); panel.scrollTop = 0;
+  cap('5 · Pulse re-checks financed assets from orbit every month');
+  setMode('pulse'); await sleep(4200);
+  cap('6 · Plug it into any lending stack with one API call');
+  setMode('api'); await sleep(4500);
+  cap('Night flight over India · press F any time');
+  setMode('assess');
+  await nightFlight();
 }
 
 // ---------- modes ----------

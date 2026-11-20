@@ -259,3 +259,7 @@ pre.code{background:#040814;border:1px solid var(--line);border-radius:10px;padd
   .map{top:calc(var(--top) + 40px)}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* embedded in the presentation */
+body.embed .console{height:34px}body.embed .console-body{display:none}
+body.embed .hud-tip{font-size:15px;padding:9px 18px;top:18px;color:#ffd98a;border-color:#ffb54766;box-shadow:0 0 30px #ffb54733}
