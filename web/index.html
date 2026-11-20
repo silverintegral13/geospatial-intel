@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BhoomiPulse · Collateral Intelligence Command Center</title>
+<meta name="description" content="Value, risk-grade and monitor any land, property or factory in India from live public satellite and government data.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%2303050a' stroke='%23ffb547' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%23ffd27a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/vendor/maplibre-gl.css">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<div id="boot" class="boot">
+  <div class="boot-core">
+    <div class="boot-logo"><span class="orb"></span>BhoomiPulse</div>
+    <div class="boot-sub">Collateral Intelligence OS · India</div>
+    <div class="boot-lines" id="bootLines"></div>
+    <div class="boot-bar"><i id="bootBar"></i></div>
+  </div>
+</div>
+
+<header class="topbar">
+  <div class="brand"><span class="orb"></span><div><b>BhoomiPulse</b><small>Collateral Intelligence OS</small></div></div>
+  <div class="search" id="searchBox">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input id="searchInput" type="search" autocomplete="off" spellcheck="false" placeholder="Search a place, address, PIN code or lat, lon…" aria-label="Search location">
+    <kbd>/</kbd>
+    <div class="search-results" id="searchResults" role="listbox"></div>
+  </div>
+  <nav class="modes" id="modes">
+    <button data-mode="assess" class="on">Assess</button>
+    <button data-mode="portfolio">Portfolio</button>
+    <button data-mode="investor">Investor lens</button>
+    <button data-mode="pulse">Pulse</button>
+    <button data-mode="api">API</button>
+    <button data-mode="sources">Data fabric</button>
+  </nav>
+  <div class="telemetry">
+    <button class="chip" id="srcChip" title="Live data sources"><i class="dot"></i><span id="srcChipText">Probing sources…</span></button>
+    <div class="clock"><span id="clock">--:--:--</span><small>IST</small></div>
+    <button class="icon-btn" id="paletteBtn" title="Command palette (Ctrl+K)"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h7"/></svg></button>
+  </div>
+</header>
+
+<div class="sim-banner" id="simBanner" hidden>OFFLINE DEMO MODE · every number below comes from simulated upstreams, not live data. <button id="simOff">Go live</button></div>
+
+<aside class="rail" id="rail">
+  <button data-drawer="layers" class="on" title="Layers"><svg viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/></svg><span>Layers</span></button>
+  <button data-tool="pick" title="Drop a pin on the asset (P)"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Pin</span></button>
+  <button data-tool="draw" title="Draw the parcel boundary (B)"><svg viewBox="0 0 24 24"><path d="M4 18 8 5l9 3 3 10-9 2Z"/><circle cx="4" cy="18" r="1.6"/><circle cx="8" cy="5" r="1.6"/><circle cx="17" cy="8" r="1.6"/></svg><span>Parcel</span></button>
+  <button data-action="flight" title="Night flight over India's metros (F)"><svg viewBox="0 0 24 24"><path d="M2 16 22 8l-8 13-3-6-9-1Z"/></svg><span>Flight</span></button>
+  <button data-action="globe" title="Globe / flat (G)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg><span>Globe</span></button>
+  <button data-action="sat" title="Satellite / night (S)"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M3 9h4v6H3zM17 9h4v6h-4zM12 3v3M12 18v3"/></svg><span>Satellite</span></button>
+  <div class="rail-spacer"></div>
+  <button data-action="offline" title="Offline demo mode (simulated data)"><svg viewBox="0 0 24 24"><path d="M2 8.5a15 15 0 0 1 20 0M5 12a10 10 0 0 1 14 0M8.5 15.5a5 5 0 0 1 7 0"/><circle cx="12" cy="19" r="1"/><path d="M3 3l18 18"/></svg><span>Offline</span></button>
+</aside>
+
+<section class="drawer" id="drawer">
+  <div class="drawer-head"><b>Layers</b><button class="x" id="drawerClose">×</button></div>
+  <div class="layer-group"><h4>Night pulse</h4>
+    <label class="tgl"><input type="checkbox" data-layer="sparkle" checked><span></span>City sparkle <em>VIIRS-sampled + settlement model</em></label>
+    <div class="slider"><span>Sparkle intensity</span><input type="range" id="sparkleIntensity" min="0" max="2" step="0.05" value="1"></div>
+    <label class="tgl"><input type="checkbox" data-layer="blackmarble" checked><span></span>VIIRS Black Marble <em>NASA GIBS</em></label>
+    <div class="epoch" id="epochBox"><span>Epoch</span><button data-epoch="2012-01-01">2012</button><button data-epoch="2016-01-01" class="on">2016</button><button data-epoch="nightly">Last night</button></div>
+    <label class="tgl"><input type="checkbox" data-layer="roads" checked><span></span>Glowing road network <em>OpenStreetMap</em></label>
+    <label class="tgl"><input type="checkbox" data-layer="buildings" checked><span></span>3D buildings <em>z ≥ 14</em></label>
+  </div>
+  <div class="layer-group"><h4>Earth observation</h4>
+    <label class="tgl"><input type="checkbox" data-layer="satellite"><span></span>Satellite imagery <em>Esri World Imagery</em></label>
+    <label class="tgl"><input type="checkbox" data-layer="ndvi"><span></span>Vegetation (NDVI, 8-day) <em>MODIS · GIBS</em></label>
+    <label class="tgl"><input type="checkbox" data-layer="flood"><span></span>Flood detection (3-day) <em>MODIS · GIBS</em></label>
+    <label class="tgl"><input type="checkbox" data-layer="s2scene"><span></span>Latest Sentinel-2 scene at asset <em>Planetary Computer</em></label>
+  </div>
+  <div class="layer-group"><h4>Administrative</h4>
+    <label class="tgl"><input type="checkbox" data-layer="districts" checked><span></span>District boundaries <em>geoBoundaries</em></label>
+    <label class="tgl"><input type="checkbox" data-layer="portfolio" checked><span></span>Portfolio assets</label>
+    <label class="tgl"><input type="checkbox" data-layer="watch" checked><span></span>Pulse watchlist</label>
+  </div>
+  <p class="fine">Boundaries are indicative, not authoritative. Night-light layers are NASA renderings; the sparkle is sampled from them where tiles load and from a settlement model elsewhere.</p>
+</section>
+
+<main id="map" class="map"></main>
+
+<div class="hud">
+  <div class="hud-cross" id="cross"></div>
+  <div class="hud-read" id="hudRead"><span id="hudLL">--.-----, --.-----</span><span id="hudZ">z --</span><span id="hudAlt">alt -- km</span><span id="hudLum">lumen --</span></div>
+  <div class="hud-tip" id="hudTip"></div>
+</div>
+
+<aside class="panel" id="panel">
+  <div class="panel-inner" id="panelInner"></div>
+</aside>
+
+<section class="console" id="console">
+  <div class="console-head"><b>Pipeline</b><span id="consoleStat">idle</span><button class="x" id="consoleToggle" title="Collapse">▾</button></div>
+  <div class="console-body" id="consoleBody"></div>
+</section>
+
+<div class="palette" id="palette" hidden>
+  <div class="palette-box"><input id="paletteInput" placeholder="Type a command or a city…" autocomplete="off"><div id="paletteList"></div></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script src="assets/vendor/maplibre-gl.js"></script>
+<script type="module" src="assets/js/main.js"></script>
+</body>
+</html>

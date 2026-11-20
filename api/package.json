@@ -1,0 +1,13 @@
+{
+  "name": "bhoomipulse-api",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "mock": "MOCK=1 DEMO_KEY=bp_demo_key ADMIN_TOKEN=admin node server.mjs",
+    "test": "node test/engine.test.mjs && node test/api.test.mjs",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": { "wrangler": "^4.0.0" }
+}

@@ -15,22 +15,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      # v2 Command Center, presentation and embeddable widget are static files in web/.
+      - name: Assemble site (web/ → root)
+        run: |
+          mkdir -p _site
+          cp -r web/* _site/
+          touch _site/.nojekyll
+      # The v1 Python demo site is kept under /legacy/ (optional; never blocks the deploy).
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           cache: pip
-      - name: System libraries for PDF rendering
-        run: sudo apt-get update && sudo apt-get install -y libpango-1.0-0 libpangoft2-1.0-0
-      - run: pip install -r requirements.txt
-      - name: Build static site from committed demo data
-        run: python -m bhoomipulse.site.build
-        env:
-          DEMO_MODE: "1"
-          APP_URL: ${{ vars.APP_URL }}   # set once the Streamlit app is deployed
+      - name: Build legacy v1 site
+        continue-on-error: true
+        run: |
+          sudo apt-get update && sudo apt-get install -y libpango-1.0-0 libpangoft2-1.0-0
+          pip install -r requirements.txt
+          DEMO_MODE=1 python -m bhoomipulse.site.build
+          mkdir -p _site/legacy && cp -r site/* _site/legacy/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: site
+          path: _site
   deploy:
     needs: build
     runs-on: ubuntu-latest
