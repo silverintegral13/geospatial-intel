@@ -124,6 +124,9 @@ canvas.g3d:active{cursor:grabbing}
 .guess .g{font:700 40px var(--f-h);color:var(--ink)}
 .guess button{align-self:flex-start;font:600 13.5px var(--f-h);border-radius:10px;padding:8px 13px;border:1px solid #5ce1ff77;background:#5ce1ff14;color:var(--cyan);cursor:pointer}
 .reveal{display:none}.revealed .reveal{display:block}.revealed .guess{display:none}
+/* market research tag */
+.mr{display:inline-block;font:600 10.5px/1.5 var(--f-m);color:#c9b6ff;border:1px solid #a98bff77;background:#a98bff14;border-radius:5px;padding:0 5px;margin-left:5px;vertical-align:2px;letter-spacing:.02em;white-space:nowrap}
+.dot.np{border:none;width:auto;height:auto;font:600 13px var(--f-m);color:var(--muted)}.dot.np::before{content:'n/p'}
 /* economics flow */
 .flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
 .flow .st{position:relative;padding:18px 20px;border:1px solid var(--line);background:var(--card)}
@@ -246,7 +249,7 @@ table.fb td:first-child{color:#d6deef;font-style:italic;width:44%}
   <h2 class="rise">India lends lakhs of crores against land it checks once, by hand, and never looks at again</h2>
   <div class="grid g4 rise d1" style="margin-top:22px">
     <div class="card"><div class="big"><span class="count" data-to="48.4" data-dec="1">0</span><small> L cr</small></div><div class="lab">NBFC credit, Mar 2025</div><p style="margin-top:10px">About 15% is loans against property and secured MSME, growing 26–27% a year.</p></div>
-    <div class="card"><div class="big">₹1,300<small>+</small></div><div class="lab">field valuation, per case</div><p style="margin-top:10px">One bank's schedule runs ₹1,300–7,800 per case; visits take days and vary by valuer.</p></div>
+    <div class="card"><div class="big">₹1,300<small>+</small></div><div class="lab">field valuation, per case</div><p style="margin-top:10px">One bank's schedule runs ₹1,300–7,800 per case; field verification typically costs ₹2,000–5,000 and takes days to weeks.<span class="mr">MR</span></p></div>
     <div class="card"><div class="big red"><span class="count" data-to="40774">0</span></div><div class="lab">₹ cr advances-related fraud, FY26</div><p style="margin-top:10px">Loan frauds include overvalued collateral; the largest share of fraud by value.</p></div>
     <div class="card" id="guessCard"><div class="guess"><span class="q">Lenders "fully secured" by collateral. What share do they recover through SARFAESI?</span><span class="g"><span id="gv">60</span>%</span><input type="range" id="gIn" min="0" max="100" step="1" value="60" aria-label="Your guess, percent recovered"><button id="gBtn" type="button">Reveal →</button></div>
       <div class="reveal"><div class="big"><span id="gReal">0</span><small>%</small></div><div class="lab">recovered via SARFAESI, FY25</div><p style="margin-top:10px">Of ₹1.03 lakh crore involved. <span id="gYou"></span></p></div></div>
@@ -256,7 +259,7 @@ table.fb td:first-child{color:#d6deef;font-style:italic;width:44%}
     <div class="card"><h3 class="amber">Blind after disbursal</h3><p>Nobody re-checks the factory, farm or house until EMIs bounce, when recovery is already late.</p></div>
     <div class="card"><h3 class="amber">Opaque to capital providers</h3><p>Co-lenders, pool buyers and investors inherit the originator's valuations on trust.</p></div>
   </div>
-  <div class="src">Sources: RBI data on NBFC credit (Mar 2025); Crisil Ratings NBFC outlook (Nov 2025); Federal Bank agri-loan service charges; RBI Annual Report 2025-26 (frauds); RBI Report on Trend and Progress of Banking 2024-25 (SARFAESI).</div>
+  <div class="src">Sources: RBI data on NBFC credit (Mar 2025); Crisil Ratings NBFC outlook (Nov 2025); Federal Bank agri-loan service charges; RBI Annual Report 2025-26 (frauds); RBI Report on Trend and Progress of Banking 2024-25 (SARFAESI). MR = market research (industry materials, Nov 2026; not publicly verified).</div>
   <aside>Three failures: price, monitoring, transparency. NBFC credit ₹48.4 lakh crore; LAP and secured MSME the fastest-growing secured segment. Valuation is expensive, slow and inconsistent. Advances-related fraud ₹40,774 crore in FY26. SARFAESI recovers 31.5% of the amount involved.</aside>
 </div></section>
 
@@ -354,10 +357,10 @@ table.fb td:first-child{color:#d6deef;font-style:italic;width:44%}
   <h2 class="rise">Start 15 steps ahead on public data. Win on proprietary outcomes</h2>
   <div class="rise d1" style="margin-top:14px">
     <div class="tier"><div class="when">LIVE TODAY · FREE</div><div><h3>Public Earth-observation and map data, fused per asset</h3><p>OpenStreetMap roads, buildings, amenities · Copernicus DEM · GloFAS river discharge since 2003 · ERA5 rain and heat · VIIRS night lights · Sentinel-2 NDVI · ESA WorldCover · land use 2017–23 · JRC surface water · India Post</p></div><div class="ct"><span class="count" data-to="10">0</span><small>live sources</small></div></div>
-    <div class="tier"><div class="when">MONTHS 3–18 · CONSENT OR LICENCE</div><div><h3>Government DPI and registries, switched on per lender</h3><p>ULI land records and mutation history · CERSAI prior charges · eCourts litigation · state RERA · jantri / circle rates · PM GatiShakti planned infrastructure · Bhuvan layers · Account Aggregator and GST cash flows</p></div><div class="ct"><span class="count" data-to="10">0</span><small>connectors designed</small></div></div>
+    <div class="tier"><div class="when">MONTHS 3–18 · CONSENT OR LICENCE</div><div><h3>Government DPI and registries, switched on per lender</h3><p>ULI land records and mutation history · CERSAI prior charges · eCourts litigation · state RERA · jantri / circle rates · PM GatiShakti planned infrastructure · Bhuvan layers · Account Aggregator and GST cash flows · Google DeepMind ALU/AMED field boundaries (partner APIs; Terrastack runs them across 140M+ ha)</p></div><div class="ct"><span class="count" data-to="10">0</span><small>connectors designed</small></div></div>
     <div class="tier" style="border-color:#ffb54766;background:linear-gradient(90deg,rgba(255,181,71,.12),rgba(9,15,31,.74))"><div class="when" style="color:var(--gold)">THE COMPOUNDING ASSET</div><div><h3>Recovery outcomes nobody else has</h3><p>Parsed auction notices (1.22 lakh+ properties listed on the PSB e-auction portal), realised sale prices and days to sale from partner lenders, Pulse alerts that preceded defaults, valuer disagreements. Each tenant calibrates its own model; consented, anonymised aggregates build an India collateral recovery index.</p></div><div class="ct">∞<small>flywheel</small></div></div>
   </div>
-  <div class="src">Sources: PIB / DFS on the BAANKNET e-auction portal (3 Jan 2025); connector list from the BhoomiPulse API registry.</div>
+  <div class="src">Sources: PIB / DFS on the BAANKNET e-auction portal (3 Jan 2025); Google India blog, "Scaling agri resilience" (26 Aug 2026) on ALU/AMED and Terrastack; connector list from the BhoomiPulse API registry.</div>
   <aside>Public data only gets everyone to the starting line, and most competitors stop at one asset type or one source. Our edge: breadth of fusion on day one and recovery labels over time, which only a product embedded in lender workflows can collect.</aside>
 </div></section>
 
@@ -375,10 +378,12 @@ table.fb td:first-child{color:#d6deef;font-style:italic;width:44%}
     </table>
     <div>
       <div class="card" style="margin-bottom:14px"><h3>Guard against biased training data</h3><p>Approved loans and auctioned assets are not a random sample. We track a sample of rejected files, weight auction data to the lender's full collateral population, and hold out whole districts and later months.</p></div>
+      <div class="card" style="margin-bottom:14px"><h3>Learned weights, not fixed indices</h3><p>Spatial scores in this market are typically fixed-weight indices, e.g. 50% price trend, 30% transaction liquidity, 10% area growth, 10% repossession access.<span class="mr">MR</span> We fit weights to realised recoveries per district instead.</p></div>
       <div class="card"><h3>Honest about today</h3><p>The prototype runs live on public data with transparent priors. Calibration on a design partner's files and recoveries is the first milestone, and every response carries its model version.</p></div>
     </div>
   </div>
-  <aside>How is the algorithm better? A measurable protocol with targets; out-of-time and out-of-geography tests; conformal intervals so the range means what it says; explicit fixes for selection bias in lending data.</aside>
+  <div class="src">MR = market research (industry materials, Nov 2026; not publicly verified). Targets are BhoomiPulse pilot goals.</div>
+  <aside>How is the algorithm better? Peers hand-set index weights; we learn them from recoveries. A measurable protocol with targets; out-of-time and out-of-geography tests; conformal intervals so the range means what it says; explicit fixes for selection bias in lending data.</aside>
 </div></section>
 
 <!-- 9 CUSTOMERS -->
@@ -395,8 +400,9 @@ table.fb td:first-child{color:#d6deef;font-style:italic;width:44%}
     <div><h3 class="cyan">BhoomiPulse</h3><p>same evidence, both sides</p></div><div class="cyan" style="font-size:30px">⇄</div>
     <div><h3 class="amber">Co-lender / pool buyer</h3><p>uses Investor Lens</p></div>
   </div>
-  <p class="rise d4" style="margin-top:12px;font-size:15.5px">Not for: retail borrowers, brokers or tiny lenders. They cannot pay for, or act on, portfolio-grade risk data.</p>
-  <div class="src">Sources: RBI (656 NBFC-ML, Mar 2025); ICRA, Business loan and small-ticket LAP focus report (Aug 2024).</div>
+  <p class="rise d4" style="margin-top:12px;font-size:15.5px"><b class="cyan">Demand is proven:</b> an early Indian spatial-intelligence peer reports about ₹5 lakh monthly revenue across 15+ states, paying customers in agri-lending and MSME/LAP underwriting, and pilots with several LAP NBFCs and a life insurer.<span class="mr">MR</span></p>
+  <p class="rise d4" style="margin-top:6px;font-size:15.5px">Not for: retail borrowers, brokers or tiny lenders. They cannot pay for, or act on, portfolio-grade risk data.</p>
+  <div class="src">Sources: RBI (656 NBFC-ML, Mar 2025); ICRA, Business loan and small-ticket LAP focus report (Aug 2024). MR = market research (industry materials, Nov 2026; not publicly verified).</div>
   <aside>The pipe between two businesses: once a co-lending bank reads our certificate, it asks its originating partners to use the same evidence. That is our distribution loop.</aside>
 </div></section>
 
@@ -415,6 +421,7 @@ table.fb td:first-child{color:#d6deef;font-style:italic;width:44%}
         <tr class="hl"><td><b>TAM</b></td><td></td><td></td><td class="r"><b>≈ 900</b></td></tr>
       </table>
       <p class="rise d2" style="font-size:14px;margin-top:10px">File and loan counts are our estimates across housing, LAP, secured MSME and land-mortgaged farm loans at banks and NBFCs. The value pool assumes ~₹2,500 per file spent on valuation and technical checks today.</p>
+      <div class="card rise d3" style="margin-top:12px;padding:14px 18px"><p><b class="cyan">Cross-check.</b> Peers size land intelligence at ~$10B across the developing world (government, lending, insurance, agribusiness) and a credit-focused SAM of ~$500M at 1–2 bps of recurring revenue.<span class="mr">MR</span> Our India-only core of ₹900 cr (~$105M) is deliberately narrower.</p></div>
     </div>
     <div class="tam rise d2">
       <div class="ring" style="width:540px;height:540px;left:10px;top:0;border-color:#5ce1ff44;background:radial-gradient(circle,rgba(92,225,255,.05),transparent 70%)"><div style="position:absolute;top:40px;width:100%"><b class="cyan">₹900 cr</b><span>TAM · India core</span></div></div>
@@ -422,7 +429,7 @@ table.fb td:first-child{color:#d6deef;font-style:italic;width:44%}
       <div class="ring pulse" style="width:170px;height:170px;left:195px;top:320px;border-color:#ffd98a;background:rgba(255,181,71,.16);display:grid;place-items:center"><div><b style="color:#fff">₹35 cr</b><span>SOM · year 3</span></div></div>
     </div>
   </div>
-  <div class="src">Sources: Crisil Ratings (securitisation ₹2.55 lakh crore, FY26); RBI (NBFC credit); BhoomiPulse estimates for volumes and prices (see financial plan).</div>
+  <div class="src">Sources: Crisil Ratings (securitisation ₹2.55 lakh crore, FY26); RBI (NBFC credit); BhoomiPulse estimates (see financial plan). MR = market research (industry materials, Nov 2026; not publicly verified).</div>
   <aside>SAM: small-ticket secured lending by NBFCs and HFCs plus their co-lending banks, about 3.5 million files and 12 million monitored loans. Year-3 revenue of ₹35 crore is about 11% of SAM.</aside>
 </div></section>
 
@@ -444,12 +451,13 @@ table.fb td:first-child{color:#d6deef;font-style:italic;width:44%}
     <div class="pt" style="left:60%">₹1,300–2,500<i></i>small-ticket valuation</div>
     <div class="pt" style="left:88%">₹3,000+<i></i>larger valuations</div>
   </div>
-  <div class="grid g3 rise d3" style="margin-top:18px">
+  <div class="grid g4 rise d3" style="margin-top:18px">
     <div class="card"><h3>Value-based, not cost-plus</h3><p>We capture roughly a sixth of the field-visit cost each fast-tracked file avoids.</p></div>
+    <div class="card"><h3>Peer benchmark</h3><p>Land-intelligence APIs sell at ₹20–200 per query, map platforms at ₹10–30k per district-month, analytical reports at ₹30–50k.<span class="mr">MR</span> We charge more per asset because we return a lending decision, not a data layer.</p></div>
     <div class="card"><h3>One public rate card</h3><p>Volume tiers only. No lender-specific prices, which keeps trust and avoids becoming a pricing hub.</p></div>
     <div class="card"><h3>Free 90-day design partnership</h3><p>In exchange for outcome data to calibrate, under a data-processing agreement.</p></div>
   </div>
-  <div class="src">Sources: urban cooperative bank schedule of charges (CIBIL ₹250, CERSAI ₹200 per file); Federal Bank agri-loan service charges; Can Fin Homes schedule (1/8%, max ₹2,500); SBI valuer fee annexure (0.02%, min ₹3,000).</div>
+  <div class="src">Sources: urban cooperative bank schedule of charges (CIBIL ₹250, CERSAI ₹200 per file); Federal Bank agri-loan service charges; Can Fin Homes schedule (1/8%, max ₹2,500); SBI valuer fee annexure (0.02%, min ₹3,000). MR = market research (industry materials, Nov 2026).</div>
   <aside>We sit between a bureau pull and a field valuation. Transparent rate card with volume tiers only; no personalised pricing.</aside>
 </div></section>
 
@@ -480,7 +488,7 @@ table.fb td:first-child{color:#d6deef;font-style:italic;width:44%}
         <tr><td>Earlier collections: 5% lower credit cost on a ₹3,000 cr monitored book at 1%</td><td class="r nw green">+₹1.5 cr</td></tr>
         <tr><td>BhoomiPulse: reports + 60k assets on Pulse + platform</td><td class="r nw red">−₹1.4 cr</td></tr>
         <tr class="hl"><td><b>Net benefit</b> (same-day decisions not counted)</td><td class="r nw"><b>≈ 4×</b></td></tr></table>
-      <p style="font-size:13.5px;margin-top:8px">Illustrative assumptions; the design-partner pilot measures each line.</p>
+      <p style="font-size:13.5px;margin-top:8px">Illustrative assumptions; ₹2,500 per visit sits inside the ₹2,000–5,000 field-verification range.<span class="mr">MR</span> The design-partner pilot measures each line.</p>
     </div>
   </div>
   <aside>COGS is dominated by optional premium imagery and human QA, both of which fall with scale. CAC around ₹33 lakh per logo with a 6–9 month enterprise cycle; first-year ACV about ₹58 lakh, expanding to about ₹1.25 crore by year 3.</aside>
@@ -493,20 +501,21 @@ table.fb td:first-child{color:#d6deef;font-style:italic;width:44%}
   <table class="tb mx rise d1" style="margin-top:4px">
     <tr><th>Who</th><th>Example</th><th class="c" style="text-align:center">Land, home, factory</th><th style="text-align:center">Realisable value</th><th style="text-align:center">Monitoring</th><th style="text-align:center">Capital providers</th><th style="text-align:center">Policy API</th></tr>
     <tr><td>Panel valuers</td><td>Empanelled engineers</td><td class="c"><i class="dot h"></i></td><td class="c"><i class="dot h"></i></td><td class="c"><i class="dot"></i></td><td class="c"><i class="dot"></i></td><td class="c"><i class="dot"></i></td></tr>
-    <tr><td>Agri Earth-observation</td><td>SatSure (bank-backed)</td><td class="c"><i class="dot h"></i><small>farms</small></td><td class="c"><i class="dot"></i></td><td class="c"><i class="dot f"></i></td><td class="c"><i class="dot h"></i></td><td class="c"><i class="dot f"></i></td></tr>
-    <tr><td>Bureaus and alt-data</td><td>Bureaus, aggregators</td><td class="c"><i class="dot"></i></td><td class="c"><i class="dot"></i></td><td class="c"><i class="dot h"></i></td><td class="c"><i class="dot f"></i></td><td class="c"><i class="dot f"></i></td></tr>
+    <tr><td>Agri Earth-observation</td><td>SatSure, CropIn</td><td class="c"><i class="dot h"></i><small>farms</small></td><td class="c"><i class="dot"></i></td><td class="c"><i class="dot f"></i></td><td class="c"><i class="dot h"></i></td><td class="c"><i class="dot f"></i></td></tr>
+    <tr><td>Bureaus and alt-data</td><td>Bureaus, Data Sutram</td><td class="c"><i class="dot"></i></td><td class="c"><i class="dot"></i></td><td class="c"><i class="dot h"></i></td><td class="c"><i class="dot f"></i></td><td class="c"><i class="dot f"></i></td></tr>
     <tr><td>Property portals' data arms</td><td>Listing-price analytics</td><td class="c"><i class="dot h"></i><small>urban homes</small></td><td class="c"><i class="dot"></i></td><td class="c"><i class="dot"></i></td><td class="c"><i class="dot h"></i></td><td class="c"><i class="dot h"></i></td></tr>
     <tr><td>Global property AI</td><td>Moody's + CAPE Analytics</td><td class="c"><i class="dot h"></i><small>not India</small></td><td class="c"><i class="dot h"></i></td><td class="c"><i class="dot f"></i></td><td class="c"><i class="dot f"></i></td><td class="c"><i class="dot f"></i></td></tr>
+    <tr><td>Rural land intelligence</td><td>Terrastack (Google ALU/AMED)</td><td class="c"><i class="dot h"></i><small>farmland</small></td><td class="c"><i class="dot np"></i></td><td class="c"><i class="dot h"></i><small>crop activity</small></td><td class="c"><i class="dot np"></i></td><td class="c"><i class="dot np"></i></td></tr>
     <tr class="hl"><td><b>BhoomiPulse</b></td><td>Collateral recovery intelligence</td><td class="c"><i class="dot f"></i></td><td class="c"><i class="dot f"></i></td><td class="c"><i class="dot f"></i></td><td class="c"><i class="dot f"></i></td><td class="c"><i class="dot f"></i></td></tr>
   </table>
-  <p class="rise d2" style="font-size:13px;margin:8px 0 0"><i class="dot f"></i> yes &nbsp; <i class="dot h"></i> partly &nbsp; <i class="dot"></i> no</p>
+  <p class="rise d2" style="font-size:13px;margin:8px 0 0"><i class="dot f"></i> yes &nbsp; <i class="dot h"></i> partly &nbsp; <i class="dot"></i> no &nbsp; <i class="dot np"></i> not public</p>
   <div class="grid g3 rise d3" style="margin-top:12px">
     <div class="card"><h3 class="amber">The category is real</h3><p>India's three largest private banks invested in an agri EO firm; Moody's bought a geospatial property-AI firm in Jan 2025.</p></div>
-    <div class="card"><h3 class="amber">Our wedge</h3><p>Nobody prices recovery: what the asset fetches, how fast, after a default, across land, homes and factories.</p></div>
-    <div class="card"><h3 class="amber">Partner, not fight</h3><p>Agri EO and bureau players are channels: our recovery layer complements their origination data.</p></div>
+    <div class="card"><h3 class="amber">Closest peer: Terrastack</h3><p>IIT Bombay start-up (2024) built on Google DeepMind's ALU/AMED APIs; maps 140M+ ha of farmland for land-record reconciliation and farm-revenue estimates, to widen farmers' access to credit.</p></div>
+    <div class="card"><h3 class="amber">Our wedge</h3><p>Peers score rural land at origination. Nobody prices recovery, watches the asset after disbursal, or serves the capital provider, across homes, factories and farms.</p></div>
   </div>
-  <div class="src">Sources: SatSure press and company profile (ICICI Bank, HDFC, Kotak as investors; Perfios partnership, Aug 2025); Moody's press release (13 Jan 2025). Ratings are our assessment of public product descriptions.</div>
-  <aside>Address "everyone is doing this" head-on: map the field, show the gap (realisable value + monitoring + capital-provider view in one API), turn adjacent players into channels.</aside>
+  <div class="src">Sources: SatSure press (ICICI, HDFC, Kotak investors); Moody's (13 Jan 2025); Terrastack: Google India blog (26 Aug 2026), Geospatial World profile. Ratings: our view of public descriptions; peer set informed by market research.</div>
+  <aside>Terrastack is the closest Indian peer and is rated only on what it has said publicly; "n/p" means not public. Address "everyone is doing this" head-on: map the field, show the gap (realisable value + monitoring + capital-provider view in one API), turn adjacent players into channels.</aside>
 </div></section>
 
 <!-- 14 GTM -->
@@ -606,7 +615,7 @@ table.fb td:first-child{color:#d6deef;font-style:italic;width:44%}
     <div class="card"><h3>Long enterprise sales cycles<span class="lvl h">high</span></h3><p>Land with a data-tape Pulse audit that needs no integration; free 90-day pilot; sell through LOS and co-lending platforms.</p></div>
     <div class="card"><h3>Regulators or valuers push back<span class="lvl m">medium</span></h3><p>Position as triage and a second opinion; statutory valuations stay with registered valuers; full audit trail.</p></div>
     <div class="card"><h3>Public data access changes<span class="lvl m">medium</span></h3><p>Every connector is swappable and cached; self-hosted map stacks; paid imagery as fallback; several sources per signal.</p></div>
-    <div class="card"><h3>Incumbents copy the features<span class="lvl m">medium</span></h3><p>Features copy, outcome data does not. Recovery labels and workflow embedding compound with every tenant.</p></div>
+    <div class="card"><h3>Incumbents and funded peers copy features<span class="lvl m">medium</span></h3><p>Peers already run on big-tech geo APIs. Features copy, outcome data does not. Recovery labels and workflow embedding compound with every tenant.</p></div>
     <div class="card"><h3>Data protection breach<span class="lvl m">medium</span></h3><p>No personal data needed for scoring; consent-only connectors; on-prem option; ISO 27001 and SOC 2 roadmap.</p></div>
   </div>
   <aside>Be explicit about the kill criterion for the core model; it builds credibility with a risk committee and with investors.</aside>
