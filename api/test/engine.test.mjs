@@ -27,3 +27,22 @@ console.log('audit', JSON.stringify({ g: audit.book_grade, w: audit.exposure_wei
 const snap = await pulseSnapshot({ lat: 22.889, lon: 72.223, asset_type: 'agri_land' }, { fetch }, { activity_index: 95, taken_at: '2026-10-01T00:00:00Z' });
 console.log('pulse', JSON.stringify(snap));
 console.log('OK');
+
+{ // circle rate: published Hinjewadi rate, under-declaration flag, Delhi schedule, estimated fallback
+  const { circleCheck } = await import('../../web/engine/sources/circle.js');
+  const hj = circleCheck({ lat: 18.5913, lon: 73.7389, state: 'Maharashtra', assetType: 'residential', builtSqft: 1050, p50: 9000000, declared: 4000000 });
+  assert.equal(hj.tier, 'published');
+  assert.equal(hj.rate_sqm, 53780);
+  assert.ok(Math.abs(hj.circle_value - 5246147) < 5);
+  assert.equal(hj.declared_below_circle, true);
+  assert.equal(hj.growth.signal, 'normal');
+  const dl = circleCheck({ lat: 28.6, lon: 77.2, state: 'Delhi', assetType: 'residential', builtSqft: 700, p50: 9000000 });
+  assert.equal(dl.tier, 'schedule');
+  assert.equal(dl.growth.signal, 'stale');
+  const est = circleCheck({ lat: 17.38, lon: 78.48, state: 'Telangana', assetType: 'residential', builtSqft: 1000, p50: 7000000, marketRatePsf: 7000 });
+  assert.equal(est.tier, 'estimated');
+  assert.ok(est.circle_value > 0 && est.market_to_circle > 1);
+  const above = circleCheck({ lat: 18.5913, lon: 73.7389, state: 'Maharashtra', assetType: 'residential', builtSqft: 1050, p50: 5000000 });
+  assert.equal(above.circle_above_market, true);
+  console.log('circle checks ok');
+}

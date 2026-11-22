@@ -122,6 +122,17 @@ function imgTag(urls, alt) {
   return `<img alt="${esc(alt)}" src="${esc(first)}" data-alt='${esc(JSON.stringify(rest))}' onerror="const a=JSON.parse(this.dataset.alt||'[]');if(a.length){this.dataset.alt=JSON.stringify(a.slice(1));this.src=a[0]}else{this.replaceWith(Object.assign(document.createElement('div'),{className:'na',textContent:'Scene preview unavailable'}))}">`;
 }
 
+function circleSec(c, v) {
+  if (!c || !c.circle_value) return '';
+  const max = Math.max(c.circle_value, v.p90, v.declared_value || 0) * 1.08;
+  const bar = (label, val, cls) => `<div class="b"><span>${label}</span><div class="t"><i class="${cls}" style="width:${Math.round((val / max) * 100)}%"></i></div><span class="n">${inr(val)}</span></div>`;
+  const g = c.growth;
+  return `<div class="sec"><h3>Government floor value <small><span class="tier ${c.tier}">${esc(c.tier_label)}</span> ${esc(c.regime)}</small></h3>
+    <div class="bars circ">${bar('Circle', c.circle_value, 'cf')}${bar('Market P50', v.p50, 'mk')}${v.declared_value ? bar('Declared', v.declared_value, c.declared_below_circle ? 'bad' : 'dc') : ''}</div>
+    <div class="kpis" style="margin-top:8px"><div class="kpi"><span>Rate</span><b>₹${(c.rate_sqm || 0).toLocaleString('en-IN')}/m²</b></div><div class="kpi"><span>Market ÷ floor</span><b class="${c.circle_above_market ? '' : 'cyan'}" style="${c.circle_above_market ? 'color:#ff8fa1' : ''}">${c.market_to_circle}×</b></div><div class="kpi"><span>Floor growth</span><b>${g ? (g.signal === 'stale' ? 'stale' : (g.cagr_2y * 100).toFixed(1) + '%/yr') : '—'}</b></div></div>
+    <p class="hint">${esc(c.locality || '')} · ${esc(c.fy || '')} · ${esc(c.method)}. ${g?.reading ? esc(g.reading) + '. ' : ''}${c.ratio_rationale ? 'Ratio basis: ' + esc(c.ratio_rationale) + '. ' : ''}${(c.notes || []).map(esc).join(' · ')}${c.source?.url ? ` · <a href="${esc(c.source.url)}" target="_blank" rel="noopener">${esc(c.source.label)}</a>` : ''}</p></div>`;
+}
+
 export function renderResult(r) {
   const el = $('#panelInner'); const s = r.signals || {}; const v = r.valuation; const L = r.lending;
   const span = v.p90 * 1.12 - v.p10 * 0.85, pos = (x) => Math.max(0, Math.min(100, ((x - v.p10 * 0.85) / span) * 100));
@@ -146,6 +157,7 @@ export function renderResult(r) {
     <div class="kpi"><span>12-m PD</span><b>${(L.pd_12m * 100).toFixed(1)}%</b></div>
     <div class="kpi"><span>${L.actual_ltv != null ? 'Requested LTV' : 'EL-max LTV'}</span><b class="${L.actual_ltv > L.recommended_ltv ? '' : 'cyan'}" style="${L.actual_ltv > L.recommended_ltv ? 'color:#ff8fa1' : ''}">${Math.round((L.actual_ltv ?? L.el_constrained_ltv) * 100)}%</b></div>
     <div class="kpi"><span>Expected loss</span><b>${L.expected_loss != null ? inr(L.expected_loss) : '—'}</b></div></div></div>
+  ${circleSec(r.circle_rate, v)}
   <div class="sec"><h3>Red flags <small>${flags.length}</small></h3><div class="flags">${flags.length ? flags.map((f) => `<div class="flag ${f.severity}"><b>${esc(f.code.replace(/_/g, ' '))}</b>${esc(f.text)}</div>`).join('') : '<div class="flag low"><b>CLEAR</b>No red flags raised.</div>'}</div></div>
   <div class="sec"><h3>Score anatomy</h3><div class="fig" id="radarFig" style="height:210px"></div></div>
   <div class="sec"><h3>Hazards <small>0 = none · 100 = severe</small></h3><div class="bars">${hzBar('Flood', hz.flood, 'linear-gradient(90deg,#5ce1ff,#4c8dff)')}${hzBar('Heat', hz.heat, 'linear-gradient(90deg,#ffb547,#ff5470)')}${hzBar('Drought', hz.drought, 'linear-gradient(90deg,#ffd166,#ff9a3d)')}</div>

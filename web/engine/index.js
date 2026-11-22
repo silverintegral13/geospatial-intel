@@ -6,10 +6,11 @@ import { terrain, flood, climate } from './sources/openmeteo.js';
 import { nightLights } from './sources/gibs.js';
 import { sentinel2, landcover, surfaceWater, ndviAnomaly } from './sources/pc.js';
 import { indiaPost, ENTERPRISE_CONNECTORS } from './sources/india.js';
+import { CIRCLE_TABLE, STATE_RATIO } from './sources/circle.js';
 import { score, DEFAULT_POLICY, ASSET_TYPES, activityIndex } from './models/score.js';
 import { decodeImage as pureDecode } from './vendor/imgdecode.js';
 
-export { ASSET_TYPES, DEFAULT_POLICY, ENTERPRISE_CONNECTORS, VERSION, MODEL_VERSION };
+export { ASSET_TYPES, DEFAULT_POLICY, ENTERPRISE_CONNECTORS, VERSION, MODEL_VERSION, CIRCLE_TABLE, STATE_RATIO };
 
 export const SOURCES = [
   { id: 'geocode', name: 'Reverse geocoding', provider: 'OpenStreetMap Nominatim', licence: 'ODbL', url: 'https://nominatim.openstreetmap.org', run: reverseGeocode, modes: ['full'], feeds: 'Address, district, state, PIN' },
@@ -27,6 +28,7 @@ export const SOURCES = [
 export const BENCHMARK_SOURCES = [
   { id: 'proptiger', name: 'City residential prices CY2025', provider: 'PropTiger Real Insight (published)', use: 'Valuation anchor in 8 metros' },
   { id: 'agri_prior', name: 'Agricultural land price prior by state band', provider: 'Low-confidence prior; production feed = IIMA agri land price index + jantri', use: 'Agri valuation anchor' },
+  { id: 'circle', name: 'Government floor value (circle rate / ready reckoner / jantri / guidance value)', provider: `Curated state schedules (${CIRCLE_TABLE.length} localities + Delhi flat schedule); estimated from state ratios elsewhere`, use: 'Under-declaration check, registrable value, floor growth signal' },
   { id: 'policy', name: 'Lender policy (LTV caps, PD, EL threshold)', provider: 'Tenant configuration', use: 'LTV band and expected loss' },
 ];
 
@@ -41,7 +43,7 @@ function normaliseInput(input) {
   out.lat = +out.lat; out.lon = +out.lon;
   if (!Number.isFinite(out.lat) || !Number.isFinite(out.lon) || Math.abs(out.lat) > 90 || Math.abs(out.lon) > 180) throw Object.assign(new Error('lat/lon (or polygon) required'), { status: 400 });
   out.asset_type = ASSET_TYPES[out.asset_type] ? out.asset_type : 'residential';
-  for (const k of ['area_sqm', 'built_up_sqft', 'loan_amount', 'declared_value']) if (out[k] != null) out[k] = +out[k] || null;
+  for (const k of ['area_sqm', 'built_up_sqft', 'loan_amount', 'declared_value', 'building_age_years']) if (out[k] != null) out[k] = +out[k] || null;
   return out;
 }
 
@@ -97,7 +99,7 @@ export async function assess(input, env = {}) {
     engine_version: VERSION,
     mode,
     reference_id: input.reference_id || null,
-    input: { lat: A.lat, lon: A.lon, polygon: A.polygon || null, asset_type: A.asset_type, area_sqm: A.area_sqm || null, built_up_sqft: A.built_up_sqft || null, loan_amount: A.loan_amount || null, declared_value: A.declared_value || null },
+    input: { lat: A.lat, lon: A.lon, polygon: A.polygon || null, asset_type: A.asset_type, area_sqm: A.area_sqm || null, built_up_sqft: A.built_up_sqft || null, loan_amount: A.loan_amount || null, declared_value: A.declared_value || null, building_age_years: A.building_age_years ?? null },
     location: { display_name: F.display_name, locality: F.locality, district: F.district || F.pin_district, state: F.state || F.pin_state, postcode: F.postcode },
     ...R,
     signals: F,

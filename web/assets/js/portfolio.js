@@ -117,9 +117,9 @@ function stressed() {
 }
 export function renderInvestor() {
   const el = $('#panelInner');
-  if (!S.portfolioResults.length && running) { el.innerHTML = `<div class="ph"><div><div class="kicker">INVESTOR LENS</div><h2>Screening the book…</h2><p>${progress[0]} of ${progress[1]} loans scored. The certificate appears when the screen finishes.</p></div></div><div class="empty"><div class="radar-anim"></div></div>`; return; }
+  if (!S.portfolioResults.length && running) { el.innerHTML = `<div class="ph"><div><div class="kicker">INVESTOR LENS <span class="xtra">EXTRA FEATURE</span></div><h2>Screening the book…</h2><p>${progress[0]} of ${progress[1]} loans scored. The certificate appears when the screen finishes.</p></div></div><div class="empty"><div class="radar-anim"></div></div>`; return; }
   if (!S.portfolioResults.length) {
-    el.innerHTML = `<div class="ph"><div><div class="kicker">INVESTOR LENS</div><h2>Diligence a lender's collateral in minutes</h2><p>For co-lending banks, PTC / direct-assignment pool buyers, rating analysts and equity investors evaluating an NBFC: grade the collateral behind every loan, then stress it.</p></div></div>
+    el.innerHTML = `<div class="ph"><div><div class="kicker">INVESTOR LENS <span class="xtra">EXTRA FEATURE</span></div><h2>Diligence a lender's collateral in minutes</h2><p>For co-lending banks, PTC / direct-assignment pool buyers, rating analysts and equity investors evaluating an NBFC: grade the collateral behind every loan, then stress it.</p><p class="hint">Extra feature on the core NBFC valuation engine. Launch gate: 10+ NBFC customers live and at least 2 co-lenders or pool buyers asking for a portfolio certificate.</p></div></div>
     <div class="empty"><div class="radar-anim"></div><div class="big">No book screened yet</div><p>Load the sample NBFC book or upload a data tape in Portfolio, screen it, then come back here.</p><button class="btn pri" id="goPf">Load and screen the sample book</button></div>`;
     $('#goPf').onclick = async () => { S.portfolio = sampleBook(); setPortfolio(S.portfolio); fitTo(S.portfolio); renderInvestor(); await screen(); };
     return;
@@ -132,7 +132,7 @@ export function renderInvestor() {
   const verdictScore = Math.round(Math.max(0, Math.min(100, 100 * (0.45 * Math.min(1, wcover / 1.6) + 0.35 * (1 - underExp / (exp || 1)) + 0.2 * audit.exposure_weighted_cqs / 100))));
   const vg = verdictScore >= 80 ? 'A' : verdictScore >= 68 ? 'B' : verdictScore >= 55 ? 'C' : verdictScore >= 42 ? 'D' : 'E';
   el.innerHTML = `
-  <div class="ph"><div><div class="kicker">INVESTOR LENS · ${rows.length} LOANS · ${inr(exp)}</div><h2>Collateral quality certificate</h2><p>What a co-lender, pool buyer or equity investor would see before committing capital.</p></div></div>
+  <div class="ph"><div><div class="kicker">INVESTOR LENS <span class="xtra">EXTRA FEATURE</span> · ${rows.length} LOANS · ${inr(exp)}</div><h2>Collateral quality certificate</h2><p>What a co-lender, pool buyer or equity investor would see before committing capital.</p></div></div>
   <div class="hero" style="grid-template-columns:132px 1fr">${dialHTML(verdictScore, vg)}<div><div class="route ${vg <= 'B' ? 'fast_track' : vg === 'C' ? 'verify' : 'refer'}">${vg <= 'B' ? 'Collateral supports the book at this stress' : vg === 'C' ? 'Acceptable with tighter LTV or credit enhancement' : 'Collateral does not support the book at this stress'}</div>
   <div class="kpis" style="grid-template-columns:1fr 1fr;margin-top:8px"><div class="kpi"><span>Realisable cover</span><b class="amber">${wcover.toFixed(2)}×</b></div><div class="kpi"><span>Under-covered exposure</span><b style="color:#ff8fa1">${Math.round((underExp / (exp || 1)) * 100)}%</b></div></div></div></div>
   <div class="sec"><h3>Stress test</h3>

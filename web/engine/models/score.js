@@ -3,6 +3,7 @@
 // Every coefficient here is a transparent prior. Calibration on lender outcomes replaces them per tenant.
 import { clamp, ramp, round, mean, inr, MODEL_VERSION } from '../util.js';
 import { nearestBenchmark, TIER_PRIOR, agriPrior } from '../sources/india.js';
+import { circleCheck } from '../sources/circle.js';
 
 export const ASSET_TYPES = {
   residential: { label: 'Residential property', days: 110, haircut: 0.14, halfwidth: 0.18, ltvCap: 0.75, pd: 0.035 },
@@ -168,7 +169,10 @@ export function score(F, A, ctx, policy = DEFAULT_POLICY, health = {}) {
   const missingKey = ['nightlights', 'osm', 'sentinel2', 'landcover'].filter((k) => health[k] && health[k].status !== 'ok').length;
   const w = ASSET_TYPES[t].halfwidth + 0.05 * missingKey + (val.in_benchmark_city || t === 'agri_land' ? 0 : 0.08);
   const V = val.value;
+  const circ = circleCheck({ lat: ctx.lat, lon: ctx.lon, state: F.state || F.pin_state, assetType: t, builtSqft: A.built_up_sqft || (A.area_sqm ? A.area_sqm * 10.7639 : null), areaSqm: A.area_sqm, p50: V, marketRatePsf: val.unit === '₹/acre' ? val.rate / 43560 : val.rate, declared: A.declared_value, ageYears: A.building_age_years });
   const liq = liquidity(t, loc.value, hz, acc, con.score);
+  // A government floor at or above market makes resale slower: buyers pay stamp duty on the floor.
+  if (circ.circle_above_market) { liq.haircut = clamp(liq.haircut + 0.04, 0.05, 0.6); liq.days_to_sell = Math.round(liq.days_to_sell * 1.15); circ.liquidity_penalty = { haircut_pp: 4, days_pct: 15 }; }
   const r = policy.cost_of_funds;
   const realisable = V * (1 - liq.haircut) / Math.pow(1 + r, liq.days_to_sell / 365) * (1 - policy.sale_costs);
   const ltv = ltvBand(t, V, realisable, cqs, policy, A.loan_amount);
@@ -191,6 +195,7 @@ export function score(F, A, ctx, policy = DEFAULT_POLICY, health = {}) {
       expected_loss: ltv.expected_loss != null ? Math.round(ltv.expected_loss) : null, el_rate: ltv.el_rate != null ? round(ltv.el_rate, 4) : null,
     },
     land_use: { observed: con.observed, consistency: con.score == null ? null : round(con.score * 100) },
+    circle_rate: circ,
   };
   result.flags = flags(F, A, result, hz, health);
   result.decision = decision(result);
@@ -214,6 +219,12 @@ export function flags(F, A, R, hz, health) {
   if (A.asset_type === 'industrial' && F.light_index_point != null && F.light_index_point < 5) add('medium', 'DARK_UNIT', 'Almost no night-time light at the unit: confirm it is operating.');
   if ((hz.heat ?? 0) >= 0.7) add('low', 'HEAT_STRESS', `${F.heat_days_40_yr} days a year above 40 °C.`);
   if ((hz.drought ?? 0) >= 0.6 && A.asset_type === 'agri_land') add('medium', 'RAIN_VOLATILE', `Rainfall varies ${Math.round((F.rain_cv || 0) * 100)}% year to year; dry spells of ${F.max_monsoon_dry_spell_d} days in the monsoon.`);
+  const C = R.circle_rate;
+  if (C?.declared_below_circle) add('high', 'BELOW_CIRCLE', `Declared value ${inr(A.declared_value)} is below the government ${C.regime.toLowerCase()} value of ${inr(C.circle_value)} (${C.tier_label.toLowerCase()}): stamp duty applies on the higher figure, so the deed value is likely understated. Confirm the registered agreement value.`);
+  if (C?.circle_above_market) add('medium', 'CIRCLE_ABOVE_MARKET', `Government floor ${inr(C.circle_value)} is at or above our market estimate: buyers would pay stamp duty on more than the price, which slows resale. Liquidity penalty applied (+4 pp haircut, +15% days to sell).`);
+  else if (C?.market_to_circle != null && C.market_to_circle > 2) add('medium', 'WIDE_FLOOR_GAP', `Market estimate is ${C.market_to_circle}× the government floor. Deeds in such areas are often registered near the floor, and lenders can only lean on the documented value: size the loan on the registrable value.`);
+  if (C?.growth?.signal === 'slow') add('low', 'SLOW_FLOOR_GROWTH', `Government floor rose only ${(C.growth.cagr_2y * 100).toFixed(1)}% a year over two years: weaker appreciation, watch liquidity.`);
+  if (C?.growth?.signal === 'fast') add('low', 'TOP_UP_SIGNAL', `Government floor rising ${(C.growth.cagr_2y * 100).toFixed(1)}% a year: candidate for a top-up offer.`);
   const down = Object.entries(health).filter(([, h]) => h.status !== 'ok').map(([k]) => k);
   if (down.length >= 3) add('low', 'DATA_GAPS', `${down.length} sources did not respond (${down.join(', ')}); the range is widened.`);
   return f;
@@ -237,6 +248,8 @@ export function narrative(F, A, R) {
   if (F.nearest_major_road_m != null) loc.push(`${F.nearest_major_road_class} road ${(F.nearest_major_road_m / 1000).toFixed(1)} km away`);
   if (loc.length) s.push(`Location: ${loc.join(', ')}.`);
   if (A.asset_type === 'agri_land' && F.ndvi_max != null) s.push(`Crop signal: peak NDVI ${F.ndvi_max} across ${F.ndvi_valid_obs} clear Sentinel-2 passes in the last year.`);
+  const C = R.circle_rate;
+  if (C?.circle_value) s.push(`Government floor (${C.regime.toLowerCase()}, ${C.tier_label.toLowerCase()}): ${inr(C.circle_value)}, so our market estimate is ${C.market_to_circle}× the floor.`);
   s.push(`Suggested LTV up to ${Math.round(R.lending.recommended_ltv * 100)}% (max loan ${inr(R.lending.max_loan)}), keeping 12-month expected loss under ${(R.lending.el_threshold * 100).toFixed(0)}%.`);
   const hi = R.flags.filter((x) => x.severity === 'high');
   if (hi.length) s.push(`Watch: ${hi.map((x) => x.text).join(' ')}`);
