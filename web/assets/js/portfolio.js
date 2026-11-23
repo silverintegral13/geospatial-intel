@@ -1,4 +1,4 @@
-// Portfolio screening (lenders) and Investor lens (co-lending partners, pool buyers, equity investors).
+// Portfolio: re-value an NBFC's existing loan book (book re-valuation).
 import { assessMany, portfolioAudit, ASSET_TYPES } from '../../engine/index.js';
 import { inr, round, quantile, mean } from '../../engine/util.js';
 import { S, bus } from './state.js';
@@ -95,66 +95,10 @@ export async function screen() {
   running = false; consoleStat(`book screened in ${((Date.now() - t0) / 1000).toFixed(1)} s`);
   log(`<span class="hl">BOOK</span> grade ${portfolioAudit(res).book_grade} · ${res.filter((r) => !r.error).length}/${n} scored`);
   bus.emit('portfolio:done');
-  if (S.mode === 'portfolio') renderPortfolio(); else if (S.mode === 'investor') renderInvestor();
+  if (S.mode === 'portfolio') renderPortfolio();
 }
 function deep(x) { S.assetType = x.asset_type; setAsset(x.lat, x.lon, { fly: true, label: x.reference_id }); if (x.area_sqm) S.asset.area_sqm = x.area_sqm; S.lastResult = null; S.editing = true; bus.emit('mode', 'assess'); }
 bus.on('portfolio:click', (i) => { const x = (S.portfolioResults.length ? S.portfolioResults : S.portfolio)[i]; if (!x) return; new window.maplibregl.Popup({ closeButton: false }).setLngLat([x.lon, x.lat]).setHTML(`<b>${esc(x.reference_id)}</b> · ${esc(x.asset_type)}<br>Loan ${inr(x.loan_amount)}${x.grade ? `<br>Grade <b>${x.grade}</b> (${x.cqs}) · P50 ${inr(x.p50)}<br><span style="color:#ffb985">${esc(x.flags || '')}</span>` : ''}`).addTo(map); });
 
-// ---------------- Investor lens ----------------
-let stress = { shock: 0, haircut: 0, flood: false, pd: 1 };
-function stressed() {
-  const rows = S.portfolioResults.filter((x) => x._r);
-  return rows.map((x) => {
-    const r = x._r, V = r.valuation.p50, loan = x.loan_amount || 0;
-    const floodHit = stress.flood && (r.hazards.flood ?? 0) >= 50 ? 0.85 : 1;
-    const V2 = V * (1 + stress.shock) * floodHit;
-    const h = Math.min(0.8, r.liquidity.forced_sale_haircut + stress.haircut);
-    const real = r.liquidity.realisable_value * (V2 / V) * ((1 - h) / (1 - r.liquidity.forced_sale_haircut));
-    const lgd = loan ? Math.min(1, Math.max(0.05, 1 - real / loan + 0.02)) : 0;
-    const pd = Math.min(0.9, r.lending.pd_12m * stress.pd * (stress.flood && floodHit < 1 ? 1.5 : 1));
-    return { x, loan, real, cover: loan ? real / loan : null, el: pd * lgd * loan, decl: x.declared_value ? x.declared_value / V : null };
-  });
-}
-export function renderInvestor() {
-  const el = $('#panelInner');
-  if (!S.portfolioResults.length && running) { el.innerHTML = `<div class="ph"><div><div class="kicker">INVESTOR LENS <span class="xtra">EXTRA FEATURE</span></div><h2>Screening the book…</h2><p>${progress[0]} of ${progress[1]} loans scored. The certificate appears when the screen finishes.</p></div></div><div class="empty"><div class="radar-anim"></div></div>`; return; }
-  if (!S.portfolioResults.length) {
-    el.innerHTML = `<div class="ph"><div><div class="kicker">INVESTOR LENS <span class="xtra">EXTRA FEATURE</span></div><h2>Diligence a lender's collateral in minutes</h2><p>For co-lending banks, PTC / direct-assignment pool buyers, rating analysts and equity investors evaluating an NBFC: grade the collateral behind every loan, then stress it.</p><p class="hint">Extra feature on the core NBFC valuation engine. Launch gate: 10+ NBFC customers live and at least 2 co-lenders or pool buyers asking for a portfolio certificate.</p></div></div>
-    <div class="empty"><div class="radar-anim"></div><div class="big">No book screened yet</div><p>Load the sample NBFC book or upload a data tape in Portfolio, screen it, then come back here.</p><button class="btn pri" id="goPf">Load and screen the sample book</button></div>`;
-    $('#goPf').onclick = async () => { S.portfolio = sampleBook(); setPortfolio(S.portfolio); fitTo(S.portfolio); renderInvestor(); await screen(); };
-    return;
-  }
-  const rows = stressed(); const exp = rows.reduce((s, r) => s + r.loan, 0); const el12 = rows.reduce((s, r) => s + r.el, 0);
-  const wcover = rows.reduce((s, r) => s + r.real, 0) / (exp || 1);
-  const under = rows.filter((r) => r.cover != null && r.cover < 1); const underExp = under.reduce((s, r) => s + r.loan, 0);
-  const decl = rows.map((r) => r.decl).filter(Number.isFinite); const inflation = decl.length ? quantile(decl, 0.5) : null;
-  const audit = portfolioAudit(rows.map((r) => r.x._r));
-  const verdictScore = Math.round(Math.max(0, Math.min(100, 100 * (0.45 * Math.min(1, wcover / 1.6) + 0.35 * (1 - underExp / (exp || 1)) + 0.2 * audit.exposure_weighted_cqs / 100))));
-  const vg = verdictScore >= 80 ? 'A' : verdictScore >= 68 ? 'B' : verdictScore >= 55 ? 'C' : verdictScore >= 42 ? 'D' : 'E';
-  el.innerHTML = `
-  <div class="ph"><div><div class="kicker">INVESTOR LENS <span class="xtra">EXTRA FEATURE</span> · ${rows.length} LOANS · ${inr(exp)}</div><h2>Collateral quality certificate</h2><p>What a co-lender, pool buyer or equity investor would see before committing capital.</p></div></div>
-  <div class="hero" style="grid-template-columns:132px 1fr">${dialHTML(verdictScore, vg)}<div><div class="route ${vg <= 'B' ? 'fast_track' : vg === 'C' ? 'verify' : 'refer'}">${vg <= 'B' ? 'Collateral supports the book at this stress' : vg === 'C' ? 'Acceptable with tighter LTV or credit enhancement' : 'Collateral does not support the book at this stress'}</div>
-  <div class="kpis" style="grid-template-columns:1fr 1fr;margin-top:8px"><div class="kpi"><span>Realisable cover</span><b class="amber">${wcover.toFixed(2)}×</b></div><div class="kpi"><span>Under-covered exposure</span><b style="color:#ff8fa1">${Math.round((underExp / (exp || 1)) * 100)}%</b></div></div></div></div>
-  <div class="sec"><h3>Stress test</h3>
-    <div class="slider" style="padding-left:0"><span style="width:150px">Price shock <b id="v1">${Math.round(stress.shock * 100)}%</b></span><input type="range" id="s1" min="-0.4" max="0" step="0.05" value="${stress.shock}"></div>
-    <div class="slider" style="padding-left:0"><span style="width:150px">Extra haircut <b id="v2">+${Math.round(stress.haircut * 100)} pp</b></span><input type="range" id="s2" min="0" max="0.25" step="0.01" value="${stress.haircut}"></div>
-    <div class="slider" style="padding-left:0"><span style="width:150px">PD multiplier <b id="v3">${stress.pd.toFixed(1)}×</b></span><input type="range" id="s3" min="1" max="4" step="0.1" value="${stress.pd}"></div>
-    <label class="tgl"><input type="checkbox" id="s4" ${stress.flood ? 'checked' : ''}><span></span>Monsoon flood event (assets with flood score ≥ 50 lose 15% value, PD ×1.5)</label></div>
-  <div class="sec"><div class="kpis">
-    <div class="kpi"><span>Stressed 12-m EL</span><b>${inr(el12)}</b></div><div class="kpi"><span>EL rate</span><b class="amber">${((el12 / (exp || 1)) * 100).toFixed(2)}%</b></div><div class="kpi"><span>Book CQS</span><b>${audit.exposure_weighted_cqs}</b></div>
-    <div class="kpi"><span>Declared ÷ model</span><b style="${inflation > 1.15 ? 'color:#ff8fa1' : ''}">${inflation ? inflation.toFixed(2) + '×' : '—'}</b></div><div class="kpi"><span>Top district</span><b style="font-size:12px">${esc(audit.concentration.top_district?.district?.split(',')[0] || '—')} ${Math.round((audit.concentration.top_district?.share || 0) * 100)}%</b></div><div class="kpi"><span>Flood-exposed</span><b class="cyan">${Math.round((audit.high_flood_exposure.exposure / (exp || 1)) * 100)}%</b></div></div></div>
-  <div class="sec"><h3>Realisable cover per loan <small>realisable value ÷ loan</small></h3><div class="fig" id="coverFig" style="height:110px"></div></div>
-  <div class="sec"><h3>Weakest 8 loans under this stress</h3><table class="t">${[...rows].sort((a, b) => (a.cover ?? 9) - (b.cover ?? 9)).slice(0, 8).map((r) => `<tr><td>${esc(r.x.reference_id)}<br><small style="color:#71809f">${esc(r.x.asset_type)} · ${esc(r.x.district || '')}</small></td><td class="n">${inr(r.loan)}</td><td class="n" style="color:${r.cover < 1 ? '#ff8fa1' : '#8ff5bf'}">${r.cover?.toFixed(2)}×</td><td class="n">${inr(r.el)}</td></tr>`).join('')}</table></div>
-  <div class="btns"><button class="btn pri" id="certBtn">⎙ Export certificate</button><button class="btn" id="pfBack">Open book</button></div>
-  <p class="hint">Use: co-lending partner checks under the 2025 co-lending directions, PTC/DA pool selection, rating surveillance, and equity diligence on lenders. Values are model estimates from public data, not a substitute for the originator's valuations.</p>`;
-  const bind = (id, k, f) => { $(id).oninput = (e) => { stress[k] = f(e.target.value); renderInvestor(); }; };
-  bind('#s1', 'shock', Number); bind('#s2', 'haircut', Number); bind('#s3', 'pd', Number);
-  $('#s4').onchange = (e) => { stress.flood = e.target.checked; renderInvestor(); };
-  animateDial(el);
-  const bins = [0, 0.5, 0.8, 1, 1.2, 1.5, 2, 3, 99]; const cnt = bins.slice(0, -1).map((b, i) => [`${b}–${bins[i + 1] > 9 ? '+' : bins[i + 1]}`, rows.filter((r) => r.cover >= b && r.cover < bins[i + 1]).length, bins[i + 1] <= 1]);
-  mount($('#coverFig'), (W, H) => { const hi = Math.max(...cnt.map((c) => c[1])) || 1, bw = W / cnt.length; return cnt.map(([k, v, bad], i) => { const h = (H - 26) * v / hi; return `<rect x="${i * bw + 3}" y="${H - 16 - h}" width="${bw - 6}" height="${h}" rx="3" fill="${bad ? '#ff5470' : '#ffb547'}" opacity=".85"/><text x="${i * bw + bw / 2}" y="${H - 3}" fill="#71809f" font-size="9.5" text-anchor="middle" font-family="JetBrains Mono">${k}</text><text x="${i * bw + bw / 2}" y="${H - 20 - h}" fill="#a9b6d3" font-size="10" text-anchor="middle">${v || ''}</text>`; }).join(''); });
-  $('#pfBack').onclick = () => bus.emit('mode', 'portfolio');
-  $('#certBtn').onclick = () => { const w = window.open('', '_blank'); if (!w) return toast('Allow pop-ups'); w.document.write(`<!doctype html><title>Collateral quality certificate</title><body style="font:14px Inter,system-ui;max-width:760px;margin:30px auto;color:#111"><h1>Collateral quality certificate</h1><p>${rows.length} loans · exposure ${inr(exp)} · generated ${new Date().toISOString().slice(0, 16)} UTC by BhoomiPulse${S.offline ? ' (SIMULATED DATA)' : ''}</p><h2>Verdict: ${vg} (${verdictScore}/100)</h2><ul><li>Exposure-weighted collateral quality score: ${audit.exposure_weighted_cqs}</li><li>Realisable cover: ${wcover.toFixed(2)}×</li><li>Under-covered exposure: ${Math.round((underExp / (exp || 1)) * 100)}%</li><li>Stressed 12-month expected loss: ${inr(el12)} (${((el12 / (exp || 1)) * 100).toFixed(2)}%)</li><li>Stress: price ${Math.round(stress.shock * 100)}%, haircut +${Math.round(stress.haircut * 100)} pp, PD ×${stress.pd}, flood event ${stress.flood ? 'on' : 'off'}</li><li>Grade mix: ${Object.entries(audit.grade_mix).map(([g, n]) => g + ' ' + n).join(', ')}</li><li>Top district concentration: ${audit.concentration.top_district?.district} (${Math.round((audit.concentration.top_district?.share || 0) * 100)}%)</li></ul><p style="color:#666;font-size:12px">Model estimates from public data (OpenStreetMap, Copernicus DEM, GloFAS, ERA5, VIIRS, Sentinel-2). Not a registered valuation.</p></body>`); w.document.close(); };
-}
 function dialHTML(score, grade) { const r = 56, c = 2 * Math.PI * r; const col = { A: '#3ee08f', B: '#a6e36b', C: '#ffd166', D: '#ff9a3d', E: '#ff5470' }[grade]; return `<div class="dial"><svg viewBox="0 0 132 132"><circle cx="66" cy="66" r="${r}" stroke="#ffffff12" stroke-width="9"/><circle cx="66" cy="66" r="${r}" stroke="${col}" stroke-width="9" stroke-dasharray="${c}" stroke-dashoffset="${c * (1 - score / 100)}" style="filter:drop-shadow(0 0 6px ${col})"/></svg><div class="g"><div><b style="color:${col}">${grade}</b><small>${score}/100</small></div></div></div>`; }
 function animateDial() {}
