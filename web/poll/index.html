@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>BhoomiPulse · Live poll</title>
+<meta name="robots" content="noindex">
+<style>
+:root{--bg:#02040a;--card:#0b1324;--line:#ffffff1f;--ink:#eef2fb;--ink2:#aab6d1;--cyan:#5ce1ff;--gold:#ffb547}
+*{box-sizing:border-box}html,body{margin:0;background:radial-gradient(120% 80% at 50% -10%,#0d1c3a,var(--bg) 60%);color:var(--ink);font:16px/1.45 Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;min-height:100%}
+main{max-width:480px;margin:0 auto;padding:28px 20px 40px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;letter-spacing:.01em}
+.orb{width:16px;height:16px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff,#ffd98a 30%,#ffb547 60%,#b5650d);box-shadow:0 0 18px #ffb547aa}
+.k{font:600 12px ui-monospace,Menlo,monospace;color:var(--cyan);letter-spacing:.08em;margin-top:26px}
+h1{font-size:26px;line-height:1.2;margin:8px 0 18px}
+.opts{display:flex;flex-direction:column;gap:12px}
+.opts button{all:unset;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:18px 18px;border-radius:14px;border:1px solid var(--line);background:var(--card);font-weight:600;font-size:18px;transition:all .2s}
+.opts button small{font-weight:500;font-size:13px;color:var(--ink2);display:block;margin-top:3px}
+.opts button.on{border-color:var(--gold);background:linear-gradient(140deg,#ffb54726,var(--card));box-shadow:0 0 0 1px #ffb54766}
+.opts button .tick{opacity:0;color:var(--gold);font-size:22px}.opts button.on .tick{opacity:1}
+.st{margin-top:18px;font-size:14px;color:var(--ink2);min-height:22px}
+.st.ok{color:#7ff0b8}.st.err{color:#ff8fa1}
+form{display:flex;gap:10px}input{flex:1;min-width:0;font:600 22px ui-monospace,Menlo,monospace;letter-spacing:.2em;text-transform:uppercase;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+form button{font:600 16px inherit;padding:0 18px;border-radius:12px;border:1px solid #ffb54788;background:#ffb54722;color:var(--gold)}
+.foot{margin-top:30px;font-size:12px;color:#6b7690}
+</style>
+</head>
+<body>
+<main>
+  <div class="brand"><span class="orb"></span>BhoomiPulse</div>
+  <div id="app"></div>
+  <p class="foot">Anonymous: no name or login. Your phone keeps a random ID so you can change your vote.</p>
+</main>
+<script>
+(() => {
+  const qs = new URLSearchParams(location.search);
+  const relay = (qs.get('r') || 'https://ntfy.sh').replace(/\/$/, '');
+  const app = document.getElementById('app');
+  let code = (qs.get('c') || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+  if (!code) return askCode();
+  start();
+
+  function askCode(msg) {
+    app.innerHTML = `<div class="k">LIVE POLL</div><h1>Enter the code on the screen</h1>
+      <form id="f"><input id="c" maxlength="6" autocomplete="off" autocapitalize="characters" placeholder="CODE" aria-label="Poll code"><button>Join</button></form>
+      <div class="st err">${msg ? esc(msg) : ''}</div>`;
+    document.getElementById('f').onsubmit = (e) => { e.preventDefault(); code = document.getElementById('c').value.toUpperCase().replace(/[^A-Z0-9]/g, ''); if (code.length >= 4) { history.replaceState(null, '', '?c=' + code + (qs.get('r') ? '&r=' + encodeURIComponent(relay) : '')); start(); } };
+  }
+
+  async function readConfig(topic) {
+    const res = await fetch(`${relay}/${topic}/json?poll=1&since=all`, { cache: 'no-store' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const lines = (await res.text()).split('\n').filter(Boolean);
+    let cfg = null;
+    for (const l of lines) { try { const d = JSON.parse(l); if (d.event && d.event !== 'message') continue; const m = JSON.parse(d.message); if (m.t === 'config') cfg = m; } catch (e) {} }
+    return cfg;
+  }
+
+  async function start() {
+    const topic = 'bhoomipulse-' + code.toLowerCase();
+    const key = 'bp-voter-' + code;
+    let voter = localStorage.getItem(key);
+    if (!voter) { voter = Math.random().toString(36).slice(2, 10) + Date.now().toString(36).slice(-4); try { localStorage.setItem(key, voter); } catch (e) {} }
+    app.innerHTML = `<div class="k">LIVE POLL · ${esc(code)}</div><h1>Connecting…</h1><div class="st" id="st"></div>`;
+    let cfg = null;
+    for (let i = 0; i < 40 && !cfg; i++) {
+      try { cfg = await readConfig(topic); } catch (e) { document.getElementById('st').textContent = 'Could not reach the poll server, retrying…'; }
+      if (!cfg) { if (i === 3) document.getElementById('st').textContent = 'Waiting for the presenter to open this poll. Check the code on screen.'; await sleep(2500); }
+    }
+    if (!cfg) return askCode('No poll found for that code.');
+    const picked = localStorage.getItem(key + '-o');
+    app.innerHTML = `<div class="k">LIVE POLL · ${esc(code)}</div><h1>${esc(cfg.title)}</h1>
+      <div class="opts">${cfg.options.map((o, i) => `<button data-i="${i}" class="${String(i) === picked ? 'on' : ''}"><span>${esc(o.name || o)}${o.when ? `<small>${esc(o.when)}</small>` : ''}</span><span class="tick">✓</span></button>`).join('')}</div>
+      <div class="st" id="st">${picked != null ? 'Your vote is in. Tap another option to change it.' : 'Tap one option.'}</div>`;
+    const st = document.getElementById('st');
+    app.querySelectorAll('.opts button').forEach((b) => (b.onclick = async () => {
+      const i = +b.dataset.i;
+      app.querySelectorAll('.opts button').forEach((x) => x.classList.toggle('on', x === b));
+      st.className = 'st'; st.textContent = 'Sending…';
+      for (let a = 0; a < 6; a++) {
+        try {
+          const res = await fetch(`${relay}/${topic}`, { method: 'POST', body: JSON.stringify({ t: 'vote', v: voter, o: i }) });
+          if (res.ok) { try { localStorage.setItem(key + '-o', String(i)); } catch (e) {} st.className = 'st ok'; st.textContent = 'Vote recorded ✓ Watch the screen. Tap another option to change it.'; return; }
+          if (res.status !== 429 && res.status < 500) throw new Error('HTTP ' + res.status);
+        } catch (e) { if (a === 5) break; }
+        st.textContent = 'Busy, retrying…'; await sleep(1500 * (a + 1));
+      }
+      st.className = 'st err'; st.textContent = 'Could not send your vote. Try again in a moment.';
+    }));
+  }
+})();
+</script>
+</body>
+</html>
