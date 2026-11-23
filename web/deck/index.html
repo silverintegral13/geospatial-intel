@@ -1586,7 +1586,7 @@ function go(i, push = true) {
   if (sl.dataset.demo) { $('win').classList.remove('live'); $('livewrap').innerHTML = ''; setTimeout(runDemo, 600); } else stopDemo();
   if (push) { try { history.replaceState(null, '', '#s' + (cur + 1)); } catch (e) { /* sandboxed */ } }
 }
-const next = () => { if (slides[cur].querySelector('#guessCard:not(.revealed)')) return revealGuess(); go(cur + 1); }, back = () => go(cur - 1);
+const next = () => { if (slides[cur].querySelector('#guessCard:not(.revealed)')) return revealGuess(); if (slides[cur].querySelector('.gp:not(.on)')) return document.getElementById('gapAll').click(); go(cur + 1); }, back = () => go(cur - 1);
 $('nextB').onclick = next; $('prevB').onclick = back;
 addEventListener('keydown', (e) => {
   if (e.target.tagName === 'INPUT' && e.target.type === 'range') return;
