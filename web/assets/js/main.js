@@ -8,6 +8,7 @@ import { initPulse, render as renderPulse } from './pulse.js';
 import { renderApi } from './apiconsole.js';
 import { renderFabric, probeAll, health } from './fabric.js';
 import { renderInBuild } from './inbuild.js';
+import { renderAgents } from './agents.js';
 import { log } from './engine-env.js';
 
 const $ = (s) => document.querySelector(s);
@@ -78,7 +79,7 @@ function setMode(m) {
   S.mode = m;
   const IB = ['inbuild', 'investor', 'branch'];
   document.querySelectorAll('#modes button').forEach((b) => b.classList.toggle('on', b.dataset.mode === m || (b.dataset.mode === 'inbuild' && IB.includes(m))));
-  ({ assess: renderAssess, portfolio: renderPortfolio, api: renderApi, sources: renderFabric, inbuild: () => renderInBuild(), pulse: renderPulse, investor: () => renderInBuild('investor'), branch: () => renderInBuild('branch') })[m]?.();
+  ({ assess: renderAssess, portfolio: renderPortfolio, api: renderApi, sources: renderFabric, inbuild: () => renderInBuild(), pulse: renderPulse, agents: renderAgents, investor: () => renderInBuild('investor'), branch: () => renderInBuild('branch') })[m]?.();
 }
 bus.on('mode', setMode);
 document.getElementById('modes').onclick = (e) => { const b = e.target.closest('button'); if (b) setMode(b.dataset.mode); };
@@ -141,13 +142,13 @@ document.addEventListener('keydown', (e) => {
   else if (k === 's') { const on = !S.layers.satellite; setLayer('satellite', on); $('[data-layer=satellite]').checked = on; }
   else if (k === 'l') $('[data-drawer=layers]').click();
   else if (k === 'r' && S.mode === 'assess' && S.asset) run();
-  else if (/^[1-6]$/.test(k)) setMode(['assess', 'portfolio', 'pulse', 'api', 'sources', 'inbuild'][+k - 1]);
+  else if (/^[1-7]$/.test(k)) setMode(['assess', 'portfolio', 'pulse', 'agents', 'api', 'sources', 'inbuild'][+k - 1]);
 });
 
 // ---------- command palette ----------
 const COMMANDS = [
-  ['Assess mode', '1', () => setMode('assess')], ['Portfolio: book re-valuation', '2', () => setMode('portfolio')], ['Pulse: monthly re-check of the book', '3', () => setMode('pulse')], ['API console', '4', () => setMode('api')], ['Data fabric', '5', () => setMode('sources')],
-  ['In build: Investor Lens, Branch Intelligence', '6', () => setMode('inbuild')],
+  ['Assess mode', '1', () => setMode('assess')], ['Portfolio: book re-valuation', '2', () => setMode('portfolio')], ['Pulse: monthly re-check of the book', '3', () => setMode('pulse')], ['Property agents: join, link listings, submit prices', '4', () => setMode('agents')], ['API console', '5', () => setMode('api')], ['Data fabric', '6', () => setMode('sources')],
+  ['In build: Investor Lens, Branch Intelligence', '7', () => setMode('inbuild')],
   ['Night flight over India', 'F', nightFlight], ['Toggle globe', 'G', toggleGlobe], ['Toggle satellite', 'S', () => { const on = !S.layers.satellite; setLayer('satellite', on); $('[data-layer=satellite]').checked = on; }],
   ['Drop a pin on the asset', 'P', () => setTool('pick')], ['Draw parcel boundary', 'B', () => setTool('draw')],
   ['Night lights: 2012', '', () => setEpoch('2012-01-01')], ['Night lights: 2016', '', () => setEpoch('2016-01-01')], ['Night lights: last night', '', () => setEpoch('nightly')],

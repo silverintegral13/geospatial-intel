@@ -467,6 +467,41 @@ table.vs td .ci{display:flex;align-items:flex-start}
 .vbar .ml{position:absolute;top:44px;transform:translateX(-50%);font:500 11px var(--f-m);font-style:normal;color:var(--ink2);white-space:nowrap}
 .vbar .ml.fl{top:-6px;color:#c8b6ff}.vbar .ml.p50{color:var(--gold);font-weight:700}
 .tam .ring .ds{color:var(--ink)}
+/* v8: question badges, idea validation grid, money slide, policy slide */
+.qq{display:inline-flex;align-items:center;gap:12px;background:linear-gradient(90deg,#ffb547,#ffd98a);color:#06101f;font:700 21px var(--f-h);padding:7px 20px 7px 7px;border-radius:999px;margin:2px 0 12px;box-shadow:0 0 34px #ffb54766}
+.qq span{background:#06101f;color:#ffd98a;font:700 11.5px var(--f-m);letter-spacing:.09em;padding:6px 11px;border-radius:999px}
+.src3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;margin-top:8px}
+.src3 .acc p{font-size:13.5px}.src3 .acc h3{font-size:16.5px;display:flex;align-items:center;gap:8px}
+.src3 .acc.viol{border-left-color:#a98bff}
+.tg2{font:700 10.5px var(--f-m);letter-spacing:.06em;padding:2px 7px;border-radius:6px;white-space:nowrap;display:inline-block}
+.tg2.cx{background:#5ce1ff22;color:#5ce1ff;border:1px solid #5ce1ff66}.tg2.ab{background:#ffb54722;color:#ffd98a;border:1px solid #ffb54777}.tg2.pf{background:#a98bff22;color:#c8b6ff;border:1px solid #a98bff77}
+.ivg{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 30px;margin-top:16px}
+.ivr{display:grid;grid-template-columns:58px minmax(0,1fr) minmax(0,1.1fr) 38px;gap:10px;align-items:start;padding:8px 0;border-bottom:1px solid var(--line);font-size:13.5px;line-height:1.38;color:var(--ink2)}
+.ivr.h{font:600 10.5px var(--f-m);color:var(--muted);letter-spacing:.06em;padding:0 0 6px}
+.ivr b{color:var(--ink)}.ivr .sl{font:500 11.5px var(--f-m);color:var(--muted);text-align:right}
+.ivr .tgs{display:flex;flex-direction:column;gap:4px}
+.ivr.new{background:linear-gradient(90deg,#ffb5470d,transparent)}
+.fsv .fr{display:grid;grid-template-columns:170px 130px minmax(0,1fr);gap:14px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}
+.fsv .fr:first-child{border-top:1px solid var(--line)}
+.fsv .fr .when{font:500 11.5px var(--f-m);color:var(--cyan)}.fsv .fr .amt{font:700 24px var(--f-h);color:var(--gold)}.fsv .fr p{font-size:14px;margin:0;color:var(--ink2)}
+.fsv .fr.hot{background:linear-gradient(90deg,#ffb54714,transparent)}
+.gapv .gr1{display:grid;grid-template-columns:210px minmax(0,1fr) 92px;gap:12px;align-items:center;margin:10px 0;font-size:14.5px;color:var(--ink2)}
+.gapv .gbar{height:26px;border-radius:8px;background:rgba(255,255,255,.05);overflow:hidden}
+.gapv .gbar i{display:block;height:100%;border-radius:8px}
+.gapv b{font:700 22px var(--f-h);color:var(--ink);text-align:right}
+.pol{margin:6px 0 0;padding:0;list-style:none;counter-reset:p}
+.pol li{counter-increment:p;display:grid;grid-template-columns:30px minmax(0,1fr);gap:8px;font-size:14.5px;line-height:1.42;color:var(--ink2);padding:6px 0}
+.pol li::before{content:counter(p);font:700 15px var(--f-h);color:#06101f;background:var(--cyan);border-radius:50%;width:24px;height:24px;display:grid;place-items:center}
+.asks{margin-top:14px;border:1px dashed #ffb54777;border-radius:12px;padding:10px 14px;font-size:13.5px;line-height:1.45;color:var(--ink2)}
+.asks b{font:700 11px var(--f-m);letter-spacing:.07em;color:var(--gold);display:block;margin-bottom:3px}
+.aflow{display:flex;flex-direction:column;gap:0}
+.aflow .as{display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;position:relative;padding-bottom:12px}
+.aflow .as:not(:last-child)::after{content:'';position:absolute;left:21px;top:42px;bottom:0;width:2px;background:linear-gradient(#a98bff,#a98bff22)}
+.aflow .as i{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font:700 17px var(--f-h);font-style:normal;background:#a98bff26;border:2px solid #a98bff;color:#e3d9ff}
+.aflow .as:last-child i{background:#ffb54733;border-color:var(--amber);color:var(--gold)}
+.aflow h3{font-size:17px;margin:2px 0 2px}.aflow p{font-size:14px;margin:0;line-height:1.4;color:var(--ink2)}
+.ivr{grid-template-columns:68px minmax(0,1fr) minmax(0,1.1fr) 38px}.tg2{font-size:10px;padding:2px 6px}
+.src3 .acc+.acc{margin-top:0}
 </style>
 </head>
 <body>
@@ -662,7 +697,7 @@ table.vs td .ci{display:flex;align-items:flex-start}
   <table class="tb moat rise d1" style="margin-top:12px">
     <tr><th style="width:17%">Moat</th><th style="width:26%">What we own</th><th class="aih" style="width:31%">Where AI gives us the edge</th><th>Why it is hard to copy</th></tr>
     <tr><td><b>1 · Fused public data</b><small>LIVE TODAY</small></td><td>10 open sources fused for every property: maps, terrain, rivers, climate, night lights, Sentinel-2, land use, circle rates</td><td class="ai"><span class="aichip">COMPUTER VISION</span>Reads satellite images into the 40–50 fields valuers now write by eye: footprint, construction stage, age, road access</td><td>The data is free; turning pixels into valuer-grade fields takes trained models and labelled examples</td></tr>
-    <tr><td><b>2 · Records and documents</b><small>MONTHS 3–18</small></td><td>State circle-rate schedules, sale deeds, past valuation reports, auction notices, land records via ULI</td><td class="ai"><span class="aichip">DOCUMENT AI</span>Turns PDFs, scanned reports and captcha-gated tables into clean, comparable fields</td><td>Every state and every valuer formats differently; our extraction library grows with each one</td></tr>
+    <tr><td><b>2 · Records and documents</b><small>MONTHS 3–18</small></td><td>State circle-rate schedules, sale deeds, past valuation reports, auction notices, land records via ULI, agent-submitted prices</td><td class="ai"><span class="aichip">DOCUMENT AI</span>Turns PDFs, scanned reports and captcha-gated tables into clean, comparable fields</td><td>Every state and every valuer formats differently; our extraction library grows with each one</td></tr>
     <tr class="gold"><td><b>3 · Outcome data</b><small>THE FLYWHEEL</small></td><td>Valuer overrides, sanctioned values, auction prices and days to sale (1.22 lakh+ properties on the PSB e-auction portal)</td><td class="ai"><span class="aichip">MODELS THAT LEARN</span>Value, liquidity and haircut models re-fit per district on every outcome: accuracy compounds with each file</td><td>Collected only from inside lenders' workflows; a data vendor never sees it</td></tr>
     <tr><td><b>4 · Trust</b><small>WITH EVERY AUDIT</small></td><td>Per-lender calibration, audit log, model cards, the government floor check</td><td class="ai"><span class="aichip">EXPLAINABLE AI + GENAI</span>Readable statistical weights with checked ranges; a GenAI copilot that cites the comparables behind every answer</td><td>Black boxes fail RBI and credit-committee scrutiny; trust takes years to earn</td></tr>
   </table>
@@ -705,28 +740,20 @@ table.vs td .ci{display:flex;align-items:flex-start}
 </div></section>
 
 <!-- 10 IDEA VALIDATION -->
-<section class="slide" data-chap="Idea validation" data-cam="dim"><div class="body">
-  <div class="chap rise">Idea validation</div>
-  <h2 class="rise">Two founder interviews changed what we built, and what we left out</h2>
-  <div class="grid rise d1" style="grid-template-columns:310px minmax(0,1fr);gap:24px;margin-top:10px">
-    <div style="display:flex;flex-direction:column;gap:22px;padding-top:6px">
-      <div class="acc"><div class="lab">WHO WE SPOKE TO</div><h3>ClarityX founding team</h3><p>Two calls in November 2026 with Rakhi Prasad, co-founder, and Noopur Jain of the founding team (ex-Pine Labs). ClarityX builds a competing lender product with MapmyIndia, so they hear lenders' objections every week.</p></div>
-      <div class="acc amber"><div class="lab">ALSO</div><h3>Our professor's review</h3><p>Sell to institutions, not retail. Be precise about collateral value. Show why the data beats what anyone can download.</p></div>
-    </div>
-    <table class="tb iv">
-      <tr><th style="width:38%">What we heard</th><th>What we decided</th><th class="r" style="width:64px">Slide</th></tr>
-      <tr><td>"Lenders have 2,000 problems. Solve one or two."</td><td><b>NBFCs only, asset valuation only.</b> Other ideas wait behind launch gates.</td><td class="r">11, 16</td></tr>
-      <tr><td>Loan rates come from credit policy that must be justified to the RBI</td><td><b>No interest-rate precision.</b> We stop at value, realisable value and the LTV band.</td><td class="r">6</td></tr>
-      <tr><td>Field visits stay until the regulator changes the rules</td><td><b>A second opinion beside the valuer,</b> adopted step by step as credit scores were.</td><td class="r">5, 14</td></tr>
-      <tr><td>Low recoveries come mostly from assets that won't sell</td><td><b>Price the exit:</b> days to sell and haircut for each property.</td><td class="r">3, 6</td></tr>
-      <tr><td>Use two years of circle rates: slow growth is a risk, fast growth a top-up</td><td><b>Government floor check,</b> live in the product.</td><td class="r">6, 7</td></tr>
-      <tr><td>A black-box model may not be accepted by lenders</td><td><b>Readable statistical weights</b> and ranges checked on held-out files.</td><td class="r">9</td></tr>
-      <tr><td>Lenders would pay ₹700–1,200 a report, or buy a yearly block</td><td><b>₹750 a report</b> (we had ₹380), plus a ₹1 L starter plan.</td><td class="r">12</td></tr>
-      <tr><td>Pitch outcomes, the before and after, not capabilities</td><td><b>Journey storyboard</b> and the CFO calculator.</td><td class="r">11, 12</td></tr>
-    </table>
+<section class="slide" data-chap="Idea validation &amp; primary insights" data-cam="dim"><div class="body">
+  <div class="chap rise">Idea validation &amp; primary insights</div>
+  <h2 class="rise" style="font-size:40px">Founders, a large lender and our professor changed what we built, and what we left out</h2>
+  <div class="src3 rise d1">
+    <div class="acc"><h3><span class="tg2 cx">CLARITYX</span> ClarityX founding team</h3><p>Rakhi Prasad and Noopur Jain, two calls, Nov 2026. A competitor building with MapmyIndia, so they hear lenders' objections every week.</p></div>
+    <div class="acc amber"><h3><span class="tg2 ab">ABG</span> Aditya Birla Group, Chief of Staff</h3><p>Five-question interview, Nov 2026. A large lender with its own valuation team and an in-house geospatial pricing tool.</p></div>
+    <div class="acc viol"><h3><span class="tg2 pf">PROF</span> Our professor</h3><p>Review of our first pitch: sell to institutions, be precise on collateral value, prove the data edge, and bring property agents onto the platform.</p></div>
   </div>
-  <div class="src">Interviews with the ClarityX founding team, two calls, November 2026; quotes paraphrased from our notes. Professor's feedback on our first pitch.</div>
-  <aside>This slide is the honest answer to "why did you build it this way?". Read two rows aloud: no interest rates, and NBFCs only. Then point out that ClarityX is a competitor, which makes their advice more credible, not less.</aside>
+  <div class="ivg rise d2">
+    <div><div class="ivr h"><div>WHO</div><div>WHAT WE HEARD</div><div>WHAT WE DECIDED</div><div class="sl">SLIDE</div></div><div class="ivr"><div class="tgs"><span class="tg2 cx">CLARITYX</span></div><div>"Lenders have 2,000 problems. Solve one or two."</div><div><b>NBFCs only, asset valuation only.</b> Other ideas wait behind launch gates.</div><div class="sl">11, 16</div></div><div class="ivr"><div class="tgs"><span class="tg2 cx">CLARITYX</span></div><div>Loan rates come from credit policy that must be justified to the RBI</div><div><b>No interest-rate precision.</b> We stop at value, realisable value and the LTV band.</div><div class="sl">6</div></div><div class="ivr"><div class="tgs"><span class="tg2 cx">CLARITYX</span></div><div>Field visits stay until the regulator changes the rules</div><div><b>A second opinion beside the valuer,</b> adopted step by step as credit scores were.</div><div class="sl">5, 14</div></div><div class="ivr"><div class="tgs"><span class="tg2 cx">CLARITYX</span></div><div>Low recoveries come mostly from assets that won't sell</div><div><b>Price the exit:</b> days to sell and haircut for each property.</div><div class="sl">3, 6</div></div><div class="ivr"><div class="tgs"><span class="tg2 cx">CLARITYX</span></div><div>Use two years of circle rates: slow growth is a risk, fast growth a top-up</div><div><b>Government floor check,</b> live in the product.</div><div class="sl">6, 7</div></div><div class="ivr"><div class="tgs"><span class="tg2 cx">CLARITYX</span></div><div>A black-box model may not be accepted by lenders</div><div><b>Readable statistical weights</b> and ranges checked on held-out files.</div><div class="sl">9</div></div><div class="ivr"><div class="tgs"><span class="tg2 cx">CLARITYX</span></div><div>Lenders would pay ₹700–1,200 a report, or buy a yearly block</div><div><b>₹750 a report</b> (we had ₹380), plus a ₹1 L starter plan.</div><div class="sl">12</div></div></div>
+    <div><div class="ivr h"><div>WHO</div><div>WHAT WE HEARD</div><div>WHAT WE DECIDED</div><div class="sl">SLIDE</div></div><div class="ivr"><div class="tgs"><span class="tg2 cx">CLARITYX</span></div><div>Pitch outcomes, the before and after, not capabilities</div><div><b>Journey storyboard</b> and the CFO calculator.</div><div class="sl">11, 12</div></div><div class="ivr new"><div class="tgs"><span class="tg2 cx">CLARITYX</span><span class="tg2 pf">PROF</span></div><div>Valuers phone local brokers for the real price: a ₹1 Cr deed can hide a ₹1.5 Cr sale, but brokers can be biased. Our professor: onboard property agents</div><div><b>Property-agent network:</b> RERA-verified agents submit prices, each checked against the floor, deeds and peers.</div><div class="sl">19</div></div><div class="ivr new"><div class="tgs"><span class="tg2 ab">ABG</span></div><div>High trust in valuers, but 2 valuations above a threshold and the lower one counts; an internal benchmark for every micro-market</div><div><b>Our range is the independent benchmark</b> for NBFCs without an in-house valuation team.</div><div class="sl">11</div></div><div class="ivr new"><div class="tgs"><span class="tg2 ab">ABG</span></div><div>Reliability needs a valuer rating and a shared list of valuers black-listed by any lender</div><div><b>Valuer scorecards</b> from outcome data; a shared registry is one of our policy asks.</div><div class="sl">8, 19</div></div><div class="ivr new"><div class="tgs"><span class="tg2 ab">ABG</span></div><div>Digitised SRO data, last sale in the same building, micro-market, developer and property type, would be "extremely useful"</div><div><b>Comparables engine</b> with registered deeds first in our document-AI roadmap.</div><div class="sl">8</div></div><div class="ivr new"><div class="tgs"><span class="tg2 ab">ABG</span></div><div>Explainability "extremely important"; open to ML trained on valuers' data across all lenders</div><div><b>Cross-lender outcome data is moat 3;</b> the model stays readable.</div><div class="sl">8, 9</div></div><div class="ivr new"><div class="tgs"><span class="tg2 ab">ABG</span></div><div>Assets re-checked every 2–5 years; built its own geospatial tool; management is pushing digital credit and risk</div><div><b>Beachhead: mid-size NBFCs</b> that can't build in-house; large groups as data partners; Pulse for monthly checks.</div><div class="sl">11, 16</div></div></div>
+  </div>
+  <div class="src">ClarityX founding team, two recorded calls, November 2026; Aditya Birla Group Chief of Staff, written answers to five questions, November 2026; professor's feedback on our first pitch. Quotes paraphrased except where in quotation marks. Shaded rows are new since our last review.</div>
+  <aside>This slide is the honest answer to "why did you build it this way?". Three sources: a competitor (ClarityX), a large lender (Aditya Birla Group) and our professor. Read three rows aloud: no interest rates and NBFCs only (ClarityX); brokers know the real price, so onboard agents (ClarityX and our professor); and the lender who built in-house, which is why our beachhead is mid-size NBFCs. ABG also told us they re-check assets only every 2 to 5 years, and that management is pushing digital adoption in credit and risk.</aside>
 </div></section>
 
 <!-- 10 CUSTOMER AND MARKET -->
@@ -830,12 +857,13 @@ table.vs td .ci{display:flex;align-items:flex-start}
 <!-- 13 GTM -->
 <section class="slide" data-chap="Go to market" data-cam="beach" data-maxk="1.1"><div class="body">
   <div class="chap rise">Go to market</div>
+  <div class="qq rise"><span>QUESTION 1</span>How do we get noticed?</div>
   <h2 class="rise" style="max-width:780px">Land in Gujarat and Maharashtra. Sell outcomes, not capabilities</h2>
   <div class="gtm" style="max-width:900px;margin-top:16px">
     <div class="tier rise d1" style="grid-template-columns:120px minmax(0,1fr)"><div class="when">Q1–Q2 2027</div><div><h3>Three NBFC design partners in LAP</h3><p>Around Ahmedabad, Surat, Pune and Nashik: published circle rates, dense industrial estates, our network.</p></div></div>
     <div class="tier rise d2" style="grid-template-columns:120px minmax(0,1fr)"><div class="when">LAND</div><div><h3>Back-test their closed files, then run in shadow</h3><p>No integration: our value vs the valuer's vs the sale price on 24 months of files. Then a second opinion beside every new valuation.</p></div></div>
     <div class="tier rise d3" style="grid-template-columns:120px minmax(0,1fr)"><div class="when">EXPAND</div><div><h3>Book re-valuation, then every product line</h3><p>Once credit trusts the range, re-value NPAs and pools; extend from LAP to home loans and secured MSME.</p></div></div>
-    <div class="tier rise d4" style="grid-template-columns:120px minmax(0,1fr)"><div class="when">CHANNELS</div><div><h3>LOS vendors and valuer firms</h3><p>Embed where officers work; give valuers a pre-filled report for the 40–50 fields they write by eye.</p></div></div>
+    <div class="tier rise d4" style="grid-template-columns:120px minmax(0,1fr)"><div class="when">CHANNELS</div><div><h3>LOS vendors, valuer firms and property agents</h3><p>Embed where officers work; give valuers a pre-filled report for the 40–50 fields they write by eye; agents bring prices and borrowers.</p></div></div>
     <div class="ladder rise d5"><span>Adoption follows credit scores:</span><b>early adopters</b>→<b>back-testing</b>→<b>live use beside the valuer</b>→<b>regulator acceptance</b></div>
   </div>
   <aside>Every pitch follows the storyboard the ClarityX founders gave us: lender problem, stage, today, before and after, and the three actions it drives. Founder-led sales for the first 10 logos. The adoption ladder is how CIBIL scores went from novelty to standard.</aside>
@@ -932,47 +960,80 @@ table.vs td .ci{display:flex;align-items:flex-start}
   <aside>Two columns: business and regulatory. Three regulatory rows come from the National Geospatial Policy: precise map data can only be owned by Indian companies and stored in India, which shapes our cap table and hosting; and free government maps mean our moat has to be outcomes, not maps.</aside>
 </div></section>
 
-<!-- 17 FINANCIALS -->
-<section class="slide" data-chap="Financial plan" data-cam="dim"><div class="body">
-  <div class="chap rise">Financial plan · valuation only</div>
-  <div class="grid" style="grid-template-columns:minmax(0,1fr) 540px;gap:90px">
+<!-- 18 MONEY -->
+<section class="slide" data-chap="Financial plan and financing" data-cam="dim"><div class="body">
+  <div class="chap rise">Financial plan and financing</div>
+  <div class="qq rise"><span>QUESTION 2</span>How do we get funded?</div>
+  <h2 class="rise" style="font-size:36px">₹<span id="fRev3">39</span> crore revenue and <span id="fMargin3">33</span>% EBITDA margin by year 3. Customers and grants fund the proof, equity scales it, debt comes last</h2>
+  <div class="grid" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:44px;margin-top:6px">
     <div>
-      <h2 class="rise" style="font-size:40px">₹<span id="fRev3">39</span> crore revenue and <span id="fMargin3">33</span>% EBITDA margin in year 3</h2>
-      <div class="chart rise d1" id="finChart"></div>
+      <div class="chart rise d1" id="finChart" style="height:270px"></div>
       <div class="rise d2" style="font-size:12.5px;color:var(--muted);margin-top:4px">Bars: amber valuation reports, cyan book re-valuation, violet platform. Line: EBITDA. ₹ crore, calendar years. Extra features excluded.</div>
+      <p class="rise d2" style="font-size:14px;margin-top:10px"><b class="amber">Downside:</b> with 25 NBFCs, year 3 is still +₹2.1 Cr EBITDA; with 20, −₹2.8 Cr, so hiring follows sales. Base case: 5 → 16 → 36 NBFCs; headcount 14 → 34 → 60.</p>
+      <table class="tb" id="finTable" hidden></table>
     </div>
     <div class="rise d2">
-      <table class="tb" id="finTable"></table>
-      <p style="font-size:14px;margin-top:12px"><b class="amber">Downside:</b> with 25 NBFCs, year 3 is still +₹2.1 Cr EBITDA; with 20, −₹2.8 Cr, so hiring follows sales.</p>
-      <p style="font-size:13px;margin-top:6px">Base case: 5 → 16 → 36 NBFCs; 8k → 18k reports and 20k → 60k re-valued loans per NBFC; headcount 14 → 34 → 60 at ₹24–28 L loaded cost.</p>
+      <div class="fsv">
+        <div class="fr"><div class="when">MONTHS 0–6 · BOOTSTRAP</div><div class="amt">Paid pilots</div><p>Back-tests credited to year-1 contracts</p></div>
+        <div class="fr"><div class="when">EQUITY-FREE GRANTS</div><div class="amt">≤ ₹1.1 Cr</div><p>Startup India Seed Fund · MeitY SAMRIDH</p></div>
+        <div class="fr hot"><div class="when">MONTHS 9–12 · SEED</div><div class="amt">₹8 Cr</div><p>Fintech and Earth-observation investors</p></div>
+        <div class="fr"><div class="when">AFTER CONTRACTS · DEBT</div><div class="amt">≤ ₹20 Cr</div><p>Govt-guaranteed loans · venture debt</p></div>
+      </div>
+      <div class="lab" style="margin:16px 0 6px">USE OF THE ₹8 CR SEED</div><div style="display:flex;height:30px;border-radius:9px;overflow:hidden;font:600 12px var(--f-m);color:#06101f"><div style="width:45%;background:#ffb547;display:grid;place-items:center">Product + data science 45%</div><div style="width:25%;background:#5ce1ff;display:grid;place-items:center">GTM 25%</div><div style="width:15%;background:#a6e36b;display:grid;place-items:center">Data 15%</div><div style="width:15%;background:#a98bff;display:grid;place-items:center;font-size:10.5px">Security 15%</div></div>
     </div>
   </div>
-  <aside>Break-even arrives in year 2; cumulative burn before working capital is about ₹2.4 crore. At 25 NBFCs, year 3 is still EBITDA-positive. Pulse and Investor Lens are upside, not in the plan.</aside>
-</div></section>
-
-<!-- 19 FINANCING -->
-<section class="slide" data-chap="Financing" data-cam="dim"><div class="body">
-  <div class="chap rise">Financing</div>
-  <h2 class="rise">Customers and grants fund the proof. Equity scales it. Debt comes last</h2>
-  <div class="fsteps rise d1">
-    <div class="card"><div class="when">MONTHS 0–6 · BOOTSTRAP</div><div class="mid amber">Paid pilots</div><p>Back-tests credited to year-1 contracts</p></div>
-    <div class="card"><div class="when">EQUITY-FREE GRANTS</div><div class="mid amber">≤ ₹1.1 Cr</div><p>Startup India Seed Fund · MeitY SAMRIDH</p></div>
-    <div class="card hot"><div class="when">MONTHS 9–12 · SEED</div><div class="mid amber">₹8 Cr</div><p>Fintech and Earth-observation investors</p></div>
-    <div class="card"><div class="when">AFTER CONTRACTS · DEBT</div><div class="mid amber">≤ ₹20 Cr</div><p>Govt-guaranteed loans · venture debt</p></div>
-  </div>
-  <div class="vcs rise d2"><span class="pq">INVESTORS WE WILL APPROACH</span><div class="vrow">
+  <div class="vcs rise d3"><span class="pq">INVESTORS WE WILL APPROACH</span><div class="vrow">
     <div class="vc"><b>Fintech infrastructure</b><span>Arkam Ventures</span><span>Razorpay Ventures</span></div>
     <div class="vc"><b>Lending-tech seed</b><span>Pavestone</span><span>Arali Ventures</span></div>
     <div class="vc"><b>Earth observation and location AI</b><span>Omidyar Network India</span><span>9Unicorns</span></div>
     <div class="vc"><b>Campus and angel networks</b><span>IIMA Ventures</span><span>Inflection Point Ventures</span></div>
     <div class="vc"><b>Venture debt, after the seed</b><span>Alteria Capital</span><span>Stride Ventures</span></div>
   </div></div>
-  <div class="grid rise d3" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;margin-top:18px;align-items:center">
-    <div><div class="lab" style="margin:0 0 6px">USE OF THE ₹8 CR SEED</div><div style="display:flex;height:30px;border-radius:9px;overflow:hidden;font:600 12px var(--f-m);color:#06101f"><div style="width:45%;background:#ffb547;display:grid;place-items:center">Product + data science 45%</div><div style="width:25%;background:#5ce1ff;display:grid;place-items:center">GTM 25%</div><div style="width:15%;background:#a6e36b;display:grid;place-items:center">Data 15%</div><div style="width:15%;background:#a98bff;display:grid;place-items:center;font-size:10.5px">Security 15%</div></div></div>
-    <div class="poll" data-poll="fin" style="margin:0"><span class="pq">ROOM POLL · How would you fund year 1?</span><button data-o="0">Bootstrap + grants <b>0</b></button><button data-o="1">Raise seed now <b>0</b></button><button data-o="2">Venture debt <b>0</b></button></div>
+  <div class="src">BhoomiPulse financial model (base case). Investors picked for backing similar companies: Arkam and Razorpay Ventures (Spense, 2026); Pavestone (Uncia); Arali (Mannjal); Omidyar Network India (SatSure); 9Unicorns and IPV (GeoIQ). Grants: Startup India Seed Fund; MeitY SAMRIDH. Debt: CGSS (NCGTC); venture debt is typically 20–35% of the last equity round.</div>
+  <aside>Ask the question out loud, then answer it. Break-even arrives in year 2; cumulative burn before working capital is about ₹2.4 crore. Order matters: customers and grants fund the proof; equity buys speed once the back-test works; debt comes last because lenders want contracted revenue. Foreign funds come in as minority investors because of the geospatial policy. Per NBFC: 8k → 18k reports and 20k → 60k re-valued loans a year. Pulse and Investor Lens are upside, not in the plan.</aside>
+</div></section>
+
+<!-- 19 POLICY -->
+<section class="slide" data-chap="Policy lens" data-cam="dim"><div class="body">
+  <div class="chap rise">Policy lens · credit access</div>
+  <h2 class="rise" style="font-size:38px">Valuing the hard-to-value widens credit: for villages and farmers, and through the agents who know the prices</h2>
+  <div class="grid rise d1" style="grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:44px;margin-top:10px">
+    <div>
+      <div class="lab" style="margin:0 0 4px">THE GAP · RURAL PROPERTY IS NOW TITLED, BUT RARELY LENT AGAINST</div>
+      <div class="gapv">
+        <div class="gr1"><span>SVAMITVA property cards prepared</span><div class="gbar"><i style="width:100%;background:linear-gradient(90deg,#5ce1ff,#5ce1ff88)"></i></div><b>3.1 crore</b></div>
+        <div class="gr1"><span>Loans sanctioned against them</span><div class="gbar"><i style="width:0.04%;min-width:4px;background:#ffb547"></i></div><b>11,147</b></div>
+      </div>
+      <p class="vcap" style="margin-top:2px">About <b style="color:var(--ink)">one loan for every 2,800 cards</b> (₹1,713 crore so far). In districts where the scheme ran, sanctioned loan amounts rose 23%.</p>
+      <div class="cols c3" style="margin-top:14px;gap:22px">
+        <div class="col amber"><span class="rt amber">₹2 lakh</span><p>Farm loans above this need collateral, and so a valuation</p></div>
+        <div class="col amber"><span class="rt amber">86%</span><p>of farm holdings are small or marginal, under 2 hectares</p></div>
+        <div class="col amber"><span class="rt amber">₹1,300+</span><p>for a field valuation: too costly for a ₹2–5 lakh loan</p></div>
+      </div>
+      <div class="lab" style="margin:16px 0 0">WHAT BHOOMIPULSE CHANGES</div>
+      <ol class="pol">
+        <li><span>Value from satellites and SVAMITVA / ULPIN maps where comparable sales don't exist: road access, irrigation, crop vigour, flood history.</span></li>
+        <li><span>A range with a confidence, so lenders lend at a lower LTV instead of not lending at all.</span></li>
+        <li><span>₹750 instead of a field visit makes ₹2–10 lakh rural loans worth underwriting.</span></li>
+      </ol>
+      <div class="asks"><b>OUR POLICY ASKS</b>Open registered sale (SRO) data to regulated lenders · a shared registry of valuer ratings and black-listed valuers · accept model-backed ranges, with a human sign-off, for small rural loans</div>
+    </div>
+    <div>
+      <div class="lab" style="margin:0 0 10px">PROPERTY AGENTS · PAID FOR PRICES THAT CHECK OUT</div>
+      <div class="aflow">
+        <div class="as"><i>1</i><div><h3>Join with a RERA number</h3><p>1.06 lakh agents are RERA-registered in India, 8,200 in the Pune region alone.</p></div></div>
+        <div class="as"><i>2</i><div><h3>Share the prices they see</h3><p>Closing prices, asking-versus-closing gaps and local notes; link listings from 99acres, Housing.com or MagicBricks.</p></div></div>
+        <div class="as"><i>3</i><div><h3>Every price is checked</h3><p>Against the government floor, registered deeds and other agents nearby. Outliers are held for review.</p></div></div>
+        <div class="as"><i>4</i><div><h3>Accurate agents are rewarded</h3><p>Credits redeemable as free loan pre-checks for their buyers, cash in thin rural markets, and a verified tier lenders can see.</p></div></div>
+      </div>
+      <div class="cols c2" style="margin-top:12px;gap:22px">
+        <div class="acc"><h3 style="font-size:15.5px">Why agents join</h3><p>Faster loan sanction closes their deals; lenders route borrower leads to verified agents.</p></div>
+        <div class="acc amber"><h3 style="font-size:15.5px">Why lenders trust it</h3><p>The real price behind a ₹1 Cr deed that sold for ₹1.5 Cr, scored, not taken on faith. An agent's price never values their own deal.</p></div>
+      </div>
+    </div>
   </div>
-  <div class="src">Investors picked for backing similar companies: Arkam and Razorpay Ventures (Spense, 2026); Pavestone (Uncia); Arali (Mannjal); Omidyar Network India (SatSure); 9Unicorns and IPV (GeoIQ). Grants: Startup India Seed Fund; MeitY SAMRIDH. Debt: CGSS (NCGTC); venture debt is typically 20–35% of the last equity round.</div>
-  <aside>Order matters. Customers and grants fund the proof; equity buys speed once the back-test works; debt comes last because lenders want contracted revenue. Foreign funds come in as minority investors because of the geospatial policy.</aside>
+  <div class="src">Sources: Ministry of Panchayati Raj (SVAMITVA cards, Mar 2026; loans, Aug 2026); EAC-PM (Apr 2026); RBI collateral-free farm loans (Jan 2025); Agriculture Census 2015-16; eXp Realty India on MoHUA RERA data (2025); MahaRERA (May 2025). Agent incentives: our proposed design, live in the Command Center's Agents tab.</div>
+  <aside>Two ideas on one slide. First, the policy gap: the government has titled rural homes through SVAMITVA, but almost no loans follow, because there is nothing to compare a village plot with. We value from satellites and maps instead of comparables, which makes small rural loans worth underwriting. Second, the agents: our professor and the ClarityX founders both pointed us here. Valuers already phone brokers; we make that structured, scored and rewarded. Close with the three policy asks.</aside>
 </div></section>
 
 <!-- 20 TEAM AND CLOSE -->
