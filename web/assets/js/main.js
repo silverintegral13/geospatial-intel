@@ -3,11 +3,11 @@ import { S, bus, store } from './state.js';
 import { initMap, map, setLayer, setEpoch, setTool, finishDraw, nightFlight, toggleGlobe, toast, tip } from './map.js';
 import { initSearch, searchLocal } from './search.js';
 import { renderAssess, renderResult, DEMOS, loadDemo, run } from './assess.js';
-import { renderPortfolio, renderInvestor } from './portfolio.js';
+import { renderPortfolio } from './portfolio.js';
 import { initPulse, render as renderPulse } from './pulse.js';
 import { renderApi } from './apiconsole.js';
 import { renderFabric, probeAll, health } from './fabric.js';
-import { renderBranch } from './branch.js';
+import { renderInBuild } from './inbuild.js';
 import { log } from './engine-env.js';
 
 const $ = (s) => document.querySelector(s);
@@ -64,8 +64,8 @@ async function tour() {
   const panel = $('#panelInner');
   for (let y = 0; y <= 1500; y += 30) { panel.scrollTop = y; await sleep(55); }
   await sleep(1200); panel.scrollTop = 0;
-  cap('5 · Pulse re-checks financed assets from orbit every month');
-  setMode('pulse'); await sleep(4200);
+  cap('5 · Re-value a whole loan book against today\'s market and the government floor');
+  setMode('portfolio'); await sleep(4200);
   cap('6 · Plug it into any lending stack with one API call');
   setMode('api'); await sleep(4500);
   cap('Night flight over India · press F any time');
@@ -76,8 +76,9 @@ async function tour() {
 // ---------- modes ----------
 function setMode(m) {
   S.mode = m;
-  document.querySelectorAll('#modes button').forEach((b) => b.classList.toggle('on', b.dataset.mode === m));
-  ({ assess: renderAssess, portfolio: renderPortfolio, investor: renderInvestor, pulse: renderPulse, api: renderApi, sources: renderFabric, branch: renderBranch })[m]?.();
+  const IB = ['inbuild', 'pulse', 'investor', 'branch'];
+  document.querySelectorAll('#modes button').forEach((b) => b.classList.toggle('on', b.dataset.mode === m || (b.dataset.mode === 'inbuild' && IB.includes(m))));
+  ({ assess: renderAssess, portfolio: renderPortfolio, api: renderApi, sources: renderFabric, inbuild: () => renderInBuild(), pulse: renderPulse, investor: () => renderInBuild('investor'), branch: () => renderInBuild('branch') })[m]?.();
 }
 bus.on('mode', setMode);
 document.getElementById('modes').onclick = (e) => { const b = e.target.closest('button'); if (b) setMode(b.dataset.mode); };
@@ -140,13 +141,13 @@ document.addEventListener('keydown', (e) => {
   else if (k === 's') { const on = !S.layers.satellite; setLayer('satellite', on); $('[data-layer=satellite]').checked = on; }
   else if (k === 'l') $('[data-drawer=layers]').click();
   else if (k === 'r' && S.mode === 'assess' && S.asset) run();
-  else if (/^[1-6]$/.test(k)) setMode(['assess', 'portfolio', 'investor', 'pulse', 'api', 'sources'][+k - 1]);
+  else if (/^[1-5]$/.test(k)) setMode(['assess', 'portfolio', 'api', 'sources', 'inbuild'][+k - 1]);
 });
 
 // ---------- command palette ----------
 const COMMANDS = [
-  ['Assess mode', '1', () => setMode('assess')], ['Portfolio mode', '2', () => setMode('portfolio')], ['Investor lens', '3', () => setMode('investor')],
-  ['Pulse monitoring', '4', () => setMode('pulse')], ['API console', '5', () => setMode('api')], ['Data fabric', '6', () => setMode('sources')],
+  ['Assess mode', '1', () => setMode('assess')], ['Portfolio: book re-valuation', '2', () => setMode('portfolio')], ['API console', '3', () => setMode('api')], ['Data fabric', '4', () => setMode('sources')],
+  ['In build: Pulse, Investor Lens, Branch Intelligence', '5', () => setMode('inbuild')],
   ['Night flight over India', 'F', nightFlight], ['Toggle globe', 'G', toggleGlobe], ['Toggle satellite', 'S', () => { const on = !S.layers.satellite; setLayer('satellite', on); $('[data-layer=satellite]').checked = on; }],
   ['Drop a pin on the asset', 'P', () => setTool('pick')], ['Draw parcel boundary', 'B', () => setTool('draw')],
   ['Night lights: 2012', '', () => setEpoch('2012-01-01')], ['Night lights: 2016', '', () => setEpoch('2016-01-01')], ['Night lights: last night', '', () => setEpoch('nightly')],

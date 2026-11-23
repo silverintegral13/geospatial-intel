@@ -331,12 +331,38 @@ table.risk td{font-size:14.5px;padding:9px 10px;vertical-align:top}table.risk td
 .fsteps .card:not(:last-child)::after{content:'→';position:absolute;right:-15px;top:50%;transform:translateY(-50%);font:600 18px var(--f-h);color:var(--muted);z-index:2}
 .fsteps .when{font:500 11.5px var(--f-m);color:var(--cyan);margin-bottom:8px}
 .fsteps .mid{font-size:34px;margin-bottom:6px}.fsteps p{font-size:14px;margin:0}
-.logos{margin-top:18px}.logos .pq{font:600 12px var(--f-m);color:var(--cyan);letter-spacing:.04em;display:block;margin-bottom:8px}
-.lrow{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
-.lg{height:70px;border-radius:12px;background:rgba(255,255,255,.92);display:grid;place-items:center;padding:10px 14px;position:relative;overflow:hidden}
-.lg img{max-width:100%;max-height:48px;object-fit:contain}
-.lg img+span{display:none}
-.lg span{font:600 12px var(--f-m);color:#5b6478;text-align:center;line-height:1.3}
+.vcs{margin-top:18px}.vcs .pq{font:600 12px var(--f-m);color:var(--cyan);letter-spacing:.04em;display:block;margin-bottom:8px}
+.vrow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.vc{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:3px}
+.vc b{font:500 11px var(--f-m);color:var(--muted);letter-spacing:.03em;text-transform:uppercase;margin-bottom:4px}
+.vc span{font:600 16px var(--f-h);color:var(--ink)}
+
+/* room options (no sliders) */
+.gopts{display:flex;flex-wrap:wrap;gap:8px}
+.gopts button{font:600 14px var(--f-h);border-radius:10px;padding:8px 12px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--ink);cursor:pointer}
+.gopts button.on{border-color:#ffb547;background:#ffb54722;color:var(--gold)}
+.guess .gopts button{align-self:auto;color:var(--ink);border-color:var(--line);background:rgba(255,255,255,.04)}
+.guess .gopts button.on{border-color:#ffb547;background:#ffb54722;color:var(--gold)}
+.ghint{font:500 11.5px var(--f-m);color:var(--muted)}
+/* AI edge on right-to-win */
+.ailine{font-size:13.5px;margin:8px 0 0;color:var(--ink2);border-top:1px solid var(--line);padding-top:7px}
+.ailine b{font:600 11px var(--f-m);color:var(--cyan);letter-spacing:.05em;margin-right:6px;text-transform:uppercase}
+/* moat table */
+table.moat td{font-size:15px;padding:12px 12px;vertical-align:top}
+table.moat td b{color:var(--ink);display:block;font:600 17px var(--f-h)}
+table.moat td small{display:block;font:500 11px var(--f-m);color:var(--muted);margin-top:4px;letter-spacing:.04em}
+table.moat th.aih{color:var(--cyan)}
+table.moat td.ai{background:linear-gradient(140deg,rgba(92,225,255,.13),rgba(92,225,255,.04));border-left:2px solid var(--cyan);color:var(--ink)}
+.aichip{display:block;width:max-content;font:600 11px var(--f-m);letter-spacing:.05em;color:#06101f;background:var(--cyan);border-radius:5px;padding:1px 7px;margin-bottom:6px}
+table.moat tr.gold td:first-child b{color:var(--gold)}
+/* roadmap */
+.road{position:relative;height:96px;margin:18px 10px 0}
+.rline{position:absolute;left:0;right:0;top:14px;height:3px;border-radius:2px;background:linear-gradient(90deg,#3ee08f,#5ce1ff 30%,#a98bff 70%,#ffb547)}
+.rp{position:absolute;top:0;width:220px}.rp.core{width:300px}
+.rp i{display:block;width:14px;height:14px;border-radius:50%;background:#0a1226;border:3px solid var(--cyan);margin:7px 0 10px}
+.rp.core i{border-color:#3ee08f;background:#3ee08f}
+.rp b{display:block;font:600 13px var(--f-m);color:var(--cyan);letter-spacing:.04em}.rp.core b{color:#7ff0b8}
+.rp span{display:block;font:600 17px var(--f-h);color:var(--ink);margin-top:3px;line-height:1.25}
 </style>
 </head>
 <body>
@@ -373,7 +399,7 @@ table.risk td{font-size:14.5px;padding:9px 10px;vertical-align:top}table.risk td
     <div class="card"><div class="big"><span class="count" data-to="48.4" data-dec="1">0</span><small> L cr</small></div><div class="lab">NBFC credit, Mar 2025</div><p style="margin-top:10px">About 15% is <span class="gl" data-tip="Loan Against Property: a loan for any purpose, secured by a house, shop or plot the borrower already owns.">LAP</span> and secured MSME, growing 26–27% a year.</p></div>
     <div class="card"><div class="big">₹1,300<small>+</small></div><div class="lab">field valuation, per case</div><p style="margin-top:10px">One bank's schedule runs ₹1,300–7,800 per case; field verification typically costs ₹2,000–5,000 and takes days.<span class="mr">MR</span></p></div>
     <div class="card"><div class="big red"><span class="count" data-to="40774">0</span></div><div class="lab">₹ cr advances-related fraud, FY26</div><p style="margin-top:10px">Loan frauds include overvalued collateral: the largest share of fraud by value.</p></div>
-    <div class="card" id="guessCard"><div class="guess"><span class="q">Loans "fully secured" by property. What share do lenders recover through <span class="gl" data-tip="SARFAESI Act 2002: lets lenders seize and auction the pledged property without going to court first.">SARFAESI</span>?</span><span class="g"><span id="gv">60</span>%</span><input type="range" id="gIn" min="0" max="100" step="1" value="60" aria-label="Your guess, percent recovered"><button id="gBtn" type="button">Reveal →</button></div>
+    <div class="card" id="guessCard"><div class="guess"><span class="q">Loans "fully secured" by property. What share do lenders recover through <span class="gl" data-tip="SARFAESI Act 2002: lets lenders seize and auction the pledged property without going to court first.">SARFAESI</span>?</span><div class="gopts"><button type="button" data-v="15">10–20%</button><button type="button" data-v="35">30–40%</button><button type="button" data-v="55">50–60%</button><button type="button" data-v="75">70%+</button></div><span class="ghint">Hands up for each, tap the most popular</span><button id="gBtn" type="button">Reveal →</button></div>
       <div class="reveal"><div class="big"><span id="gReal">0</span><small>%</small></div><div class="lab">recovered via SARFAESI, FY25</div><p style="margin-top:10px">Of ₹1.03 lakh crore involved. <span id="gYou"></span></p></div></div>
   </div>
   <div class="grid g3 rise d3" style="margin-top:20px">
@@ -473,21 +499,20 @@ table.risk td{font-size:14.5px;padding:9px 10px;vertical-align:top}table.risk td
     <div class="layer rise d2"><div class="k">Book re-valuation<small>existing loans</small></div><p>Upload the loan tape; every pledged property re-valued against today's market and floor. For NPAs, securitised pools and LTV top-ups.</p></div>
     <div class="layer rise d3"><div class="k">API + audit log<small>inside the LOS</small></div><p>REST API or on-prem Docker, per-lender policy, an embeddable card for loan-origination screens, and a source-by-source log for model-risk teams.</p></div>
     <div class="cr rise d4">
-      <div class="crh"><b>Try the government floor check</b><span>1,050 sq ft flat, Hinjewadi, Pune · ready reckoner ₹53,780/m² (IGR Maharashtra, FY 2025-26)</span></div>
-      <label class="ctrl" for="crIn"><span>Declared value</span><input type="range" id="crIn" min="30" max="140" step="1" value="70"><b id="crV">₹70 L</b></label>
-      <div class="crbar"><i class="fl" style="left:37.5%"></i><i class="p50" style="left:67.1%"></i><i class="p90" style="left:79.3%"></i><i class="me" id="crMe" style="left:51.4%"></i><span>floor ₹52.5 L</span><span>P50 ₹75.6 L</span><span>P90 ₹92 L</span></div>
-      <div class="verdict" id="crVerdict" aria-live="polite">Within range</div>
+      <div class="crh"><b>Ask the room: which declared value would you accept?</b><span>1,050 sq ft flat, Hinjewadi, Pune · ready reckoner ₹53,780/m² (IGR Maharashtra, FY 2025-26)</span></div>
+      <div class="gopts cro"><button type="button" data-v="40">Declared ₹40 L</button><button type="button" data-v="70">Declared ₹70 L</button><button type="button" data-v="115">Declared ₹1.15 Cr</button></div>
+      <div class="crbar"><i class="fl" style="left:37.5%"></i><i class="p50" style="left:67.1%"></i><i class="p90" style="left:79.3%"></i><i class="me" id="crMe" style="left:-9%;opacity:0"></i><span>floor ₹52.5 L</span><span>P50 ₹75.6 L</span><span>P90 ₹92 L</span></div>
+      <div class="verdict" id="crVerdict" aria-live="polite">Pick one: the check answers in a second</div>
     </div>
   </div>
   <div class="rise d2" style="display:flex;flex-direction:column;gap:10px">
-    <div class="scene" style="height:420px"><canvas class="g3d" data-kind="parcel" width="520" height="420" role="img" aria-label="3D terrain around a land parcel beside a river, with an adjustable flood level"></canvas><span class="hint3" style="left:16px;right:auto;top:12px;bottom:auto;color:var(--cyan)">HAZARD VIEW · TERRAIN + RIVER + PARCEL</span><span class="hint3">drag · scroll</span></div>
-    <label class="ctrl" for="pLevel"><span>River above normal</span><input type="range" id="pLevel" min="0" max="4" step="0.1" value="0.6"><b id="pLevelV">+0.6 m</b></label>
-    <div class="verdict" id="pVerdict" aria-live="polite">Parcel stays dry at this level</div>
+    <div class="scene" style="height:420px"><canvas class="g3d" data-kind="parcel" width="520" height="420" role="img" aria-label="3D terrain around a land parcel beside a river, with the river level rising and falling"></canvas><span class="hint3" style="left:16px;right:auto;top:12px;bottom:auto;color:var(--cyan)">HAZARD VIEW · TERRAIN + RIVER + PARCEL</span><span class="hint3">drag · scroll</span></div>
+    <div class="verdict" id="pVerdict" aria-live="polite">The river rises and falls: the parcel turns red when it floods, and the haircut rises with it</div>
     <span class="hint3">Illustrative terrain; the live tool uses Copernicus DEM and GloFAS.</span>
   </div>
   </div>
   <div class="src">Circle-rate check: IGR Maharashtra ready reckoner for Hinjewadi flats, ₹53,780/m² (Housing.com); P50 and P90 are illustrative BhoomiPulse output for this asset. Floor value = rate × built-up area. Logic and the fallback for localities without a published rate are on the API docs.</div>
-  <aside>Let someone from the class drag the declared value. Below the floor: the deed is likely understated, since stamp duty is charged on the higher of the two. Above P90: likely overvalued. Where no circle rate is published, the engine estimates the floor from the state's circle-to-market ratio and labels it "estimated".</aside>
+  <aside>Ask the room which declared value they'd accept, then tap it. Below the floor: the deed is likely understated, since stamp duty is charged on the higher of the two. Above P90: likely overvalued. Where no circle rate is published, the engine estimates the floor from the state's circle-to-market ratio and labels it "estimated".</aside>
 </div></section>
 
 <!-- 7 DEMO -->
@@ -522,16 +547,18 @@ table.risk td{font-size:14.5px;padding:9px 10px;vertical-align:top}table.risk td
 </div></section>
 
 <!-- 8 MOAT -->
-<section class="slide" data-chap="Data and AI moat" data-cam="dim"><div class="body">
-  <div class="chap rise">Data and AI moat</div>
-  <h2 class="rise">Start 15 steps ahead on public data. Win on proprietary outcomes and models</h2>
-  <div class="rise d1" style="margin-top:12px">
-    <div class="tier t4"><div class="when">LIVE TODAY · FREE</div><div><h3>Public Earth-observation and map data, fused per asset</h3><p>OpenStreetMap · Copernicus DEM · GloFAS rivers · ERA5 rain and heat · VIIRS night lights · Sentinel-2 · WorldCover · land use 2017–23 · JRC surface water · India Post · <b class="ink">circle rates for 5 localities + Delhi schedule, estimated elsewhere</b></p></div><div class="aiedge"><span>AI EDGE</span>Computer vision turns pixels into the 40–50 fields valuers write by eye</div><div class="ct"><span class="count" data-to="10">0</span><small>live sources</small></div></div>
-    <div class="tier t4"><div class="when">MONTHS 3–18 · CONSENT OR LICENCE</div><div><h3>Government records and the lender's own documents</h3><p>ULI land records · CERSAI prior charges · eCourts · state RERA · every state's circle-rate schedule · auction notices · the NBFC's past valuation reports and sale deeds</p></div><div class="aiedge"><span>AI EDGE</span>Document AI reads PDFs, captcha-gated tables and scanned reports into structured fields</div><div class="ct"><span class="count" data-to="10">0</span><small>connectors designed</small></div></div>
-    <div class="tier t4" style="border-color:#ffb54766;background:linear-gradient(90deg,rgba(255,181,71,.12),rgba(9,15,31,.74))"><div class="when" style="color:var(--gold)">THE COMPOUNDING ASSET</div><div><h3>Outcomes nobody else has</h3><p>Valuer overrides, sanctioned values, realised auction prices and days to sale (1.22 lakh+ properties listed on the PSB e-auction portal). Each NBFC calibrates its own model; consented aggregates build a recovery index.</p></div><div class="aiedge"><span>AI EDGE</span>Explainable models re-fit per district on outcomes: accuracy compounds, weights stay visible</div><div class="ct">∞<small>flywheel</small></div></div>
-  </div>
+<section class="slide" data-chap="Moat: data plus AI" data-cam="dim"><div class="body">
+  <div class="chap rise">Moat · data plus AI</div>
+  <h2 class="rise">Four moats. In each one, AI turns data anyone can get into an edge nobody can copy</h2>
+  <table class="tb moat rise d1" style="margin-top:12px">
+    <tr><th style="width:17%">Moat</th><th style="width:26%">What we own</th><th class="aih" style="width:31%">Where AI gives us the edge</th><th>Why it is hard to copy</th></tr>
+    <tr><td><b>1 · Fused public data</b><small>LIVE TODAY</small></td><td>10 open sources fused for every property: maps, terrain, rivers, climate, night lights, Sentinel-2, land use, circle rates</td><td class="ai"><span class="aichip">COMPUTER VISION</span>Reads satellite images into the 40–50 fields valuers now write by eye: footprint, construction stage, age, road access</td><td>The data is free; turning pixels into valuer-grade fields takes trained models and labelled examples</td></tr>
+    <tr><td><b>2 · Records and documents</b><small>MONTHS 3–18</small></td><td>State circle-rate schedules, sale deeds, past valuation reports, auction notices, land records via ULI</td><td class="ai"><span class="aichip">DOCUMENT AI</span>Turns PDFs, scanned reports and captcha-gated tables into clean, comparable fields</td><td>Every state and every valuer formats differently; our extraction library grows with each one</td></tr>
+    <tr class="gold"><td><b>3 · Outcome data</b><small>THE FLYWHEEL</small></td><td>Valuer overrides, sanctioned values, auction prices and days to sale (1.22 lakh+ properties on the PSB e-auction portal)</td><td class="ai"><span class="aichip">MODELS THAT LEARN</span>Value, liquidity and haircut models re-fit per district on every outcome: accuracy compounds with each file</td><td>Collected only from inside lenders' workflows; a data vendor never sees it</td></tr>
+    <tr><td><b>4 · Trust</b><small>WITH EVERY AUDIT</small></td><td>Per-lender calibration, audit log, model cards, the government floor check</td><td class="ai"><span class="aichip">EXPLAINABLE AI + GENAI</span>Readable statistical weights with checked ranges; a GenAI copilot that cites the comparables behind every answer</td><td>Black boxes fail RBI and credit-committee scrutiny; trust takes years to earn</td></tr>
+  </table>
   <div class="src">Sources: PIB / DFS on the BAANKNET e-auction portal (3 Jan 2025); connector list from the BhoomiPulse API registry; circle-rate tiers from the BhoomiPulse engine.</div>
-  <aside>Three layers, and for each one the specific AI that makes it defensible. The third layer is what an embedded workflow product collects and a data vendor never sees: the valuer's override and the price the asset actually fetched.</aside>
+  <aside>Read the cyan column only: computer vision, document AI, models that learn from outcomes, and explainable AI with a GenAI copilot. That is where the AI sits in each moat. The data alone isn't the moat; what the AI does with it, and the outcomes it learns from, is.</aside>
 </div></section>
 
 <!-- 9 PRECISION -->
@@ -635,14 +662,13 @@ table.risk td{font-size:14.5px;padding:9px 10px;vertical-align:top}table.risk td
       <table class="tb" style="margin-top:8px"><tr><td>COGS per report: compute, imagery on 10% of files, 2% human QA, GenAI summary</td><td class="r nw"><b>≈ ₹60</b></td></tr><tr><td>Contribution · CAC payback · LTV : CAC</td><td class="r nw"><b>~92% · ~6 mo · &gt;10×</b></td></tr></table>
     </div>
     <div class="card glow" style="padding:16px 20px">
-      <h3 class="cyan">You are the NBFC's CFO <small class="hint3" style="font-size:12px">drag the sliders</small></h3>
-      <div class="slider"><span>LAP files a year</span><input type="range" id="rF" min="5000" max="60000" step="1000" value="20000"><b id="rFv">20k</b></div>
-      <div class="slider"><span>Files that skip a 2nd review</span><input type="range" id="rS" min="0" max="60" step="5" value="30"><b id="rSv">30%</b></div>
+      <h3 class="cyan">The CFO's math: an NBFC with 20,000 LAP files a year</h3>
       <table class="tb" id="roiT" style="margin-top:4px"></table>
+      <div class="ask" style="margin-top:10px"><b>ASK THE ROOM</b> If you were the CFO, what share of files would you let skip a second review?</div>
     </div>
   </div>
   <div class="src">Sources: urban cooperative bank schedule of charges (CIBIL ₹250, CERSAI ₹200); Federal Bank agri-loan service charges; Can Fin Homes schedule (max ₹2,500); SBI valuer fee annexure (min ₹3,000). MR = market research. ROI assumptions: ₹2,500 per second review or re-visit avoided; overvaluation caught on 0.3% of files at ₹12 L tickets, 25% loss avoided.</div>
-  <aside>Ask a volunteer to be the CFO and drag the sliders. The ROI does not depend on removing the valuer: it comes from fewer second reviews and from catching overvalued files. Pricing went up from our first draft after the founder interviews.</aside>
+  <aside>Ask the room the CFO question and take two answers; at 30% the NBFC gets about ₹2 back per rupee. The ROI does not depend on removing the valuer: it comes from fewer second reviews and from catching overvalued files. Pricing went up from our first draft after the founder interviews.</aside>
 </div></section>
 
 <!-- 12 COMPETITION -->
@@ -658,9 +684,9 @@ table.risk td{font-size:14.5px;padding:9px 10px;vertical-align:top}table.risk td
     <tr><td>Data foundation</td><td class="us">10 open sources fused per asset, then NBFCs' valuation outcomes</td><td>Google DeepMind ALU/AMED, land records; 140M+ ha</td><td>MapmyIndia maps, POIs, addresses</td><td>3,000+ location variables</td></tr>
   </table>
   <div class="grid g3 win3 rise d3" style="margin-top:14px">
-    <div class="card hot"><h3 class="amber">We price the exit</h3><p>Others score the borrower or the place. Loss depends on what the asset fetches and how fast: that is the number we own.</p></div>
-    <div class="card hot"><h3 class="amber">We explain every rupee</h3><p>Readable weights, logged sources and the government floor on one page: a valuation a credit committee and the RBI can audit.</p></div>
-    <div class="card hot"><h3 class="amber">Our data compounds</h3><p>Every valuer override and auction price re-fits the model: data map makers and alt-data vendors never see.</p></div>
+    <div class="card hot"><h3 class="amber">We price the exit</h3><p>Others score the borrower or the place. Loss depends on what the asset fetches and how fast: that is the number we own.</p><p class="ailine"><b>AI edge</b> Survival models learn days to sell and haircut from auction outcomes.</p></div>
+    <div class="card hot"><h3 class="amber">We explain every rupee</h3><p>Readable weights, logged sources and the government floor on one page: a valuation a credit committee and the RBI can audit.</p><p class="ailine"><b>AI edge</b> Explainable models, plus a GenAI copilot that cites its comparables.</p></div>
+    <div class="card hot"><h3 class="amber">Our data compounds</h3><p>Every valuer override and auction price re-fits the model: data map makers and alt-data vendors never see.</p><p class="ailine"><b>AI edge</b> District models re-fit on every outcome, so accuracy compounds.</p></div>
   </div>
   <div class="src">Sources: Mappls Geo-FI product page and C.E. Info Systems disclosure (31 Aug 2026); GeoIQ site and case studies; Google India blog on ALU/AMED (26 Aug 2026). "Not described" = not in public material. Also in the field: panel valuers (JLL, CBRE and thousands of small firms), SatSure, Data Sutram.</div>
   <aside>ClarityX is a competitor through Mappls Geo-FI, and its founders still gave us two hours. Their advice is the clearest market signal we have: lenders buy outcomes from a partner, and the moat is a proprietary model or data.</aside>
@@ -698,24 +724,34 @@ table.risk td{font-size:14.5px;padding:9px 10px;vertical-align:top}table.risk td
   <aside>A before-and-after comparison would confuse our effect with seasonality. Branch randomisation plus a threshold design gives the risk committee a causal estimate. DPD means days past due: 30+ DPD is the first sign a loan is going bad.</aside>
 </div></section>
 
-<!-- 15 EXTRA FEATURES -->
-<section class="slide" data-chap="Extra features" data-cam="dim"><div class="body">
-  <div class="chap rise">Extra features · after the core</div>
-  <h2 class="rise">Three extensions on the same engine, each with a launch gate</h2>
-  <div class="grid g3 xf rise d1" style="margin-top:6px">
-    <div class="card"><span class="pill">PROTOTYPE IN APP</span><h3>Pulse</h3><p class="what">Monthly re-check of each financed property from orbit: night lights, crop vigour, river flood forecasts; alerts to collections.</p>
-      <div class="xr"><b>When</b>Year 2, after the report is live at 10+ NBFCs</div>
-      <div class="xr"><b>Launch if</b>back-tests on 3 books show alerts 60+ days before 30+ DPD, ≥ 60% confirmed in the field; 3 NBFCs commit at ₹10+/asset-month</div></div>
-    <div class="card"><span class="pill">PROTOTYPE IN APP</span><h3>Investor Lens</h3><p class="what">A book-level collateral certificate for co-lending banks, pool buyers and investors: realisable cover, concentration, stress tests.</p>
-      <div class="xr"><b>When</b>Year 2–3, once 10+ NBFC books are on the engine</div>
-      <div class="xr"><b>Launch if</b>2+ co-lenders or pool buyers ask for it in live deals; originators consent to sharing; willingness to pay ≥ ₹8 L a year</div></div>
-    <div class="card"><span class="pill hot">IN BUILD</span><h3>Branch Intelligence</h3><p class="what">Where an NBFC should open its next branch: catchment demand, competitor branches, and the collateral quality of the area.</p>
-      <div class="xr"><b>When</b>Year 3+, preview page live in the app</div>
-      <div class="xr"><b>Launch if</b>3+ customers opening 20+ branches a year ask for it; back-tested top-quintile catchments beat others by 15%+; reuses 70%+ of our data pipes</div></div>
+<!-- 16 FUTURE PLANS -->
+<section class="slide" data-chap="Future plans" data-cam="dim"><div class="body">
+  <div class="chap rise">Future plans</div>
+  <h2 class="rise">Today we do one thing: asset valuation for NBFCs. Three extensions follow, each with a date and a launch test</h2>
+  <div class="road rise d1">
+    <div class="rline"></div>
+    <div class="rp core" style="left:0%"><i></i><b>NOW → 2027</b><span>Core: valuation reports, book re-valuation and API for NBFCs</span></div>
+    <div class="rp" style="left:32%"><i></i><b>H2 2028</b><span>Pulse</span></div>
+    <div class="rp" style="left:55%"><i></i><b>H1 2029</b><span>Investor Lens</span></div>
+    <div class="rp" style="left:78%"><i></i><b>H2 2029</b><span>Branch Intelligence</span></div>
   </div>
-  <div class="poll rise d3" data-poll="xf"><span class="pq">ROOM POLL · Which should we launch first? Tap to count hands</span><button data-o="0">Pulse <b>0</b></button><button data-o="1">Investor Lens <b>0</b></button><button data-o="2">Branch Intelligence <b>0</b></button></div>
-  <div class="src">Extra features are excluded from the financial plan. Launch gates are BhoomiPulse decision rules. Branch Intelligence draws on industry materials on branch-potential analytics (market research). DPD = days past due.</div>
-  <aside>The core business is valuation for NBFCs. These three reuse the engine, so each is cheap to build, but each launches only when its gate is met. Take the poll: it is a quick read of which story the room finds most convincing.</aside>
+  <div class="grid g3 xf rise d2" style="margin-top:10px">
+    <div class="card"><span class="pill">IN BUILD · LAUNCH H2 2028</span><h3>Pulse</h3>
+      <div class="xr"><b>What it is</b>A monthly re-check of every financed property from satellites, with early warnings to the collections team.</div>
+      <div class="xr"><b>When</b>Once the valuation report is live at 10+ NBFCs.</div>
+      <div class="xr"><b>We launch only if</b>back-tests on 3 loan books show alerts 60+ days before 30+ DPD, and 3 NBFCs commit at ₹10+ per asset a month.</div></div>
+    <div class="card"><span class="pill">IN BUILD · LAUNCH H1 2029</span><h3>Investor Lens</h3>
+      <div class="xr"><b>What it is</b>A certificate on a whole loan book for co-lending banks and pool buyers: realisable cover, concentration, stress tests.</div>
+      <div class="xr"><b>When</b>Once 10+ NBFC loan books run on our engine.</div>
+      <div class="xr"><b>We launch only if</b>2+ co-lenders or pool buyers ask for it in live deals, NBFCs consent to sharing, and buyers will pay ₹8 L+ a year.</div></div>
+    <div class="card"><span class="pill hot">IN BUILD · LAUNCH H2 2029</span><h3>Branch Intelligence</h3>
+      <div class="xr"><b>What it is</b>Where an NBFC should open its next branch: demand in the catchment, competitor branches, collateral quality.</div>
+      <div class="xr"><b>When</b>Year 3, after Investor Lens.</div>
+      <div class="xr"><b>We launch only if</b>3+ customers opening 20+ branches a year ask for it, top-ranked catchments beat others by 15%+ in back-tests, and it reuses 70%+ of our data.</div></div>
+  </div>
+  <div class="poll rise d3" data-poll="xf" style="margin-top:12px"><span class="pq">ROOM POLL · Which should come first?</span><button data-o="0">Pulse <b>0</b></button><button data-o="1">Investor Lens <b>0</b></button><button data-o="2">Branch Intelligence <b>0</b></button></div>
+  <div class="src">None of the three is in the financial plan. All three appear in the Command Center under "In build" with their status, timing and launch test. DPD = days past due.</div>
+  <aside>Say it plainly: today we sell one thing to one customer. Pulse comes in the second half of 2028, Investor Lens in the first half of 2029, Branch Intelligence in the second half of 2029, and each launches only if its test is met. Then take the poll.</aside>
 </div></section>
 
 <!-- 17 RISKS -->
@@ -755,15 +791,11 @@ table.risk td{font-size:14.5px;padding:9px 10px;vertical-align:top}table.risk td
     </div>
     <div class="rise d2">
       <table class="tb" id="finTable"></table>
-      <div style="margin-top:12px">
-        <div class="slider"><span>Paying NBFCs, end of yr 3</span><input type="range" id="fL" min="15" max="60" step="1" value="36"><b id="fLv">36</b></div>
-        <div class="slider"><span>Report price, yr 1</span><input type="range" id="fP" min="400" max="1200" step="25" value="750"><b id="fPv">₹750</b></div>
-        <div class="slider"><span>Re-valuation / loan-yr</span><input type="range" id="fQ" min="20" max="120" step="5" value="60"><b id="fQv">₹60</b></div>
-      </div>
+      <p style="font-size:14px;margin-top:12px"><b class="amber">Downside:</b> with 25 NBFCs, year 3 is still +₹2.1 Cr EBITDA; with 20, −₹2.8 Cr, so hiring follows sales.</p>
       <p style="font-size:13px;margin-top:6px">Base case: 5 → 16 → 36 NBFCs; 8k → 18k reports and 20k → 60k re-valued loans per NBFC; headcount 14 → 34 → 60 at ₹24–28 L loaded cost.</p>
     </div>
   </div>
-  <aside>Drag the sliders live. Break-even arrives in year 2; cumulative burn before working capital is about ₹2.4 crore. At 25 NBFCs, year 3 is still EBITDA-positive. Pulse and Investor Lens are upside, not in the plan.</aside>
+  <aside>Break-even arrives in year 2; cumulative burn before working capital is about ₹2.4 crore. At 25 NBFCs, year 3 is still EBITDA-positive. Pulse and Investor Lens are upside, not in the plan.</aside>
 </div></section>
 
 <!-- 19 FINANCING -->
@@ -776,13 +808,18 @@ table.risk td{font-size:14.5px;padding:9px 10px;vertical-align:top}table.risk td
     <div class="card hot"><div class="when">MONTHS 9–12 · SEED</div><div class="mid amber">₹8 Cr</div><p>Fintech and Earth-observation investors</p></div>
     <div class="card"><div class="when">AFTER CONTRACTS · DEBT</div><div class="mid amber">≤ ₹20 Cr</div><p>Govt-guaranteed loans · venture debt</p></div>
   </div>
-  <script>function logoErr(i){if(!i.dataset.t){i.dataset.t=1;i.src='logos/'+i.dataset.n+'.svg'}else{i.remove()}}</script>
-  <div class="logos rise d2"><span class="pq">INVESTORS WE WILL APPROACH</span><div class="lrow"><div class="lg"><img src="logos/1.png" alt="" data-n="1" onerror="logoErr(this)"><span>Fintech-infra seed</span></div><div class="lg"><img src="logos/2.png" alt="" data-n="2" onerror="logoErr(this)"><span>Campus fund</span></div><div class="lg"><img src="logos/3.png" alt="" data-n="3" onerror="logoErr(this)"><span>Earth-observation investor</span></div><div class="lg"><img src="logos/4.png" alt="" data-n="4" onerror="logoErr(this)"><span>Lending-tech seed</span></div><div class="lg"><img src="logos/5.png" alt="" data-n="5" onerror="logoErr(this)"><span>Impact fund</span></div><div class="lg"><img src="logos/6.png" alt="" data-n="6" onerror="logoErr(this)"><span>Venture debt</span></div></div></div>
+  <div class="vcs rise d2"><span class="pq">INVESTORS WE WILL APPROACH</span><div class="vrow">
+    <div class="vc"><b>Fintech infrastructure</b><span>Arkam Ventures</span><span>Razorpay Ventures</span></div>
+    <div class="vc"><b>Lending-tech seed</b><span>Pavestone</span><span>Arali Ventures</span></div>
+    <div class="vc"><b>Earth observation and location AI</b><span>Omidyar Network India</span><span>9Unicorns</span></div>
+    <div class="vc"><b>Campus and angel networks</b><span>IIMA Ventures</span><span>Inflection Point Ventures</span></div>
+    <div class="vc"><b>Venture debt, after the seed</b><span>Alteria Capital</span><span>Stride Ventures</span></div>
+  </div></div>
   <div class="grid rise d3" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;margin-top:18px;align-items:center">
     <div><div class="lab" style="margin:0 0 6px">USE OF THE ₹8 CR SEED</div><div style="display:flex;height:30px;border-radius:9px;overflow:hidden;font:600 12px var(--f-m);color:#06101f"><div style="width:45%;background:#ffb547;display:grid;place-items:center">Product + data science 45%</div><div style="width:25%;background:#5ce1ff;display:grid;place-items:center">GTM 25%</div><div style="width:15%;background:#a6e36b;display:grid;place-items:center">Data 15%</div><div style="width:15%;background:#a98bff;display:grid;place-items:center;font-size:10.5px">Security 15%</div></div></div>
     <div class="poll" data-poll="fin" style="margin:0"><span class="pq">ROOM POLL · How would you fund year 1?</span><button data-o="0">Bootstrap + grants <b>0</b></button><button data-o="1">Raise seed now <b>0</b></button><button data-o="2">Venture debt <b>0</b></button></div>
   </div>
-  <div class="src">Sources: Startup India Seed Fund Scheme (up to ₹20 L grant + ₹50 L debt); MeitY SAMRIDH (up to ₹40 L); Credit Guarantee Scheme for Startups, NCGTC (up to ₹20 Cr per borrower); venture debt typically 20–35% of the last equity round. Seed split: BhoomiPulse plan.</div>
+  <div class="src">Investors picked for backing similar companies: Arkam and Razorpay Ventures (Spense, 2026); Pavestone (Uncia); Arali (Mannjal); Omidyar Network India (SatSure); 9Unicorns and IPV (GeoIQ). Grants: Startup India Seed Fund; MeitY SAMRIDH. Debt: CGSS (NCGTC); venture debt is typically 20–35% of the last equity round.</div>
   <aside>Order matters. Customers and grants fund the proof; equity buys speed once the back-test works; debt comes last because lenders want contracted revenue. Foreign funds come in as minority investors because of the geospatial policy.</aside>
 </div></section>
 
@@ -953,8 +990,8 @@ setInterval(() => { const c = document.getElementById('clock'); if (c) c.textCon
 // ---------- financial chart ----------
 const fmt = (x) => (Math.abs(x) >= 10 ? x.toFixed(1) : x.toFixed(2));
 function drawFin(anim) {
-  const a = { lenders: +document.getElementById('fL').value, price: +document.getElementById('fP').value, reval: +document.getElementById('fQ').value };
-  document.getElementById('fLv').textContent = a.lenders; document.getElementById('fPv').textContent = '₹' + a.price; document.getElementById('fQv').textContent = '₹' + a.reval;
+  const a = { lenders: 36, price: 750, reval: 60 };
+  
   const r = finModel(a);
   document.getElementById('fRev3').textContent = Math.round(r[2].rev);
   document.getElementById('fMargin3').textContent = Math.round((r[2].ebitda / r[2].rev) * 100);
@@ -974,7 +1011,7 @@ function drawFin(anim) {
   s += `<path d="M${p2.map((p) => p.join(',')).join('L')}" stroke="#ff5470" stroke-width="3" fill="none"/>` + p2.map((p, i) => `<circle cx="${p[0]}" cy="${p[1]}" r="6" fill="#02040a" stroke="#ff5470" stroke-width="3"/><text x="${p[0] + 10}" text-anchor="start" y="${p[1] + 5}" paint-order="stroke" stroke="#02040a" stroke-width="4" fill="#ff9aab" font-size="14" font-family="JetBrains Mono, monospace">${r[i].ebitda < 0 ? '−' : '+'}₹${fmt(Math.abs(r[i].ebitda))} cr</text>`).join('');
   box.innerHTML = `<svg viewBox="0 0 ${W} ${H}"><style>@keyframes grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}</style>${s}</svg>`;
 }
-['fL', 'fP', 'fQ'].forEach((id) => document.getElementById(id).addEventListener('input', () => drawFin(false)));
+
 
 // ---------- product demo (scripted walkthrough of the Command Center) ----------
 const Dm = { gen: 0 };
@@ -1076,12 +1113,12 @@ const sameSite = /github\.io$|localhost|127\.0\.0\.1/.test(location.hostname) &&
 if (sameSite) { const lb = $('liveBtn'); lb.hidden = false; lb.onclick = () => { stopDemo(); const w = $('win'); w.classList.add('live'); $('wurl').textContent = location.host + '/…/?embed=1&tour=1'; $('livewrap').innerHTML = `<iframe src="../?embed=1&tour=1&fresh=1" title="BhoomiPulse live Command Center" allow="fullscreen"></iframe>`; }; $('openLive').href = '../?tour=1'; }
 
 // ---------- guess, then reveal (slide 2) ----------
-const gIn = $('gIn'), gCard = $('guessCard');
-gIn.addEventListener('input', () => { $('gv').textContent = gIn.value; });
+const gCard = $('guessCard'); let gSel = null;
+gCard.querySelectorAll('.gopts button').forEach((b) => b.addEventListener('click', (e) => { e.stopPropagation(); gCard.querySelectorAll('.gopts button').forEach((x) => x.classList.toggle('on', x === b)); gSel = +b.dataset.v; b.blur(); }));
 function revealGuess() {
   if (gCard.classList.contains('revealed')) return;
   gCard.classList.add('revealed'); const el = $('gReal'); el.dataset.to = '31.5'; el.dataset.dec = '1'; countUp(el);
-  const d = +gIn.value - 31.5; $('gYou').textContent = Math.abs(d) < 5 ? 'You were close.' : `You guessed ${gIn.value}%: ${d > 0 ? 'collateral fetches far less than its paper value' : 'even lower than you thought'}.`;
+  $('gYou').textContent = gSel == null ? '' : gSel === 35 ? 'The room got it right.' : gSel > 35 ? 'Lower than the room guessed: collateral fetches far less than its paper value.' : 'Even lower than most people expect.';
 }
 $('gBtn').onclick = revealGuess;
 
@@ -1102,23 +1139,23 @@ $('gapAll').onclick = () => [0, 1, 2, 3, 4, 5].forEach((h, i) => setTimeout(() =
 // ---------- government floor check ----------
 const CR = { min: 30, max: 140, floor: 52.5, p50: 75.6, p90: 92 }; const crPos = (v) => ((v - CR.min) / (CR.max - CR.min)) * 100 + '%';
 { const bar = document.querySelector('.crbar'); const sp = bar.querySelectorAll('span'); [CR.floor, CR.p50, CR.p90].forEach((v, i) => { sp[i].style.left = crPos(v); }); bar.querySelector('.fl').style.left = crPos(CR.floor); bar.querySelector('.p50').style.left = crPos(CR.p50); bar.querySelector('.p90').style.left = crPos(CR.p90); }
-function crUpd() {
-  const v = +$('crIn').value; $('crV').textContent = v >= 100 ? '₹' + (v / 100).toFixed(2) + ' Cr' : '₹' + v + ' L'; $('crMe').style.left = crPos(v);
+function crUpd(v) {
+  $('crMe').style.left = crPos(v); $('crMe').style.opacity = 1;
   const el = $('crVerdict'); let t, c = '';
   if (v < CR.floor * 0.9) { t = `Below the government floor (${(v / CR.floor).toFixed(2)}×): the deed value is likely understated. Refer to legal.`; c = 'wet'; }
-  else if (v > CR.p90) { t = 'Above our P90: likely overvalued. Refer for a second valuation.'; c = 'wet'; }
+  else if (v > CR.p90) { t = `Above our P90 and ${(v / CR.floor).toFixed(1)}× the floor: likely overvalued. Lend on the registrable value.`; c = 'wet'; }
   else if (v > CR.p50 * 1.1) { t = 'Inside the range, above P50: valuer checks comparables.'; c = 'warn'; }
   else { t = `Within range and ${(v / CR.floor).toFixed(1)}× the floor: confirm.`; }
   el.textContent = t; el.className = 'verdict ' + c;
 }
-$('crIn').addEventListener('input', crUpd); crUpd();
+document.querySelectorAll('.cro button').forEach((b) => b.addEventListener('click', () => { document.querySelectorAll('.cro button').forEach((x) => x.classList.toggle('on', x === b)); crUpd(+b.dataset.v); b.blur(); }));
 // ---------- CFO return calculator ----------
 function roiUpd() {
-  const F = +$('rF').value, S = +$('rS').value / 100; $('rFv').textContent = F / 1000 + 'k'; $('rSv').textContent = Math.round(S * 100) + '%';
+  const F = 20000, S = 0.3;
   const price = F > 50000 ? 675 : 750, cost = (F * price + 600000) / 1e7, rev = (F * S * 2500) / 1e7, ovv = (F * 0.003 * 1200000 * 0.25) / 1e7, net = (rev + ovv) / cost;
   $('roiT').innerHTML = `<tr><td>Second reviews avoided: ${Math.round(S * 100)}% of ${(F / 1000)}k files × ₹2,500</td><td class="r nw green">+₹${rev.toFixed(2)} cr</td></tr><tr><td>Overvaluation caught: 0.3% of files × ₹12 L × 25%</td><td class="r nw green">+₹${ovv.toFixed(2)} cr</td></tr><tr><td>BhoomiPulse: ${(F / 1000)}k reports at ₹${price} + platform ₹6 L</td><td class="r nw red">−₹${cost.toFixed(2)} cr</td></tr><tr class="hl"><td><b>Benefit per rupee paid</b> (faster sanction not counted)</td><td class="r nw"><b>≈ ${net.toFixed(1)}×</b></td></tr>`;
 }
-['rF', 'rS'].forEach((id) => $(id).addEventListener('input', roiUpd)); roiUpd();
+roiUpd();
 // ---------- room polls (click to add a hand, right-click or shift-click to remove) ----------
 document.querySelectorAll('.poll').forEach((p) => { const bs = [...p.querySelectorAll('button')]; const cnt = bs.map(() => 0);
   const draw = () => { const tot = cnt.reduce((a, b) => a + b, 0) || 1, mx = Math.max(...cnt); bs.forEach((b, i) => { b.querySelector('b').textContent = cnt[i]; b.style.setProperty('--w', (cnt[i] / tot) * 100 + '%'); b.classList.toggle('lead', cnt[i] === mx && mx > 0); }); };
@@ -1260,13 +1297,12 @@ function makeParcel(cv) {
   const road = []; for (let x = -S / 2; x <= S / 2; x += 0.1) { const z = riverZ(x) + 3.4 + Math.sin(x * 0.7) * 0.4; road.push(new T3.Vector3(x, H(x, z) + 0.03, z)); }
   scene.add(new T3.Line(new T3.BufferGeometry().setFromPoints(road), new T3.LineBasicMaterial({ color: 0xff9a3d, transparent: true, opacity: 0.8 })));
   const water = new T3.Mesh(new T3.PlaneGeometry(S, S), new T3.MeshBasicMaterial({ color: 0x2a7fff, transparent: true, opacity: 0.38, depthWrite: false })); water.rotation.x = -Math.PI / 2; scene.add(water);
-  const lv = $('pLevel'), lvV = $('pLevelV'), vd = $('pVerdict');
-  const upd = () => { const v = +lv.value, wet = v >= minAbove; lvV.textContent = '+' + v.toFixed(1) + ' m'; vd.classList.toggle('wet', wet); vd.textContent = wet ? `Parcel floods above +${minAbove.toFixed(1)} m: haircut and route to Refer` : `Parcel stays dry until +${minAbove.toFixed(1)} m`; };
-  lv.addEventListener('input', upd); upd();
+  const lv = { value: 0.6 };
   const st = { az: 0.75, el: 0.66, dist: 12, drag: false }; orbit3(cv, st, { dir: 1, el: [0.2, 1.4], dist: [6, 26] });
   let wy = (riverM + +lv.value) * VS;
   return { frame(s) {
     if (!st.drag) st.az += 0.0007;
+    lv.value = Math.max(0, minAbove - 0.9 + 1.5 * Math.sin(s * 0.45));
     wy += ((riverM + +lv.value) * VS + 0.03 - wy) * 0.08; water.position.y = wy + Math.sin(s * 1.6) * 0.006;
     const wet = +lv.value >= minAbove, col = wet ? 0xff5470 : 0xffd98a; pl.material.color.setHex(col); pe.material.color.setHex(col); pm.material.color.setHex(wet ? 0xff5470 : 0xffb547); pm.material.opacity = 0.1 + 0.06 * Math.sin(s * 3);
     cam.position.set(px + Math.sin(st.az) * Math.cos(st.el) * st.dist, Math.sin(st.el) * st.dist, pz + Math.cos(st.az) * Math.cos(st.el) * st.dist); cam.lookAt(px, 0.8, pz - 0.4);
