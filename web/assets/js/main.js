@@ -76,7 +76,7 @@ async function tour() {
 // ---------- modes ----------
 function setMode(m) {
   S.mode = m;
-  const IB = ['inbuild', 'pulse', 'investor', 'branch'];
+  const IB = ['inbuild', 'investor', 'branch'];
   document.querySelectorAll('#modes button').forEach((b) => b.classList.toggle('on', b.dataset.mode === m || (b.dataset.mode === 'inbuild' && IB.includes(m))));
   ({ assess: renderAssess, portfolio: renderPortfolio, api: renderApi, sources: renderFabric, inbuild: () => renderInBuild(), pulse: renderPulse, investor: () => renderInBuild('investor'), branch: () => renderInBuild('branch') })[m]?.();
 }
@@ -141,13 +141,13 @@ document.addEventListener('keydown', (e) => {
   else if (k === 's') { const on = !S.layers.satellite; setLayer('satellite', on); $('[data-layer=satellite]').checked = on; }
   else if (k === 'l') $('[data-drawer=layers]').click();
   else if (k === 'r' && S.mode === 'assess' && S.asset) run();
-  else if (/^[1-5]$/.test(k)) setMode(['assess', 'portfolio', 'api', 'sources', 'inbuild'][+k - 1]);
+  else if (/^[1-6]$/.test(k)) setMode(['assess', 'portfolio', 'pulse', 'api', 'sources', 'inbuild'][+k - 1]);
 });
 
 // ---------- command palette ----------
 const COMMANDS = [
-  ['Assess mode', '1', () => setMode('assess')], ['Portfolio: book re-valuation', '2', () => setMode('portfolio')], ['API console', '3', () => setMode('api')], ['Data fabric', '4', () => setMode('sources')],
-  ['In build: Pulse, Investor Lens, Branch Intelligence', '5', () => setMode('inbuild')],
+  ['Assess mode', '1', () => setMode('assess')], ['Portfolio: book re-valuation', '2', () => setMode('portfolio')], ['Pulse: monthly re-check of the book', '3', () => setMode('pulse')], ['API console', '4', () => setMode('api')], ['Data fabric', '5', () => setMode('sources')],
+  ['In build: Investor Lens, Branch Intelligence', '6', () => setMode('inbuild')],
   ['Night flight over India', 'F', nightFlight], ['Toggle globe', 'G', toggleGlobe], ['Toggle satellite', 'S', () => { const on = !S.layers.satellite; setLayer('satellite', on); $('[data-layer=satellite]').checked = on; }],
   ['Drop a pin on the asset', 'P', () => setTool('pick')], ['Draw parcel boundary', 'B', () => setTool('draw')],
   ['Night lights: 2012', '', () => setEpoch('2012-01-01')], ['Night lights: 2016', '', () => setEpoch('2016-01-01')], ['Night lights: last night', '', () => setEpoch('nightly')],

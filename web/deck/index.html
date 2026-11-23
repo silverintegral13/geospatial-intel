@@ -417,6 +417,56 @@ table.vs td .ci{display:flex;align-items:flex-start}
 .col.cyan h3,.col.green h3{color:var(--ink)}
 .gtm .ladder{flex-wrap:nowrap;white-space:nowrap}
 .gtm .tier p{max-width:680px}
+/* v7 visuals */
+.mrep{margin-top:14px;border:1px solid var(--line);border-radius:14px;background:rgba(4,7,16,.72);padding:14px 18px}
+.mrep .mh{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.mrep .mh b{font:600 11.5px var(--f-m);color:var(--cyan);letter-spacing:.05em}.mrep .mh span{font-size:13px;color:var(--ink2)}
+.route{margin-left:auto;font:700 11.5px var(--f-m);padding:4px 10px;border-radius:999px;font-style:normal;letter-spacing:.05em}
+.route.ok{background:#3ee08f22;color:#8ff5bf;border:1px solid #3ee08f66}
+.vbar{position:relative;height:58px;margin:4px 6px 2px}
+.vbar .ax{position:absolute;left:0;right:0;top:24px;height:6px;border-radius:3px;background:rgba(255,255,255,.08)}
+.vbar .band{position:absolute;top:20px;height:14px;border-radius:7px;background:linear-gradient(90deg,#5ce1ff55,#ffb547aa,#5ce1ff55)}
+.vbar .mk{position:absolute;top:14px;width:2px;height:26px;background:var(--ink);transform:translateX(-1px)}
+.vbar .mk.fl{background:#a98bff;height:34px;top:10px}
+.vbar .mk span{position:absolute;top:30px;left:50%;transform:translateX(-50%);font:500 11px var(--f-m);color:var(--ink2);white-space:nowrap}
+.vbar .mk.fl span{top:-14px;color:#c8b6ff}.vbar .mk.p50 span{color:var(--gold);font-weight:700}
+.mstats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:12px;border-top:1px solid var(--line);padding-top:10px}
+.mstats b{font:700 20px var(--f-h);color:var(--ink);display:block}.mstats span{font:500 11px var(--f-m);color:var(--muted)}
+.mflags{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.mflags i{font:500 12px var(--f-m);font-style:normal;padding:4px 10px;border-radius:999px;border:1px solid var(--line);color:var(--ink2)}
+.mflags i.g{border-color:#3ee08f55;color:#8ff5bf}.mflags i.a{border-color:#ffb54766;color:var(--gold)}
+.vrow2{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:34px;margin-top:22px;align-items:start}
+.vrow2 .lab{margin:0 0 8px}
+.vcap{font-size:14.5px;color:var(--ink2);margin:8px 0 0;line-height:1.45}
+.proto{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.proto div{border-top:2px solid var(--cyan);padding-top:10px;position:relative}
+.proto div:last-child{border-top-color:var(--amber)}
+.proto i{font:700 22px var(--f-h);color:var(--cyan);font-style:normal;display:block}.proto div:last-child i{color:var(--gold)}
+.proto b{display:block;font:600 15px var(--f-h);color:var(--ink);margin:2px 0 3px}.proto span{font-size:13px;color:var(--ink2);line-height:1.4;display:block}
+.ue{display:flex;height:40px;border-radius:10px;overflow:hidden;font:600 13px var(--f-m);color:#06101f}
+.ue div{display:grid;place-items:center}
+.ybars{display:flex;gap:22px;align-items:flex-end;height:120px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+.ybars div{display:flex;flex-direction:column;align-items:center;gap:6px;font:600 14px var(--f-h);color:var(--ink)}
+.ybars i{display:block;width:56px;border-radius:8px 8px 0 0;background:linear-gradient(#ffb547,#ffb54755)}
+.ybars small{font:500 11.5px var(--f-m);color:var(--muted)}
+.gantt{position:relative}
+.gantt .wk{display:grid;grid-template-columns:repeat(14,minmax(0,1fr));font:500 11px var(--f-m);color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:4px}
+.gantt .gr{position:relative;height:38px;margin-top:8px}
+.gantt .gb{position:absolute;top:0;bottom:0;border-radius:9px;display:flex;align-items:center;padding:0 12px;font:600 13.5px var(--f-h);color:#06101f;white-space:nowrap}
+.gantt .ms{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:12px}
+.gantt .ms div{font-size:13px;color:var(--ink2);border-left:2px solid var(--line);padding-left:8px;line-height:1.35}.gantt .ms b{display:block;font:600 11.5px var(--f-m);color:var(--cyan)}
+.brs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.brs i{height:38px;border-radius:8px;display:grid;place-items:center;font:600 11px var(--f-m);font-style:normal}
+.brs i.t{background:#ffb54733;border:1px solid #ffb54788;color:var(--gold)}.brs i.c{background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--muted)}
+.brl{display:flex;gap:18px;margin-top:10px;font-size:13.5px;color:var(--ink2)}.brl b{color:var(--ink)}
+/* market rings, prominent */
+.tam.sm .ring{border-width:2px}
+.tam .ring .tg{display:block;font:800 17px var(--f-m);letter-spacing:.14em;margin-bottom:2px}
+.tam .ring .ds{display:block;font:500 12.5px var(--f-m);color:var(--ink);opacity:.9;line-height:1.35}
+.vbar .mk{display:block;font-style:normal}
+.vbar .ml{position:absolute;top:44px;transform:translateX(-50%);font:500 11px var(--f-m);font-style:normal;color:var(--ink2);white-space:nowrap}
+.vbar .ml.fl{top:-6px;color:#c8b6ff}.vbar .ml.p50{color:var(--gold);font-weight:700}
+.tam .ring .ds{color:var(--ink)}
 </style>
 </head>
 <body>
@@ -553,6 +603,16 @@ table.vs td .ci{display:flex;align-items:flex-start}
     <div class="layer rise d1"><div class="k">Valuation Report<small>every new file</small></div><p>Pin or trace the parcel. In ~8 seconds: P10–P50–P90 value, realisable value and days to sell, government floor check, hazards, land-use match, <span class="gl" data-tip="Loan-to-value: the loan as a share of the property's value. 75% LTV on a ₹1 crore flat means a ₹75 lakh loan.">LTV</span> band under the NBFC's own policy, red flags and a route.</p></div>
     <div class="layer rise d2"><div class="k">Book re-valuation<small>existing loans</small></div><p>Upload the loan tape; every pledged property re-valued against today's market and floor. For NPAs, securitised pools and LTV top-ups.</p></div>
     <div class="layer rise d3"><div class="k">API + audit log<small>inside the LOS</small></div><p>REST API or on-prem Docker, per-lender policy, an embeddable card for loan-origination screens, and a source-by-source log for model-risk teams.</p></div>
+    <div class="mrep rise d4">
+      <div class="mh"><b>WHAT THE CREDIT OFFICER SEES</b><span>2BHK flat, Hinjewadi Phase 1, Pune · 1,050 sq ft</span><i class="route ok">ROUTE · CONFIRM</i></div>
+      <div class="vbar"><div class="ax"></div><div class="band" style="left:30.9%;right:14.5%"></div>
+        <i class="mk fl" style="left:13.6%"></i><em class="ml fl" style="left:13.6%">govt floor ₹52.5 L</em>
+        <i class="mk" style="left:30.9%"></i><em class="ml" style="left:30.9%">P10 ₹62 L</em>
+        <i class="mk p50" style="left:55.6%"></i><em class="ml p50" style="left:55.6%">P50 ₹75.6 L</em>
+        <i class="mk" style="left:85.5%"></i><em class="ml" style="left:85.5%">P90 ₹92 L</em></div>
+      <div class="mstats"><div><b>₹66 L</b><span>realisable value</span></div><div><b>~70 days</b><span>to sell</span></div><div><b>12.7%</b><span>haircut for this asset</span></div><div><b>60–70%</b><span>LTV band, NBFC policy</span></div></div>
+      <div class="mflags"><i class="g">✓ 1.44× circle rate</i><i class="g">✓ land use: residential</i><i class="g">✓ flood risk: low</i><i class="a">! heat stress: medium</i><i>10 sources · 8.2 s</i></div>
+    </div>
   </div>
   <div class="rise d2" style="display:flex;flex-direction:column;gap:10px">
     <div class="scene" style="height:420px"><canvas class="g3d" data-kind="parcel" width="520" height="420" role="img" aria-label="3D terrain around a land parcel beside a river, with an adjustable flood level"></canvas><span class="hint3" style="left:16px;right:auto;top:12px;bottom:auto;color:var(--cyan)">HAZARD VIEW · TERRAIN + RIVER + PARCEL</span><span class="hint3">drag · scroll</span></div>
@@ -560,7 +620,7 @@ table.vs td .ci{display:flex;align-items:flex-start}
     <div class="verdict" id="pVerdict" aria-live="polite">Parcel stays dry at this level</div>
   </div>
   </div>
-  <div class="src">Government floor = circle rate × built-up area. Where no rate is published, the engine estimates it from the state's circle-to-market ratio and labels it "estimated" (logic on the API docs). Hazard view: illustrative terrain; the live tool uses Copernicus DEM and GloFAS.</div>
+  <div class="src">Report card values are illustrative output for one asset. Government floor = circle rate × built-up area. Where no rate is published, the engine estimates it from the state's circle-to-market ratio and labels it "estimated" (logic on the API docs). Hazard view: illustrative terrain; the live tool uses Copernicus DEM and GloFAS.</div>
   <aside>Three layers, one engine. Ask a volunteer to drag the river slider: at what level does the parcel flood? That level is priced into the haircut. The government floor check appears in the demo on the next slide: below the floor, the deed is likely understated, since stamp duty is charged on the higher of the two.</aside>
 </div></section>
 
@@ -628,7 +688,19 @@ table.vs td .ci{display:flex;align-items:flex-start}
       <div class="acc amber"><h3>Honest about today</h3><p>The prototype runs live on public data with transparent priors. Calibration on a design partner's files is milestone one.</p></div>
     </div>
   </div>
-  <div class="src">MR = market research (industry materials, Nov 2026; not publicly verified). Targets are BhoomiPulse pilot goals. <span class="gl" data-tip="Conformal prediction: a statistical method that widens or narrows the range until, on held-out data, the true value falls inside it as often as promised.">Conformal</span> intervals: the 80% range must contain the true sale price 80% of the time on held-out files.</div>
+  <div class="vrow2 rise d3">
+    <div><div class="lab">WHAT "80% SURE" MEANS · 10 HELD-OUT FILES</div><svg viewBox="0 0 620 150" width="100%" height="150" role="img" aria-label="Ten held-out files: eight sale prices fall inside the predicted range, two fall outside"><line x1="32" x2="32" y1="47" y2="118" stroke="#5ce1ff" stroke-width="6" stroke-linecap="round" opacity=".45"/><circle cx="32" cy="66" r="7" fill="#5ce1ff" stroke="#02040a" stroke-width="2"/><text x="32" y="146" text-anchor="middle" font-size="11" fill="#74829f" font-family="JetBrains Mono, monospace">#1</text><line x1="92" x2="92" y1="52" y2="129" stroke="#5ce1ff" stroke-width="6" stroke-linecap="round" opacity=".45"/><circle cx="92" cy="77" r="7" fill="#5ce1ff" stroke="#02040a" stroke-width="2"/><text x="92" y="146" text-anchor="middle" font-size="11" fill="#74829f" font-family="JetBrains Mono, monospace">#2</text><line x1="152" x2="152" y1="42" y2="106" stroke="#5ce1ff" stroke-width="6" stroke-linecap="round" opacity=".45"/><circle cx="152" cy="53" r="7" fill="#5ce1ff" stroke="#02040a" stroke-width="2"/><text x="152" y="146" text-anchor="middle" font-size="11" fill="#74829f" font-family="JetBrains Mono, monospace">#3</text><line x1="212" x2="212" y1="52" y2="131" stroke="#5ce1ff" stroke-width="6" stroke-linecap="round" opacity=".45"/><circle cx="212" cy="36" r="7" fill="#ff5470" stroke="#02040a" stroke-width="2"/><text x="212" y="146" text-anchor="middle" font-size="11" fill="#74829f" font-family="JetBrains Mono, monospace">#4</text><line x1="272" x2="272" y1="49" y2="112" stroke="#5ce1ff" stroke-width="6" stroke-linecap="round" opacity=".45"/><circle cx="272" cy="72" r="7" fill="#5ce1ff" stroke="#02040a" stroke-width="2"/><text x="272" y="146" text-anchor="middle" font-size="11" fill="#74829f" font-family="JetBrains Mono, monospace">#5</text><line x1="332" x2="332" y1="56" y2="135" stroke="#5ce1ff" stroke-width="6" stroke-linecap="round" opacity=".45"/><circle cx="332" cy="96" r="7" fill="#5ce1ff" stroke="#02040a" stroke-width="2"/><text x="332" y="146" text-anchor="middle" font-size="11" fill="#74829f" font-family="JetBrains Mono, monospace">#6</text><line x1="392" x2="392" y1="48" y2="115" stroke="#5ce1ff" stroke-width="6" stroke-linecap="round" opacity=".45"/><circle cx="392" cy="65" r="7" fill="#5ce1ff" stroke="#02040a" stroke-width="2"/><text x="392" y="146" text-anchor="middle" font-size="11" fill="#74829f" font-family="JetBrains Mono, monospace">#7</text><line x1="452" x2="452" y1="48" y2="116" stroke="#5ce1ff" stroke-width="6" stroke-linecap="round" opacity=".45"/><circle cx="452" cy="61" r="7" fill="#5ce1ff" stroke="#02040a" stroke-width="2"/><text x="452" y="146" text-anchor="middle" font-size="11" fill="#74829f" font-family="JetBrains Mono, monospace">#8</text><line x1="512" x2="512" y1="48" y2="118" stroke="#5ce1ff" stroke-width="6" stroke-linecap="round" opacity=".45"/><circle cx="512" cy="134" r="7" fill="#ff5470" stroke="#02040a" stroke-width="2"/><text x="512" y="146" text-anchor="middle" font-size="11" fill="#74829f" font-family="JetBrains Mono, monospace">#9</text><line x1="572" x2="572" y1="46" y2="113" stroke="#5ce1ff" stroke-width="6" stroke-linecap="round" opacity=".45"/><circle cx="572" cy="76" r="7" fill="#5ce1ff" stroke="#02040a" stroke-width="2"/><text x="572" y="146" text-anchor="middle" font-size="11" fill="#74829f" font-family="JetBrains Mono, monospace">#10</text></svg>
+      <p class="vcap"><b style="color:var(--cyan)">Bar</b> = our P10–P90 range. <b style="color:var(--cyan)">Dot</b> = the price the property actually sold for. 8 of 10 inside passes; if only 6 land inside, the range is widened until it is honest.</p></div>
+    <div><div class="lab">HOW EVERY MODEL IS TESTED BEFORE A LENDER SEES IT</div>
+      <div class="proto">
+        <div><i>1</i><b>Fit</b><span>On the partner's closed files, by district</span></div>
+        <div><i>2</i><b>Later months</b><span>Score files from after the fit date</span></div>
+        <div><i>3</i><b>Unseen districts</b><span>Whole districts held back from training</span></div>
+        <div><i>4</i><b>Publish</b><span>Error and coverage per district, on every report</span></div>
+      </div>
+      <p class="vcap">A model that passes 1–3 but misses its target in any district is shown as "uncalibrated" there, and those files go to the valuer.</p></div>
+  </div>
+  <div class="src">MR = market research (industry materials, Nov 2026; not publicly verified). Targets are BhoomiPulse pilot goals. Held-out chart is an illustration of the test, not results. <span class="gl" data-tip="Conformal prediction: a statistical method that widens or narrows the range until, on held-out data, the true value falls inside it as often as promised.">Conformal</span> intervals: the 80% range must contain the true sale price 80% of the time on held-out files.</div>
   <aside>Why the regression and not a deep network: the ClarityX founders told us a black-box model may not be accepted by lenders who must justify decisions to the RBI. We get accuracy from data, and keep the model readable.</aside>
 </div></section>
 
@@ -679,9 +751,9 @@ table.vs td .ci{display:flex;align-items:flex-start}
       <div class="lab" style="margin:0 0 6px">INDIA · VALUATION ONLY · ₹ CRORE A YEAR</div>
       <div class="mkt">
         <div class="tam sm">
-          <div class="ring" style="width:400px;height:400px;left:0;top:0;border-color:#5ce1ff55;background:radial-gradient(circle,rgba(92,225,255,.06),transparent 70%)"><div style="position:absolute;top:34px;width:100%"><b class="cyan">₹1,000 cr</b><span>TAM · all lenders</span></div></div>
-          <div class="ring" style="width:262px;height:262px;left:69px;top:130px;border-color:#ffb54777;background:radial-gradient(circle,rgba(255,181,71,.08),transparent 70%)"><div style="position:absolute;top:30px;width:100%"><b class="amber">₹330 cr</b><span>SAM · NBFCs and HFCs<br>3.5 M files</span></div></div>
-          <div class="ring pulse" style="width:128px;height:128px;left:136px;top:258px;border-color:#ffd98a;background:rgba(255,181,71,.18);display:grid;place-items:center"><div><b style="color:#fff;font-size:24px">₹39 cr</b><span>SOM · year 3<br>36 NBFCs</span></div></div>
+          <div class="ring" style="width:400px;height:400px;left:0;top:0;border-color:#5ce1ffaa;background:rgba(92,225,255,.13)"><div style="position:absolute;top:26px;width:100%"><span class="tg" style="color:#5ce1ff">TAM</span><b class="cyan">₹1,000 cr</b><span class="ds">all lenders, valuation only</span></div></div>
+          <div class="ring" style="width:268px;height:268px;left:66px;top:126px;border-color:#ffb547cc;background:rgba(255,181,71,.22)"><div style="position:absolute;top:24px;width:100%"><span class="tg" style="color:#ffd98a">SAM</span><b class="amber">₹330 cr</b><span class="ds">NBFCs and HFCs · 3.5 M files</span></div></div>
+          <div class="ring pulse" style="width:150px;height:150px;left:125px;top:240px;border-color:#3ee08f;background:rgba(62,224,143,.32);display:grid;place-items:center"><div><span class="tg" style="color:#b8ffd9;font-size:15px">SOM</span><b style="color:#fff;font-size:24px">₹39 cr</b><span class="ds">year 3<br>36 NBFCs</span></div></div>
         </div>
         <div class="bu">
           <div class="lab" style="margin:0 0 4px">HOW THE TAM ADDS UP</div>
@@ -721,6 +793,13 @@ table.vs td .ci{display:flex;align-items:flex-start}
       <table class="tb" id="roiT" style="margin-top:4px"></table>
       <div class="ask" style="margin-top:10px"><b>ASK THE ROOM</b> If you were the CFO, what share of files would you let skip a second review?</div>
     </div>
+  </div>
+  <div class="vrow2 rise d3" style="grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);margin-top:20px">
+    <div><div class="lab">WHERE EACH ₹750 REPORT GOES</div>
+      <div class="ue"><div style="width:8%;background:#ff9a3d">₹60</div><div style="width:92%;background:linear-gradient(90deg,#ffb547,#ffd98a)">₹690 contribution · 92%</div></div>
+      <p class="vcap">Cost covers cloud compute, paid high-resolution imagery on about 1 file in 10, a human QA check on 2% of files and the GenAI summary. Field valuation for the same file: ₹1,300–2,500.</p></div>
+    <div><div class="lab">COST PER REPORT FALLS WITH SCALE</div>
+      <div class="ybars"><div>₹60<i style="height:84px"></i><small>2027</small></div><div>₹58<i style="height:81px"></i><small>2028</small></div><div>₹55<i style="height:77px"></i><small>2029</small></div><div style="margin-left:auto;align-self:center;text-align:left;font:500 14px var(--f-b);color:var(--ink2);max-width:190px">Reports per NBFC grow 8k → 18k a year; imagery and compute are bought in bulk</div></div></div>
   </div>
   <div class="src">Sources: urban cooperative bank schedule of charges (CIBIL ₹250, CERSAI ₹200); Federal Bank agri-loan service charges; Can Fin Homes schedule (max ₹2,500); SBI valuer fee annexure (min ₹3,000). MR = market research. ROI assumptions: ₹2,500 per second review or re-visit avoided; overvaluation caught on 0.3% of files at ₹12 L tickets, 25% loss avoided.</div>
   <aside>Ask the room the CFO question and take two answers; at 30% the NBFC gets about ₹2 back per rupee. The ROI does not depend on removing the valuer: it comes from fewer second reviews and from catching overvalued files. Pricing went up from our first draft after the founder interviews.</aside>
@@ -777,6 +856,16 @@ table.vs td .ci{display:flex;align-items:flex-start}
     <tr><td>Files confirmed without a second review</td><td class="r nw">≥ 30%</td><td style="padding-left:30px">Valuation cost per file</td><td class="r nw">−25%</td></tr>
     <tr><td>6-month 30+ DPD, treatment vs control</td><td class="r nw">non-inferior ±0.5 pp</td><td style="padding-left:30px">Under-declaration flags confirmed by legal</td><td class="r nw">≥ 80%</td></tr>
   </table>
+  <div class="vrow2 rise d4" style="grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);margin-top:24px">
+    <div><div class="lab">THE 90 DAYS, WEEK BY WEEK</div>
+      <div class="gantt"><div class="wk"><span>W0</span><span>W1</span><span>W2</span><span>W3</span><span>W4</span><span>W5</span><span>W6</span><span>W7</span><span>W8</span><span>W9</span><span>W10</span><span>W11</span><span>W12</span><span>W13</span></div>
+        <div class="gr"><div class="gb" style="left:0;width:35.71%;background:#5ce1ff">Back-test on closed files</div><div class="gb" style="left:35.71%;width:57.14%;background:#ffb547">Randomised live run in branches</div><div class="gb" style="left:92.86%;width:7.14%;background:#3ee08f;padding:0;justify-content:center">✓</div></div>
+        <div class="ms"><div><b>WEEK 0</b>NBFC shares 24 months of closed files</div><div><b>WEEK 4</b>Back-test report to the head of risk</div><div><b>WEEK 5</b>Treatment branches go live</div><div><b>WEEK 13</b>Go / no-go at the risk committee</div></div></div></div>
+    <div><div class="lab">HOW THE BRANCHES ARE SPLIT</div>
+      <div class="brs"><i class="t">T</i><i class="c">C</i><i class="c">C</i><i class="t">T</i><i class="t">T</i><i class="c">C</i><i class="c">C</i><i class="t">T</i><i class="c">C</i><i class="t">T</i><i class="t">T</i><i class="c">C</i></div>
+      <div class="brl"><span><b style="color:var(--gold)">T</b> treatment: confirm / verify / refer routing</span><span><b>C</b> control: today's process</span></div>
+      <p class="vcap">Branches are assigned by lottery, so any difference in cost, speed or defaults comes from the routing, not the branch.</p></div>
+  </div>
   <aside>A before-and-after comparison would confuse our effect with seasonality. Branch randomisation plus a threshold design gives the risk committee a causal estimate. DPD means days past due: 30+ DPD is the first sign a loan is going bad.</aside>
 </div></section>
 
@@ -792,7 +881,7 @@ table.vs td .ci{display:flex;align-items:flex-start}
     <div class="rp" style="left:78%"><i></i><b>H2 2029</b><span>Branch Intelligence</span></div>
   </div>
   <div class="grid g3 xf rise d2" style="margin-top:10px">
-    <div class="card"><span class="pill">IN BUILD · LAUNCH H2 2028</span><h3>Pulse</h3>
+    <div class="card"><span class="pill hot">PROTOTYPE LIVE · LAUNCH H2 2028</span><h3>Pulse</h3>
       <div class="xr"><b>What it is</b>A monthly re-check of every financed property from satellites, with early warnings to the collections team.</div>
       <div class="xr"><b>When</b>Once the valuation report is live at 10+ NBFCs.</div>
       <div class="xr"><b>We launch only if</b>back-tests on 3 loan books show alerts 60+ days before 30+ DPD, and 3 NBFCs commit at ₹10+ per asset a month.</div></div>
@@ -800,7 +889,7 @@ table.vs td .ci{display:flex;align-items:flex-start}
       <div class="xr"><b>What it is</b>A certificate on a whole loan book for co-lending banks and pool buyers: realisable cover, concentration, stress tests.</div>
       <div class="xr"><b>When</b>Once 10+ NBFC loan books run on our engine.</div>
       <div class="xr"><b>We launch only if</b>2+ co-lenders or pool buyers ask for it in live deals, NBFCs consent to sharing, and buyers will pay ₹8 L+ a year.</div></div>
-    <div class="card"><span class="pill hot">IN BUILD · LAUNCH H2 2029</span><h3>Branch Intelligence</h3>
+    <div class="card"><span class="pill">IN BUILD · LAUNCH H2 2029</span><h3>Branch Intelligence</h3>
       <div class="xr"><b>What it is</b>Where an NBFC should open its next branch: demand in the catchment, competitor branches, collateral quality.</div>
       <div class="xr"><b>When</b>Year 3, after Investor Lens.</div>
       <div class="xr"><b>We launch only if</b>3+ customers opening 20+ branches a year ask for it, top-ranked catchments beat others by 15%+ in back-tests, and it reuses 70%+ of our data.</div></div>
@@ -813,7 +902,7 @@ table.vs td .ci{display:flex;align-items:flex-start}
       <div class="lpurl">Scan the code, or open <b id="lpUrl">…</b> and enter <b id="lpCode">…</b> · <button type="button" id="lpNew" class="lpnew">new poll</button></div>
     </div>
   </div>
-  <div class="src">None of the three is in the financial plan. All three appear in the Command Center under "In build" with their status, timing and launch test. DPD = days past due.</div>
+  <div class="src">None of the three is in the financial plan. Pulse runs as a live prototype in the Command Center; Investor Lens and Branch Intelligence appear under "In build" with their status, timing and launch test. DPD = days past due.</div>
   <aside>Say it plainly: today we sell one thing to one customer. Pulse comes in the second half of 2028, Investor Lens in the first half of 2029, Branch Intelligence in the second half of 2029, and each launches only if its test is met. Then run the live poll: click the QR to show it full screen, give the room 30 seconds, close it and read the result. If the network fails, count hands and click the bars instead.</aside>
 </div></section>
 

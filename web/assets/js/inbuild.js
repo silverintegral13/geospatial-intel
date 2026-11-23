@@ -8,16 +8,6 @@ const $ = (s) => document.querySelector(s);
 
 export const IN_BUILD = [
   {
-    id: 'pulse', name: 'Pulse', launch: 'H2 2028', progress: 45,
-    tagline: 'Monthly re-check of every financed property from orbit',
-    what: 'Every property in an NBFC’s book is re-checked each month from satellites: night lights for shops and factories, crop vigour for farmland, river-flood forecasts for everything. When something changes, the collections team gets an alert before repayments slip.',
-    who: 'Collections and portfolio-monitoring teams at NBFCs already using the valuation report.',
-    when: 'Second half of 2028, once the valuation report is live at 10 or more NBFCs.',
-    gate: ['Back-tests on 3 customer loan books show alerts arriving 60+ days before 30+ days past due', 'At least 60% of alerts confirmed by field teams', '3 NBFCs commit at ₹10+ per asset a month'],
-    status: [['Signals', 'Night lights, NDVI, flood forecast wired', 'ok'], ['Change detection', 'Prototype on sample assets', 'ok'], ['Alert calibration', 'Needs customer outcomes', 'wip'], ['Webhooks to collections', 'Designed', 'wip']],
-    preview: true,
-  },
-  {
     id: 'investor', name: 'Investor Lens', launch: 'H1 2029', progress: 25,
     tagline: 'A collateral certificate for a whole loan book',
     what: 'A co-lending bank, pool buyer or equity investor uploads a loan tape and gets one certificate for the book: realisable cover (what the collateral would fetch versus what is owed), the share of loans under-covered, concentration by district and hazard, and stress tests such as a 20% price fall or a flood year.',
@@ -50,7 +40,7 @@ export function renderInBuild(id) {
 function hub() {
   const el = $('#panelInner');
   el.innerHTML = `
-  <div class="ph"><div><div class="kicker">IN BUILD <span class="soon">NOT YET LAUNCHED</span></div><h2>What comes after the core</h2><p>Today BhoomiPulse does one thing for one customer: asset valuation for NBFCs. These three features reuse the same engine and data. Each has a planned launch date and a test it must pass first; none is in our financial plan.</p></div></div>
+  <div class="ph"><div><div class="kicker">IN BUILD <span class="soon">NOT YET LAUNCHED</span></div><h2>What comes after the core</h2><p>Today BhoomiPulse does one thing for one customer: asset valuation for NBFCs. Pulse, our book-monitoring prototype, is live in its own tab. The two features here reuse the same engine and data. Each has a planned launch date and a test it must pass first; none is in our financial plan.</p></div></div>
   <div class="ibroad">${IN_BUILD.map((f) => `<div><b>${f.launch}</b><span>${f.name}</span></div>`).join('')}</div>
   ${IN_BUILD.map((f) => `
   <div class="sec ibcard">
