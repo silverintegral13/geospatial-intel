@@ -178,7 +178,7 @@ export function renderResult(r) {
   <div class="sec"><h3>Summary for the credit file</h3><div class="summary">${esc(r.summary)}</div></div>
   <div class="sec"><h3>Data lineage <small>${r.provenance.live_sources_ok}/${r.provenance.live_sources_called} live · ${r.timing_ms} ms · model ${esc(r.model_version)}</small></h3>
     <table class="t">${r.sources.map((x) => `<tr><td>${esc(x.name)}<br><small style="color:#71809f">${esc(x.provider)} · ${esc(x.licence)}</small></td><td class="st-${x.status}">${x.status === 'ok' ? 'live' : esc(x.status)}</td><td class="n">${x.ms ?? ''}</td></tr>`).join('')}</table></div>
-  <div class="btns"><button class="btn pri" id="watchBtn">◉ Add to Pulse watchlist</button><button class="btn" id="repBtn">⎙ Report</button><button class="btn" id="jsonBtn">{ } JSON</button><button class="btn" id="apiBtn">⌘ API call</button><button class="btn" id="editBtn">✎ Edit inputs</button></div>
+  <div class="btns"><button class="btn pri" id="repBtn">⎙ Report</button><button class="btn" id="jsonBtn">{ } JSON</button><button class="btn" id="apiBtn">⌘ API call</button><button class="btn" id="editBtn">✎ Edit inputs</button></div>
   <p class="hint">${esc(r.disclaimer)}</p>`;
   animateDials(el);
   const sub = r.score.sub;
@@ -188,7 +188,6 @@ export function renderResult(r) {
   bars($('#rainFig'), (s.annual_series || []).map(([y, mm]) => [y, mm]), { unit: ' mm' });
   $('#newBtn').onclick = () => { S.lastResult = null; S.editing = true; renderAssess(); };
   $('#editBtn').onclick = () => { S.editing = true; S.lastResult = null; renderAssess(); };
-  $('#watchBtn').onclick = () => bus.emit('watch:add', { asset: { lat: r.input.lat, lon: r.input.lon, asset_type: r.asset_type, polygon: r.input.polygon }, label: S.asset?.label || r.location.locality || 'Asset', from: r });
   $('#repBtn').onclick = () => { const w = window.open('', '_blank'); if (w) { w.document.write(renderReport(r, { simulated: r._simulated })); w.document.close(); } else toast('Allow pop-ups to open the report'); };
   $('#jsonBtn').onclick = () => { const b = new Blob([JSON.stringify(r, null, 2)], { type: 'application/json' }); const u = URL.createObjectURL(b); const aEl = Object.assign(document.createElement('a'), { href: u, download: `${r.id}.json` }); aEl.click(); setTimeout(() => URL.revokeObjectURL(u), 2000); };
   $('#apiBtn').onclick = () => bus.emit('mode', 'api');
