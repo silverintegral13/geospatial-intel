@@ -44,6 +44,11 @@ Report ${esc(r.id)} · ${esc(r.created_at.slice(0, 16).replace('T', ' '))} UTC �
 <div class="k"><span>Max loan</span><b>${inr(r.lending.max_loan)}</b></div>
 <div class="k"><span>12-month PD (policy × score)</span><b>${pct(r.lending.pd_12m)}</b></div></div>
 <p class="meta">Valuation basis: ${esc(r.valuation.basis)}. ${r.lending.actual_ltv != null ? `Requested loan ${inr(r.lending.loan_amount)} = LTV ${pct(r.lending.actual_ltv)} (stress at P10: ${pct(r.lending.stress_ltv_p10)}); expected loss ${inr(r.lending.expected_loss)}.` : ''}</p>
+${r.circle_rate?.circle_value ? `<h2>Government floor value</h2><div class="grid">
+<div class="k"><span>${esc(r.circle_rate.regime)} (${esc(r.circle_rate.tier_label)})</span><b>${inr(r.circle_rate.circle_value)}</b></div>
+<div class="k"><span>Rate</span><b>₹${(r.circle_rate.rate_sqm || 0).toLocaleString('en-IN')}</b> /m²</div>
+<div class="k"><span>Market ÷ floor</span><b>${r.circle_rate.market_to_circle}×</b></div></div>
+<p class="meta">${esc(r.circle_rate.locality || '')} · ${esc(r.circle_rate.fy || '')} · ${esc(r.circle_rate.method)}. ${r.circle_rate.growth?.reading ? esc(r.circle_rate.growth.reading) + '.' : ''} Source: ${esc(r.circle_rate.source?.label || '')}.</p>` : ''}
 <h2>Decision route</h2><p><b>${esc(r.decision.label)}</b></p>
 <h2>Red flags</h2><ul class="flags">${flags}</ul>
 <h2>Score breakdown</h2><table>${bars}</table>

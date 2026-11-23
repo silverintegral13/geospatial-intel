@@ -236,6 +236,107 @@ table.fb td:first-child{color:#d6deef;font-style:italic;width:44%}
 .cta a{font:600 16px var(--f-h);color:#1a1000;background:linear-gradient(90deg,#ffb547,#ffd98a);padding:12px 20px;border-radius:12px;text-decoration:none;box-shadow:0 0 30px #ffb54755}
 .cta a.ghost{background:none;color:var(--gold);border:1px solid #ffb54777;box-shadow:none}
 @media (prefers-reduced-motion:reduce){.slide,.slide .rise,.card::before{transition:none!important;animation:none!important}.slide{filter:none;transform:none}}
+/* ---- v4 additions ---- */
+.flow{grid-template-columns:repeat(5,minmax(0,1fr))}
+.flow .st{padding:16px 16px}.flow .st h3{font-size:18px}.flow .st p{font-size:14px}
+.ink{color:var(--ink)}
+/* primary research tag */
+.pr{display:inline-block;font:600 10.5px/1.5 var(--f-m);color:#8ff5bf;border:1px solid #3ee08f77;background:#3ee08f14;border-radius:5px;padding:0 5px;margin-left:5px;vertical-align:2px;letter-spacing:.02em;white-space:nowrap}
+/* glossary terms */
+.gl{border-bottom:1px dashed #5ce1ffaa;cursor:help;position:relative;color:inherit}
+.tipbox{position:absolute;z-index:40;width:310px;padding:10px 13px;border-radius:10px;background:#071022;border:1px solid #5ce1ff77;color:var(--ink);font:500 14px/1.4 var(--f-b);box-shadow:0 12px 40px #000c;pointer-events:none;opacity:0;transform:translateY(4px);transition:opacity .18s,transform .18s}
+.tipbox.on{opacity:1;transform:none}
+.tipbox b{display:block;font:600 11px var(--f-m);color:var(--cyan);letter-spacing:.05em;margin-bottom:3px}
+/* ask the room */
+.ask{border:1px dashed #5ce1ff77;background:#5ce1ff0d;border-radius:12px;padding:10px 14px;font-size:15px;color:var(--ink2);line-height:1.4}
+.ask b{font:600 11.5px var(--f-m);color:var(--cyan);letter-spacing:.05em;margin-right:8px}
+/* valuation report teardown */
+.vr{background:#f4efe3;color:#2b2a26;border-radius:6px;padding:16px 20px 12px;font:13.5px/1.35 'Courier New',ui-monospace,monospace;box-shadow:0 20px 60px #000b,inset 0 0 0 1px #d9d0bd;position:relative}
+.vrh{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:2px solid #2b2a26;padding-bottom:8px;margin-bottom:6px}
+.vrh b{display:block;font:700 18px 'Courier New',monospace;letter-spacing:.08em}.vrh span{font-size:12.5px;color:#55524a}
+.stamp{border:2px solid #9b2c2c;color:#9b2c2c;border-radius:6px;padding:3px 8px;font:700 11px 'Courier New',monospace;transform:rotate(-4deg);text-transform:uppercase}
+.vrs{font:700 12px 'Courier New',monospace;text-transform:uppercase;margin:9px 0 3px;color:#55524a;letter-spacing:.04em}
+.vrr{display:grid;grid-template-columns:230px minmax(0,1fr) 24px;gap:10px;align-items:center;padding:5px 6px;border-bottom:1px dotted #b9b09b;border-radius:4px;transition:background .25s}
+.vrr span{color:#55524a}.vrr b{font-weight:700;color:#1b1a17}.vrr b em{font-style:normal;color:#9b2c2c;margin-left:8px}.vrr b.soft{font-weight:400;font-style:italic;color:#6d685c}
+.vrr.big2 b{font-size:16px}
+.vrr i{width:22px;height:22px;border-radius:50%;background:#ff5470;color:#fff;font:700 12px var(--f-m);font-style:normal;display:grid;place-items:center;box-shadow:0 0 0 0 #ff547099;animation:hsp 2.2s infinite}
+@keyframes hsp{70%{box-shadow:0 0 0 9px #ff547000}}
+.vrr.hs{cursor:pointer}.vrr.hs:hover,.vrr.hs.on{background:#ffd98a66}
+.vrf{margin-top:8px;font-size:11.5px;color:#6d685c}
+.gaps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.gp{border:1px solid var(--line);background:var(--card);border-radius:14px;padding:11px 13px;opacity:.28;filter:saturate(.3);transition:all .45s;cursor:pointer}
+.gp.on{opacity:1;filter:none;border-color:#ffb54777;background:linear-gradient(140deg,rgba(255,181,71,.1),var(--card))}
+.gp h3{font-size:16.5px;display:flex;gap:8px;align-items:center;margin-bottom:4px}.gp h3 i{flex:none;width:22px;height:22px;border-radius:50%;background:#ff5470;color:#fff;font:700 12px var(--f-m);font-style:normal;display:grid;place-items:center}
+.gp p{font-size:13.5px;margin:0;line-height:1.4}
+.tbtn{margin-top:10px;font:600 13.5px var(--f-h);border-radius:10px;padding:8px 13px;border:1px solid #ffb54777;background:#ffb54714;color:var(--gold);cursor:pointer}
+/* circle-rate check widget */
+.cr{border:1px solid #a98bff55;background:linear-gradient(140deg,rgba(169,139,255,.1),var(--card));border-radius:16px;padding:12px 18px 14px;display:flex;flex-direction:column;gap:8px}
+.crh b{font:600 17px var(--f-h);color:var(--ink);display:block}.crh span{font:500 12px var(--f-m);color:var(--muted)}
+.crbar{position:relative;height:40px;margin:2px 0 0}
+.crbar::before{content:'';position:absolute;left:0;right:0;top:10px;height:6px;border-radius:3px;background:linear-gradient(90deg,#ff547044,#a98bff55 22%,#ffb54755 60%,#ff547044)}
+.crbar i{position:absolute;top:4px;width:3px;height:18px;border-radius:2px;transform:translateX(-50%)}
+.crbar i.fl{background:#a98bff;box-shadow:0 0 10px #a98bff}.crbar i.p50{background:#ffd98a}.crbar i.p90{background:#ff9a3d}
+.crbar i.me{width:14px;height:14px;top:6px;border-radius:50%;background:#5ce1ff;box-shadow:0 0 12px #5ce1ff;transition:left .15s}
+.crbar span{position:absolute;top:24px;transform:translateX(-50%);font:500 11px var(--f-m);color:var(--ink2);white-space:nowrap}
+.verdict.warn{border-color:#ff9a3d88;background:#ff9a3d14;color:#ffc58f}
+/* tiers with AI edge */
+.tier.t4{grid-template-columns:150px minmax(0,1fr) 250px 96px}
+.aiedge{font-size:13.5px;line-height:1.35;color:var(--ink2);border-left:2px solid var(--cyan);padding-left:12px}
+.aiedge span{display:block;font:600 11px var(--f-m);color:var(--cyan);letter-spacing:.05em;margin-bottom:3px}
+/* journey table */
+table.jr td small{display:block;font:500 11.5px var(--f-m);color:var(--muted);margin-top:2px}
+table.jr td b{color:var(--ink)}
+/* extra features */
+.xf .card{display:flex;flex-direction:column;gap:8px}
+.xf h3{font-size:22px;margin:0}.xf .what{font-size:14.5px}
+.xr{font-size:13.5px;line-height:1.4;color:var(--ink2);border-top:1px solid var(--line);padding-top:7px}
+.xr b{display:block;font:600 11px var(--f-m);color:var(--gold);letter-spacing:.05em;text-transform:uppercase;margin-bottom:2px}
+/* polls */
+.poll{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px}
+.poll .pq{font:600 12px var(--f-m);color:var(--cyan);letter-spacing:.03em;margin-right:4px}
+.poll button{position:relative;overflow:hidden;font:600 14px var(--f-h);border-radius:10px;padding:8px 14px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--ink);cursor:pointer;min-width:120px;text-align:left}
+.poll button b{float:right;margin-left:12px;color:var(--gold)}
+.poll button::before{content:'';position:absolute;left:0;top:0;bottom:0;width:var(--w,0%);background:linear-gradient(90deg,#ffb54733,#ffb54711);transition:width .4s;z-index:-1}
+.poll button{z-index:0}
+.poll button.lead{border-color:#ffb54788}
+/* NGP table */
+table.ngp{font-size:14px}table.ngp td{padding:7px 9px}table.ngp td b{color:var(--ink)}
+/* financing */
+.fin .card{padding:16px 16px}.fin .when{font:500 11.5px var(--f-m);color:var(--cyan);margin-bottom:6px}
+.fin h3{font-size:18px}.fin ul.tight{font-size:13.8px;padding-left:16px}.fin ul.tight li{margin:5px 0}
+/* team */
+.member .co{font:500 14px var(--f-m);color:var(--cyan);margin-top:6px;letter-spacing:.01em}
+.photo{border:1.5px solid #5ce1ff55;background:#0a1226}
+.rtw{font-size:17px;max-width:1240px;margin-top:20px;color:var(--ink2)}
+/* adoption ladder */
+.ladder{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:14px;color:var(--muted);margin-top:4px}
+.ladder b{font:600 13.5px var(--f-h);color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 11px}
+.ladder>span{font:500 12px var(--f-m);color:var(--cyan)}
+/* QR */
+.qrbox{width:150px;text-align:center;font:500 11.5px var(--f-m);color:var(--muted)}
+.qrbox svg{width:150px;height:150px;border-radius:10px;display:block;margin-bottom:6px;box-shadow:0 0 30px #5ce1ff33}
+.member .nm{font-size:20px}
+.stamp{white-space:nowrap;font-size:10px}
+.chart svg{overflow:visible}
+
+/* idea validation */
+table.iv td{font-size:14.5px;padding:8px 10px}table.iv td.r{white-space:nowrap}table.iv td:first-child{color:var(--ink2);font-style:italic}table.iv td b{color:var(--ink)}
+/* risks */
+.rgh{font:600 13px var(--f-m);color:var(--cyan);letter-spacing:.06em;text-transform:uppercase;margin:0 0 8px}
+table.risk td{font-size:14.5px;padding:9px 10px;vertical-align:top}table.risk td:first-child{width:42%}table.risk td b{color:var(--ink);display:block;margin-bottom:3px}
+.ngp{display:inline-block;font:600 10.5px/1.5 var(--f-m);color:#c9b6ff;border:1px solid #a98bff88;background:#a98bff1a;border-radius:5px;padding:0 6px;letter-spacing:.03em;white-space:nowrap}
+/* financing */
+.fsteps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:14px;position:relative}
+.fsteps .card{padding:16px 18px;position:relative}
+.fsteps .card:not(:last-child)::after{content:'→';position:absolute;right:-15px;top:50%;transform:translateY(-50%);font:600 18px var(--f-h);color:var(--muted);z-index:2}
+.fsteps .when{font:500 11.5px var(--f-m);color:var(--cyan);margin-bottom:8px}
+.fsteps .mid{font-size:34px;margin-bottom:6px}.fsteps p{font-size:14px;margin:0}
+.logos{margin-top:18px}.logos .pq{font:600 12px var(--f-m);color:var(--cyan);letter-spacing:.04em;display:block;margin-bottom:8px}
+.lrow{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.lg{height:70px;border-radius:12px;background:rgba(255,255,255,.92);display:grid;place-items:center;padding:10px 14px;position:relative;overflow:hidden}
+.lg img{max-width:100%;max-height:48px;object-fit:contain}
+.lg img+span{display:none}
+.lg span{font:600 12px var(--f-m);color:#5b6478;text-align:center;line-height:1.3}
 </style>
 </head>
 <body>
@@ -247,111 +348,160 @@ table.fb td:first-child{color:#d6deef;font-style:italic;width:44%}
 <div class="live"><i></i><span id="clock">IST</span></div>
 <div class="warp" id="warp"></div>
 
+
 <!-- 1 COVER -->
 <section class="slide" data-chap="Unveiling" data-cam="cover" data-fit="no">
 <canvas class="g3d globe" data-kind="globe" width="1000" height="900" role="img" aria-label="Globe centred on India with city lights and ten satellite data lines converging on one property near Pune"></canvas>
 <div class="body" style="z-index:1;pointer-events:none">
-  <div class="ctag rise">COLLATERAL INTELLIGENCE OS · INDIA</div>
+  <div class="ctag rise">COLLATERAL VALUATION INTELLIGENCE · FOR NBFCs</div>
   <h1 class="rise" id="title" aria-label="BhoomiPulse"><span id="t1">Bhoomi</span><span id="t2" class="shine">Pulse</span></h1>
-  <p class="csub rise d2">Every asset behind every loan, <b>valued, graded and watched from orbit</b>, then piped straight into the lender's credit decision.</p>
+  <p class="csub rise d2">Every property an NBFC lends against, <b>valued in seconds, explained line by line and checked against the government floor</b>, as a second opinion beside the valuer.</p>
   <div class="ticker rise d3" id="ticker"></div>
   <div class="cstats rise d4">
     <div><b><span class="count" data-to="10">0</span></b>live public data pipes per asset</div>
-    <div><b>~<span class="count" data-to="8">0</span> s</b>from map pin to credit file</div>
-    <div><b>1 API</b>for lenders and their capital providers</div>
+    <div><b>~<span class="count" data-to="8">0</span> s</b>from map pin to valuation</div>
+    <div><b>1 API</b>inside the NBFC's credit workflow</div>
   </div>
-  <aside>Open on the image: India at night. Those lights are the data: VIIRS night-time lights show where economic activity is, and BhoomiPulse turns them, plus nine other public sources, into collateral intelligence. A business plan for an AI product sold to lenders, not to retail.</aside>
+  <aside>Open on the image: India at night. Those lights are data. BhoomiPulse turns them, and nine other public sources, into a valuation an NBFC credit team can check in seconds. Our customer is one kind of business: the NBFC that lends against property. Our job is one thing: asset valuation.</aside>
 </div></section>
 
 <!-- 2 PROBLEM -->
 <section class="slide" data-chap="The problem" data-cam="dim"><div class="body">
   <div class="chap rise">The problem</div>
-  <h2 class="rise">India lends lakhs of crores against land it checks once, by hand, and never looks at again</h2>
-  <div class="grid g4 rise d1" style="margin-top:22px">
-    <div class="card"><div class="big"><span class="count" data-to="48.4" data-dec="1">0</span><small> L cr</small></div><div class="lab">NBFC credit, Mar 2025</div><p style="margin-top:10px">About 15% is loans against property and secured MSME, growing 26–27% a year.</p></div>
-    <div class="card"><div class="big">₹1,300<small>+</small></div><div class="lab">field valuation, per case</div><p style="margin-top:10px">One bank's schedule runs ₹1,300–7,800 per case; field verification typically costs ₹2,000–5,000 and takes days to weeks.<span class="mr">MR</span></p></div>
-    <div class="card"><div class="big red"><span class="count" data-to="40774">0</span></div><div class="lab">₹ cr advances-related fraud, FY26</div><p style="margin-top:10px">Loan frauds include overvalued collateral; the largest share of fraud by value.</p></div>
-    <div class="card" id="guessCard"><div class="guess"><span class="q">Lenders "fully secured" by collateral. What share do they recover through SARFAESI?</span><span class="g"><span id="gv">60</span>%</span><input type="range" id="gIn" min="0" max="100" step="1" value="60" aria-label="Your guess, percent recovered"><button id="gBtn" type="button">Reveal →</button></div>
+  <h2 class="rise">NBFCs lend lakhs of crores against property valued by one person, on one visit, with one number</h2>
+  <div class="grid g4 rise d1" style="margin-top:20px">
+    <div class="card"><div class="big"><span class="count" data-to="48.4" data-dec="1">0</span><small> L cr</small></div><div class="lab">NBFC credit, Mar 2025</div><p style="margin-top:10px">About 15% is <span class="gl" data-tip="Loan Against Property: a loan for any purpose, secured by a house, shop or plot the borrower already owns.">LAP</span> and secured MSME, growing 26–27% a year.</p></div>
+    <div class="card"><div class="big">₹1,300<small>+</small></div><div class="lab">field valuation, per case</div><p style="margin-top:10px">One bank's schedule runs ₹1,300–7,800 per case; field verification typically costs ₹2,000–5,000 and takes days.<span class="mr">MR</span></p></div>
+    <div class="card"><div class="big red"><span class="count" data-to="40774">0</span></div><div class="lab">₹ cr advances-related fraud, FY26</div><p style="margin-top:10px">Loan frauds include overvalued collateral: the largest share of fraud by value.</p></div>
+    <div class="card" id="guessCard"><div class="guess"><span class="q">Loans "fully secured" by property. What share do lenders recover through <span class="gl" data-tip="SARFAESI Act 2002: lets lenders seize and auction the pledged property without going to court first.">SARFAESI</span>?</span><span class="g"><span id="gv">60</span>%</span><input type="range" id="gIn" min="0" max="100" step="1" value="60" aria-label="Your guess, percent recovered"><button id="gBtn" type="button">Reveal →</button></div>
       <div class="reveal"><div class="big"><span id="gReal">0</span><small>%</small></div><div class="lab">recovered via SARFAESI, FY25</div><p style="margin-top:10px">Of ₹1.03 lakh crore involved. <span id="gYou"></span></p></div></div>
   </div>
-  <div class="grid g3 rise d3" style="margin-top:24px">
-    <div class="card"><h3 class="amber">Mispriced at origination</h3><p>One valuer's opinion on one visit. No range, no liquidity, no recovery view.</p></div>
-    <div class="card"><h3 class="amber">Blind after disbursal</h3><p>Nobody re-checks the factory, farm or house until EMIs bounce, when recovery is already late.</p></div>
-    <div class="card"><h3 class="amber">Opaque to capital providers</h3><p>Co-lenders, pool buyers and investors inherit the originator's valuations on trust.</p></div>
+  <div class="grid g3 rise d3" style="margin-top:20px">
+    <div class="card"><h3 class="amber">One opinion, no range</h3><p>A single market rate, often backed by "a local property dealer". No uncertainty band the credit officer can size the loan against.</p></div>
+    <div class="card"><h3 class="amber">Same haircut for every asset</h3><p>Realisable value is a fixed 90% and distress value 80% of market, whether the flat sells in a month or a year.</p></div>
+    <div class="card"><h3 class="amber">Recovery is a liquidity problem</h3><p>Low recoveries come mostly from illiquid assets, not wrong valuations: "an illiquid asset is also a risk".</p></div>
   </div>
-  <div class="src">Sources: RBI data on NBFC credit (Mar 2025); Crisil Ratings NBFC outlook (Nov 2025); Federal Bank agri-loan service charges; RBI Annual Report 2025-26 (frauds); RBI Report on Trend and Progress of Banking 2024-25 (SARFAESI). MR = market research (industry materials, Nov 2026; not publicly verified).</div>
-  <aside>Three failures: price, monitoring, transparency. NBFC credit ₹48.4 lakh crore; LAP and secured MSME the fastest-growing secured segment. Valuation is expensive, slow and inconsistent. Advances-related fraud ₹40,774 crore in FY26. SARFAESI recovers 31.5% of the amount involved.</aside>
+  <div class="src">Sources: RBI (NBFC credit, Mar 2025); Crisil Ratings NBFC outlook (Nov 2025); Federal Bank agri-loan service charges; RBI Annual Report 2025-26 (frauds); RBI Trend and Progress 2024-25 (SARFAESI). Valuation template: public NBFC/HFC valuation reports (next slide). MR = market research (not publicly verified).</div>
+  <aside>Let the room guess first (31.5%). Then the turn from our interviews with the ClarityX founders: the 31.5% includes accrued interest in the denominator, and the big driver of low recovery is illiquidity, not a wrong number. So valuation must price liquidity, not just value.</aside>
 </div></section>
 
-<!-- 3 WHY NOW -->
+<!-- 3 TEARDOWN -->
+<section class="slide" data-chap="A real valuation report" data-cam="dim"><div class="body">
+  <div class="chap rise">A real valuation report, taken apart</div>
+  <h2 class="rise">What an NBFC receives today, and what it cannot see in it</h2>
+  <div class="grid rise d1" style="grid-template-columns:600px minmax(0,1fr);gap:24px;margin-top:6px">
+    <div class="vr" id="vr">
+      <div class="vrh"><div><b>VALUATION REPORT</b><span>Prepared for SRG Housing Finance (RBI-registered HFC)</span></div><div class="stamp">Fellow, Institute of Valuers</div></div>
+      <div class="vrs">Section 1 · Information shared during assignment of valuation</div>
+      <div class="vrr"><span>Date of technical visit</span><b>13-Feb-2023</b></div>
+      <div class="vrr"><span>Property</span><b>Freehold residential · Asind, Rajasthan · 2,700 sq ft</b></div>
+      <div class="vrr hs" data-h="3"><span>Locality, road, amenities, marketability</span><b class="soft">free-text remarks</b><i>4</i></div>
+      <div class="vrr hs" data-h="0"><span>Market rate evidence</span><b class="soft">"Local property dealer / local person"</b><i>1</i></div>
+      <div class="vrr hs" data-h="4"><span>Flood, water-logging, climate</span><b class="soft">not quantified</b><i>5</i></div>
+      <div class="vrs">Valuation</div>
+      <div class="vrr big2"><span>Total value of property</span><b>₹18,76,400</b></div>
+      <div class="vrr hs" data-h="1"><span>Realisable value</span><b>₹16,88,760 <em>= 90.0%</em></b><i>2</i></div>
+      <div class="vrr hs" data-h="1"><span>Distress value</span><b>₹15,01,120 <em>= 80.0%</em></b><i>2</i></div>
+      <div class="vrr hs" data-h="2"><span>Government value</span><b>₹9,39,500 <em>= 50.1%</em></b><i>3</i></div>
+      <div class="vrr hs" data-h="5"><span>Validity</span><b class="soft">one visit, one date</b><i>6</i></div>
+      <div class="vrf">15 pages · owner and valuer details withheld here · ~80–90 fields, of which valuers use 30–40</div>
+    </div>
+    <div>
+      <div class="ask" style="margin:0 0 10px"><b>ASK THE ROOM</b> Six numbered tags on the report. Which one would worry you most if you were lending ₹13 lakh against this house? Tap to open each.</div>
+      <div class="gaps" id="gaps">
+        <div class="gp" data-h="0"><h3><i>1</i>One dealer's word sets the price</h3><p><b>Gap:</b> one rate, no comparables, no range. <b class="cyan">BhoomiPulse:</b> P10–P50–P90 from comparables and a statistical model, with an interval that is checked to mean what it says.</p></div>
+        <div class="gp" data-h="1"><h3><i>2</i>Liquidity is a fixed percentage</h3><p><b>Gap:</b> 90% and 80% of value for every property. <b class="cyan">BhoomiPulse:</b> days to sell and haircut for this asset, learned from auction outcomes.</p></div>
+        <div class="gp" data-h="2"><h3><i>3</i>The government floor is printed, not used</h3><p><b>Gap:</b> the floor is half the market value and nobody asks why. <b class="cyan">BhoomiPulse:</b> circle-rate check: registrable value, under-declaration flag, 2-year floor growth.</p></div>
+        <div class="gp" data-h="3"><h3><i>4</i>Half the report is opinion</h3><p><b>Gap:</b> locality, road width, activity written by eye. <b class="cyan">BhoomiPulse:</b> measured from maps and satellites: arterial distance, frontage, building density, night lights.</p></div>
+        <div class="gp" data-h="4"><h3><i>5</i>Hazards go unpriced</h3><p><b>Gap:</b> no flood score. <b class="cyan">BhoomiPulse:</b> river discharge since 2003, terrain and 37 years of surface water, priced into the haircut.</p></div>
+        <div class="gp" data-h="5"><h3><i>6</i>Stale the day it is filed</h3><p><b>Gap:</b> nobody re-values the book. <b class="cyan">BhoomiPulse:</b> re-value any loan, or the whole book, on demand in seconds.</p></div>
+      </div>
+      <button class="tbtn" id="gapAll" type="button">Show all six →</button>
+    </div>
+  </div>
+  <div class="src">Source: public valuation report prepared for SRG Housing Finance, technical visit 13 Feb 2023 (Scribd); the same template, used for HDFC Bank, gives market evidence as "Local Property Dealer / Local Person". Percentages are our arithmetic; gaps are our reading of the report.</div>
+  <aside>This is a real report filed for a housing finance company. Walk the six tags. The punchline is the arithmetic: realisable is exactly 90.0% and distress exactly 80.0% of value, so liquidity is not measured at all; the government value is 50% of market and nothing is done with it. BhoomiPulse does not replace the valuer: it fills in the 40–50 fields valuers write by eye, and adds what the report cannot.</aside>
+</div></section>
+
+<!-- 4 WHY NOW -->
 <section class="slide" data-chap="Why now" data-cam="dim"><div class="body">
   <div class="chap rise">Why now</div>
   <h2 class="rise">Four shifts landed in the last 18 months</h2>
   <div class="grid rise d1" style="grid-template-columns:minmax(0,1fr) 600px;gap:22px;margin-top:14px">
   <div class="grid" style="gap:12px">
-    <div class="card"><h3><span class="cyan">01</span>&nbsp; Prediction became nearly free</h3><p>Sentinel-2 revisits every ~5 days, VIIRS maps lights nightly, GloFAS models every river since 1984, all open. Predicting value, hazard and activity per asset now costs paise.</p></div>
-    <div class="card"><h3><span class="cyan">02</span>&nbsp; Land data became infrastructure</h3><p>ULPIN on <b class="amber">36 crore</b> parcels; banks in <b class="amber">406 districts</b> verify mortgages online; land records are being wired into the Unified Lending Interface; PM GatiShakti opened <b class="amber">230 datasets</b> to private users.</p></div>
-    <div class="card"><h3><span class="cyan">03</span>&nbsp; Capital now flows between lenders</h3><p>Co-lending directions cover all regulated entities from 1 Jan 2026; securitisation hit a record <b class="amber">₹2.55 lakh crore</b> in FY26, NBFC-led. Every handover of a loan needs an independent view of its collateral.</p></div>
-    <div class="card"><h3><span class="cyan">04</span>&nbsp; Regulators want auditable AI</h3><p>RBI's FREE-AI framework (Aug 2025: 7 sutras, 26 recommendations) and the DPDP Rules (full compliance by May 2027) reward models that log sources, explain scores and keep humans in charge.</p></div>
+    <div class="card"><h3><span class="cyan">01</span>&nbsp; Prediction became nearly free</h3><p>Sentinel-2 revisits every ~5 days, VIIRS maps lights nightly, GloFAS models every river, all open. Valuing and risk-checking a property from space now costs paise.</p></div>
+    <div class="card"><h3><span class="cyan">02</span>&nbsp; Land data became infrastructure</h3><p>ULPIN on <b class="amber">36 crore</b> parcels; banks in <b class="amber">406 districts</b> verify mortgages online; land records are being wired into the Unified Lending Interface; PM GatiShakti opened <b class="amber">230 datasets</b>.</p></div>
+    <div class="card"><h3><span class="cyan">03</span>&nbsp; Valuations now travel between lenders</h3><p>Co-lending directions cover all regulated lenders from 1 Jan 2026; securitisation hit a record <b class="amber">₹2.55 lakh crore</b> in FY26, NBFC-led. Every hand-over of a loan re-opens its valuation.</p></div>
+    <div class="card"><h3><span class="cyan">04</span>&nbsp; Regulators want explainable AI</h3><p>RBI's FREE-AI framework (Aug 2025) and the DPDP Rules (full compliance by May 2027) reward models that log sources, explain every number and keep humans in charge.</p></div>
   </div>
   <div class="scene" style="height:560px"><canvas class="g3d" data-kind="skyline" width="600" height="560" role="img" aria-label="3D map of India: each settlement is a column of light whose height shows night-time brightness"></canvas><span class="hint3" style="left:16px;right:auto;top:12px;bottom:auto;color:var(--cyan)">NIGHT-TIME LIGHT · 2,400 SETTLEMENTS</span><span class="hint3">drag to orbit · scroll to zoom</span></div>
   </div>
   <div class="src">Sources: Govt of India / DoLR (ULPIN, online mortgage verification, Nov 2025–Apr 2026; ULI integration, Jul 2026); DPIIT/BISAG-N (PM GatiShakti Public, Oct 2025); RBI Co-Lending Arrangements Directions (6 Aug 2025); Crisil Ratings (securitisation FY26); RBI FREE-AI Committee Report (13 Aug 2025); MeitY DPDP Rules (13 Nov 2025).</div>
-  <aside>Why this is a now business: free data, digital public infrastructure for land, capital moving across lenders, and a regulator that has written down what responsible AI in credit looks like.</aside>
+  <aside>Free data, digital public infrastructure for land, valuations that now cross lender boundaries, and a regulator that has written down what explainable AI in credit should look like.</aside>
 </div></section>
 
-<!-- 4 ECONOMICS -->
-<section class="slide" data-chap="The economics" data-cam="dim"><div class="body">
-  <div class="chap rise">The economics</div>
-  <h2 class="rise">AI makes the prediction cheap. The lender keeps the judgment, and redesigns the workflow around it</h2>
-  <div class="flow rise d1" style="margin-top:8px">
-    <div class="st"><span class="tag ai">PREDICTION · AI</span><h3>What is it worth?</h3><p>P10–P50–P90 value, rate per sq ft or acre, declared-value check.</p></div>
-    <div class="st"><span class="tag ai">PREDICTION · AI</span><h3>What will it fetch?</h3><p>Days to sell, forced-sale haircut, realisable value after carrying costs.</p></div>
-    <div class="st"><span class="tag ai">PREDICTION · AI</span><h3>What could go wrong?</h3><p>Flood, heat, drought, access, land-use mismatch, activity drop.</p></div>
-    <div class="st"><span class="tag hu">JUDGMENT · LENDER</span><h3>How much to lend?</h3><p>LTV policy, risk appetite, exceptions, social objectives, final sanction.</p></div>
+<!-- 5 WHERE AI FITS -->
+<section class="slide" data-chap="Where AI fits" data-cam="dim"><div class="body">
+  <div class="chap rise">Where AI fits</div>
+  <h2 class="rise">AI makes the valuation cheap and explainable. The credit officer keeps the judgment</h2>
+  <div class="flow rise d1" style="margin-top:6px">
+    <div class="st"><span class="tag ai">AI · DOCUMENT AI</span><h3>Read the paper</h3><p>Extract the valuer's report, sale deed and state circle-rate PDFs into fields.</p></div>
+    <div class="st"><span class="tag ai">AI · COMPUTER VISION</span><h3>See the asset</h3><p>Footprint, construction stage, building age and road access from satellite imagery.</p></div>
+    <div class="st"><span class="tag ai">AI · EXPLAINABLE MODEL</span><h3>Price it</h3><p>Statistical value model with a calibrated P10–P90 range and the reason for every rupee.</p></div>
+    <div class="st"><span class="tag ai">AI · GENAI COPILOT</span><h3>Answer questions</h3><p>"Show sold comparables within 1 km": comparables at the underwriter's fingertips.</p></div>
+    <div class="st"><span class="tag hu">JUDGMENT · NBFC</span><h3>How much to lend?</h3><p>LTV policy, exceptions, final sanction. The valuer still visits.</p></div>
   </div>
-  <div class="grid g3 route3 rise d3" style="margin-top:22px">
-    <div class="card"><div class="mid green">Fast-track</div><p style="margin-top:8px">Clean, liquid, low-hazard assets get a desktop valuation the same day.</p></div>
-    <div class="card"><div class="mid" style="color:#ffc58f">Verify</div><p style="margin-top:8px">One flag: a targeted site visit on exactly that issue, not a generic one.</p></div>
-    <div class="card"><div class="mid red">Refer</div><p style="margin-top:8px">Several flags or weak collateral: full field valuation and legal review.</p></div>
+  <div class="grid g3 route3 rise d3" style="margin-top:18px">
+    <div class="card"><div class="mid green">Confirm</div><p style="margin-top:8px">Our range agrees with the valuer and no flag fires: the file moves without a second review.</p></div>
+    <div class="card"><div class="mid" style="color:#ffc58f">Verify</div><p style="margin-top:8px">One flag: the valuer gets a checklist for exactly that issue, not a generic re-visit.</p></div>
+    <div class="card"><div class="mid red">Refer</div><p style="margin-top:8px">Value outside range, below the government floor, or high hazard: second valuation and legal review.</p></div>
   </div>
-  <p class="rise d4" style="margin-top:20px;font-size:17px;max-width:1200px">The gain is not a better number in the old process. It is a new process: valuers stop visiting the easy 40–50% of files and spend their time on the hard ones, where human judgment earns its fee.</p>
-  <aside>Decision decomposition: cheap prediction makes judgment more valuable. Enterprise ROI from AI comes from workflow redesign, so we sell a routing decision (fast-track, verify, refer), not just a score.</aside>
+  <div class="grid g2 rise d4" style="margin-top:14px;gap:18px">
+    <p style="font-size:15.5px;margin:0"><b class="cyan">The AI edge.</b> Each model gets better with every file: valuer overrides and auction outcomes retrain the value, liquidity and haircut models per district. A competitor can copy the screens, not the labels.</p>
+    <p style="font-size:15.5px;margin:0"><b class="amber">Why explainable, not black box.</b> Lenders must justify every decision to the RBI, so weights are statistical and visible.</p>
+  </div>
+  <aside>Five steps, four of them AI, each named for what it does. Field visits stay for now: ClarityX's founders were clear that lenders will use this as a complementary check until the regulator changes the rules, as happened with credit scores. The value is in routing reviews, not removing the valuer.</aside>
 </div></section>
 
-<!-- 5 PRODUCT -->
+<!-- 6 PRODUCT -->
 <section class="slide" data-chap="The product" data-cam="dim"><div class="body">
   <div class="chap rise">The product</div>
-  <h2 class="rise">One engine, three products, one API</h2>
-  <div class="grid" style="grid-template-columns:minmax(0,1fr) 540px;gap:24px;margin-top:14px;align-items:start">
+  <h2 class="rise">One valuation engine for NBFC credit teams, on screen or by API</h2>
+  <div class="grid" style="grid-template-columns:minmax(0,1fr) 520px;gap:24px;margin-top:10px;align-items:start">
   <div>
-    <div class="layer rise d1"><div class="k">Collateral Report<small>at origination</small></div><p>Drop a pin or trace the parcel. In about 8 seconds: grade A–E, value range, realisable value, days to sell, hazards, land-use check, LTV band under the lender's own policy, red flags and a routing decision, with every source logged.</p></div>
-    <div class="layer rise d2"><div class="k">Pulse<small>after disbursal</small></div><p>Monthly re-check of each financed asset from orbit: factory night lights, crop vigour from Sentinel-2, river flood forecasts. Signed webhooks push alerts to collections before EMIs bounce.</p></div>
-    <div class="layer rise d3"><div class="k">Investor Lens<small>between lenders</small></div><p>Upload a data tape; get a book-level collateral certificate: realisable cover, under-covered exposure, concentration, flood exposure, stress tests for price shocks and monsoon floods.</p></div>
-    <div class="layer rise d4"><div class="k">API + widget<small>everywhere</small></div><p>REST API on the edge or on-prem Docker, per-lender credit policy, Python and JS SDKs, an embeddable card for loan-origination screens, and an audit log for model-risk teams.</p></div>
+    <div class="layer rise d1"><div class="k">Valuation Report<small>every new file</small></div><p>Pin or trace the parcel. In ~8 seconds: P10–P50–P90 value, realisable value and days to sell, government floor check, hazards, land-use match, <span class="gl" data-tip="Loan-to-value: the loan as a share of the property's value. 75% LTV on a ₹1 crore flat means a ₹75 lakh loan.">LTV</span> band under the NBFC's own policy, red flags and a route.</p></div>
+    <div class="layer rise d2"><div class="k">Book re-valuation<small>existing loans</small></div><p>Upload the loan tape; every pledged property re-valued against today's market and floor. For NPAs, securitised pools and LTV top-ups.</p></div>
+    <div class="layer rise d3"><div class="k">API + audit log<small>inside the LOS</small></div><p>REST API or on-prem Docker, per-lender policy, an embeddable card for loan-origination screens, and a source-by-source log for model-risk teams.</p></div>
+    <div class="cr rise d4">
+      <div class="crh"><b>Try the government floor check</b><span>1,050 sq ft flat, Hinjewadi, Pune · ready reckoner ₹53,780/m² (IGR Maharashtra, FY 2025-26)</span></div>
+      <label class="ctrl" for="crIn"><span>Declared value</span><input type="range" id="crIn" min="30" max="140" step="1" value="70"><b id="crV">₹70 L</b></label>
+      <div class="crbar"><i class="fl" style="left:37.5%"></i><i class="p50" style="left:67.1%"></i><i class="p90" style="left:79.3%"></i><i class="me" id="crMe" style="left:51.4%"></i><span>floor ₹52.5 L</span><span>P50 ₹75.6 L</span><span>P90 ₹92 L</span></div>
+      <div class="verdict" id="crVerdict" aria-live="polite">Within range</div>
+    </div>
   </div>
   <div class="rise d2" style="display:flex;flex-direction:column;gap:10px">
-    <div class="scene" style="height:430px"><canvas class="g3d" data-kind="parcel" width="540" height="430" role="img" aria-label="3D terrain around a land parcel beside a river, with an adjustable flood level"></canvas><span class="hint3" style="left:16px;right:auto;top:12px;bottom:auto;color:var(--cyan)">HAZARD VIEW · TERRAIN + RIVER + PARCEL</span><span class="hint3">drag · scroll</span></div>
+    <div class="scene" style="height:420px"><canvas class="g3d" data-kind="parcel" width="520" height="420" role="img" aria-label="3D terrain around a land parcel beside a river, with an adjustable flood level"></canvas><span class="hint3" style="left:16px;right:auto;top:12px;bottom:auto;color:var(--cyan)">HAZARD VIEW · TERRAIN + RIVER + PARCEL</span><span class="hint3">drag · scroll</span></div>
     <label class="ctrl" for="pLevel"><span>River above normal</span><input type="range" id="pLevel" min="0" max="4" step="0.1" value="0.6"><b id="pLevelV">+0.6 m</b></label>
     <div class="verdict" id="pVerdict" aria-live="polite">Parcel stays dry at this level</div>
-    <span class="hint3">1-in-25 ≈ +1.6 m · 1-in-100 ≈ +2.6 m · illustrative terrain; the live tool uses Copernicus DEM and GloFAS</span>
+    <span class="hint3">Illustrative terrain; the live tool uses Copernicus DEM and GloFAS.</span>
   </div>
   </div>
-  <aside>Four surfaces of one engine. Next slide: the product running.</aside>
+  <div class="src">Circle-rate check: IGR Maharashtra ready reckoner for Hinjewadi flats, ₹53,780/m² (Housing.com); P50 and P90 are illustrative BhoomiPulse output for this asset. Floor value = rate × built-up area. Logic and the fallback for localities without a published rate are on the API docs.</div>
+  <aside>Let someone from the class drag the declared value. Below the floor: the deed is likely understated, since stamp duty is charged on the higher of the two. Above P90: likely overvalued. Where no circle rate is published, the engine estimates the floor from the state's circle-to-market ratio and labels it "estimated".</aside>
 </div></section>
 
-<!-- 6 DEMO -->
+<!-- 7 DEMO -->
 <section class="slide" data-chap="Product demo" data-cam="dim" data-demo="1" data-fit="no"><div class="body">
   <div class="chap rise">Product demo</div>
-  <h2 class="rise" style="font-size:40px;margin-bottom:14px">Map pin to credit file in eight seconds, live on public data</h2>
+  <h2 class="rise" style="font-size:40px;margin-bottom:14px">Map pin to valuation in eight seconds, live on public data</h2>
   <div class="demo rise d1">
     <div style="display:flex;flex-direction:column">
       <div class="steps" id="steps">
         <div class="stp" data-s="0"><i>1</i><div><b>Search</b><span>Address, village, PIN or lat-lon</span></div></div>
         <div class="stp" data-s="1"><i>2</i><div><b>Pin the asset</b><span>Fly in over the lights, trace the parcel</span></div></div>
         <div class="stp" data-s="2"><i>3</i><div><b>Fuse 10 sources</b><span>Satellites, terrain, rivers, climate, maps</span></div></div>
-        <div class="stp" data-s="3"><i>4</i><div><b>Collateral report</b><span>Grade, value range, LTV, red flags</span></div></div>
-        <div class="stp" data-s="4"><i>5</i><div><b>Investor Lens</b><span>Whole-book certificate under stress</span></div></div>
+        <div class="stp" data-s="3"><i>4</i><div><b>Valuation report</b><span>Grade, value range, LTV, red flags</span></div></div>
+        <div class="stp" data-s="4"><i>5</i><div><b>Government floor</b><span>Circle-rate check on the declared value</span></div></div>
         <div class="stp" data-s="5"><i>6</i><div><b>One API call</b><span>Same answer inside any LOS</span></div></div>
       </div>
       <div class="dctl"><button id="replay">↻ Replay</button><button class="alt" id="liveBtn" hidden>◉ Live here</button><a class="alt" id="openLive" href="https://silverintegral13.github.io/geospatial-intel/?tour=1" target="_blank" rel="noopener">Open tool ↗</a></div>
@@ -359,7 +509,7 @@ table.fb td:first-child{color:#d6deef;font-style:italic;width:44%}
     <div class="win" id="win">
       <div class="wbar"><i></i><i></i><i></i><span class="url" id="wurl">silverintegral13.github.io/geospatial-intel</span></div>
       <div class="app">
-        <div class="atop"><div class="lg"><span class="orb"></span>BhoomiPulse</div><div class="asrch" id="asrch"><span id="atype">Search a place, address, PIN…</span><span class="cur" id="acur" hidden></span><div class="ddrop" id="adrop"><div class="sel">Hinjewadi Phase 1, Pune, Maharashtra 411057</div><div>Hinjewadi, Mulshi taluka, Pune district</div><div>Hinjewadi Metro, Pune</div></div></div><div class="atabs" id="atabs"><span class="on">Assess</span><span>Portfolio</span><span>Investor lens</span><span>Pulse</span><span>API</span></div></div>
+        <div class="atop"><div class="lg"><span class="orb"></span>BhoomiPulse</div><div class="asrch" id="asrch"><span id="atype">Search a place, address, PIN…</span><span class="cur" id="acur" hidden></span><div class="ddrop" id="adrop"><div class="sel">Hinjewadi Phase 1, Pune, Maharashtra 411057</div><div>Hinjewadi, Mulshi taluka, Pune district</div><div>Hinjewadi Metro, Pune</div></div></div><div class="atabs" id="atabs"><span class="on">Assess</span><span>Portfolio</span><span>API</span><span>Data fabric</span></div></div>
         <canvas id="dmap"></canvas>
         <div class="apanel" id="apanel"></div>
         <div class="caption" id="dcap">Live product walkthrough</div>
@@ -367,306 +517,294 @@ table.fb td:first-child{color:#d6deef;font-style:italic;width:44%}
       <div class="livewrap" id="livewrap"></div>
     </div>
   </div>
-  <div class="src">Walkthrough replays the Command Center's real flow with an illustrative asset; values are uncalibrated priors until fitted on a design partner's outcomes. Live tool: silverintegral13.github.io/geospatial-intel</div>
-  <aside>Let the walkthrough run (about 30 seconds). If the room has Wi-Fi and the deck is opened from the GitHub Pages site, press "Run the live tool here" to drive the real Command Center inside this slide. Narrate: search, pin, ten sources, report, investor lens, API.</aside>
+  <div class="src">Walkthrough replays the Command Center's real flow with an illustrative asset; values are uncalibrated priors until fitted on a design partner's outcomes. Ready reckoner: IGR Maharashtra (Hinjewadi flats). Live tool: silverintegral13.github.io/geospatial-intel</div>
+  <aside>Let it run (about 30 seconds). Narrate: search, pin, ten sources, report, then the government floor check on the declared value, then the API. If the room has Wi-Fi, press "Live here" to drive the real tool inside the slide.</aside>
 </div></section>
 
-<!-- 7 DATA -->
-<section class="slide" data-chap="The data moat" data-cam="dim"><div class="body">
-  <div class="chap rise">The data moat</div>
-  <h2 class="rise">Start 15 steps ahead on public data. Win on proprietary outcomes</h2>
-  <div class="rise d1" style="margin-top:14px">
-    <div class="tier"><div class="when">LIVE TODAY · FREE</div><div><h3>Public Earth-observation and map data, fused per asset</h3><p>OpenStreetMap roads, buildings, amenities · Copernicus DEM · GloFAS river discharge since 2003 · ERA5 rain and heat · VIIRS night lights · Sentinel-2 NDVI · ESA WorldCover · land use 2017–23 · JRC surface water · India Post</p></div><div class="ct"><span class="count" data-to="10">0</span><small>live sources</small></div></div>
-    <div class="tier"><div class="when">MONTHS 3–18 · CONSENT OR LICENCE</div><div><h3>Government DPI and registries, switched on per lender</h3><p>ULI land records and mutation history · CERSAI prior charges · eCourts litigation · state RERA · jantri / circle rates · PM GatiShakti planned infrastructure · Bhuvan layers · Account Aggregator and GST cash flows · Google DeepMind ALU/AMED field boundaries (partner APIs; Terrastack runs them across 140M+ ha)</p></div><div class="ct"><span class="count" data-to="10">0</span><small>connectors designed</small></div></div>
-    <div class="tier" style="border-color:#ffb54766;background:linear-gradient(90deg,rgba(255,181,71,.12),rgba(9,15,31,.74))"><div class="when" style="color:var(--gold)">THE COMPOUNDING ASSET</div><div><h3>Recovery outcomes nobody else has</h3><p>Parsed auction notices (1.22 lakh+ properties listed on the PSB e-auction portal), realised sale prices and days to sale from partner lenders, Pulse alerts that preceded defaults, valuer disagreements. Each tenant calibrates its own model; consented, anonymised aggregates build an India collateral recovery index.</p></div><div class="ct">∞<small>flywheel</small></div></div>
+<!-- 8 MOAT -->
+<section class="slide" data-chap="Data and AI moat" data-cam="dim"><div class="body">
+  <div class="chap rise">Data and AI moat</div>
+  <h2 class="rise">Start 15 steps ahead on public data. Win on proprietary outcomes and models</h2>
+  <div class="rise d1" style="margin-top:12px">
+    <div class="tier t4"><div class="when">LIVE TODAY · FREE</div><div><h3>Public Earth-observation and map data, fused per asset</h3><p>OpenStreetMap · Copernicus DEM · GloFAS rivers · ERA5 rain and heat · VIIRS night lights · Sentinel-2 · WorldCover · land use 2017–23 · JRC surface water · India Post · <b class="ink">circle rates for 5 localities + Delhi schedule, estimated elsewhere</b></p></div><div class="aiedge"><span>AI EDGE</span>Computer vision turns pixels into the 40–50 fields valuers write by eye</div><div class="ct"><span class="count" data-to="10">0</span><small>live sources</small></div></div>
+    <div class="tier t4"><div class="when">MONTHS 3–18 · CONSENT OR LICENCE</div><div><h3>Government records and the lender's own documents</h3><p>ULI land records · CERSAI prior charges · eCourts · state RERA · every state's circle-rate schedule · auction notices · the NBFC's past valuation reports and sale deeds</p></div><div class="aiedge"><span>AI EDGE</span>Document AI reads PDFs, captcha-gated tables and scanned reports into structured fields</div><div class="ct"><span class="count" data-to="10">0</span><small>connectors designed</small></div></div>
+    <div class="tier t4" style="border-color:#ffb54766;background:linear-gradient(90deg,rgba(255,181,71,.12),rgba(9,15,31,.74))"><div class="when" style="color:var(--gold)">THE COMPOUNDING ASSET</div><div><h3>Outcomes nobody else has</h3><p>Valuer overrides, sanctioned values, realised auction prices and days to sale (1.22 lakh+ properties listed on the PSB e-auction portal). Each NBFC calibrates its own model; consented aggregates build a recovery index.</p></div><div class="aiedge"><span>AI EDGE</span>Explainable models re-fit per district on outcomes: accuracy compounds, weights stay visible</div><div class="ct">∞<small>flywheel</small></div></div>
   </div>
-  <div class="src">Sources: PIB / DFS on the BAANKNET e-auction portal (3 Jan 2025); Google India blog, "Scaling agri resilience" (26 Aug 2026) on ALU/AMED and Terrastack; connector list from the BhoomiPulse API registry.</div>
-  <aside>Public data only gets everyone to the starting line, and most competitors stop at one asset type or one source. Our edge: breadth of fusion on day one and recovery labels over time, which only a product embedded in lender workflows can collect.</aside>
+  <div class="src">Sources: PIB / DFS on the BAANKNET e-auction portal (3 Jan 2025); connector list from the BhoomiPulse API registry; circle-rate tiers from the BhoomiPulse engine.</div>
+  <aside>Three layers, and for each one the specific AI that makes it defensible. The third layer is what an embedded workflow product collects and a data vendor never sees: the valuer's override and the price the asset actually fetched.</aside>
 </div></section>
 
-<!-- 8 PRECISION -->
-<section class="slide" data-chap="Algorithmic precision" data-cam="dim"><div class="body">
-  <div class="chap rise">Algorithmic precision</div>
+<!-- 9 PRECISION -->
+<section class="slide" data-chap="Precision you can audit" data-cam="dim"><div class="body">
+  <div class="chap rise">Precision you can audit</div>
   <h2 class="rise">Precision is a protocol, not a claim</h2>
   <div class="grid rise d1" style="grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:26px;margin-top:12px">
     <table class="tb">
       <tr><th style="width:21%">Model</th><th style="width:40%">Method</th><th>Pilot target</th></tr>
-      <tr><td><b style="color:var(--ink)">Valuation range</b></td><td>Hedonic gradient boosting with split-conformal intervals per district</td><td>Median error ≤ 12% metro homes, ≤ 20% farm land; 80% interval covers 78–82%</td></tr>
+      <tr><td><b style="color:var(--ink)">Value range</b></td><td>Hedonic regression with interpretable coefficients; split-conformal intervals per district</td><td>Median error ≤ 12% metro homes, ≤ 20% plots; 80% interval covers 78–82%</td></tr>
       <tr><td><b style="color:var(--ink)">Liquidity</b></td><td>Survival model on time to sale; haircut from realised vs reserve price</td><td>C-index ≥ 0.70</td></tr>
-      <tr><td><b style="color:var(--ink)">Default uplift</b></td><td>Collateral features added to the lender's own scorecard</td><td>+5 Gini points, out-of-time</td></tr>
-      <tr><td><b style="color:var(--ink)">Pulse alerts</b></td><td>Change detection on lights, NDVI and river forecast</td><td>≥ 60% confirmed in the field</td></tr>
+      <tr><td><b style="color:var(--ink)">Government floor</b></td><td>Published rate, else state circle-to-market ratio refit on the NBFC's deeds</td><td>Floor error ≤ 10% where published</td></tr>
+      <tr><td><b style="color:var(--ink)">Default uplift</b></td><td>Collateral features added to the NBFC's own scorecard</td><td>+5 Gini points, out-of-time</td></tr>
     </table>
     <div>
-      <div class="card" style="margin-bottom:14px"><h3>Guard against biased training data</h3><p>Approved loans and auctioned assets are not a random sample. We track a sample of rejected files, weight auction data to the lender's full collateral population, and hold out whole districts and later months.</p></div>
-      <div class="card" style="margin-bottom:14px"><h3>Learned weights, not fixed indices</h3><p>Spatial scores in this market are typically fixed-weight indices, e.g. 50% price trend, 30% transaction liquidity, 10% area growth, 10% repossession access.<span class="mr">MR</span> We fit weights to realised recoveries per district instead.</p></div>
-      <div class="card"><h3>Honest about today</h3><p>The prototype runs live on public data with transparent priors. Calibration on a design partner's files and recoveries is the first milestone, and every response carries its model version.</p></div>
+      <div class="card" style="margin-bottom:14px"><h3>Learned weights, still readable</h3><p>Spatial scores in this market are typically fixed-weight indices (e.g. 50% price trend, 30% liquidity, 10% growth, 10% access).<span class="mr">MR</span> We fit weights to realised recoveries per district, and publish them per report.</p></div>
+      <div class="card" style="margin-bottom:14px"><h3>Guard against biased data</h3><p>Approved loans and auctioned assets are not random. We track a sample of rejected files and hold out whole districts and later months.</p></div>
+      <div class="card"><h3>Honest about today</h3><p>The prototype runs live on public data with transparent priors. Calibration on a design partner's files is milestone one.</p></div>
     </div>
   </div>
-  <div class="src">MR = market research (industry materials, Nov 2026; not publicly verified). Targets are BhoomiPulse pilot goals.</div>
-  <aside>How is the algorithm better? Peers hand-set index weights; we learn them from recoveries. A measurable protocol with targets; out-of-time and out-of-geography tests; conformal intervals so the range means what it says; explicit fixes for selection bias in lending data.</aside>
+  <div class="src">MR = market research (industry materials, Nov 2026; not publicly verified). Targets are BhoomiPulse pilot goals. <span class="gl" data-tip="Conformal prediction: a statistical method that widens or narrows the range until, on held-out data, the true value falls inside it as often as promised.">Conformal</span> intervals: the 80% range must contain the true sale price 80% of the time on held-out files.</div>
+  <aside>Why the regression and not a deep network: the ClarityX founders told us a black-box model may not be accepted by lenders who must justify decisions to the RBI. We get accuracy from data, and keep the model readable.</aside>
 </div></section>
 
-<!-- 9 CUSTOMERS -->
-<section class="slide" data-chap="Who pays" data-cam="dim"><div class="body">
-  <div class="chap rise">Who pays</div>
-  <h2 class="rise">We sell to businesses that carry collateral risk, and to those who fund them</h2>
-  <div class="grid g3 rise d1" style="margin-top:16px">
-    <div class="card hot"><span class="pill hot">BEACHHEAD</span><h3>Mid-layer NBFCs and HFCs</h3><p>656 middle-layer NBFCs plus HFCs in small-ticket LAP and secured MSME. Small-ticket LAP is ~₹1 lakh crore at ₹8–9 lakh average ticket; non-HFC NBFCs cannot use SARFAESI on it, so collateral liquidity decides the loss.</p></div>
-    <div class="card hot"><span class="pill hot">THE PIPE</span><h3>Banks and pool buyers funding them</h3><p>Co-lending banks, PTC and direct-assignment investors, rating analysts. They take on loans someone else originated and need an independent view of the collateral, at book scale.</p></div>
-    <div class="card"><span class="pill">EXPANSION</span><h3>Investors, insurers, agri lenders</h3><p>Equity investors diligencing a lender's book, crop and property insurers, cooperative and rural banks with land-mortgaged farm loans.</p></div>
+<!-- 10 IDEA VALIDATION -->
+<section class="slide" data-chap="Idea validation" data-cam="dim"><div class="body">
+  <div class="chap rise">Idea validation</div>
+  <h2 class="rise">Two founder interviews changed what we built, and what we left out</h2>
+  <div class="grid rise d1" style="grid-template-columns:310px minmax(0,1fr);gap:24px;margin-top:10px">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="card"><div class="lab" style="margin:0 0 8px">WHO WE SPOKE TO</div><h3>ClarityX founding team</h3><p>Two calls in November 2026 with Rakhi Prasad, co-founder, and Noopur Jain of the founding team (ex-Pine Labs). ClarityX builds a competing lender product with MapmyIndia, so they hear lenders' objections every week.</p></div>
+      <div class="card"><div class="lab" style="margin:0 0 8px">ALSO</div><h3>Our professor's review</h3><p>Sell to institutions, not retail. Be precise about collateral value. Show why the data beats what anyone can download.</p></div>
+    </div>
+    <table class="tb iv">
+      <tr><th style="width:38%">What we heard</th><th>What we decided</th><th class="r" style="width:64px">Slide</th></tr>
+      <tr><td>"Lenders have 2,000 problems. Solve one or two."</td><td><b>NBFCs only, asset valuation only.</b> Other ideas wait behind launch gates.</td><td class="r">11, 16</td></tr>
+      <tr><td>Loan rates come from credit policy that must be justified to the RBI</td><td><b>No interest-rate precision.</b> We stop at value, realisable value and the LTV band.</td><td class="r">6</td></tr>
+      <tr><td>Field visits stay until the regulator changes the rules</td><td><b>A second opinion beside the valuer,</b> adopted step by step as credit scores were.</td><td class="r">5, 14</td></tr>
+      <tr><td>Low recoveries come mostly from assets that won't sell</td><td><b>Price the exit:</b> days to sell and haircut for each property.</td><td class="r">3, 6</td></tr>
+      <tr><td>Use two years of circle rates: slow growth is a risk, fast growth a top-up</td><td><b>Government floor check,</b> live in the product.</td><td class="r">6, 7</td></tr>
+      <tr><td>A black-box model may not be accepted by lenders</td><td><b>Readable statistical weights</b> and ranges checked on held-out files.</td><td class="r">9</td></tr>
+      <tr><td>Lenders would pay ₹700–1,200 a report, or buy a yearly block</td><td><b>₹750 a report</b> (we had ₹380), plus a ₹1 L starter plan.</td><td class="r">12</td></tr>
+      <tr><td>Pitch outcomes, the before and after, not capabilities</td><td><b>Journey storyboard</b> and the CFO calculator.</td><td class="r">11, 12</td></tr>
+    </table>
   </div>
-  <div class="card glow rise d3" style="margin-top:18px;display:grid;grid-template-columns:minmax(0,1fr) 60px minmax(0,1fr) 60px minmax(0,1fr);align-items:center;text-align:center;padding:16px">
-    <div><h3 class="amber">Originating NBFC</h3><p>uses Report + Pulse</p></div><div class="cyan" style="font-size:30px">⇄</div>
-    <div><h3 class="cyan">BhoomiPulse</h3><p>same evidence, both sides</p></div><div class="cyan" style="font-size:30px">⇄</div>
-    <div><h3 class="amber">Co-lender / pool buyer</h3><p>uses Investor Lens</p></div>
-  </div>
-  <p class="rise d4" style="margin-top:12px;font-size:15.5px"><b class="cyan">Demand is proven:</b> an early Indian spatial-intelligence peer reports about ₹5 lakh monthly revenue across 15+ states, paying customers in agri-lending and MSME/LAP underwriting, and pilots with several LAP NBFCs and a life insurer.<span class="mr">MR</span></p>
-  <p class="rise d4" style="margin-top:6px;font-size:15.5px">Not for: retail borrowers, brokers or tiny lenders. They cannot pay for, or act on, portfolio-grade risk data.</p>
-  <div class="src">Sources: RBI (656 NBFC-ML, Mar 2025); ICRA, Business loan and small-ticket LAP focus report (Aug 2024). MR = market research (industry materials, Nov 2026; not publicly verified).</div>
-  <aside>The pipe between two businesses: once a co-lending bank reads our certificate, it asks its originating partners to use the same evidence. That is our distribution loop.</aside>
+  <div class="src">Interviews with the ClarityX founding team, two calls, November 2026; quotes paraphrased from our notes. Professor's feedback on our first pitch.</div>
+  <aside>This slide is the honest answer to "why did you build it this way?". Read two rows aloud: no interest rates, and NBFCs only. Then point out that ClarityX is a competitor, which makes their advice more credible, not less.</aside>
 </div></section>
 
-<!-- 10 MARKET -->
-<section class="slide" data-chap="Market size" data-cam="dim"><div class="body">
-  <div class="chap rise">Market size</div>
-  <div class="grid" style="grid-template-columns:minmax(0,1fr) 560px;gap:34px">
+<!-- 10 CUSTOMER AND MARKET -->
+<section class="slide" data-chap="Customer and market" data-cam="dim"><div class="body">
+  <div class="chap rise">Customer and market</div>
+  <h2 class="rise">One customer: the NBFC that lends against property. One job: value the asset</h2>
+  <div class="grid rise d1" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:26px;margin-top:8px">
     <div>
-      <h2 class="rise">A ₹900 crore a year market inside a ₹2,500 crore valuation spend</h2>
-      <table class="tb rise d1" style="margin-top:10px">
-        <tr><th>Bottom-up, India core</th><th class="r">Volume</th><th class="r">Price</th><th class="r">₹ cr / yr</th></tr>
-        <tr><td>Collateral files originated</td><td class="r nw">~10 M</td><td class="r nw">₹350</td><td class="r">350</td></tr>
-        <tr><td>Secured loans monitored (Pulse)</td><td class="r nw">~35 M</td><td class="r nw">₹120 / yr</td><td class="r">420</td></tr>
-        <tr><td>Co-lending and pool diligence</td><td class="r nw">₹2.55 L cr</td><td class="r nw">~2 bps</td><td class="r">50</td></tr>
-        <tr><td>Platform and on-prem licences</td><td class="r nw">~400 lenders</td><td class="r nw">₹20 L</td><td class="r">80</td></tr>
-        <tr class="hl"><td><b>TAM</b></td><td></td><td></td><td class="r"><b>≈ 900</b></td></tr>
+      <table class="tb jr">
+        <tr><th>Their journey</th><th>Today</th><th>With BhoomiPulse</th></tr>
+        <tr><td><b>Sourcing</b><small>sales wants a bigger loan</small></td><td>Value known only after the visit</td><td>Indicative range before the file is logged</td></tr>
+        <tr><td><b>Underwriting</b><small>credit is cautious</small></td><td>One valuer's number, fixed haircuts</td><td>Range, realisable value, floor check, flags</td></tr>
+        <tr><td><b>Sanction</b><small>LTV decision</small></td><td>LTV on a number nobody can defend</td><td>LTV on registrable, explainable value</td></tr>
+        <tr><td><b>Existing book</b><small>NPAs, pools, top-ups</small></td><td>Re-valuation means new visits</td><td>Whole book re-valued in hours</td></tr>
       </table>
-      <p class="rise d2" style="font-size:14px;margin-top:10px">File and loan counts are our estimates across housing, LAP, secured MSME and land-mortgaged farm loans at banks and NBFCs. The value pool assumes ~₹2,500 per file spent on valuation and technical checks today.</p>
-      <div class="card rise d3" style="margin-top:12px;padding:14px 18px"><p><b class="cyan">Cross-check.</b> Peers size land intelligence at ~$10B across the developing world (government, lending, insurance, agribusiness) and a credit-focused SAM of ~$500M at 1–2 bps of recurring revenue.<span class="mr">MR</span> Our India-only core of ₹900 cr (~$105M) is deliberately narrower.</p></div>
-    </div>
-    <div class="tam rise d2">
-      <div class="ring" style="width:540px;height:540px;left:10px;top:0;border-color:#5ce1ff44;background:radial-gradient(circle,rgba(92,225,255,.05),transparent 70%)"><div style="position:absolute;top:40px;width:100%"><b class="cyan">₹900 cr</b><span>TAM · India core</span></div></div>
-      <div class="ring" style="width:350px;height:350px;left:105px;top:165px;border-color:#ffb54766;background:radial-gradient(circle,rgba(255,181,71,.07),transparent 70%)"><div style="position:absolute;top:40px;width:100%"><b class="amber">₹320 cr</b><span>SAM · NBFCs, HFCs, co-lenders</span></div></div>
-      <div class="ring pulse" style="width:170px;height:170px;left:195px;top:320px;border-color:#ffd98a;background:rgba(255,181,71,.16);display:grid;place-items:center"><div><b style="color:#fff">₹35 cr</b><span>SOM · year 3</span></div></div>
-    </div>
-  </div>
-  <div class="src">Sources: Crisil Ratings (securitisation ₹2.55 lakh crore, FY26); RBI (NBFC credit); BhoomiPulse estimates (see financial plan). MR = market research (industry materials, Nov 2026; not publicly verified).</div>
-  <aside>SAM: small-ticket secured lending by NBFCs and HFCs plus their co-lending banks, about 3.5 million files and 12 million monitored loans. Year-3 revenue of ₹35 crore is about 11% of SAM.</aside>
-</div></section>
-
-<!-- 11 PRICING -->
-<section class="slide" data-chap="Pricing" data-cam="dim"><div class="body">
-  <div class="chap rise">Pricing</div>
-  <h2 class="rise">Priced like a data call, valued like a field visit</h2>
-  <div class="grid g4 rise d1" style="margin-top:10px">
-    <div class="card"><h3>Collateral Report</h3><div class="mid amber">₹380</div><div class="lab">per asset · ₹340 above 50k / yr · ₹310 above 200k / yr</div></div>
-    <div class="card"><h3>Pulse</h3><div class="mid amber">₹11</div><div class="lab">per asset per month · ₹9 above 1M assets</div></div>
-    <div class="card"><h3>Investor Lens</h3><div class="mid amber">₹8–15 L</div><div class="lab">per client-year · or ₹2 L per one-off book audit</div></div>
-    <div class="card"><h3>Platform</h3><div class="mid amber">₹4–8 L</div><div class="lab">per lender-year · on-prem +₹15 L</div></div>
-  </div>
-  <div class="ruler rise d2">
-    <div class="ax"></div>
-    <div class="pt" style="left:5%">₹200<i></i>CERSAI search</div>
-    <div class="pt" style="left:15%">₹250<i></i>bureau report</div>
-    <div class="pt us" style="left:31%">₹310–380<i></i>BhoomiPulse report</div>
-    <div class="pt" style="left:60%">₹1,300–2,500<i></i>small-ticket valuation</div>
-    <div class="pt" style="left:88%">₹3,000+<i></i>larger valuations</div>
-  </div>
-  <div class="grid g4 rise d3" style="margin-top:18px">
-    <div class="card"><h3>Value-based, not cost-plus</h3><p>We capture roughly a sixth of the field-visit cost each fast-tracked file avoids.</p></div>
-    <div class="card"><h3>Peer benchmark</h3><p>Land-intelligence APIs sell at ₹20–200 per query, map platforms at ₹10–30k per district-month, analytical reports at ₹30–50k.<span class="mr">MR</span> We charge more per asset because we return a lending decision, not a data layer.</p></div>
-    <div class="card"><h3>One public rate card</h3><p>Volume tiers only. No lender-specific prices, which keeps trust and avoids becoming a pricing hub.</p></div>
-    <div class="card"><h3>Free 90-day design partnership</h3><p>In exchange for outcome data to calibrate, under a data-processing agreement.</p></div>
-  </div>
-  <div class="src">Sources: urban cooperative bank schedule of charges (CIBIL ₹250, CERSAI ₹200 per file); Federal Bank agri-loan service charges; Can Fin Homes schedule (1/8%, max ₹2,500); SBI valuer fee annexure (0.02%, min ₹3,000). MR = market research (industry materials, Nov 2026).</div>
-  <aside>We sit between a bureau pull and a field valuation. Transparent rate card with volume tiers only; no personalised pricing.</aside>
-</div></section>
-
-<!-- 12 UNIT ECONOMICS -->
-<section class="slide" data-chap="Unit economics" data-cam="dim"><div class="body">
-  <div class="chap rise">Unit economics</div>
-  <h2 class="rise">A report costs about ₹40 to make. A customer saves about four rupees for every one it pays</h2>
-  <div class="grid g2 rise d1" style="gap:30px;margin-top:6px">
-    <div>
-      <h3 class="cyan">Per Collateral Report</h3>
-      <table class="tb"><tr><th>Item</th><th class="r">₹</th></tr>
-        <tr><td>Compute, caching, public-API infrastructure</td><td class="r">6</td></tr>
-        <tr><td>Premium imagery on ~10% of files</td><td class="r">15</td></tr>
-        <tr><td>Human QA on a 2% sample</td><td class="r">10</td></tr>
-        <tr><td>LLM summary, storage, support</td><td class="r">9</td></tr>
-        <tr class="hl"><td><b>COGS per report</b> · price ₹310–380</td><td class="r"><b>≈ 40</b></td></tr></table>
-      <div class="grid g3" style="margin-top:14px;gap:10px">
-        <div class="card" style="padding:14px 16px"><div class="mid amber" style="font-size:28px">~88%</div><div class="lab">contribution per report</div></div>
-        <div class="card" style="padding:14px 16px"><div class="mid" style="font-size:28px">~9 mo</div><div class="lab">CAC payback</div></div>
-        <div class="card" style="padding:14px 16px"><div class="mid" style="font-size:28px">&gt;10×</div><div class="lab">LTV : CAC</div></div>
+      <div class="grid g2" style="gap:12px;margin-top:12px">
+        <div class="card" style="padding:14px 16px"><span class="pill hot">ECONOMIC BUYER</span><h3 style="font-size:18px">Chief Risk Officer, Head of Credit</h3></div>
+        <div class="card" style="padding:14px 16px"><span class="pill">DAILY USER</span><h3 style="font-size:18px">Underwriters and in-house technical team</h3></div>
       </div>
     </div>
     <div>
-      <h3 class="cyan">Customer ROI · mid-layer NBFC, 20,000 LAP files a year</h3>
       <table class="tb">
-        <tr><td>Field visits avoided: 45% of files × ₹2,500</td><td class="r nw green">+₹2.25 cr</td></tr>
-        <tr><td>Overvaluation caught: 0.3% of files, ₹12 L tickets, 25% loss avoided</td><td class="r nw green">+₹1.8 cr</td></tr>
-        <tr><td>Earlier collections: 5% lower credit cost on a ₹3,000 cr monitored book at 1%</td><td class="r nw green">+₹1.5 cr</td></tr>
-        <tr><td>BhoomiPulse: reports + 60k assets on Pulse + platform</td><td class="r nw red">−₹1.4 cr</td></tr>
-        <tr class="hl"><td><b>Net benefit</b> (same-day decisions not counted)</td><td class="r nw"><b>≈ 4×</b></td></tr></table>
-      <p style="font-size:13.5px;margin-top:8px">Illustrative assumptions; ₹2,500 per visit sits inside the ₹2,000–5,000 field-verification range.<span class="mr">MR</span> The design-partner pilot measures each line.</p>
+        <tr><th>India, valuation only</th><th class="r">Volume</th><th class="r">Price</th><th class="r">₹ cr / yr</th></tr>
+        <tr><td>Property files valued at origination</td><td class="r nw">~10 M</td><td class="r nw">₹750</td><td class="r">750</td></tr>
+        <tr><td>Loans re-valued in the book</td><td class="r nw">~35 M</td><td class="r nw">₹50 / yr</td><td class="r">175</td></tr>
+        <tr><td>Platform and on-prem licences</td><td class="r nw">~400 lenders</td><td class="r nw">₹20 L</td><td class="r">80</td></tr>
+        <tr class="hl"><td><b>TAM</b></td><td></td><td></td><td class="r"><b>≈ 1,000</b></td></tr>
+        <tr class="hl"><td><b>SAM</b> · NBFCs and HFCs only</td><td class="r nw">3.5 M files</td><td></td><td class="r"><b>≈ 330</b></td></tr>
+        <tr class="hl"><td><b>SOM</b> · year 3 revenue</td><td class="r nw">36 NBFCs</td><td></td><td class="r"><b>≈ 39</b></td></tr>
+      </table>
+      <p style="font-size:14px;margin-top:10px">Beachhead: 656 middle-layer NBFCs plus HFCs in small-ticket LAP (~₹1 lakh crore at ₹8–9 lakh tickets). Cross-check: peers size a credit-focused land-intelligence SAM at ~$500M across developing markets.<span class="mr">MR</span></p>
     </div>
   </div>
-  <aside>COGS is dominated by optional premium imagery and human QA, both of which fall with scale. CAC around ₹33 lakh per logo with a 6–9 month enterprise cycle; first-year ACV about ₹58 lakh, expanding to about ₹1.25 crore by year 3.</aside>
+  <div class="src">Sources: RBI (656 NBFC-ML, Mar 2025); ICRA small-ticket LAP report (Aug 2024); BhoomiPulse estimates (see financial plan). MR = market research (not publicly verified).</div>
+  <aside>Storyboard as the ClarityX founders advised: the lender's problem, the stage of the journey, what they do today, and the before and after. "Lenders have two thousand problems; solve one or two." Ours is the value of the asset, from sourcing to the existing book.</aside>
 </div></section>
 
-<!-- 13 COMPETITION -->
+<!-- 11 PRICING AND ROI -->
+<section class="slide" data-chap="Pricing and ROI" data-cam="dim"><div class="body">
+  <div class="chap rise">Pricing and unit economics</div>
+  <h2 class="rise">Priced below a field visit, built at ~₹60 a report</h2>
+  <div class="grid g4 rise d1" style="margin-top:6px">
+    <div class="card"><h3>Valuation Report</h3><div class="mid amber">₹750</div><div class="lab">per asset · ₹675 above 50k / yr · ₹615 above 200k / yr</div></div>
+    <div class="card"><h3>Book re-valuation</h3><div class="mid amber">₹60</div><div class="lab">per loan per year · ₹50 above 1M loans</div></div>
+    <div class="card"><h3>Platform</h3><div class="mid amber">₹4–8 L</div><div class="lab">per NBFC-year · on-prem +₹15 L</div></div>
+    <div class="card"><h3>Starter plan</h3><div class="mid amber">₹1 L</div><div class="lab">per year, 150 reports · for smaller NBFCs</div></div>
+  </div>
+  <div class="grid rise d2" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:26px;margin-top:16px">
+    <div>
+      <div class="ruler" style="margin-top:0"><div class="ax"></div>
+        <div class="pt" style="left:6%">₹200<i></i>CERSAI</div><div class="pt" style="left:20%">₹250<i></i>bureau</div>
+        <div class="pt us" style="left:44%">₹615–750<i></i>BhoomiPulse</div><div class="pt" style="left:74%">₹1,300–2,500<i></i>valuation</div><div class="pt" style="left:95%">₹3,000+<i></i></div></div>
+      <p style="font-size:14.5px;margin-top:6px">Land-intelligence APIs sell at ₹20–200 per query;<span class="mr">MR</span> we return a valuation, not a data layer.</p>
+      <table class="tb" style="margin-top:8px"><tr><td>COGS per report: compute, imagery on 10% of files, 2% human QA, GenAI summary</td><td class="r nw"><b>≈ ₹60</b></td></tr><tr><td>Contribution · CAC payback · LTV : CAC</td><td class="r nw"><b>~92% · ~6 mo · &gt;10×</b></td></tr></table>
+    </div>
+    <div class="card glow" style="padding:16px 20px">
+      <h3 class="cyan">You are the NBFC's CFO <small class="hint3" style="font-size:12px">drag the sliders</small></h3>
+      <div class="slider"><span>LAP files a year</span><input type="range" id="rF" min="5000" max="60000" step="1000" value="20000"><b id="rFv">20k</b></div>
+      <div class="slider"><span>Files that skip a 2nd review</span><input type="range" id="rS" min="0" max="60" step="5" value="30"><b id="rSv">30%</b></div>
+      <table class="tb" id="roiT" style="margin-top:4px"></table>
+    </div>
+  </div>
+  <div class="src">Sources: urban cooperative bank schedule of charges (CIBIL ₹250, CERSAI ₹200); Federal Bank agri-loan service charges; Can Fin Homes schedule (max ₹2,500); SBI valuer fee annexure (min ₹3,000). MR = market research. ROI assumptions: ₹2,500 per second review or re-visit avoided; overvaluation caught on 0.3% of files at ₹12 L tickets, 25% loss avoided.</div>
+  <aside>Ask a volunteer to be the CFO and drag the sliders. The ROI does not depend on removing the valuer: it comes from fewer second reviews and from catching overvalued files. Pricing went up from our first draft after the founder interviews.</aside>
+</div></section>
+
+<!-- 12 COMPETITION -->
 <section class="slide" data-chap="Competition" data-cam="dim"><div class="body">
   <div class="chap rise">Competition</div>
   <h2 class="rise">Three serious players. None of them prices what the collateral will fetch</h2>
   <table class="vs rise d1" style="margin-top:6px">
-    <tr><th style="width:15%"></th><th class="us" style="width:23%">BhoomiPulse<small>collateral recovery intelligence</small></th><th style="width:21%">Terrastack<small>rural land intelligence</small></th><th style="width:21%">Mappls Geo-FI<small>MapmyIndia + ClarityX, Aug 2026</small></th><th style="width:20%">GeoIQ<small>location alt-data</small></th></tr>
-    <tr><td>Question answered</td><td class="us">What will this asset fetch if the loan fails, and is it still earning?</td><td>What is on this farm, and does it match the land record?</td><td>Is this address real, and where should we grow or collect?</td><td>How affluent is the place this borrower lives?</td></tr>
-    <tr><td>Unit scored</td><td class="us">The pledged asset: home, factory, shop or farm</td><td>Farm plot and village</td><td>Address and micro-market</td><td>100 m × 100 m grid cell</td></tr>
-    <tr><td>Collateral value</td><td class="us">P10–P90 range plus realisable value, days to sell, haircut, LTV band</td><td class="no">Not described</td><td class="no">Not described</td><td class="no">Not described</td></tr>
-    <tr><td>After disbursal</td><td class="us">Monthly Pulse on lights, crop vigour and river forecast</td><td>Crop activity via Google AMED</td><td>Collections field ops (Geo-Collect)</td><td class="no">Not described</td></tr>
-    <tr><td>Capital providers</td><td class="us">Investor Lens certifies a whole book for co-lenders and pool buyers</td><td class="no">Not described</td><td class="no">Not described</td><td class="no">Not described</td></tr>
-    <tr><td>Data foundation</td><td class="us">10 open public sources fused per asset, then lenders' recovery outcomes</td><td>Google DeepMind ALU/AMED, land records; 140M+ ha mapped</td><td>MapmyIndia maps, POIs, addresses, affluence</td><td>3,000+ location variables</td></tr>
+    <tr><th style="width:15%"></th><th class="us" style="width:23%">BhoomiPulse<small>NBFC collateral valuation</small></th><th style="width:21%">Terrastack<small>rural land intelligence</small></th><th style="width:21%">Mappls Geo-FI<small>MapmyIndia + ClarityX, Aug 2026</small></th><th style="width:20%">GeoIQ<small>location alt-data</small></th></tr>
+    <tr><td>Question answered</td><td class="us">What is this property worth, what will it fetch, and can the lender defend it?</td><td>What is on this farm, and does it match the land record?</td><td>Is this address real, and where should we grow or collect?</td><td>How affluent is the place this borrower lives?</td></tr>
+    <tr><td>Unit scored</td><td class="us">The pledged property: home, shop, plot, factory, farm</td><td>Farm plot and village</td><td>Address and micro-market</td><td>100 m × 100 m grid cell</td></tr>
+    <tr><td>Collateral value</td><td class="us">P10–P90 range, realisable value, days to sell, haircut, LTV band</td><td class="no">Not described</td><td class="no">Not described</td><td class="no">Not described</td></tr>
+    <tr><td>Government floor</td><td class="us">Circle-rate check: registrable value, under-declaration, floor growth</td><td class="no">Not described</td><td class="no">Not described</td><td class="no">Not described</td></tr>
+    <tr><td>Data foundation</td><td class="us">10 open sources fused per asset, then NBFCs' valuation outcomes</td><td>Google DeepMind ALU/AMED, land records; 140M+ ha</td><td>MapmyIndia maps, POIs, addresses</td><td>3,000+ location variables</td></tr>
   </table>
-  <div class="grid g3 win3 rise d3" style="margin-top:16px">
-    <div class="card hot"><h3 class="amber">We price the exit</h3><p>Others score the borrower or the place. Loss depends on what the asset fetches and how fast; that is the number we own.</p></div>
-    <div class="card hot"><h3 class="amber">We serve both ends of the pipe</h3><p>The originator and the bank funding it read the same evidence. None of the three describes selling to co-lenders or pool buyers.</p></div>
-    <div class="card hot"><h3 class="amber">Our data compounds</h3><p>Open data keeps a report at about ₹40 to make. Every recovery calibrates the model: a dataset map makers and alt-data vendors never see.</p></div>
+  <div class="grid g3 win3 rise d3" style="margin-top:14px">
+    <div class="card hot"><h3 class="amber">We price the exit</h3><p>Others score the borrower or the place. Loss depends on what the asset fetches and how fast: that is the number we own.</p></div>
+    <div class="card hot"><h3 class="amber">We explain every rupee</h3><p>Readable weights, logged sources and the government floor on one page: a valuation a credit committee and the RBI can audit.</p></div>
+    <div class="card hot"><h3 class="amber">Our data compounds</h3><p>Every valuer override and auction price re-fits the model: data map makers and alt-data vendors never see.</p></div>
   </div>
-  <p class="rise d4" style="font-size:13px;margin-top:10px">Also in the field: panel valuers, agri Earth-observation (SatSure, CropIn), alt-data (Data Sutram), global property AI (Moody's–CAPE). "Not described" = not in public material.</p>
-  <div class="src">Sources: Mappls Geo-FI product page and C.E. Info Systems disclosure (31 Aug 2026); GeoIQ site and case studies (Piramal Finance, DMI Finance); Google India blog on ALU/AMED (26 Aug 2026). Comparison is our reading of public material.</div>
-  <aside>Name the three, give each its due in one line, then the right to win: we price the exit, we serve both ends of the pipe, and our data compounds with every recovery.</aside>
+  <div class="src">Sources: Mappls Geo-FI product page and C.E. Info Systems disclosure (31 Aug 2026); GeoIQ site and case studies; Google India blog on ALU/AMED (26 Aug 2026). "Not described" = not in public material. Also in the field: panel valuers (JLL, CBRE and thousands of small firms), SatSure, Data Sutram.</div>
+  <aside>ClarityX is a competitor through Mappls Geo-FI, and its founders still gave us two hours. Their advice is the clearest market signal we have: lenders buy outcomes from a partner, and the moat is a proprietary model or data.</aside>
 </div></section>
 
-<!-- 14 GTM -->
+<!-- 13 GTM -->
 <section class="slide" data-chap="Go to market" data-cam="beach" data-maxk="1.1"><div class="body">
   <div class="chap rise">Go to market</div>
-  <h2 class="rise" style="max-width:760px">Land in Gujarat and Maharashtra. Expand through the pipe</h2>
-  <div style="max-width:780px;margin-top:12px">
-    <div class="tier rise d1" style="grid-template-columns:130px minmax(0,1fr)"><div class="when">Q1–Q2 2027</div><div><h3>Three design partners, one product line each</h3><p>Mid-layer NBFCs and HFCs in LAP and secured MSME around Ahmedabad, Surat, Pune and Nashik: digitised land records, dense industrial estates, our network.</p></div></div>
-    <div class="tier rise d2" style="grid-template-columns:130px minmax(0,1fr)"><div class="when">LAND</div><div><h3>Pulse on the existing book first</h3><p>A data-tape upload, no integration: it surfaces risk the lender already carries and wins the CRO in weeks. The origination API follows.</p></div></div>
-    <div class="tier rise d3" style="grid-template-columns:130px minmax(0,1fr)"><div class="when">EXPAND</div><div><h3>Through capital providers</h3><p>Every co-lending bank or pool buyer on Investor Lens asks its originators for the same evidence. Two-sided pull.</p></div></div>
-    <div class="tier rise d4" style="grid-template-columns:130px minmax(0,1fr)"><div class="when">CHANNELS</div><div><h3>LOS vendors, co-lending platforms, aggregators</h3><p>Embed the widget and API where credit officers already work; revenue share of 10–15%.</p></div></div>
+  <h2 class="rise" style="max-width:780px">Land in Gujarat and Maharashtra. Sell outcomes, not capabilities</h2>
+  <div style="max-width:800px;margin-top:10px">
+    <div class="tier rise d1" style="grid-template-columns:120px minmax(0,1fr)"><div class="when">Q1–Q2 2027</div><div><h3>Three NBFC design partners in LAP</h3><p>Around Ahmedabad, Surat, Pune and Nashik: published circle rates, dense industrial estates, our network.</p></div></div>
+    <div class="tier rise d2" style="grid-template-columns:120px minmax(0,1fr)"><div class="when">LAND</div><div><h3>Back-test their closed files, then run in shadow</h3><p>No integration: our value vs the valuer's vs the sale price on 24 months of files. Then a second opinion beside every new valuation.</p></div></div>
+    <div class="tier rise d3" style="grid-template-columns:120px minmax(0,1fr)"><div class="when">EXPAND</div><div><h3>Book re-valuation, then every product line</h3><p>Once credit trusts the range, re-value NPAs and pools; extend from LAP to home loans and secured MSME.</p></div></div>
+    <div class="tier rise d4" style="grid-template-columns:120px minmax(0,1fr)"><div class="when">CHANNELS</div><div><h3>LOS vendors and valuer firms</h3><p>Embed where officers work; give valuers a pre-filled report for the 40–50 fields they write by eye.</p></div></div>
+    <div class="ladder rise d5"><span>Adoption follows credit scores:</span><b>early adopters</b>→<b>back-testing</b>→<b>live use beside the valuer</b>→<b>regulator acceptance</b></div>
   </div>
-  <aside>The map frames the beachhead. Sales motion: founder-led for the first 10 logos, then two enterprise account executives and a solutions engineer.</aside>
+  <aside>Every pitch follows the storyboard the ClarityX founders gave us: lender problem, stage, today, before and after, and the three actions it drives. Founder-led sales for the first 10 logos. The adoption ladder is how CIBIL scores went from novelty to standard.</aside>
 </div></section>
 
-<!-- 15 PILOT -->
+<!-- 14 PROOF -->
 <section class="slide" data-chap="Proof" data-cam="dim"><div class="body">
   <div class="chap rise">Proof</div>
   <h2 class="rise">A 90-day pilot designed to prove cause, not correlation</h2>
   <div class="grid g3 rise d1" style="margin-top:12px">
-    <div class="card"><div class="lab" style="margin:0 0 6px">WEEKS 0–4 · BACK-TEST</div><h3>Out-of-time, out-of-district</h3><p>24 months of closed files: our value vs the valuer's and vs later sale or auction price; default uplift on later loans; a reject sample to correct selection bias.</p></div>
-    <div class="card"><div class="lab" style="margin:0 0 6px">WEEKS 5–12 · RANDOMISED</div><h3>Branches randomised to AI triage</h3><p>Treatment branches route files fast-track / verify / refer; control branches keep today's process. A random 10% of fast-tracked files still get a full valuation.</p></div>
-    <div class="card"><div class="lab" style="margin:0 0 6px">ALSO · THRESHOLD DESIGN</div><h3>Just above vs just below the cut-off</h3><p>Files either side of the fast-track score cut-off are near-identical, so differences in outcome isolate the effect of the routing itself.</p></div>
+    <div class="card"><div class="lab" style="margin:0 0 6px">WEEKS 0–4 · BACK-TEST</div><h3>Out-of-time, out-of-district</h3><p>24 months of closed files: our value vs the valuer's vs the later sale or auction price; a reject sample to correct selection bias.</p></div>
+    <div class="card"><div class="lab" style="margin:0 0 6px">WEEKS 5–12 · RANDOMISED</div><h3>Branches randomised to the second check</h3><p>Treatment branches route reviews confirm / verify / refer; control branches keep today's process. A random 10% of confirmed files still get a second valuation.</p></div>
+    <div class="card"><div class="lab" style="margin:0 0 6px">ALSO · THRESHOLD DESIGN</div><h3>Just above vs just below the cut-off</h3><p>Files either side of the confirm cut-off are near-identical, so outcome differences isolate the effect of the routing itself.</p></div>
   </div>
   <table class="tb rise d3" style="margin-top:18px">
     <tr><th>Go / no-go metric</th><th class="r">Target</th><th style="padding-left:30px">Go / no-go metric</th><th class="r">Target</th></tr>
-    <tr><td>Median valuation error vs valuer</td><td class="r nw">≤ 15%</td><td style="padding-left:30px">Turnaround on fast-tracked files</td><td class="r nw">−60%</td></tr>
-    <tr><td>Files fast-tracked</td><td class="r nw">≥ 40%</td><td style="padding-left:30px">Cost per file</td><td class="r nw">−35%</td></tr>
-    <tr><td>6-month 30+ DPD, treatment vs control</td><td class="r nw">non-inferior ±0.5 pp</td><td style="padding-left:30px">Pulse alerts confirmed in the field</td><td class="r nw">≥ 60%</td></tr>
+    <tr><td>Median error vs later sale or auction price</td><td class="r nw">≤ 15%</td><td style="padding-left:30px">Turnaround on confirmed files</td><td class="r nw">−50%</td></tr>
+    <tr><td>Files confirmed without a second review</td><td class="r nw">≥ 30%</td><td style="padding-left:30px">Valuation cost per file</td><td class="r nw">−25%</td></tr>
+    <tr><td>6-month 30+ DPD, treatment vs control</td><td class="r nw">non-inferior ±0.5 pp</td><td style="padding-left:30px">Under-declaration flags confirmed by legal</td><td class="r nw">≥ 80%</td></tr>
   </table>
-  <aside>A before-and-after comparison would confuse our effect with seasonality and policy changes. Cluster randomisation by branch plus a threshold design around the score cut-off gives a causal estimate the risk committee can trust.</aside>
+  <aside>A before-and-after comparison would confuse our effect with seasonality. Branch randomisation plus a threshold design gives the risk committee a causal estimate. DPD means days past due: 30+ DPD is the first sign a loan is going bad.</aside>
 </div></section>
 
-<!-- 16 RESPONSIBLE -->
-<section class="slide" data-chap="Risks and safeguards" data-cam="dim"><div class="body">
-  <div class="chap rise">Risks and safeguards</div>
-  <h2 class="rise">Built to pass the model-risk committee, with a kill switch we will honour</h2>
-  <div class="grid rise d1" style="grid-template-columns:minmax(0,0.92fr) minmax(0,1.08fr);gap:24px;margin-top:10px">
-    <div class="grid" style="grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-content:start">
-      <div class="card"><h3 class="cyan">Land, not people</h3><p>No caste, religion, gender or community variable, enforced by test.</p></div>
-      <div class="card"><h3 class="cyan">Humans decide</h3><p>AI predicts and routes; officers sanction. Every answer logs sources and model version.</p></div>
-      <div class="card"><h3 class="cyan">FREE-AI ready</h3><p>Model cards, drift monitoring and an audit trail map to RBI's FREE-AI recommendations.</p></div>
-      <div class="card"><h3 class="cyan">DPDP by design</h3><p>Scoring needs no personal data; land records and cash flows only with consent.</p></div>
-      <div class="card"><h3 class="cyan">No pricing hub</h3><p>Per-lender policy and calibration; we never recommend rates or share one lender's signals.</p></div>
-      <div class="card"><h3 class="cyan">Augment the valuer</h3><p>Valuers handle flagged files; juniors gain a consistent second opinion.</p></div>
-    </div>
-    <table class="tb">
-      <tr><th style="width:34%">Risk</th><th>Mitigation</th></tr>
-      <tr><td><b style="color:var(--ink)">Valuations not accurate enough</b><span class="lvl h">high</span></td><td>Calibrate per district; ship ranges; route uncertain files to humans. Kill criterion: median error above 20% after calibration.</td></tr>
-      <tr><td><b style="color:var(--ink)">Long enterprise sales</b><span class="lvl h">high</span></td><td>Land with a no-integration Pulse audit of the existing book; free 90-day pilot; sell through LOS platforms.</td></tr>
-      <tr><td><b style="color:var(--ink)">Regulator or valuer pushback</b><span class="lvl m">med</span></td><td>Position as triage and second opinion; statutory valuations stay with registered valuers.</td></tr>
-      <tr><td><b style="color:var(--ink)">Public data access changes</b><span class="lvl m">med</span></td><td>Swappable, cached connectors; several sources per signal; paid imagery as fallback.</td></tr>
-      <tr><td><b style="color:var(--ink)">Funded peers copy features</b><span class="lvl m">med</span></td><td>Features copy, recovery outcomes do not; workflow embedding compounds per tenant.</td></tr>
-      <tr><td><b style="color:var(--ink)">Data breach</b><span class="lvl m">med</span></td><td>No personal data for scoring; on-prem option; ISO 27001 and SOC 2 roadmap.</td></tr>
-    </table>
+<!-- 15 EXTRA FEATURES -->
+<section class="slide" data-chap="Extra features" data-cam="dim"><div class="body">
+  <div class="chap rise">Extra features · after the core</div>
+  <h2 class="rise">Three extensions on the same engine, each with a launch gate</h2>
+  <div class="grid g3 xf rise d1" style="margin-top:6px">
+    <div class="card"><span class="pill">PROTOTYPE IN APP</span><h3>Pulse</h3><p class="what">Monthly re-check of each financed property from orbit: night lights, crop vigour, river flood forecasts; alerts to collections.</p>
+      <div class="xr"><b>When</b>Year 2, after the report is live at 10+ NBFCs</div>
+      <div class="xr"><b>Launch if</b>back-tests on 3 books show alerts 60+ days before 30+ DPD, ≥ 60% confirmed in the field; 3 NBFCs commit at ₹10+/asset-month</div></div>
+    <div class="card"><span class="pill">PROTOTYPE IN APP</span><h3>Investor Lens</h3><p class="what">A book-level collateral certificate for co-lending banks, pool buyers and investors: realisable cover, concentration, stress tests.</p>
+      <div class="xr"><b>When</b>Year 2–3, once 10+ NBFC books are on the engine</div>
+      <div class="xr"><b>Launch if</b>2+ co-lenders or pool buyers ask for it in live deals; originators consent to sharing; willingness to pay ≥ ₹8 L a year</div></div>
+    <div class="card"><span class="pill hot">IN BUILD</span><h3>Branch Intelligence</h3><p class="what">Where an NBFC should open its next branch: catchment demand, competitor branches, and the collateral quality of the area.</p>
+      <div class="xr"><b>When</b>Year 3+, preview page live in the app</div>
+      <div class="xr"><b>Launch if</b>3+ customers opening 20+ branches a year ask for it; back-tested top-quintile catchments beat others by 15%+; reuses 70%+ of our data pipes</div></div>
   </div>
-  <div class="src">Sources: RBI FREE-AI Committee Report (Aug 2025); MeitY DPDP Rules 2025; RBI Co-Lending Arrangements Directions 2025.</div>
-  <aside>Fairness, accountability, regulation, competition policy and labour on the left; what could kill us and what we do about it on the right. Say the kill criterion out loud.</aside>
+  <div class="poll rise d3" data-poll="xf"><span class="pq">ROOM POLL · Which should we launch first? Tap to count hands</span><button data-o="0">Pulse <b>0</b></button><button data-o="1">Investor Lens <b>0</b></button><button data-o="2">Branch Intelligence <b>0</b></button></div>
+  <div class="src">Extra features are excluded from the financial plan. Launch gates are BhoomiPulse decision rules. Branch Intelligence draws on industry materials on branch-potential analytics (market research). DPD = days past due.</div>
+  <aside>The core business is valuation for NBFCs. These three reuse the engine, so each is cheap to build, but each launches only when its gate is met. Take the poll: it is a quick read of which story the room finds most convincing.</aside>
+</div></section>
+
+<!-- 17 RISKS -->
+<section class="slide" data-chap="Risks" data-cam="dim"><div class="body">
+  <div class="chap rise">Risks and safeguards</div>
+  <h2 class="rise">What could go wrong, and what we do about it</h2>
+  <div class="grid rise d1" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:26px;margin-top:12px">
+    <div><div class="rgh">Business risks</div>
+      <table class="tb risk">
+        <tr><td><b>Valuations not accurate enough</b><span class="lvl h">high</span></td><td>Ranges, district calibration, humans on uncertain files. We stop if median error stays above 20% after calibration.</td></tr>
+        <tr><td><b>Long enterprise sales</b><span class="lvl m">med</span></td><td>Free back-test on closed files first; sell through loan-software vendors and valuer firms.</td></tr>
+        <tr><td><b>Competitors copy the product</b><span class="lvl m">med</span></td><td>The moat is outcome data and per-lender calibration, not the screens.</td></tr>
+        <tr><td><b>Data breach</b><span class="lvl m">med</span></td><td>Scoring land needs no personal data; on-prem option and a full audit log.</td></tr>
+      </table></div>
+    <div><div class="rgh">Regulatory risks</div>
+      <table class="tb risk">
+        <tr><td><b>Valuer rules stay as they are</b><span class="lvl h">high</span></td><td>Sold as a second check. RBI ties LTV to documented value, which our floor check supports.</td></tr>
+        <tr><td><b>Ownership of precise map data</b><span class="ngp">NGP 2022</span></td><td>Data finer than 1 m can be owned only by Indian entities: we keep Indian control.</td></tr>
+        <tr><td><b>Data must stay in India</b><span class="ngp">NGP 2022</span></td><td>Sub-metre imagery hosted in India; our 10 m satellite data is outside the rule.</td></tr>
+        <tr><td><b>Free government maps erode a data lead</b><span class="ngp">NGP 2022</span></td><td>Our edge is outcomes and models; free base maps lower our costs.</td></tr>
+        <tr><td><b>AI and data-protection rules</b><span class="lvl m">med</span></td><td>RBI FREE-AI model cards, human sign-off, DPDP by design.</td></tr>
+      </table></div>
+  </div>
+  <p class="rise d3" style="font-size:14px;margin-top:12px;color:var(--muted)"><span class="ngp" style="margin:0 6px 0 0">NGP 2022</span>Risks that come from the National Geospatial Policy 2022 and the DST guidelines it builds on.</p>
+  <div class="src">Sources: National Geospatial Policy 2022 (DST, Dec 2022; PIB, Feb 2025); DST Guidelines for Acquiring and Producing Geospatial Data (1 m / 3 m threshold, localisation); RBI HFC Master Direction (LTV value tied to documented value); RBI FREE-AI (Aug 2025); DPDP Rules 2025.</div>
+  <aside>Two columns: business and regulatory. Three regulatory rows come from the National Geospatial Policy: precise map data can only be owned by Indian companies and stored in India, which shapes our cap table and hosting; and free government maps mean our moat has to be outcomes, not maps.</aside>
 </div></section>
 
 <!-- 17 FINANCIALS -->
 <section class="slide" data-chap="Financial plan" data-cam="dim"><div class="body">
-  <div class="chap rise">Financial plan</div>
-  <div class="grid" style="grid-template-columns:minmax(0,1fr) 560px;gap:36px">
+  <div class="chap rise">Financial plan · valuation only</div>
+  <div class="grid" style="grid-template-columns:minmax(0,1fr) 540px;gap:90px">
     <div>
-      <h2 class="rise" style="font-size:40px">₹<span id="fRev3">35</span> crore revenue and <span id="fMargin3">26</span>% EBITDA margin in year 3</h2>
+      <h2 class="rise" style="font-size:40px">₹<span id="fRev3">39</span> crore revenue and <span id="fMargin3">33</span>% EBITDA margin in year 3</h2>
       <div class="chart rise d1" id="finChart"></div>
-      <div class="rise d2" style="font-size:12.5px;color:var(--muted);margin-top:4px">Bars: revenue by product (amber report, cyan Pulse, green Investor Lens, violet platform). Line: EBITDA. ₹ crore, calendar years.</div>
+      <div class="rise d2" style="font-size:12.5px;color:var(--muted);margin-top:4px">Bars: amber valuation reports, cyan book re-valuation, violet platform. Line: EBITDA. ₹ crore, calendar years. Extra features excluded.</div>
     </div>
     <div class="rise d2">
       <table class="tb" id="finTable"></table>
       <div style="margin-top:12px">
-        <div class="slider"><span>Paying lenders, end of yr 3</span><input type="range" id="fL" min="15" max="60" step="1" value="36"><b id="fLv">36</b></div>
-        <div class="slider"><span>Report price, yr 1</span><input type="range" id="fP" min="250" max="500" step="10" value="380"><b id="fPv">₹380</b></div>
-        <div class="slider"><span>Pulse price / asset-month</span><input type="range" id="fQ" min="6" max="15" step="0.5" value="11"><b id="fQv">₹11</b></div>
+        <div class="slider"><span>Paying NBFCs, end of yr 3</span><input type="range" id="fL" min="15" max="60" step="1" value="36"><b id="fLv">36</b></div>
+        <div class="slider"><span>Report price, yr 1</span><input type="range" id="fP" min="400" max="1200" step="25" value="750"><b id="fPv">₹750</b></div>
+        <div class="slider"><span>Re-valuation / loan-yr</span><input type="range" id="fQ" min="20" max="120" step="5" value="60"><b id="fQv">₹60</b></div>
       </div>
-      <p style="font-size:13px;margin-top:6px">Base case: 5 → 16 → 36 lenders; 10k → 22k reports and 12k → 45k monitored assets per lender; headcount 14 → 34 → 60 at ₹24–28 L loaded cost.</p>
+      <p style="font-size:13px;margin-top:6px">Base case: 5 → 16 → 36 NBFCs; 8k → 18k reports and 20k → 60k re-valued loans per NBFC; headcount 14 → 34 → 60 at ₹24–28 L loaded cost.</p>
     </div>
   </div>
-  <aside>Drag the sliders live: revenue, gross margin and EBITDA recompute. The base case breaks even in year 3; cumulative burn to break-even is under ₹4 crore before working capital.</aside>
+  <aside>Drag the sliders live. Break-even arrives in year 2; cumulative burn before working capital is about ₹2.4 crore. At 25 NBFCs, year 3 is still EBITDA-positive. Pulse and Investor Lens are upside, not in the plan.</aside>
 </div></section>
 
-<!-- 18 EXECUTION -->
-<section class="slide" data-chap="Execution" data-cam="dim"><div class="body">
-  <div class="chap rise">Execution</div>
-  <h2 class="rise">A ₹12 crore seed to reach ₹11 crore revenue and an A-round from strength</h2>
-  <div class="grid g3 road rise d1" style="margin-top:12px">
-    <div class="card"><div class="when">0–6 MONTHS</div><h3>Prove</h3><ul class="tight"><li>3 design partners; data agreements signed</li><li>Back-test and randomised pilot live</li><li>Auction-notice and jantri parsers for Gujarat and Maharashtra</li><li>ISO 27001 readiness</li></ul></div>
-    <div class="card"><div class="when">6–18 MONTHS</div><h3>Convert</h3><ul class="tight"><li>Pilot results shared; 5, then 16 paying lenders</li><li>ULI, CERSAI and eCourts connectors under licence</li><li>Investor Lens with 2 co-lending banks</li><li>On-prem release for banks</li></ul></div>
-    <div class="card"><div class="when">18–36 MONTHS</div><h3>Scale</h3><ul class="tight"><li>36 lenders, 1M+ assets on Pulse</li><li>India collateral recovery index as a data product</li><li>Branch Intelligence: where a lender should open its next branch (in build)</li><li>Insurers and rural banks</li><li>Series A (₹60–80 cr) to accelerate, not survive</li></ul></div>
+<!-- 19 FINANCING -->
+<section class="slide" data-chap="Financing" data-cam="dim"><div class="body">
+  <div class="chap rise">Financing</div>
+  <h2 class="rise">Customers and grants fund the proof. Equity scales it. Debt comes last</h2>
+  <div class="fsteps rise d1">
+    <div class="card"><div class="when">MONTHS 0–6 · BOOTSTRAP</div><div class="mid amber">Paid pilots</div><p>Back-tests credited to year-1 contracts</p></div>
+    <div class="card"><div class="when">EQUITY-FREE GRANTS</div><div class="mid amber">≤ ₹1.1 Cr</div><p>Startup India Seed Fund · MeitY SAMRIDH</p></div>
+    <div class="card hot"><div class="when">MONTHS 9–12 · SEED</div><div class="mid amber">₹8 Cr</div><p>Fintech and Earth-observation investors</p></div>
+    <div class="card"><div class="when">AFTER CONTRACTS · DEBT</div><div class="mid amber">≤ ₹20 Cr</div><p>Govt-guaranteed loans · venture debt</p></div>
   </div>
-  <div class="grid g2 rise d3" style="margin-top:20px;gap:28px">
-    <div><h3>Use of the ₹12 crore seed</h3>
-      <div style="display:flex;height:32px;border-radius:9px;overflow:hidden;margin-top:10px;font:600 12px var(--f-m);color:#06101f">
-        <div style="width:45%;background:#ffb547;display:grid;place-items:center">Product + data science 45%</div><div style="width:25%;background:#5ce1ff;display:grid;place-items:center">GTM 25%</div><div style="width:15%;background:#a6e36b;display:grid;place-items:center">Data 15%</div><div style="width:15%;background:#a98bff;display:grid;place-items:center;font-size:10.5px;white-space:nowrap">Security 15%</div></div>
-      <p style="font-size:14.5px;margin-top:10px">Runway past break-even in the base case, with a buffer for 75-day receivables from lenders.</p></div>
-    <div><h3>Team we are building</h3><p style="font-size:15px">Founders from IIM Ahmedabad on business, credit and product. First hires: an Earth-observation ML lead, a credit-risk modeller from an NBFC, a platform engineer and an enterprise seller with NBFC relationships. Advisors: a registered valuer and a former bank CRO.</p></div>
+  <script>function logoErr(i){if(!i.dataset.t){i.dataset.t=1;i.src='logos/'+i.dataset.n+'.svg'}else{i.remove()}}</script>
+  <div class="logos rise d2"><span class="pq">INVESTORS WE WILL APPROACH</span><div class="lrow"><div class="lg"><img src="logos/1.png" alt="" data-n="1" onerror="logoErr(this)"><span>Fintech-infra seed</span></div><div class="lg"><img src="logos/2.png" alt="" data-n="2" onerror="logoErr(this)"><span>Campus fund</span></div><div class="lg"><img src="logos/3.png" alt="" data-n="3" onerror="logoErr(this)"><span>Earth-observation investor</span></div><div class="lg"><img src="logos/4.png" alt="" data-n="4" onerror="logoErr(this)"><span>Lending-tech seed</span></div><div class="lg"><img src="logos/5.png" alt="" data-n="5" onerror="logoErr(this)"><span>Impact fund</span></div><div class="lg"><img src="logos/6.png" alt="" data-n="6" onerror="logoErr(this)"><span>Venture debt</span></div></div></div>
+  <div class="grid rise d3" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;margin-top:18px;align-items:center">
+    <div><div class="lab" style="margin:0 0 6px">USE OF THE ₹8 CR SEED</div><div style="display:flex;height:30px;border-radius:9px;overflow:hidden;font:600 12px var(--f-m);color:#06101f"><div style="width:45%;background:#ffb547;display:grid;place-items:center">Product + data science 45%</div><div style="width:25%;background:#5ce1ff;display:grid;place-items:center">GTM 25%</div><div style="width:15%;background:#a6e36b;display:grid;place-items:center">Data 15%</div><div style="width:15%;background:#a98bff;display:grid;place-items:center;font-size:10.5px">Security 15%</div></div></div>
+    <div class="poll" data-poll="fin" style="margin:0"><span class="pq">ROOM POLL · How would you fund year 1?</span><button data-o="0">Bootstrap + grants <b>0</b></button><button data-o="1">Raise seed now <b>0</b></button><button data-o="2">Venture debt <b>0</b></button></div>
   </div>
-  <aside>The ask: design partners, and introductions to NBFC CROs. Milestones are tied to evidence.</aside>
+  <div class="src">Sources: Startup India Seed Fund Scheme (up to ₹20 L grant + ₹50 L debt); MeitY SAMRIDH (up to ₹40 L); Credit Guarantee Scheme for Startups, NCGTC (up to ₹20 Cr per borrower); venture debt typically 20–35% of the last equity round. Seed split: BhoomiPulse plan.</div>
+  <aside>Order matters. Customers and grants fund the proof; equity buys speed once the back-test works; debt comes last because lenders want contracted revenue. Foreign funds come in as minority investors because of the geospatial policy.</aside>
 </div></section>
 
-<!-- 19 RISKS -->
-<section class="slide" data-chap="Team" data-cam="dim"><div class="body">
-  <div class="chap rise">Team</div>
+<!-- 20 TEAM AND CLOSE -->
+<section class="slide" data-chap="Team" data-cam="cover2"><div class="body">
+  <div class="chap rise">Team · IIM Ahmedabad</div>
   <h2 class="rise">The team building BhoomiPulse</h2>
-  <div class="team rise d1" style="margin-top:22px">
-      <div class="card member"><div class="photo" data-slot="photo">PHOTO</div><div><div class="nm ph">Name Surname</div><div class="rl">Role · e.g. Product &amp; GTM</div><p class="ph">One line on background: prior role, domain, what you own in BhoomiPulse.</p></div></div>
-      <div class="card member"><div class="photo" data-slot="photo">PHOTO</div><div><div class="nm ph">Name Surname</div><div class="rl">Role · e.g. Product &amp; GTM</div><p class="ph">One line on background: prior role, domain, what you own in BhoomiPulse.</p></div></div>
-      <div class="card member"><div class="photo" data-slot="photo">PHOTO</div><div><div class="nm ph">Name Surname</div><div class="rl">Role · e.g. Product &amp; GTM</div><p class="ph">One line on background: prior role, domain, what you own in BhoomiPulse.</p></div></div>
-      <div class="card member"><div class="photo" data-slot="photo">PHOTO</div><div><div class="nm ph">Name Surname</div><div class="rl">Role · e.g. Product &amp; GTM</div><p class="ph">One line on background: prior role, domain, what you own in BhoomiPulse.</p></div></div>
-      <div class="card member"><div class="photo" data-slot="photo">PHOTO</div><div><div class="nm ph">Name Surname</div><div class="rl">Role · e.g. Product &amp; GTM</div><p class="ph">One line on background: prior role, domain, what you own in BhoomiPulse.</p></div></div>
-      <div class="card member"><div class="photo" data-slot="photo">PHOTO</div><div><div class="nm ph">Name Surname</div><div class="rl">Role · e.g. Product &amp; GTM</div><p class="ph">One line on background: prior role, domain, what you own in BhoomiPulse.</p></div></div>
+  <div class="team rise d1" style="margin-top:16px">
+    <div class="card member"><div class="photo"><img src="team/vivek-jindal.jpg" alt="Vivek Jindal"></div><div><div class="nm">Vivek Jindal</div><div class="co">Citi</div></div></div>
+    <div class="card member"><div class="photo"><img src="team/vishnu-nambiar.jpg" alt="Vishnu Nambiar"></div><div><div class="nm">Vishnu Nambiar</div><div class="co">Blackstone · Campus Fund</div></div></div>
+    <div class="card member"><div class="photo"><img src="team/raima-chatterjee-ray.jpg" alt="Raima Chatterjee Ray"></div><div><div class="nm">Raima Chatterjee Ray</div><div class="co">Kearney · Bandhan Bank</div></div></div>
+    <div class="card member"><div class="photo"><img src="team/kartikya-agarwal.jpg" alt="Kartikya Agarwal"></div><div><div class="nm">Kartikya Agarwal</div><div class="co">Bajaj Auto · Kearney</div></div></div>
+    <div class="card member"><div class="photo"><img src="team/aryansh-kabra.jpg" alt="Aryansh Kabra"></div><div><div class="nm">Aryansh Kabra</div><div class="co">J.P. Morgan · Flow Traders</div></div></div>
+    <div class="card member"><div class="photo"><img src="team/aryan-gupta.jpg" alt="Aryan Gupta"></div><div><div class="nm">Aryan Gupta</div><div class="co">Goldman Sachs</div></div></div>
   </div>
-  <p class="rise d3 hint3" style="margin-top:18px">Placeholders: replace each photo, name, role and line. Photos: square images, at least 400 × 400 px.</p>
-  <aside>Thirty seconds: each of us in one line, and why this team can sell to risk committees and build the models.</aside>
-</div></section>
-
-<!-- 20 CLOSE -->
-<section class="slide" data-chap="Built on your feedback" data-cam="cover2" data-maxk="1.12"><div class="body">
-  <div class="chap rise">Built on your feedback</div>
-  <h2 class="rise" style="max-width:800px">What we changed after our first pitch</h2>
-  <table class="tb fb rise d1" style="max-width:800px;margin-top:6px">
-    <tr><td>"Can't sell to retailers or tiny businesses"</td><td>B2B only: NBFCs, HFCs, banks, pool buyers, investors</td></tr>
-    <tr><td>"More precise information on collateral values"</td><td>P10–P90 range, realisable value, days to sell, LTV band</td></tr>
-    <tr><td>"How do you have better algo / data source?"</td><td>10 live sources fused per asset; precision protocol with targets</td></tr>
-    <tr><td>"Banks who care · investors · assess quality"</td><td>Investor Lens: book certificate with stress tests</td></tr>
-    <tr><td>"Pipe between 2 businesses"</td><td>Same evidence for originator and capital provider</td></tr>
-    <tr><td>"Everyone is doing this already"</td><td>They do pieces; nobody prices recovery across asset types</td></tr>
-    <tr><td>"15 steps ahead on public data, then proprietary"</td><td>Public fabric live today; recovery outcomes as the moat</td></tr>
-  </table>
-  <div class="cta rise d3"><a href="https://silverintegral13.github.io/geospatial-intel/" target="_blank" rel="noopener">Open the live Command Center</a><a class="ghost" href="https://github.com/silverintegral13/geospatial-intel" target="_blank" rel="noopener">API and code on GitHub</a></div>
-  <aside>Each piece of feedback became a product decision. Then go live if time allows: search Sanand, pin the GIDC unit, run the report, open Investor Lens on the sample book.</aside>
+  <p class="rise d2 rtw"><b class="amber">Why us.</b> We have sat on the lender's side of the table, in a bank, private credit and real-estate investing, and inside a family business that runs geo-tagged loan verification; and we have built the data and search systems this product runs on.</p>
+  <div class="grid rise d3" style="grid-template-columns:auto minmax(0,1fr);gap:22px;align-items:center;margin-top:16px">
+    <div class="qrbox"><svg viewBox="0 0 35 35" shape-rendering="crispEdges" class="qr" role="img" aria-label="QR code to the live BhoomiPulse tool"><rect width="35" height="35" fill="#fff"/><g fill="#02040a"><rect x="1" y="1" width="1" height="1"/><rect x="2" y="1" width="1" height="1"/><rect x="3" y="1" width="1" height="1"/><rect x="4" y="1" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="1" width="1" height="1"/><rect x="7" y="1" width="1" height="1"/><rect x="9" y="1" width="1" height="1"/><rect x="12" y="1" width="1" height="1"/><rect x="13" y="1" width="1" height="1"/><rect x="14" y="1" width="1" height="1"/><rect x="15" y="1" width="1" height="1"/><rect x="17" y="1" width="1" height="1"/><rect x="18" y="1" width="1" height="1"/><rect x="19" y="1" width="1" height="1"/><rect x="20" y="1" width="1" height="1"/><rect x="21" y="1" width="1" height="1"/><rect x="23" y="1" width="1" height="1"/><rect x="24" y="1" width="1" height="1"/><rect x="27" y="1" width="1" height="1"/><rect x="28" y="1" width="1" height="1"/><rect x="29" y="1" width="1" height="1"/><rect x="30" y="1" width="1" height="1"/><rect x="31" y="1" width="1" height="1"/><rect x="32" y="1" width="1" height="1"/><rect x="33" y="1" width="1" height="1"/><rect x="1" y="2" width="1" height="1"/><rect x="7" y="2" width="1" height="1"/><rect x="9" y="2" width="1" height="1"/><rect x="10" y="2" width="1" height="1"/><rect x="13" y="2" width="1" height="1"/><rect x="14" y="2" width="1" height="1"/><rect x="19" y="2" width="1" height="1"/><rect x="23" y="2" width="1" height="1"/><rect x="24" y="2" width="1" height="1"/><rect x="25" y="2" width="1" height="1"/><rect x="27" y="2" width="1" height="1"/><rect x="33" y="2" width="1" height="1"/><rect x="1" y="3" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="4" y="3" width="1" height="1"/><rect x="5" y="3" width="1" height="1"/><rect x="7" y="3" width="1" height="1"/><rect x="11" y="3" width="1" height="1"/><rect x="17" y="3" width="1" height="1"/><rect x="18" y="3" width="1" height="1"/><rect x="20" y="3" width="1" height="1"/><rect x="23" y="3" width="1" height="1"/><rect x="25" y="3" width="1" height="1"/><rect x="27" y="3" width="1" height="1"/><rect x="29" y="3" width="1" height="1"/><rect x="30" y="3" width="1" height="1"/><rect x="31" y="3" width="1" height="1"/><rect x="33" y="3" width="1" height="1"/><rect x="1" y="4" width="1" height="1"/><rect x="3" y="4" width="1" height="1"/><rect x="4" y="4" width="1" height="1"/><rect x="5" y="4" width="1" height="1"/><rect x="7" y="4" width="1" height="1"/><rect x="9" y="4" width="1" height="1"/><rect x="11" y="4" width="1" height="1"/><rect x="12" y="4" width="1" height="1"/><rect x="15" y="4" width="1" height="1"/><rect x="17" y="4" width="1" height="1"/><rect x="25" y="4" width="1" height="1"/><rect x="27" y="4" width="1" height="1"/><rect x="29" y="4" width="1" height="1"/><rect x="30" y="4" width="1" height="1"/><rect x="31" y="4" width="1" height="1"/><rect x="33" y="4" width="1" height="1"/><rect x="1" y="5" width="1" height="1"/><rect x="3" y="5" width="1" height="1"/><rect x="4" y="5" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="7" y="5" width="1" height="1"/><rect x="11" y="5" width="1" height="1"/><rect x="15" y="5" width="1" height="1"/><rect x="21" y="5" width="1" height="1"/><rect x="25" y="5" width="1" height="1"/><rect x="27" y="5" width="1" height="1"/><rect x="29" y="5" width="1" height="1"/><rect x="30" y="5" width="1" height="1"/><rect x="31" y="5" width="1" height="1"/><rect x="33" y="5" width="1" height="1"/><rect x="1" y="6" width="1" height="1"/><rect x="7" y="6" width="1" height="1"/><rect x="13" y="6" width="1" height="1"/><rect x="14" y="6" width="1" height="1"/><rect x="15" y="6" width="1" height="1"/><rect x="19" y="6" width="1" height="1"/><rect x="20" y="6" width="1" height="1"/><rect x="21" y="6" width="1" height="1"/><rect x="22" y="6" width="1" height="1"/><rect x="23" y="6" width="1" height="1"/><rect x="25" y="6" width="1" height="1"/><rect x="27" y="6" width="1" height="1"/><rect x="33" y="6" width="1" height="1"/><rect x="1" y="7" width="1" height="1"/><rect x="2" y="7" width="1" height="1"/><rect x="3" y="7" width="1" height="1"/><rect x="4" y="7" width="1" height="1"/><rect x="5" y="7" width="1" height="1"/><rect x="6" y="7" width="1" height="1"/><rect x="7" y="7" width="1" height="1"/><rect x="9" y="7" width="1" height="1"/><rect x="11" y="7" width="1" height="1"/><rect x="13" y="7" width="1" height="1"/><rect x="15" y="7" width="1" height="1"/><rect x="17" y="7" width="1" height="1"/><rect x="19" y="7" width="1" height="1"/><rect x="21" y="7" width="1" height="1"/><rect x="23" y="7" width="1" height="1"/><rect x="25" y="7" width="1" height="1"/><rect x="27" y="7" width="1" height="1"/><rect x="28" y="7" width="1" height="1"/><rect x="29" y="7" width="1" height="1"/><rect x="30" y="7" width="1" height="1"/><rect x="31" y="7" width="1" height="1"/><rect x="32" y="7" width="1" height="1"/><rect x="33" y="7" width="1" height="1"/><rect x="9" y="8" width="1" height="1"/><rect x="11" y="8" width="1" height="1"/><rect x="18" y="8" width="1" height="1"/><rect x="20" y="8" width="1" height="1"/><rect x="24" y="8" width="1" height="1"/><rect x="1" y="9" width="1" height="1"/><rect x="3" y="9" width="1" height="1"/><rect x="4" y="9" width="1" height="1"/><rect x="6" y="9" width="1" height="1"/><rect x="7" y="9" width="1" height="1"/><rect x="8" y="9" width="1" height="1"/><rect x="10" y="9" width="1" height="1"/><rect x="11" y="9" width="1" height="1"/><rect x="15" y="9" width="1" height="1"/><rect x="17" y="9" width="1" height="1"/><rect x="18" y="9" width="1" height="1"/><rect x="22" y="9" width="1" height="1"/><rect x="27" y="9" width="1" height="1"/><rect x="30" y="9" width="1" height="1"/><rect x="32" y="9" width="1" height="1"/><rect x="33" y="9" width="1" height="1"/><rect x="1" y="10" width="1" height="1"/><rect x="2" y="10" width="1" height="1"/><rect x="11" y="10" width="1" height="1"/><rect x="13" y="10" width="1" height="1"/><rect x="17" y="10" width="1" height="1"/><rect x="20" y="10" width="1" height="1"/><rect x="21" y="10" width="1" height="1"/><rect x="24" y="10" width="1" height="1"/><rect x="27" y="10" width="1" height="1"/><rect x="28" y="10" width="1" height="1"/><rect x="30" y="10" width="1" height="1"/><rect x="31" y="10" width="1" height="1"/><rect x="33" y="10" width="1" height="1"/><rect x="3" y="11" width="1" height="1"/><rect x="4" y="11" width="1" height="1"/><rect x="5" y="11" width="1" height="1"/><rect x="7" y="11" width="1" height="1"/><rect x="8" y="11" width="1" height="1"/><rect x="10" y="11" width="1" height="1"/><rect x="11" y="11" width="1" height="1"/><rect x="13" y="11" width="1" height="1"/><rect x="15" y="11" width="1" height="1"/><rect x="18" y="11" width="1" height="1"/><rect x="21" y="11" width="1" height="1"/><rect x="23" y="11" width="1" height="1"/><rect x="24" y="11" width="1" height="1"/><rect x="27" y="11" width="1" height="1"/><rect x="28" y="11" width="1" height="1"/><rect x="29" y="11" width="1" height="1"/><rect x="30" y="11" width="1" height="1"/><rect x="32" y="11" width="1" height="1"/><rect x="33" y="11" width="1" height="1"/><rect x="2" y="12" width="1" height="1"/><rect x="9" y="12" width="1" height="1"/><rect x="12" y="12" width="1" height="1"/><rect x="14" y="12" width="1" height="1"/><rect x="15" y="12" width="1" height="1"/><rect x="19" y="12" width="1" height="1"/><rect x="24" y="12" width="1" height="1"/><rect x="25" y="12" width="1" height="1"/><rect x="27" y="12" width="1" height="1"/><rect x="28" y="12" width="1" height="1"/><rect x="30" y="12" width="1" height="1"/><rect x="1" y="13" width="1" height="1"/><rect x="3" y="13" width="1" height="1"/><rect x="4" y="13" width="1" height="1"/><rect x="5" y="13" width="1" height="1"/><rect x="7" y="13" width="1" height="1"/><rect x="8" y="13" width="1" height="1"/><rect x="9" y="13" width="1" height="1"/><rect x="10" y="13" width="1" height="1"/><rect x="11" y="13" width="1" height="1"/><rect x="16" y="13" width="1" height="1"/><rect x="19" y="13" width="1" height="1"/><rect x="23" y="13" width="1" height="1"/><rect x="25" y="13" width="1" height="1"/><rect x="26" y="13" width="1" height="1"/><rect x="29" y="13" width="1" height="1"/><rect x="30" y="13" width="1" height="1"/><rect x="33" y="13" width="1" height="1"/><rect x="2" y="14" width="1" height="1"/><rect x="3" y="14" width="1" height="1"/><rect x="6" y="14" width="1" height="1"/><rect x="9" y="14" width="1" height="1"/><rect x="10" y="14" width="1" height="1"/><rect x="11" y="14" width="1" height="1"/><rect x="12" y="14" width="1" height="1"/><rect x="13" y="14" width="1" height="1"/><rect x="17" y="14" width="1" height="1"/><rect x="18" y="14" width="1" height="1"/><rect x="19" y="14" width="1" height="1"/><rect x="20" y="14" width="1" height="1"/><rect x="21" y="14" width="1" height="1"/><rect x="22" y="14" width="1" height="1"/><rect x="25" y="14" width="1" height="1"/><rect x="26" y="14" width="1" height="1"/><rect x="28" y="14" width="1" height="1"/><rect x="31" y="14" width="1" height="1"/><rect x="32" y="14" width="1" height="1"/><rect x="1" y="15" width="1" height="1"/><rect x="2" y="15" width="1" height="1"/><rect x="4" y="15" width="1" height="1"/><rect x="5" y="15" width="1" height="1"/><rect x="7" y="15" width="1" height="1"/><rect x="8" y="15" width="1" height="1"/><rect x="9" y="15" width="1" height="1"/><rect x="11" y="15" width="1" height="1"/><rect x="12" y="15" width="1" height="1"/><rect x="14" y="15" width="1" height="1"/><rect x="15" y="15" width="1" height="1"/><rect x="16" y="15" width="1" height="1"/><rect x="17" y="15" width="1" height="1"/><rect x="20" y="15" width="1" height="1"/><rect x="23" y="15" width="1" height="1"/><rect x="25" y="15" width="1" height="1"/><rect x="27" y="15" width="1" height="1"/><rect x="28" y="15" width="1" height="1"/><rect x="30" y="15" width="1" height="1"/><rect x="31" y="15" width="1" height="1"/><rect x="1" y="16" width="1" height="1"/><rect x="3" y="16" width="1" height="1"/><rect x="5" y="16" width="1" height="1"/><rect x="10" y="16" width="1" height="1"/><rect x="11" y="16" width="1" height="1"/><rect x="13" y="16" width="1" height="1"/><rect x="14" y="16" width="1" height="1"/><rect x="15" y="16" width="1" height="1"/><rect x="17" y="16" width="1" height="1"/><rect x="21" y="16" width="1" height="1"/><rect x="22" y="16" width="1" height="1"/><rect x="23" y="16" width="1" height="1"/><rect x="25" y="16" width="1" height="1"/><rect x="26" y="16" width="1" height="1"/><rect x="27" y="16" width="1" height="1"/><rect x="29" y="16" width="1" height="1"/><rect x="31" y="16" width="1" height="1"/><rect x="3" y="17" width="1" height="1"/><rect x="4" y="17" width="1" height="1"/><rect x="5" y="17" width="1" height="1"/><rect x="7" y="17" width="1" height="1"/><rect x="8" y="17" width="1" height="1"/><rect x="10" y="17" width="1" height="1"/><rect x="13" y="17" width="1" height="1"/><rect x="16" y="17" width="1" height="1"/><rect x="17" y="17" width="1" height="1"/><rect x="20" y="17" width="1" height="1"/><rect x="22" y="17" width="1" height="1"/><rect x="23" y="17" width="1" height="1"/><rect x="25" y="17" width="1" height="1"/><rect x="26" y="17" width="1" height="1"/><rect x="27" y="17" width="1" height="1"/><rect x="29" y="17" width="1" height="1"/><rect x="30" y="17" width="1" height="1"/><rect x="31" y="17" width="1" height="1"/><rect x="1" y="18" width="1" height="1"/><rect x="2" y="18" width="1" height="1"/><rect x="3" y="18" width="1" height="1"/><rect x="4" y="18" width="1" height="1"/><rect x="8" y="18" width="1" height="1"/><rect x="9" y="18" width="1" height="1"/><rect x="10" y="18" width="1" height="1"/><rect x="13" y="18" width="1" height="1"/><rect x="14" y="18" width="1" height="1"/><rect x="15" y="18" width="1" height="1"/><rect x="16" y="18" width="1" height="1"/><rect x="18" y="18" width="1" height="1"/><rect x="19" y="18" width="1" height="1"/><rect x="21" y="18" width="1" height="1"/><rect x="22" y="18" width="1" height="1"/><rect x="23" y="18" width="1" height="1"/><rect x="24" y="18" width="1" height="1"/><rect x="25" y="18" width="1" height="1"/><rect x="27" y="18" width="1" height="1"/><rect x="29" y="18" width="1" height="1"/><rect x="30" y="18" width="1" height="1"/><rect x="32" y="18" width="1" height="1"/><rect x="33" y="18" width="1" height="1"/><rect x="5" y="19" width="1" height="1"/><rect x="6" y="19" width="1" height="1"/><rect x="7" y="19" width="1" height="1"/><rect x="8" y="19" width="1" height="1"/><rect x="9" y="19" width="1" height="1"/><rect x="10" y="19" width="1" height="1"/><rect x="12" y="19" width="1" height="1"/><rect x="13" y="19" width="1" height="1"/><rect x="15" y="19" width="1" height="1"/><rect x="16" y="19" width="1" height="1"/><rect x="17" y="19" width="1" height="1"/><rect x="18" y="19" width="1" height="1"/><rect x="21" y="19" width="1" height="1"/><rect x="22" y="19" width="1" height="1"/><rect x="25" y="19" width="1" height="1"/><rect x="28" y="19" width="1" height="1"/><rect x="29" y="19" width="1" height="1"/><rect x="31" y="19" width="1" height="1"/><rect x="32" y="19" width="1" height="1"/><rect x="3" y="20" width="1" height="1"/><rect x="5" y="20" width="1" height="1"/><rect x="6" y="20" width="1" height="1"/><rect x="8" y="20" width="1" height="1"/><rect x="9" y="20" width="1" height="1"/><rect x="10" y="20" width="1" height="1"/><rect x="12" y="20" width="1" height="1"/><rect x="13" y="20" width="1" height="1"/><rect x="20" y="20" width="1" height="1"/><rect x="23" y="20" width="1" height="1"/><rect x="24" y="20" width="1" height="1"/><rect x="25" y="20" width="1" height="1"/><rect x="27" y="20" width="1" height="1"/><rect x="29" y="20" width="1" height="1"/><rect x="1" y="21" width="1" height="1"/><rect x="3" y="21" width="1" height="1"/><rect x="6" y="21" width="1" height="1"/><rect x="7" y="21" width="1" height="1"/><rect x="9" y="21" width="1" height="1"/><rect x="10" y="21" width="1" height="1"/><rect x="11" y="21" width="1" height="1"/><rect x="14" y="21" width="1" height="1"/><rect x="15" y="21" width="1" height="1"/><rect x="16" y="21" width="1" height="1"/><rect x="19" y="21" width="1" height="1"/><rect x="20" y="21" width="1" height="1"/><rect x="22" y="21" width="1" height="1"/><rect x="24" y="21" width="1" height="1"/><rect x="30" y="21" width="1" height="1"/><rect x="31" y="21" width="1" height="1"/><rect x="33" y="21" width="1" height="1"/><rect x="1" y="22" width="1" height="1"/><rect x="2" y="22" width="1" height="1"/><rect x="5" y="22" width="1" height="1"/><rect x="6" y="22" width="1" height="1"/><rect x="8" y="22" width="1" height="1"/><rect x="15" y="22" width="1" height="1"/><rect x="16" y="22" width="1" height="1"/><rect x="19" y="22" width="1" height="1"/><rect x="20" y="22" width="1" height="1"/><rect x="21" y="22" width="1" height="1"/><rect x="24" y="22" width="1" height="1"/><rect x="27" y="22" width="1" height="1"/><rect x="30" y="22" width="1" height="1"/><rect x="33" y="22" width="1" height="1"/><rect x="3" y="23" width="1" height="1"/><rect x="4" y="23" width="1" height="1"/><rect x="7" y="23" width="1" height="1"/><rect x="11" y="23" width="1" height="1"/><rect x="12" y="23" width="1" height="1"/><rect x="13" y="23" width="1" height="1"/><rect x="17" y="23" width="1" height="1"/><rect x="22" y="23" width="1" height="1"/><rect x="23" y="23" width="1" height="1"/><rect x="24" y="23" width="1" height="1"/><rect x="27" y="23" width="1" height="1"/><rect x="28" y="23" width="1" height="1"/><rect x="31" y="23" width="1" height="1"/><rect x="32" y="23" width="1" height="1"/><rect x="33" y="23" width="1" height="1"/><rect x="2" y="24" width="1" height="1"/><rect x="3" y="24" width="1" height="1"/><rect x="5" y="24" width="1" height="1"/><rect x="6" y="24" width="1" height="1"/><rect x="9" y="24" width="1" height="1"/><rect x="10" y="24" width="1" height="1"/><rect x="17" y="24" width="1" height="1"/><rect x="19" y="24" width="1" height="1"/><rect x="20" y="24" width="1" height="1"/><rect x="21" y="24" width="1" height="1"/><rect x="23" y="24" width="1" height="1"/><rect x="25" y="24" width="1" height="1"/><rect x="27" y="24" width="1" height="1"/><rect x="28" y="24" width="1" height="1"/><rect x="29" y="24" width="1" height="1"/><rect x="30" y="24" width="1" height="1"/><rect x="32" y="24" width="1" height="1"/><rect x="1" y="25" width="1" height="1"/><rect x="3" y="25" width="1" height="1"/><rect x="4" y="25" width="1" height="1"/><rect x="5" y="25" width="1" height="1"/><rect x="6" y="25" width="1" height="1"/><rect x="7" y="25" width="1" height="1"/><rect x="9" y="25" width="1" height="1"/><rect x="11" y="25" width="1" height="1"/><rect x="13" y="25" width="1" height="1"/><rect x="16" y="25" width="1" height="1"/><rect x="18" y="25" width="1" height="1"/><rect x="19" y="25" width="1" height="1"/><rect x="23" y="25" width="1" height="1"/><rect x="25" y="25" width="1" height="1"/><rect x="26" y="25" width="1" height="1"/><rect x="27" y="25" width="1" height="1"/><rect x="28" y="25" width="1" height="1"/><rect x="29" y="25" width="1" height="1"/><rect x="32" y="25" width="1" height="1"/><rect x="9" y="26" width="1" height="1"/><rect x="11" y="26" width="1" height="1"/><rect x="14" y="26" width="1" height="1"/><rect x="16" y="26" width="1" height="1"/><rect x="17" y="26" width="1" height="1"/><rect x="18" y="26" width="1" height="1"/><rect x="20" y="26" width="1" height="1"/><rect x="22" y="26" width="1" height="1"/><rect x="23" y="26" width="1" height="1"/><rect x="24" y="26" width="1" height="1"/><rect x="25" y="26" width="1" height="1"/><rect x="29" y="26" width="1" height="1"/><rect x="30" y="26" width="1" height="1"/><rect x="1" y="27" width="1" height="1"/><rect x="2" y="27" width="1" height="1"/><rect x="3" y="27" width="1" height="1"/><rect x="4" y="27" width="1" height="1"/><rect x="5" y="27" width="1" height="1"/><rect x="6" y="27" width="1" height="1"/><rect x="7" y="27" width="1" height="1"/><rect x="9" y="27" width="1" height="1"/><rect x="10" y="27" width="1" height="1"/><rect x="11" y="27" width="1" height="1"/><rect x="13" y="27" width="1" height="1"/><rect x="15" y="27" width="1" height="1"/><rect x="20" y="27" width="1" height="1"/><rect x="21" y="27" width="1" height="1"/><rect x="22" y="27" width="1" height="1"/><rect x="24" y="27" width="1" height="1"/><rect x="25" y="27" width="1" height="1"/><rect x="27" y="27" width="1" height="1"/><rect x="29" y="27" width="1" height="1"/><rect x="32" y="27" width="1" height="1"/><rect x="1" y="28" width="1" height="1"/><rect x="7" y="28" width="1" height="1"/><rect x="9" y="28" width="1" height="1"/><rect x="11" y="28" width="1" height="1"/><rect x="17" y="28" width="1" height="1"/><rect x="21" y="28" width="1" height="1"/><rect x="22" y="28" width="1" height="1"/><rect x="24" y="28" width="1" height="1"/><rect x="25" y="28" width="1" height="1"/><rect x="29" y="28" width="1" height="1"/><rect x="30" y="28" width="1" height="1"/><rect x="31" y="28" width="1" height="1"/><rect x="33" y="28" width="1" height="1"/><rect x="1" y="29" width="1" height="1"/><rect x="3" y="29" width="1" height="1"/><rect x="4" y="29" width="1" height="1"/><rect x="5" y="29" width="1" height="1"/><rect x="7" y="29" width="1" height="1"/><rect x="10" y="29" width="1" height="1"/><rect x="18" y="29" width="1" height="1"/><rect x="21" y="29" width="1" height="1"/><rect x="22" y="29" width="1" height="1"/><rect x="23" y="29" width="1" height="1"/><rect x="24" y="29" width="1" height="1"/><rect x="25" y="29" width="1" height="1"/><rect x="26" y="29" width="1" height="1"/><rect x="27" y="29" width="1" height="1"/><rect x="28" y="29" width="1" height="1"/><rect x="29" y="29" width="1" height="1"/><rect x="31" y="29" width="1" height="1"/><rect x="33" y="29" width="1" height="1"/><rect x="1" y="30" width="1" height="1"/><rect x="3" y="30" width="1" height="1"/><rect x="4" y="30" width="1" height="1"/><rect x="5" y="30" width="1" height="1"/><rect x="7" y="30" width="1" height="1"/><rect x="9" y="30" width="1" height="1"/><rect x="10" y="30" width="1" height="1"/><rect x="12" y="30" width="1" height="1"/><rect x="13" y="30" width="1" height="1"/><rect x="14" y="30" width="1" height="1"/><rect x="18" y="30" width="1" height="1"/><rect x="19" y="30" width="1" height="1"/><rect x="21" y="30" width="1" height="1"/><rect x="24" y="30" width="1" height="1"/><rect x="28" y="30" width="1" height="1"/><rect x="30" y="30" width="1" height="1"/><rect x="33" y="30" width="1" height="1"/><rect x="1" y="31" width="1" height="1"/><rect x="3" y="31" width="1" height="1"/><rect x="4" y="31" width="1" height="1"/><rect x="5" y="31" width="1" height="1"/><rect x="7" y="31" width="1" height="1"/><rect x="9" y="31" width="1" height="1"/><rect x="11" y="31" width="1" height="1"/><rect x="13" y="31" width="1" height="1"/><rect x="15" y="31" width="1" height="1"/><rect x="18" y="31" width="1" height="1"/><rect x="22" y="31" width="1" height="1"/><rect x="23" y="31" width="1" height="1"/><rect x="27" y="31" width="1" height="1"/><rect x="28" y="31" width="1" height="1"/><rect x="30" y="31" width="1" height="1"/><rect x="1" y="32" width="1" height="1"/><rect x="7" y="32" width="1" height="1"/><rect x="10" y="32" width="1" height="1"/><rect x="11" y="32" width="1" height="1"/><rect x="15" y="32" width="1" height="1"/><rect x="16" y="32" width="1" height="1"/><rect x="17" y="32" width="1" height="1"/><rect x="18" y="32" width="1" height="1"/><rect x="25" y="32" width="1" height="1"/><rect x="27" y="32" width="1" height="1"/><rect x="28" y="32" width="1" height="1"/><rect x="29" y="32" width="1" height="1"/><rect x="33" y="32" width="1" height="1"/><rect x="1" y="33" width="1" height="1"/><rect x="2" y="33" width="1" height="1"/><rect x="3" y="33" width="1" height="1"/><rect x="4" y="33" width="1" height="1"/><rect x="5" y="33" width="1" height="1"/><rect x="6" y="33" width="1" height="1"/><rect x="7" y="33" width="1" height="1"/><rect x="9" y="33" width="1" height="1"/><rect x="13" y="33" width="1" height="1"/><rect x="14" y="33" width="1" height="1"/><rect x="16" y="33" width="1" height="1"/><rect x="17" y="33" width="1" height="1"/><rect x="18" y="33" width="1" height="1"/><rect x="19" y="33" width="1" height="1"/><rect x="20" y="33" width="1" height="1"/><rect x="22" y="33" width="1" height="1"/><rect x="24" y="33" width="1" height="1"/><rect x="29" y="33" width="1" height="1"/><rect x="31" y="33" width="1" height="1"/></g></svg><span>scan to try it</span></div>
+    <div><div class="ask" style="margin:0 0 12px"><b>YOUR TURN</b> Ask us anything: how a valuer would react, what the RBI allows, or pin any property in the live tool.</div>
+    <div class="cta" style="margin-top:0"><a href="https://silverintegral13.github.io/geospatial-intel/" target="_blank" rel="noopener">Open the live Command Center</a><a class="ghost" href="https://github.com/silverintegral13/geospatial-intel" target="_blank" rel="noopener">API and code on GitHub</a></div></div>
+  </div>
+  <aside>Thirty seconds on the team in reverse alphabetical order, one line on why us, then open the floor and invite people to scan the code and pin their own home.</aside>
 </div></section>
 
 <footer class="foot"><div class="srcbar" id="srcbar"></div><div class="nav"><span id="chapLbl"></span><span id="ctr">1 / 20</span><button id="prevB" aria-label="Previous slide">←</button><button id="nextB" aria-label="Next slide">→</button></div></footer>
@@ -679,26 +817,27 @@ table.fb td:first-child{color:#d6deef;font-style:italic;width:44%}
 <script>
 {
 const GEO = {"outline":"M405,903L414,887L418,874L421,855L419,847L418,839L414,829L416,810L413,805L411,793L414,783L421,769L431,765L437,771L448,761L450,753L459,748L466,749L486,740L487,730L485,725L499,712L513,705L527,689L543,680L553,670L566,651L573,643L584,634L596,628L618,621L623,613L632,607L632,600L641,593L634,580L638,571L644,565L655,562L666,558L677,550L679,556L695,548L707,550L707,541L700,510L704,506L697,501L697,496L691,491L691,482L697,478L696,469L676,459L673,453L677,447L687,441L687,435L702,436L698,424L690,424L685,417L677,414L675,409L678,401L689,393L707,398L716,406L721,407L729,401L733,409L733,425L731,429L741,434L766,436L779,435L790,436L806,436L817,441L820,446L813,451L810,460L801,465L797,470L780,478L776,486L781,504L785,504L790,514L797,509L795,502L803,495L801,488L812,487L816,504L816,515L820,522L822,537L833,549L837,541L843,539L839,519L840,511L847,512L850,488L847,476L851,478L861,477L874,483L877,471L884,457L890,451L893,437L888,435L891,426L895,425L903,416L906,403L904,391L909,383L916,382L926,375L935,365L945,361L961,359L969,367L972,366L964,355L964,350L975,339L980,339L979,328L970,323L960,323L948,316L954,310L951,302L939,299L942,292L937,284L927,288L915,300L897,294L890,288L876,298L874,302L864,311L847,314L843,325L829,330L828,336L822,342L813,344L810,341L799,346L792,341L789,351L792,354L804,355L804,368L807,375L800,374L794,378L782,379L774,378L760,379L751,375L744,379L733,382L717,376L709,378L697,366L702,360L698,355L701,340L697,333L691,333L679,342L674,354L673,364L672,367L678,379L676,387L650,394L640,388L631,391L617,385L608,383L602,387L594,376L585,380L580,376L562,370L561,359L550,357L545,353L536,359L529,355L513,355L500,354L499,346L490,347L478,339L472,341L455,331L450,323L440,319L428,312L422,314L412,306L415,297L420,290L418,285L423,279L423,273L444,256L417,244L418,239L405,231L397,232L388,225L380,214L373,220L368,212L372,208L368,203L370,195L360,185L357,176L369,171L371,179L381,181L388,174L392,176L398,168L390,160L392,150L380,149L375,144L374,137L380,135L374,125L382,121L390,123L396,116L396,106L402,101L412,98L416,82L421,72L410,59L406,61L391,57L382,59L366,58L353,63L341,72L323,71L326,66L315,60L309,61L302,55L305,51L281,36L270,32L260,19L254,16L243,21L236,15L227,18L210,27L203,29L187,28L180,37L167,44L165,56L170,59L185,59L185,63L193,68L201,68L206,72L206,80L217,85L212,94L204,97L201,103L195,104L194,110L200,128L201,139L199,146L201,155L225,168L233,168L236,177L247,178L257,183L254,191L233,198L231,206L234,213L231,217L231,229L209,252L212,258L207,263L193,267L190,280L178,300L161,308L154,322L145,332L144,337L137,340L122,342L112,346L107,346L104,339L94,336L86,343L83,351L69,365L66,380L78,386L88,387L88,398L85,409L91,417L104,418L104,428L111,437L113,444L118,453L114,456L114,464L109,470L101,469L101,463L86,467L83,471L73,471L69,467L52,468L45,470L41,478L28,478L23,482L20,491L27,495L38,507L56,518L72,519L86,513L92,505L106,506L97,518L94,516L88,527L77,532L61,537L50,533L48,539L58,552L72,564L90,585L108,594L120,592L130,588L151,576L158,561L153,555L160,537L166,542L164,550L168,552L167,573L175,591L176,602L174,606L172,614L169,621L174,658L177,673L181,681L179,685L184,698L188,712L192,739L190,741L197,762L203,770L208,780L212,794L216,799L222,807L233,836L236,854L242,875L252,901L263,912L273,933L276,945L283,961L287,977L290,993L297,1011L315,1033L322,1039L330,1040L337,1038L349,1025L350,1012L358,1004L379,997L374,992L376,983L385,971L386,964L390,961L406,962L405,943L405,938L405,931L402,917L404,907L405,903ZM865,1082L867,1078L863,1070L858,1072L861,1083L865,1082ZM828,901L824,899L821,912L828,916L828,901ZM831,888L835,883L833,871L827,872L826,890L831,888ZM833,847L830,855L833,864L837,864L833,847Z","inner":"M404,907L405,903M405,943L401,940L405,938M419,664L408,638L377,635L358,625L330,679M330,679L268,722L243,727L217,773M217,773L203,770M172,614L179,611M187,615L211,593L209,554L218,550M179,611L182,615L187,615M218,550L258,569L308,562L328,570L384,559L431,572M431,572L426,642L419,664M891,426L851,430M851,430L874,391L908,370M908,370L909,383M330,251L391,305L412,306M536,359L552,383L543,403L562,414L520,435L525,459M525,459L519,474M519,474L502,479M502,479L489,453L453,436L437,444L416,428L382,438L377,463L353,461L358,437L381,394L351,377M351,377L335,376L321,343M321,343L323,318M318,306L315,282L331,252M323,318L318,306M331,252L330,251M315,1033L317,960L293,913M293,913L333,903L331,878L352,875M352,875L391,854L419,847M431,572L446,533L467,524L482,502L468,484L502,479M519,474L539,493L541,529M541,529L515,578L487,589L476,617L484,657L460,680L456,696M456,696L446,697M446,697L419,664M174,606L176,602M187,615L179,611M118,453L150,452L183,470L201,496L224,511M224,511L218,550M323,318L306,316L318,306M697,366L673,364M810,460L813,469M813,469L812,487M733,382L729,401M655,562L630,540M630,540L632,528L601,503L654,478L669,457L663,433M663,433L676,387M541,529L606,530L630,540M566,651L551,662L528,651L507,677L456,696M663,433L641,456L596,455L577,464L525,459M357,176L335,160L304,150M304,150L259,114L254,96L217,85M351,377L296,413L314,455L309,469L283,471L267,453L237,461L244,490L224,511M212,258L230,267M230,267L233,288L257,291L264,314L308,347L321,343M446,697L429,720L384,752L348,766L328,763M328,763L325,742L330,679M352,875L362,856L324,819L304,810L314,763L328,763M813,469L836,463M836,463L847,476M908,370L933,361L922,337L875,354L858,372L807,375M733,425L753,406L781,413L797,402L818,417L817,441M851,430L836,463M293,913L242,875M216,799L217,773M330,251L341,225L373,220M306,238L306,241M306,241L304,242L302,238L306,238M331,252L304,233M304,233L286,219L273,176M273,176L304,150M273,176L257,183M304,233L306,238M306,241L280,274L230,267","pts":[176,652,71,319,313,70,331,867,67,684,528,67,419,863,66,167,512,66,359,711,66,208,671,65,175,577,65,421,390,65,272,374,64,181,653,64,440,377,64,380,578,63,273,523,63,578,421,62,325,504,62,274,233,62,334,1017,62,345,365,62,187,538,61,311,314,61,268,285,61,206,619,61,207,668,61,185,646,61,179,647,61,335,301,61,493,646,61,322,321,61,326,312,61,183,647,61,108,538,61,509,431,61,242,208,60,470,426,60,515,701,60,327,972,60,408,507,60,683,528,60,257,623,60,208,671,60,276,701,60,240,121,60,305,239,60,310,937,60,181,397,60,348,975,60,795,400,60,350,399,59,431,742,59,300,891,59,314,310,59,584,501,59,250,783,59,315,306,59,265,218,59,310,1026,59,349,914,59,367,944,59,273,436,59,601,609,59,347,340,59,391,323,59,370,306,59,182,644,58,463,575,58,520,380,58,457,576,58,613,520,58,176,646,58,287,975,58,336,586,58,232,730,58,603,602,58,191,335,58,396,690,57,153,556,57,322,649,57,569,540,57,425,750,57,345,254,57,175,644,57,649,494,57,234,391,57,185,647,57,221,736,57,686,382,57,179,592,57,318,313,57,639,489,57,84,531,57,329,266,57,306,713,57,685,517,57,242,168,57,345,766,57,271,506,57,392,661,57,684,519,56,679,530,56,271,928,56,231,599,56,276,814,56,264,583,56,311,594,56,230,766,56,574,449,56,204,457,56,498,536,56,605,485,56,241,869,56,363,426,56,349,1016,56,409,815,56,323,933,56,298,1012,56,684,524,56,237,651,56,239,587,56,638,433,56,292,540,55,335,284,55,297,676,55,358,708,55,415,863,55,309,791,55,587,402,55,684,524,55,334,354,55,292,253,55,387,621,55,234,430,55,286,954,55,567,643,55,407,340,55,265,833,55,319,313,55,298,304,55,315,854,55,357,366,55,348,666,55,634,487,55,468,725,55,667,504,55,688,523,55,683,525,55,270,295,55,378,307,55,329,318,55,322,315,55,483,726,55,310,287,55,304,645,55,603,401,55,299,351,55,480,545,55,228,736,54,269,731,54,827,487,54,275,624,54,363,713,54,280,514,54,684,525,54,515,700,54,437,457,54,378,379,54,452,577,54,686,516,54,391,844,54,312,301,54,413,862,54,420,861,54,368,483,54,527,409,54,591,435,54,337,310,54,244,258,54,396,357,54,331,807,54,687,540,54,247,501,54,393,663,54,209,268,54,328,364,54,381,674,54,404,904,54,683,521,54,323,753,54,359,707,54,311,276,54,563,422,53,867,449,53,698,542,53,494,437,53,650,536,53,621,484,53,382,945,53,186,647,53,326,1037,53,191,415,53,321,261,53,452,459,53,362,707,53,328,693,53,780,483,53,622,429,53,286,573,53,176,524,53,565,414,53,344,959,53,307,241,53,250,350,53,340,322,53,655,414,53,291,786,53,312,320,53,363,315,53,170,505,53,423,483,53,314,312,53,447,754,53,658,423,53,283,308,53,685,552,53,450,398,53,350,267,53,498,470,53,97,565,53,228,347,53,446,735,53,272,582,53,290,554,53,462,351,53,247,282,53,684,518,53,680,474,53,136,522,53,522,685,53,362,804,52,381,869,52,685,516,52,289,990,52,360,304,52,414,869,52,267,185,52,370,387,52,317,226,52,411,778,52,266,781,52,178,586,52,601,626,52,676,546,52,415,716,52,676,420,52,677,442,52,498,415,52,436,409,52,86,510,52,360,779,52,238,855,52,321,309,52,432,351,52,333,427,52,269,836,52,320,773,52,94,587,52,540,567,52,267,780,52,426,387,52,381,335,52,289,289,52,687,524,52,642,488,52,717,377,52,402,910,52,392,407,52,276,211,52,415,867,52,224,280,52,400,872,52,417,866,52,322,455,52,309,311,52,180,559,52,650,533,52,480,379,52,575,419,52,829,448,52,421,425,52,344,389,52,272,401,52,444,580,52,354,707,52,174,638,52,362,709,52,686,504,52,684,521,52,335,925,52,305,252,52,688,498,52,626,411,52,253,201,52,460,741,52,698,434,52,292,272,51,435,338,51,586,478,51,338,494,51,394,293,51,694,518,51,390,938,51,69,561,51,292,823,51,306,266,51,380,894,51,179,529,51,686,514,51,344,734,51,860,410,51,353,868,51,375,546,51,308,883,51,642,505,51,581,418,51,474,367,51,71,504,51,328,837,51,799,422,51,300,945,51,200,521,51,241,386,51,644,491,51,403,314,51,224,403,51,220,260,51,251,236,51,547,445,51,534,389,51,282,866,51,685,523,51,349,605,51,686,515,51,184,655,51,684,522,51,371,814,51,557,378,51,346,350,51,358,453,51,349,861,51,248,475,51,416,567,51,330,992,51,681,370,51,302,241,51,162,471,51,686,526,51,414,357,51,618,501,51,899,354,51,322,331,51,386,723,51,683,519,51,199,524,51,271,855,51,521,552,51,323,790,51,302,390,51,319,318,51,553,399,51,392,483,51,362,630,51,538,679,51,363,711,51,102,557,51,109,519,51,152,483,51,286,240,51,137,542,51,683,523,51,514,404,51,331,863,51,442,745,51,683,520,51,499,379,51,637,566,51,335,816,51,275,246,51,364,593,51,259,331,51,213,701,51,370,320,51,571,384,50,612,490,50,371,959,50,299,329,50,828,914,50,397,720,50,699,511,50,396,445,50,693,518,50,328,574,50,684,498,50,269,681,50,478,398,50,368,874,50,335,522,50,290,406,50,361,847,50,685,514,50,460,731,50,696,388,50,234,446,50,296,780,50,340,327,50,276,945,50,264,252,50,189,649,50,236,121,50,341,270,50,544,368,50,339,876,50,245,325,50,260,497,50,376,293,50,527,421,50,611,427,50,340,382,50,207,782,50,233,232,50,108,549,50,395,545,50,321,259,50,395,729,50,315,676,50,623,431,50,221,570,50,336,526,50,207,782,50,271,222,50,180,649,50,122,562,50,364,367,50,365,343,50,314,506,50,267,809,50,374,661,50,623,582,50,267,426,50,301,922,50,512,432,50,322,285,50,372,599,50,393,904,50,248,582,50,269,754,50,262,911,50,411,752,50,204,364,50,592,446,50,573,434,50,246,603,50,540,422,50,553,451,50,660,433,50,257,701,50,313,381,50,266,554,50,296,659,50,671,403,50,378,363,50,297,594,50,405,945,50,415,757,50,373,868,50,237,370,50,228,494,50,320,297,50,321,876,50,688,513,50,345,799,50,258,216,50,153,468,50,388,624,50,872,418,50,341,552,50,369,970,50,576,459,50,524,594,50,359,418,50,310,961,50,340,1002,50,365,878,50,398,578,50,184,674,50,230,248,50,610,436,50,128,416,50,328,308,50,913,354,50,454,502,50,283,933,50,406,432,50,664,556,49,274,257,49,312,949,49,334,276,49,314,1029,49,497,387,49,296,438,49,461,594,49,341,924,49,421,767,49,620,487,49,313,580,49,298,248,49,212,786,49,229,320,49,399,933,49,384,576,49,627,608,49,364,989,49,280,683,49,347,990,49,606,425,49,349,287,49,508,700,49,356,279,49,222,519,49,591,490,49,410,799,49,244,336,49,675,461,49,256,527,49,277,297,49,350,827,49,97,558,49,369,829,49,168,537,49,356,651,49,327,768,49,494,659,49,240,245,49,250,162,49,318,287,49,416,555,49,259,266,49,251,133,49,404,940,49,541,553,49,538,555,49,430,705,49,449,374,49,399,863,49,720,395,49,329,856,49,494,428,49,676,490,49,614,445,49,272,813,49,391,659,49,323,1005,49,543,476,49,238,241,49,481,356,49,224,116,49,671,453,49,342,297,49,347,939,49,125,571,49,227,610,49,407,369,49,229,258,49,359,285,49,265,916,49,476,651,49,591,462,49,678,531,49,683,523,49,190,725,49,316,629,49,323,972,49,208,670,49,130,513,49,433,704,49,405,826,49,180,561,49,372,451,49,332,990,49,338,992,49,333,311,49,291,664,49,475,409,49,341,666,49,250,743,49,312,389,49,125,572,49,408,349,49,353,296,49,240,754,49,334,320,49,343,987,49,290,375,49,178,597,49,515,509,49,173,630,49,329,946,49,346,852,49,395,329,49,330,622,49,609,394,49,371,676,49,177,606,49,355,678,49,662,489,49,691,507,49,214,251,49,272,931,48,330,316,48,394,390,48,425,764,48,253,898,48,258,900,48,399,893,48,242,571,48,342,483,48,876,380,48,303,768,48,528,572,48,316,615,48,166,488,48,432,704,48,90,573,48,249,891,48,403,326,48,465,734,48,462,736,48,155,413,48,269,527,48,314,969,48,309,904,48,388,957,48,112,374,48,656,401,48,315,536,48,220,634,48,250,490,48,285,600,48,309,926,48,83,509,48,393,652,48,318,879,48,233,333,48,351,883,48,354,261,48,706,382,48,600,529,48,393,655,48,329,957,48,282,334,48,349,897,48,261,282,48,554,662,48,310,694,48,409,877,48,256,575,48,207,778,48,322,1009,48,316,733,48,690,428,48,372,995,48,261,237,48,722,390,48,229,623,48,756,390,48,285,588,48,328,602,48,336,291,48,335,457,48,657,481,48,284,252,48,372,686,48,514,622,48,192,662,48,217,802,48,295,1001,48,372,814,48,650,510,48,386,770,48,317,643,48,393,309,48,281,950,48,318,462,48,555,390,48,744,424,48,209,440,48,330,716,48,289,970,48,210,289,48,392,949,48,229,114,48,386,878,48,258,906,48,737,406,48,325,1002,48,302,419,48,509,470,48,593,596,48,237,267,48,890,372,48,281,936,48,396,421,48,255,742,48,241,809,48,388,919,48,401,758,48,294,857,48,369,333,48,284,783,48,291,242,48,355,411,48,321,982,48,665,517,48,179,492,48,226,348,48,226,746,48,177,534,48,368,660,48,351,283,48,334,351,48,259,803,48,626,403,48,617,471,48,623,411,48,307,806,48,872,363,48,276,275,48,320,273,48,296,987,48,428,745,48,466,745,48,347,703,48,409,725,48,241,873,48,86,579,48,425,333,48,190,496,48,830,384,48,398,945,48,364,916,48,400,923,48,244,214,48,320,952,48,194,663,48,229,564,48,255,341,48,312,1022,48,235,455,48,158,502,48,308,840,48,335,851,48,184,579,48,639,532,48,599,412,48,326,921,48,354,310,48,348,322,48,363,289,48,616,485,48,467,742,48,376,617,48,679,383,48,298,994,48,428,758,48,850,412,48,590,386,48,393,366,48,401,337,48,282,762,48,586,544,48,338,909,48,241,366,48,395,910,48,116,590,48,428,758,48,315,896,48,302,591,48,91,557,48,377,336,48,681,527,48,195,542,48,332,384,47,508,463,47,302,296,47,597,613,47,350,929,47,338,752,47,142,565,47,196,351,47,439,346,47,283,279,47,678,397,47,219,715,47,388,402,47,815,447,47,604,428,47,351,471,47,347,747,47,481,723,47,322,578,47,162,522,47,276,940,47,673,479,47,663,525,47,160,484,47,249,559,47,339,991,47,160,480,47,274,252,47,471,463,47,877,403,47,684,505,47,232,684,47,407,788,47,272,261,47,361,712,47,415,746,47,299,833,47,300,820,47,665,471,47,575,430,47,438,732,47,288,498,47,253,875,47,246,884,47,482,378,47,518,404,47,227,690,47,427,369,47,247,825,47,563,497,47,208,621,47,310,720,47,520,669,47,287,606,47,382,407,47,828,517,47,484,721,47,476,740,47,493,712,47,146,558,47,330,670,47,586,545,47,442,354,47,326,343,47,296,231,47,233,786,47,522,662,47,388,870,47,284,456,47,174,531,47,388,589,47,474,557,47,683,420,47,237,396,47,339,916,47,359,391,47,575,422,47,197,706,47,296,992,47,381,287,47,267,608,47,391,743,47,352,364,47,294,937,47,291,945,47,758,400,47,325,882,47,628,468,47,633,409,47,288,315,47,546,422,47,479,580,47,352,306,47,173,460,47,301,898,47,515,671,47,373,707,47,382,326,47,622,424,47,361,290,47,332,295,47,232,357,47,168,430,47,259,313,47,597,425,47,698,522,47,304,742,47,613,521,47,290,962,47,340,853,47,171,620,47,350,921,47,363,853,47,473,730,47,414,865,47,771,395,47,670,537,47,528,441,47,263,181,47,291,216,47,357,289,47,247,342,47,407,861,47,213,333,47,569,372,47,308,773,47,687,536,47,61,519,47,286,649,47,353,567,47,113,526,47,858,466,47,648,468,47,202,664,47,288,891,47,417,280,47,382,699,47,354,335,47,383,515,47,357,861,47,255,748,47,320,984,47,243,547,47,83,552,47,309,1007,47,540,375,47,601,485,47,241,767,47,302,498,47,231,733,47,570,470,47,257,595,47,353,706,47,416,452,47,160,367,47,229,617,47,601,437,47,337,315,47,364,293,47,331,701,47,681,375,47,340,273,47,303,655,47,238,294,47,375,345,47,459,341,47,429,432,47,605,425,47,343,650,47,232,572,47,231,715,47,480,722,47,446,361,47,667,455,47,290,984,47,406,834,47,196,530,47,300,239,47,439,701,47,254,256,47,265,904,47,290,984,47,334,474,47,232,673,47,544,662,47,677,531,47,302,512,47,353,765,47,511,379,47,636,482,47,621,489,47,204,483,47,422,527,47,648,396,47,278,803,47,856,368,47,559,511,47,211,615,47,523,693,47,375,301,47,183,512,47,869,455,46,352,399,46,675,507,46,399,910,46,577,589,46,353,688,46,401,403,46,324,340,46,509,433,46,287,855,46,465,728,46,300,315,46,276,583,46,357,801,46,122,547,46,620,601,46,697,517,46,420,704,46,214,384,46,464,716,46,451,750,46,646,448,46,285,346,46,362,562,46,552,365,46,322,355,46,320,289,46,341,713,46,302,1017,46,416,866,46,662,479,46,401,570,46,368,869,46,607,432,46,688,369,46,476,731,46,437,760,46,293,638,46,156,442,46,350,867,46,360,978,46,347,977,46,288,946,46,549,435,46,202,409,46,594,612,46,371,291,46,121,528,46,301,633,46,321,305,46,304,595,46,720,402,46,392,287,46,362,631,46,357,347,46,369,859,46,618,589,46,694,537,46,435,353,46,250,610,46,248,735,46,309,480,46,363,574,46,352,584,46,319,303,46,598,434,46,141,528,46,203,400,46,542,544,46,313,761,46,584,424,46,174,546,46,371,974,46,335,615,46,377,611,46,316,698,46,370,515,46,267,327,46,496,547,46,643,428,46,338,864,46,554,441,46,413,496,46,413,729,46,499,661,46,705,386,46,297,613,46,583,431,46,384,380,46,337,501,46,363,882,46,537,565,46,174,507,46,535,472,46,594,524,46,352,382,46,376,911,46,415,401,46,455,740,46,467,724,46,315,233,46,324,593,46,309,665,46,401,367,46,329,968,46,207,775,46,703,527,46,678,541,46,250,769,46,237,621,46,622,527,46,717,380,46,438,716,46,415,318,46,837,436,46,387,998,46,506,365,46,397,860,46,329,510,46,386,305,46,372,294,46,351,722,46,334,921,46,175,604,46,340,782,46,294,589,46,681,471,46,267,913,46,369,541,46,207,444,46,307,259,46,235,258,46,285,706,46,289,977,46,324,978,46,526,403,46,538,675,46,298,266,46,358,295,46,297,705,46,328,734,46,301,1015,46,637,446,46,557,526,46,428,738,46,228,272,46,619,450,46,354,355,46,175,446,46,318,688,46,429,321,46,581,585,46,179,525,46,275,926,46,588,441,46,460,574,46,304,998,46,419,733,46,263,912,46,193,580,46,313,888,46,70,541,46,410,842,46,273,463,46,280,954,46,420,768,46,649,396,46,410,704,46,435,468,46,353,329,46,510,453,46,251,408,46,273,841,46,414,418,46,356,383,46,257,797,46,239,476,46,745,398,46,291,870,46,235,285,46,293,645,46,252,297,46,247,870,46,299,970,46,331,118,46,583,380,46,417,375,46,259,637,46,560,393,46,343,703,46,302,1018,46,241,220,46,348,308,46,562,414,46,250,588,46,358,951,46,482,734,46,234,640,46,265,444,46,831,407,46,493,391,46,438,747,46,216,285,46,276,288,46,334,877,46,298,781,46,549,602,46,305,1019,46,395,878,46,183,540,46,504,437,46,281,542,46,321,375,46,348,1023,46,579,383,46,346,356,46,429,405,46,48,540,46,294,493,46,322,586,46,277,455,46,134,564,46,383,340,46,377,966,46,312,292,46,409,813,46,281,689,46,345,571,46,360,434,46,435,577,46,227,727,46,199,630,45,135,483,45,327,290,45,200,508,45,349,780,45,197,553,45,769,389,45,567,458,45,334,633,45,595,441,45,355,593,45,450,548,45,573,453,45,261,791,45,364,764,45,321,719,45,276,394,45,652,485,45,399,346,45,160,513,45,328,964,45,232,745,45,377,316,45,233,724,45,105,591,45,394,304,45,312,648,45,620,487,45,689,538,45,129,582,45,345,326,45,198,393,45,565,380,45,420,859,45,191,657,45,229,751,45,591,426,45,279,488,45,303,685,45,220,598,45,625,598,45,291,966,45,868,389,45,239,854,45,430,743,45,242,249,45,311,282,45,285,964,45,295,681,45,415,408,45,232,521,45,398,317,45,213,624,45,183,663,45,277,719,45,257,903,45,886,395,45,319,919,45,450,365,45,272,759,45,355,971,45,307,329,45,663,495,45,286,728,45,495,701,45,564,650,45,365,322,45,896,397,45,255,583,45,352,816,45,389,668,45,270,887,45,527,406,45,320,348,45,325,280,45,320,798,45,355,492,45,399,768,45,304,984,45,259,770,45,453,377,45,181,609,45,314,327,45,187,294,45,648,393,45,258,821,45,277,357,45,312,866,45,179,567,45,533,420,45,628,489,45,284,458,45,401,929,45,277,385,45,415,865,45,223,325,45,210,691,45,612,610,45,113,566,45,279,847,45,809,464,45,375,400,45,269,578,45,388,352,45,494,548,45,657,552,45,639,416,45,184,523,45,396,832,45,622,530,45,249,747,45,272,345,45,292,567,45,522,356,45,177,529,45,349,452,45,437,692,45,172,519,45,328,845,45,399,279,45,261,225,45,177,529,45,419,860,45,339,658,45,405,959,45,389,930,45,310,236,45,299,695,45,309,237,45,375,325,45,364,932,45,321,827,45,326,1018,45,526,427,45,219,716,45,229,627,45,234,109,45,747,392,45,321,937,45,283,748,45,579,411,45,536,412,45,581,437,45,381,621,45,342,995,45,630,579,45,255,498,45,475,506,45,231,832,45,355,476,45,303,948,45,338,856,45,617,485,45,397,884,45,289,387,45,306,736,45,388,764,45,666,397,45,612,482,45,500,396,45,583,510,45,330,937,45,246,231,45,616,397,45,252,709,45,313,937,45,310,929,45,383,863,45,282,225,45,733,423,45,382,824,45,325,398,45,822,453,45,555,425,45,428,380,45,225,660,45,226,291,45,348,371,45,286,633,45,395,851,45,412,872,45,257,586,45,482,518,45,528,391,45,301,286,45,397,473,45,288,970,45,278,740,45,373,929,45,692,360,45,342,866,45,337,974,45,140,481,45,246,864,45,350,375,45,295,644,45,311,723,45,289,437,45,527,366,45,673,517,45,370,1000,45,868,460,45,270,645,45,416,349,45,418,868,45,164,513,45,635,565,45,265,355,45,261,346,45,389,869,45,447,751,45,273,931,45,69,537,45,359,939,45,339,338,45,314,721,45,305,620,45,147,535,45,333,368,45,710,382,45,432,743,45,289,941,45,348,551,45,315,488,45,149,571,45,261,910,45,383,362,45,348,1026,45,214,677,45,272,633,45,252,362,45,222,244,45,629,574,45,296,755,45,278,770,45,406,884,45,437,494,45,374,736,45,261,541,45,371,314,45,298,973,45,303,1002,45,374,570,45,195,282,45,399,335,45,281,916,45,237,653,45,289,988,45,169,498,45,886,408,45,699,387,45,355,743,45,182,476,45,247,312,45,533,668,45,116,572,45,330,332,45,315,812,45,574,416,45,243,420,45,298,973,45,352,303,45,286,960,45,323,608,45,310,940,45,368,324,45,380,932,45,296,1008,45,86,566,45,367,369,45,140,451,45,297,793,45,506,696,45,325,1009,45,376,476,45,554,430,45,379,300,45,277,361,45,389,627,45,307,922,45,607,415,45,264,913,45,324,863,45,369,340,45,324,665,45,391,862,45,134,549,45,258,397,45,328,1013,45,409,767,45,383,314,45,236,844,45,284,418,45,680,462,45,489,360,45,513,609,45,384,903,45,653,502,45,327,532,45,268,763,45,276,928,45,297,999,45,254,262,45,287,874,45,353,302,45,295,977,45,309,205,45,236,668,45,682,510,45,216,132,45,266,323,44,375,782,44,313,881,44,318,843,44,382,485,44,205,711,44,227,816,44,243,357,44,587,448,44,329,312,44,389,960,44,289,744,44,570,419,44,566,534,44,362,808,44,349,446,44,329,1025,44,530,674,44,379,516,44,296,582,44,223,146,44,374,375,44,366,287,44,262,807,44,379,490,44,347,254,44,465,546,44,249,540,44,464,633,44,360,251,44,482,631,44,321,245,44,680,529,44,360,984,44,625,438,44,681,480,44,357,485,44,179,601,44,343,290,44,180,609,44,245,271,44,684,526,44,212,653,44,537,565,44,319,868,44,370,312,44,301,908,44,411,365,44,394,378,44,294,968,44,326,490,44,609,526,44,361,274,44,640,391,44,299,363,44,657,412,44,859,368,44,250,175,44,515,697,44,358,939,44,646,411,44,183,437,44,189,679,44,384,307,44,370,560,44,262,214,44,375,371,44,540,399,44,280,618,44,194,687,44,383,354,44,280,575,44,410,503,44,250,804,44,294,969,44,265,276,44,370,260,44,498,405,44,96,528,44,357,904,44,235,410,44,333,637,44,225,752,44,225,537,44,247,743,44,791,391,44,338,395,44,436,339,44,374,331,44,220,564,44,381,884,44,95,541,44,326,272,44,562,448,44,349,426,44,121,512,44,541,459,44,316,936,44,238,541,44,504,706,44,303,477,44,569,408,44,253,796,44,266,242,44,74,559,44,209,647,44,459,609,44,351,632,44,396,855,44,196,527,44,527,679,44,394,843,44,667,467,44,224,812,44,215,667,44,89,512,44,288,340,44,440,760,44,351,854,44,779,424,44,347,249,44,260,781,44,284,326,44,461,397,44,413,334,44,306,454,44,408,447,44,195,435,44,266,224,44,178,659,44,912,334,44,471,454,44,307,777,44,327,1019,44,466,367,44,512,372,44,567,421,44,223,740,44,307,890,44,303,967,44,264,268,44,250,893,44,246,859,44,304,1019,44,308,211,44,352,784,44,299,282,44,276,795,44,353,323,44,326,279,44,842,416,44,199,577,44,391,352,44,342,305,44,489,418,44,481,560,44,335,858,44,383,420,44,265,358,44,347,1023,44,290,983,44,509,441,44,468,709,44,472,677,44,394,781,44,299,997,44,517,433,44,185,521,44,408,361,44,308,143,44,317,963,44,826,469,44,236,738,44,171,456,44,583,388,44,459,417,44,378,499,44,272,868,44,460,558,44,313,308,44,310,932,44,365,298,44,402,428,44,804,391,44,168,485,44,421,381,44,410,428,44,170,522,44,416,854,44,275,197,44,332,1030,44,135,463,44,736,404,44,288,838,44,549,668,44,381,850,44,418,856,44,271,920,44,347,696,44,249,131,44,337,832,44,390,335,44,332,396,44,357,339,44,274,578,44,214,537,44,686,542,44,348,708,44,365,296,44,332,973,44,403,343,44,924,361,44,633,479,44,320,930,44,266,917,44,402,880,44,172,493,44,299,852,44,295,878,44,248,547,44,325,464,44,542,675,44,400,303,44,235,608,44,285,769,44,543,405,44,521,405,44,289,976,44,373,758,44,603,471,44,330,957,44,246,630,44,290,969,44,229,335,44,345,295,44,252,648,44,647,433,44,313,940,44,251,460,44,93,502,44,338,839,44,286,802,44,399,616,44,301,887,44,370,891,44,381,295,44,295,430,44,351,523,44,639,410,44,553,412,44,387,319,44,411,557,44,343,913,44,114,594,44,660,430,44,466,409,44,290,969,44,206,674,44,148,459,44,467,737,44,879,383,44,313,265,44,315,356,44,279,237,44,295,237,44,912,358,44,677,529,44,318,363,44,401,387,44,236,854,44,278,845,44,232,426,44,387,310,44,277,432,44,398,591,44,640,399,44,201,365,44,309,527,44,388,569,44,207,764,44,675,544,44,249,241,44,418,869,44,261,190,44,266,598,44,786,494,44,552,440,44,647,555,44,387,364,44,394,947,44,182,449,44,257,776,44,262,350,44,209,663,44,264,486,44,305,329,44,260,686,44,383,628,44,320,1037,44,321,268,44,267,471,44,612,539,44,337,608,44,263,626,44,261,909,44,396,918,44,291,799,44,373,673,44,516,423,44,478,423,44,290,980,44,614,509,44,252,375,44,252,675,44,292,981,44,629,494,44,636,441,44,565,637,44,322,979,44,280,501,44,274,936,44,266,196,44,127,558,44,241,282,44,322,630,44,351,363,44,340,676,44,835,531,44,381,775,44,712,395,44,336,967,44,309,370,44,248,327,44,262,406,44,546,517,44,270,771,44,305,231,44,272,229,44,364,541,44,254,376,44,404,399,44,365,313,44,305,374,44,353,979,44,298,366,44,217,786,44,489,352,44,369,416,44,343,969,44,357,329,44,558,403,44,413,533,43,483,727,43,893,350,43,449,593,43,535,651,43,495,421,43,435,390,43,372,343,43,437,361,43,865,456,43,629,495,43,391,360,43,248,849,43,231,741,43,411,862,43,803,466,43,455,477,43,353,921,43,201,629,43,161,419,43,353,556,43,473,346,43,354,370,43,324,360,43,352,964,43,268,258,43,656,522,43,669,448,43,307,338,43,588,439,43,275,788,43,212,372,43,332,250,43,296,619,43,349,591,43,199,337,43,309,603,43,429,457,43,920,351,43,339,967,43,384,962,43,238,784,43,601,418,43,195,271,43,374,412,43,323,284,43,248,435,43,393,958,43,507,547,43,274,860,43,391,893,43,103,492,43,283,175,43,265,542,43,266,544,43,548,411,43,280,951,43,239,702,43,211,399,43,481,538,43,232,736,43,210,666,43,348,283,43,375,870,43,489,547,43,83,530,43,370,401,43,309,305,43,258,415,43,444,500,43,819,382,43,328,346,43,386,641,43,186,600,43,306,583,43,565,564,43,563,633,43,573,642,43,280,377,43,678,528,43,51,532,43,337,366,43,506,602,43,258,201,43,145,374,43,293,760,43,177,588,43,693,501,43,359,327,43,380,318,43,371,942,43,545,456,43,405,936,43,246,443,43,819,390,43,233,752,43,75,551,43,815,398,43,345,256,43,355,614,43,328,649,43,326,996,43,557,486,43,450,741,43,168,481,43,176,667,43,316,308,43,267,201,43,922,357,43,398,921,43,560,621,43,318,1032,43,257,196,43,568,630,43,271,148,43,329,1040,43,336,365,43,525,397,43,611,386,43,601,588,43,547,407,43,285,233,43,325,708,43,331,917,43,213,401,43,727,395,43,360,900,43,612,486,43,340,1031,43,276,830,43,352,289,43,255,420,43,391,843,43,234,836,43,340,947,43,304,924,43,831,502,43,331,828,43,370,257,43,322,1035,43,527,577,43,310,343,43,208,516,43,546,398,43,304,724,43,401,499,43,473,417,43,712,388,43,493,530,43,373,915,43,446,336,43,338,373,43,283,504,43,290,718,43,316,248,43,347,463,43,243,128,43,312,926,43,790,475,43,246,371,43,327,354,43,337,352,43,177,650,43,315,929,43,361,631,43,331,281,43,533,366,43,275,578,43,391,278,43,355,875,43,280,455,43,288,445,43,315,196,43,393,314,43,297,1002,43,408,895,43,270,325,43,667,440,43,319,282,43,210,523,43,238,200,43,328,1018,43,297,463,43,902,370,43,281,428,43,347,891,43,221,607,43,513,594,43,337,297,43,353,715,43,289,187,43,357,375,43,393,455,43,339,289,43,593,507,43,394,311,43,90,553,43,691,506,43,436,741,43,77,533,43,171,529,43,680,520,43,250,550,43,587,391,43,590,487,43,374,575,43,288,302,43,280,256,43,379,328,43,286,575,43,337,883,43,236,797,43,425,348,43,412,377,43,310,328,43,752,397,43,366,397,43,265,255,43,296,206,43,241,738,43,346,274,43,445,515,43,190,435,43,367,709,43,279,223,43,317,293,43,593,461,43,238,753,43,314,936,43,289,228,43,344,590,43,489,426,43,569,444,43,282,661,43,451,667,43,301,884,43,650,518,43,281,758,43,325,999,43,345,1028,43,322,617,43,313,370,43,125,554,43,342,301,43,208,684,43,398,431,43,640,389,43,144,488,43,344,933,43,259,882,43,552,589,43,263,786,43,214,781,43,330,288,43,363,345,43,400,567,43,196,758,43,346,330,43,210,659,43,408,393,43,379,433,43,345,920,43,254,512,43,336,575,43,538,589,43,904,381,43,176,548,43,825,377,43,306,244,43,325,275,43,228,342,43,354,290,43,673,515,43,190,574,43,144,552,43,285,236,43,808,388,43,292,241,43,387,619,43,416,860,43,339,294,43,268,673,43,307,542,43,260,461,43,201,276,43,912,364,43,895,330,43,294,255,43,508,572,43,228,821,43,107,571,43,383,481,43,678,530,43,187,520,43,436,376,43,418,864,43,659,519,43,373,407,43,317,371,43,320,524,43,512,548,43,304,324,43,324,730,43,332,259,43,607,617,43,460,505,43,589,491,43,353,341,43,309,953,43,465,509,43,606,500,43,244,199,43,389,842,43,267,210,43,435,757,43,782,491,43,515,612,43,672,542,43,310,855,43,560,656,43,680,526,43,368,319,43,290,977,43,229,828,43,264,760,43,167,413,43,403,820,43,349,961,43,482,429,43,246,404,43,471,544,43,506,406,43,575,392,43,403,497,43,411,788,43,132,559,42,264,154,42,388,432,42,292,307,42,294,697,42,348,414,42,385,923,42,222,434,42,254,787,42,406,513,42,460,366,42,288,213,42,532,360,42,214,405,42,219,729,42,297,274,42,257,248,42,360,295,42,794,400,42,474,577,42,210,423,42,579,627,42,193,645,42,331,927,42,207,369,42,205,776,42,459,429,42,211,431,42,272,775,42,238,743,42,682,382,42,399,374,42,309,271,42,369,880,42,770,392,42,302,246,42,418,750,42,236,464,42,177,585,42,173,502,42,180,431,42,254,276,42,440,580,42,288,696,42,220,704,42,239,863,42,408,867,42,577,613,42,537,402,42,230,773,42,272,336,42,332,434,42,96,572,42,208,779,42,359,239,42,244,524,42,862,460,42,626,396,42,270,459,42,175,575,42,120,569,42,411,872,42,680,527,42,253,379,42,269,215,42,325,681,42,480,376,42,512,380,42,379,442,42,247,797,42,189,640,42,341,419,42,219,460,42,455,423,42,264,518,42,237,781,42,413,298,42,241,456,42,81,561,42,442,466,42,506,624,42,440,756,42,386,940,42,610,622,42,178,519,42,337,933,42,303,873,42,267,823,42,672,527,42,188,576,42,303,545,42,785,504,42,298,311,42,550,430,42,192,343,42,584,497,42,259,815,42,360,596,42,392,385,42,358,327,42,594,600,42,433,374,42,472,427,42,413,852,42,265,787,42,464,443,42,862,406,42,590,542,42,215,473,42,591,605,42,385,441,42,685,526,42,635,514,42,283,222,42,378,982,42,274,415,42,298,476,42,459,422,42,382,867,42,332,561,42,416,868,42,244,235,42,313,464,42,470,716,42,510,584,42,537,365,42,252,222,42,628,459,42,210,782,42,283,293,42,239,116,42,331,931,42,645,490,42,266,748,42,247,136,42,180,590,42,379,805,42,916,354,42,398,362,42,364,389,42,342,523,42,231,389,42,428,545,42,297,369,42,309,952,42,322,924,42,213,789,42,282,890,42,387,316,42,191,653,42,226,240,42,577,614,42,788,398,42,272,895,42,263,263,42,313,269,42,676,392,42,807,380,42,172,525,42,407,389,42,347,957,42,303,524,42,220,756,42,525,377,42,554,421,42,277,464,42,264,501,42,327,286,42,285,284,42,376,397,42,592,586,42,281,875,42,760,395,42,91,523,42,290,813,42,591,387,42,341,897,42,233,728,42,204,751,42,442,569,42,409,303,42],"w":1000,"h":1114,"keys":{"Mumbai":[176,652],"Delhi":[319,313],"Bengaluru":[331,867],"Kolkata":[684,528],"Chennai":[419,863],"Ahmedabad":[167,512],"Hyderabad":[359,711],"Pune":[208,671],"Jaipur":[272,374],"Lucknow":[440,377],"Patna":[578,421],"Nashik":[206,619]}};
-// Shared financial model (pasted into the deck). Amounts in ₹ crore.
+// Shared financial model (pasted into the deck). Valuation-only scope: NBFC valuation reports,
+// book re-valuation and platform licences. Pulse, Investor Lens and Branch Intelligence are
+// extra features and are deliberately excluded from the base case. Amounts in ₹ crore.
 function finModel(a) {
   const yrs = [0, 1, 2];
-  const endL = [a.lenders * 5 / 36, a.lenders * 16 / 36, a.lenders];             // paying lenders at year end
+  const endL = [a.lenders * 5 / 36, a.lenders * 16 / 36, a.lenders];             // paying NBFCs / HFCs at year end
   const avgL = endL.map((e, i) => (e + (i ? endL[i - 1] : 0)) / 2);
-  const reportsPer = [10000, 16000, 22000], pulsePer = [12000, 30000, 45000];
-  const priceR = [a.price, a.price * 0.895, a.price * 0.816];                      // volume discounts 380 → 340 → 310
-  const priceP = [a.pulse, a.pulse * 0.91, a.pulse * 0.82];                        // 11 → 10 → 9 per asset-month
-  const invClients = [2, 7, 16], invFee = [8, 12, 15];                              // ₹ lakh per client-year
-  const platform = [4, 6, 8];                                                       // ₹ lakh per avg lender
+  const reportsPer = [8000, 12000, 18000];                                          // valuation reports per average lender
+  const revalPer = [20000, 40000, 60000];                                           // book assets re-valued per average lender
+  const priceR = [a.price, a.price * 0.9, a.price * 0.82];                          // volume tiers 750 → 675 → 615
+  const priceV = [a.reval, a.reval * 0.92, a.reval * 0.84];                         // per asset re-valued per year
+  const platform = [4, 6, 8];                                                       // ₹ lakh per average lender
   const r = yrs.map((i) => {
-    const reports = avgL[i] * reportsPer[i], assets = avgL[i] * pulsePer[i];
-    const revR = reports * priceR[i] / 1e7, revP = assets * priceP[i] * 12 / 1e7;
-    const revI = invClients[i] * invFee[i] / 100, revPl = avgL[i] * platform[i] / 100;
-    const rev = revR + revP + revI + revPl;
-    const cogs = reports * [40, 40, 38][i] / 1e7 + assets * 12 * [1.2, 1.1, 1.0][i] / 1e7 + [0.5, 1.4, 2.8][i];
+    const reports = avgL[i] * reportsPer[i], reval = avgL[i] * revalPer[i];
+    const revR = reports * priceR[i] / 1e7, revV = reval * priceV[i] / 1e7, revPl = avgL[i] * platform[i] / 100;
+    const rev = revR + revV + revPl;
+    const cogs = reports * [60, 58, 55][i] / 1e7 + reval * [8, 7, 6][i] / 1e7 + [0.5, 1.4, 2.8][i];
     const hc = [10, 24, 47][i], team = hc * [24, 26, 28][i] / 100;
     const sm = [0.6, 1.8, 4.2][i], ga = [0.5, 1.1, 2.2][i];
     const opex = team + sm + ga, ebitda = rev - cogs - opex;
-    return { year: 2027 + i, lendersEnd: Math.round(endL[i]), reports: Math.round(reports), assets: Math.round(assets), revR, revP, revI, revPl, rev, cogs, gm: (rev - cogs) / rev, team, sm, ga, opex, ebitda, hcEnd: [14, 34, 60][i] };
+    return { year: 2027 + i, lendersEnd: Math.round(endL[i]), reports: Math.round(reports), reval: Math.round(reval), revR, revV, revPl, rev, cogs, gm: (rev - cogs) / rev, team, sm, ga, opex, ebitda, hcEnd: [14, 34, 60][i] };
   });
   return r;
 }
@@ -814,25 +953,25 @@ setInterval(() => { const c = document.getElementById('clock'); if (c) c.textCon
 // ---------- financial chart ----------
 const fmt = (x) => (Math.abs(x) >= 10 ? x.toFixed(1) : x.toFixed(2));
 function drawFin(anim) {
-  const a = { lenders: +document.getElementById('fL').value, price: +document.getElementById('fP').value, pulse: +document.getElementById('fQ').value };
-  document.getElementById('fLv').textContent = a.lenders; document.getElementById('fPv').textContent = '₹' + a.price; document.getElementById('fQv').textContent = '₹' + a.pulse;
+  const a = { lenders: +document.getElementById('fL').value, price: +document.getElementById('fP').value, reval: +document.getElementById('fQ').value };
+  document.getElementById('fLv').textContent = a.lenders; document.getElementById('fPv').textContent = '₹' + a.price; document.getElementById('fQv').textContent = '₹' + a.reval;
   const r = finModel(a);
   document.getElementById('fRev3').textContent = Math.round(r[2].rev);
   document.getElementById('fMargin3').textContent = Math.round((r[2].ebitda / r[2].rev) * 100);
-  const rows = [['', ...r.map((y) => y.year)], ['Paying lenders (end)', ...r.map((y) => y.lendersEnd)], ['Reports', ...r.map((y) => (y.reports / 1000).toFixed(0) + 'k')], ['Assets on Pulse', ...r.map((y) => (y.assets >= 1e6 ? (y.assets / 1e6).toFixed(2) + 'M' : (y.assets / 1000).toFixed(0) + 'k'))],
+  const rows = [['', ...r.map((y) => y.year)], ['Paying NBFCs (end)', ...r.map((y) => y.lendersEnd)], ['Reports', ...r.map((y) => (y.reports / 1000).toFixed(0) + 'k')], ['Loans re-valued', ...r.map((y) => (y.reval >= 1e6 ? (y.reval / 1e6).toFixed(2) + 'M' : (y.reval / 1000).toFixed(0) + 'k'))],
     ['Revenue', ...r.map((y) => fmt(y.rev))], ['Gross margin', ...r.map((y) => Math.round(y.gm * 100) + '%')], ['Opex', ...r.map((y) => fmt(y.opex))], ['EBITDA', ...r.map((y) => fmt(y.ebitda))], ['Headcount (end)', ...r.map((y) => y.hcEnd)]];
   document.getElementById('finTable').innerHTML = rows.map((row, i) => `<tr${i === 4 || i === 7 ? ' class="hl"' : ''}>${row.map((c, j) => (i === 0 ? `<th${j ? ' class="r"' : ''}>${c}</th>` : `<td${j ? ' class="r nw"' : ''}${i === 7 && j && parseFloat(c) < 0 ? ' style="color:#ff8fa1"' : ''}>${c}</td>`)).join('')}</tr>`).join('');
   const box = document.getElementById('finChart'); const W = box.clientWidth || 800, H = box.clientHeight || 330;
   const max = Math.max(...r.map((y) => y.rev)) * 1.15, min = Math.min(0, ...r.map((y) => y.ebitda)) * 1.4;
   const Y = (v) => 24 + (H - 52) * (1 - (v - min) / (max - min)), bw = W / 3 * 0.42;
   let s = `<line x1="0" x2="${W}" y1="${Y(0)}" y2="${Y(0)}" stroke="rgba(255,255,255,.18)"/>`;
-  const cols = [['revR', '#ffb547'], ['revP', '#5ce1ff'], ['revI', '#a6e36b'], ['revPl', '#a98bff']];
+  const cols = [['revR', '#ffb547'], ['revV', '#5ce1ff'], ['revPl', '#a98bff']];
   r.forEach((y, i) => { const x = W / 3 * i + W / 6 - bw / 2; let acc = 0;
     s += `<g class="bar" style="transform-origin:${x + bw / 2}px ${Y(0)}px;${anim ? `animation:grow .9s cubic-bezier(.2,.8,.2,1) ${i * 0.15}s both` : ''}">`;
     for (const [k, c] of cols) { const y0 = Y(acc), y1 = Y(acc + y[k]); s += `<rect x="${x}" y="${y1}" width="${bw}" height="${Math.max(0, y0 - y1)}" fill="${c}" opacity=".92" rx="3"/>`; acc += y[k]; }
     s += `</g><text x="${x + bw / 2}" y="${Y(y.rev) - 10}" fill="#eef2fb" font-size="19" font-family="Space Grotesk, Inter, sans-serif" font-weight="700" text-anchor="middle">₹${fmt(y.rev)} cr</text><text x="${x + bw / 2}" y="${H - 6}" fill="#74829f" font-size="14" font-family="JetBrains Mono, monospace" text-anchor="middle">${y.year}</text>`; });
-  const p2 = r.map((y, i) => [W / 3 * i + W / 6 + bw / 2 + 22, Y(y.ebitda)]);
-  s += `<path d="M${p2.map((p) => p.join(',')).join('L')}" stroke="#ff5470" stroke-width="3" fill="none"/>` + p2.map((p, i) => `<circle cx="${p[0]}" cy="${p[1]}" r="6" fill="#02040a" stroke="#ff5470" stroke-width="3"/><text x="${p[0] + 12}" text-anchor="start" y="${p[1] + 5}" paint-order="stroke" stroke="#02040a" stroke-width="4" fill="#ff9aab" font-size="14" font-family="JetBrains Mono, monospace">${r[i].ebitda < 0 ? '−' : '+'}₹${fmt(Math.abs(r[i].ebitda))} cr</text>`).join('');
+  const p2 = r.map((y, i) => [W / 3 * i + W / 6 + bw / 2 + 12, Y(y.ebitda)]);
+  s += `<path d="M${p2.map((p) => p.join(',')).join('L')}" stroke="#ff5470" stroke-width="3" fill="none"/>` + p2.map((p, i) => `<circle cx="${p[0]}" cy="${p[1]}" r="6" fill="#02040a" stroke="#ff5470" stroke-width="3"/><text x="${p[0] + 10}" text-anchor="start" y="${p[1] + 5}" paint-order="stroke" stroke="#02040a" stroke-width="4" fill="#ff9aab" font-size="14" font-family="JetBrains Mono, monospace">${r[i].ebitda < 0 ? '−' : '+'}₹${fmt(Math.abs(r[i].ebitda))} cr</text>`).join('');
   box.innerHTML = `<svg viewBox="0 0 ${W} ${H}"><style>@keyframes grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}</style>${s}</svg>`;
 }
 ['fL', 'fP', 'fQ'].forEach((id) => document.getElementById(id).addEventListener('input', () => drawFin(false)));
@@ -907,29 +1046,26 @@ async function runDemo() {
     stepOn(3); cap('Grade, value range, realisable value, LTV band and red flags');
     panel.innerHTML = `<div class="k">COLLATERAL REPORT</div><h4>Residential property · Hinjewadi, Pune</h4>
       <div style="display:flex;gap:12px;align-items:center"><svg viewBox="0 0 80 80" width="78" height="78" style="transform:rotate(-90deg)"><circle cx="40" cy="40" r="33" stroke="rgba(255,255,255,.1)" stroke-width="7" fill="none"/><circle id="darc" cx="40" cy="40" r="33" stroke="#a6e36b" stroke-width="7" fill="none" stroke-dasharray="207" stroke-dashoffset="207" style="transition:stroke-dashoffset 1.3s cubic-bezier(.2,.8,.2,1);filter:drop-shadow(0 0 5px #a6e36b)"/></svg>
-      <div><div style="font:700 30px var(--f-h);color:#a6e36b;line-height:1">B <small style="font:500 12px var(--f-m);color:#aab6d1">76/100</small></div><div style="margin-top:6px;font:600 11.5px var(--f-b);color:#ffc58f;background:#ff9a3d14;border:1px solid #ff9a3d55;border-radius:7px;padding:4px 8px">Verify: targeted site visit</div></div></div>
+      <div><div style="font:700 30px var(--f-h);color:#a6e36b;line-height:1">B <small style="font:500 12px var(--f-m);color:#aab6d1">76/100</small></div><div style="margin-top:6px;font:600 11.5px var(--f-b);color:#ffc58f;background:#ff9a3d14;border:1px solid #ff9a3d55;border-radius:7px;padding:4px 8px">Verify: valuer checklist</div></div></div>
       <div style="position:relative;height:34px;margin-top:8px"><div style="position:absolute;left:0;right:0;top:12px;height:4px;border-radius:2px;background:rgba(255,255,255,.08)"></div><div style="position:absolute;left:12%;width:58%;top:10px;height:8px;border-radius:4px;background:linear-gradient(90deg,#ffb54733,#ffb547,#ffb54733)"></div><div style="position:absolute;left:38%;top:5px;width:2px;height:18px;background:#ffd98a;box-shadow:0 0 8px #ffb547"></div><div style="position:absolute;left:88%;top:8px;width:9px;height:9px;transform:rotate(45deg);background:#ff5470"></div>
       <span style="position:absolute;left:4%;top:22px;font:10px var(--f-m);color:#aab6d1">₹62.1 L</span><span style="position:absolute;left:31%;top:22px;font:10px var(--f-m);color:#ffd98a">₹75.6 L</span><span style="position:absolute;left:61%;top:22px;font:10px var(--f-m);color:#aab6d1">₹92.0 L</span></div>
       <div class="rkp"><div><span>Realisable</span><b style="color:#ffd98a">₹57.7 L</b></div><div><span>Days to sell</span><b>104</b></div><div><span>Haircut</span><b>19%</b></div><div><span>Rec. LTV</span><b style="color:#5ce1ff">75%</b></div><div><span>Max loan</span><b>₹56.7 L</b></div><div><span>Flood · heat</span><b>22 · 31</b></div></div>
       <div class="mflag">VALUE ABOVE RANGE · declared ₹1.15 Cr is 1.52× the estimate</div><div class="mflag">LTV BREACH · requested 86% vs recommended 75%</div>`;
     await wait(80, g); const arc = $('darc'); if (arc) arc.style.strokeDashoffset = 207 * (1 - 0.76);
     await wait(4200, g);
-    stepOn(4); cap('Investor Lens: certify a whole book under stress'); tab(2); dstate.tz = 2.2; dstate.tcx = P(74.2, 20.5)[0]; dstate.tcy = P(74.2, 20.5)[1]; dstate.pin = 0; dstate.parcel = 0;
-    panel.innerHTML = `<div class="k">INVESTOR LENS · 90 LOANS · ₹21.4 CR</div><h4>Collateral quality certificate</h4>
-      <div style="display:flex;gap:10px;margin-bottom:8px"><div style="flex:1;background:rgba(255,255,255,.04);border-radius:8px;padding:7px"><span style="font:500 9.5px var(--f-m);color:#74829f">Realisable cover</span><div id="ilc" style="font:700 22px var(--f-h);color:#ffd98a">1.62×</div></div><div style="flex:1;background:rgba(255,255,255,.04);border-radius:8px;padding:7px"><span style="font:500 9.5px var(--f-m);color:#74829f">Under-covered</span><div id="ilu" style="font:700 22px var(--f-h);color:#ff8fa1">4%</div></div></div>
-      <div style="font:500 10.5px var(--f-m);color:#aab6d1">Price shock <b id="ils" style="color:#ffd98a">0%</b></div><div style="height:4px;background:rgba(255,255,255,.08);border-radius:2px;margin:5px 0 10px;position:relative"><div id="ilk" style="position:absolute;left:100%;top:-5px;width:14px;height:14px;border-radius:50%;background:#ffb547;transform:translateX(-50%);box-shadow:0 0 10px #ffb547"></div></div>
-      <svg viewBox="0 0 300 110" width="100%" height="120">${[0, 1, 2, 3, 4, 5, 6, 7].map((i) => `<rect id="ib${i}" x="${8 + i * 36}" y="100" width="28" height="0" rx="3" fill="${i < 3 ? '#ff5470' : '#ffb547'}" style="transition:all .5s"/>`).join('')}</svg>
-      <div style="font:600 12px var(--f-h);padding:6px 9px;border-radius:7px;background:#3ee08f14;border:1px solid #3ee08f55;color:#8ff5bf" id="ilv">Verdict B · collateral supports the book</div>`;
-    const sets = [[1, 2, 5, 14, 22, 21, 15, 10], [2, 4, 9, 19, 23, 17, 10, 6], [5, 8, 14, 22, 20, 12, 6, 3]];
-    const vals = [['0%', '1.62×', '4%', 'Verdict B · collateral supports the book', 100], ['−20%', '1.31×', '11%', 'Verdict C · tighten LTV or add enhancement', 50], ['−40%', '0.98×', '29%', 'Verdict D · collateral does not support the book', 0]];
-    for (let v = 0; v < 3; v++) { sets[v].forEach((h, i) => { const b = $('ib' + i); if (b) { b.setAttribute('y', 100 - h * 4); b.setAttribute('height', h * 4); } });
-      const [sh, cov, un, vd, kx] = vals[v]; $('ils').textContent = sh; $('ilc').textContent = cov; $('ilu').textContent = un; $('ilv').textContent = vd; $('ilk').style.left = kx + '%';
-      $('ilv').style.cssText = `font:600 12px var(--f-h);padding:6px 9px;border-radius:7px;${v === 0 ? 'background:#3ee08f14;border:1px solid #3ee08f55;color:#8ff5bf' : v === 1 ? 'background:#ff9a3d14;border:1px solid #ff9a3d55;color:#ffc58f' : 'background:#ff547014;border:1px solid #ff547066;color:#ff9aab'}`;
-      await wait(1700, g); }
-    stepOn(5); cap('One API call puts the same answer inside any lending system'); tab(4);
+    stepOn(4); cap('Government floor: is the declared value defensible?'); tab(0);
+    panel.innerHTML = `<div class="k">GOVERNMENT FLOOR · READY RECKONER</div><h4>Hinjewadi flat · 1,050 sq ft</h4>
+      <div class="rkp" style="grid-template-columns:repeat(2,minmax(0,1fr));margin-top:0"><div><span>IGR rate, FY 2025-26</span><b>₹53,780/m²</b></div><div><span>Floor value</span><b style="color:#c9b6ff">₹52.5 L</b></div></div>
+      ${[['Floor', 52.5, '#a98bff', '₹52.5 L'], ['Market P50', 75.6, '#ffb547', '₹75.6 L'], ['Declared', 115, '#ff5470', '₹1.15 Cr']].map(([k, v, c, t], i) => `<div style="display:grid;grid-template-columns:74px 1fr 58px;gap:8px;align-items:center;font-size:11.5px;margin-top:8px"><span style="color:#aab6d1">${k}</span><div style="height:8px;border-radius:4px;background:rgba(255,255,255,.07)"><i id="cb${i}" data-w="${(v / 125 * 100).toFixed(1)}" style="display:block;height:8px;border-radius:4px;width:0;background:${c};transition:width 1s cubic-bezier(.2,.8,.2,1) ${i * 0.25}s"></i></div><b style="font:600 11.5px var(--f-m);text-align:right">${t}</b></div>`).join('')}
+      <div class="rkp" style="margin-top:10px"><div><span>Market ÷ floor</span><b>1.44×</b></div><div><span>Declared ÷ floor</span><b style="color:#ff8fa1">2.19×</b></div><div><span>Floor growth</span><b>2.9%/yr</b></div></div>
+      <div class="mflag" style="border-color:#ffb547;background:#ffb54712">Declared ₹1.15 Cr is above P90 and 2.2× the floor. Deeds here are often registered nearer the floor: size the loan on the registrable value.</div>
+      <div class="mflag" style="border-color:#3ee08f;background:#3ee08f10">Floor rising 2.9% a year: in line with inflation, no slow-growth flag.</div>`;
+    await wait(80, g); for (let i = 0; i < 3; i++) { const e = $('cb' + i); if (e) e.style.width = e.dataset.w + '%'; }
+    await wait(5200, g);
+    stepOn(5); cap('One API call puts the same answer inside any lending system'); tab(2);
     panel.innerHTML = `<div class="k">POST /v1/assess</div><h4>From the lender's LOS</h4><div class="code" id="dcode"></div><div class="k" style="margin-top:10px">200 OK · 7.9 s</div><div class="code" id="dresp" style="margin-top:4px"></div>`;
     await typeText($('dcode'), 'curl -X POST $API/v1/assess \\\n -H "Authorization: Bearer $KEY" \\\n -d \'{"lat":18.591,"lon":73.738,\n  "asset_type":"residential",\n  "loan_amount":6500000}\'', g, 18);
-    const resp = ['{', ' "score": {"grade": "B", "cqs": 76},', ' "valuation": {"p50": 7560000},', ' "lending": {"recommended_ltv": 0.75},', ' "decision": {"route": "verify"},', ' "sources_ok": 10', '}'];
+    const resp = ['{', ' "score": {"grade": "B", "cqs": 76},', ' "valuation": {"p50": 7560000},', ' "lending": {"recommended_ltv": 0.75},', ' "decision": {"route": "verify"},', ' "circle_rate": {"circle_value": 5246147},', ' "sources_ok": 10', '}'];
     for (const l of resp) { $('dresp').innerHTML += l.replace(/"([^"]+)":/g, '<span class="k">"$1"</span>:').replace(/: "([^"]+)"/g, ': <span class="s">"$1"</span>').replace(/(\d+(\.\d+)?)/g, '<span class="n">$1</span>') + '\n'; await wait(260, g); }
     await wait(2500, g); cap('Replay, or open the live tool'); stepOn(6);
   } catch (e) { /* stopped */ }
@@ -948,6 +1084,45 @@ function revealGuess() {
   const d = +gIn.value - 31.5; $('gYou').textContent = Math.abs(d) < 5 ? 'You were close.' : `You guessed ${gIn.value}%: ${d > 0 ? 'collateral fetches far less than its paper value' : 'even lower than you thought'}.`;
 }
 $('gBtn').onclick = revealGuess;
+
+
+// ---------- glossary terms (hover, or tap on touch screens) ----------
+const tipEl = Object.assign(document.createElement('div'), { className: 'tipbox' }); stage.appendChild(tipEl);
+function tipShow(e) { const sr = stage.getBoundingClientRect(), k = sr.width / 1600, r = e.getBoundingClientRect();
+  tipEl.innerHTML = `<b>${e.textContent.trim().toUpperCase()}</b>${e.dataset.tip}`; tipEl.classList.add('on');
+  let x = (r.left + r.width / 2 - sr.left) / k - 155, y = (r.top - sr.top) / k - tipEl.offsetHeight - 10; x = Math.max(20, Math.min(1270, x)); if (y < 20) y = (r.bottom - sr.top) / k + 10;
+  tipEl.style.left = x + 'px'; tipEl.style.top = y + 'px'; }
+const tipHide = () => tipEl.classList.remove('on');
+document.querySelectorAll('.gl').forEach((e) => { e.addEventListener('mouseenter', () => tipShow(e)); e.addEventListener('mouseleave', tipHide); e.addEventListener('click', (ev) => { ev.stopPropagation(); tipEl.classList.contains('on') ? tipHide() : tipShow(e); }); });
+document.addEventListener('click', tipHide);
+// ---------- valuation report teardown ----------
+const gapOn = (h) => document.querySelectorAll(`.gp[data-h="${h}"],.vrr.hs[data-h="${h}"]`).forEach((x) => x.classList.add('on'));
+document.querySelectorAll('.vrr.hs,.gp').forEach((x) => x.addEventListener('click', () => gapOn(x.dataset.h)));
+$('gapAll').onclick = () => [0, 1, 2, 3, 4, 5].forEach((h, i) => setTimeout(() => gapOn(h), i * 220));
+// ---------- government floor check ----------
+const CR = { min: 30, max: 140, floor: 52.5, p50: 75.6, p90: 92 }; const crPos = (v) => ((v - CR.min) / (CR.max - CR.min)) * 100 + '%';
+{ const bar = document.querySelector('.crbar'); const sp = bar.querySelectorAll('span'); [CR.floor, CR.p50, CR.p90].forEach((v, i) => { sp[i].style.left = crPos(v); }); bar.querySelector('.fl').style.left = crPos(CR.floor); bar.querySelector('.p50').style.left = crPos(CR.p50); bar.querySelector('.p90').style.left = crPos(CR.p90); }
+function crUpd() {
+  const v = +$('crIn').value; $('crV').textContent = v >= 100 ? '₹' + (v / 100).toFixed(2) + ' Cr' : '₹' + v + ' L'; $('crMe').style.left = crPos(v);
+  const el = $('crVerdict'); let t, c = '';
+  if (v < CR.floor * 0.9) { t = `Below the government floor (${(v / CR.floor).toFixed(2)}×): the deed value is likely understated. Refer to legal.`; c = 'wet'; }
+  else if (v > CR.p90) { t = 'Above our P90: likely overvalued. Refer for a second valuation.'; c = 'wet'; }
+  else if (v > CR.p50 * 1.1) { t = 'Inside the range, above P50: valuer checks comparables.'; c = 'warn'; }
+  else { t = `Within range and ${(v / CR.floor).toFixed(1)}× the floor: confirm.`; }
+  el.textContent = t; el.className = 'verdict ' + c;
+}
+$('crIn').addEventListener('input', crUpd); crUpd();
+// ---------- CFO return calculator ----------
+function roiUpd() {
+  const F = +$('rF').value, S = +$('rS').value / 100; $('rFv').textContent = F / 1000 + 'k'; $('rSv').textContent = Math.round(S * 100) + '%';
+  const price = F > 50000 ? 675 : 750, cost = (F * price + 600000) / 1e7, rev = (F * S * 2500) / 1e7, ovv = (F * 0.003 * 1200000 * 0.25) / 1e7, net = (rev + ovv) / cost;
+  $('roiT').innerHTML = `<tr><td>Second reviews avoided: ${Math.round(S * 100)}% of ${(F / 1000)}k files × ₹2,500</td><td class="r nw green">+₹${rev.toFixed(2)} cr</td></tr><tr><td>Overvaluation caught: 0.3% of files × ₹12 L × 25%</td><td class="r nw green">+₹${ovv.toFixed(2)} cr</td></tr><tr><td>BhoomiPulse: ${(F / 1000)}k reports at ₹${price} + platform ₹6 L</td><td class="r nw red">−₹${cost.toFixed(2)} cr</td></tr><tr class="hl"><td><b>Benefit per rupee paid</b> (faster sanction not counted)</td><td class="r nw"><b>≈ ${net.toFixed(1)}×</b></td></tr>`;
+}
+['rF', 'rS'].forEach((id) => $(id).addEventListener('input', roiUpd)); roiUpd();
+// ---------- room polls (click to add a hand, right-click or shift-click to remove) ----------
+document.querySelectorAll('.poll').forEach((p) => { const bs = [...p.querySelectorAll('button')]; const cnt = bs.map(() => 0);
+  const draw = () => { const tot = cnt.reduce((a, b) => a + b, 0) || 1, mx = Math.max(...cnt); bs.forEach((b, i) => { b.querySelector('b').textContent = cnt[i]; b.style.setProperty('--w', (cnt[i] / tot) * 100 + '%'); b.classList.toggle('lead', cnt[i] === mx && mx > 0); }); };
+  bs.forEach((b, i) => { b.addEventListener('click', (e) => { cnt[i] = Math.max(0, cnt[i] + (e.shiftKey ? -1 : 1)); draw(); b.blur(); }); b.addEventListener('contextmenu', (e) => { e.preventDefault(); cnt[i] = Math.max(0, cnt[i] - 1); draw(); }); }); });
 
 // ---------- 3D scenes (three.js, rendered only on their own slide) ----------
 const T3 = window.THREE;
